@@ -1,7 +1,7 @@
 import React from 'react';
 import './tto_form.css';
 
-function TTO() {
+function TTO_Form() {
   return (
     <div className="container">
       <h1>TTODetails Form</h1>
@@ -46,4 +46,4 @@ function TTO() {
   );
 }
 
-export default TTO;
+export default TTO_Form;
