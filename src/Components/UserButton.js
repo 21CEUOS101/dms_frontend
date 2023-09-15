@@ -20,15 +20,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }));
-
-interface UserButtonProps extends UnstyledButtonProps {
-  image: string;
-  name: string;
-  email: string;
-  icon?: React.ReactNode;
-}
-
-export function UserButton({ image, name, email, icon, ...others }: UserButtonProps) {
+export function UserButton({ image, name, email, icon, ...others }) {
   const { classes } = useStyles();
 
   return (
