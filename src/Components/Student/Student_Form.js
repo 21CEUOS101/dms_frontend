@@ -4,137 +4,121 @@ import './form.css';
 function Student_Form() {
   return (
     <div>
-      <h1>Student Academic Info Form</h1>
-      <form action="/submit" method="POST">
-        <div>
-          <label htmlFor="student_id">Student ID:</label>
-          <input type="text" id="student_id" name="student_id" required />
-        </div>
-        <div>
-          {/* Field for Medium of Exam */}
-          <label htmlFor="medium_of_exam">Medium of Exam:</label>
-          <input type="text" id="medium_of_exam" name="medium_of_exam" required />
-        </div>
-        <div>
-          {/* Field for Seat Number */}
-          <label htmlFor="seat_number">Seat Number:</label>
-          <input type="text" id="seat_number" name="seat_number" required />
-        </div>
-        <div>
-          {/* Field for Passing Year */}
-          <label htmlFor="passing_year">Passing Year:</label>
-          <input type="text" id="passing_year" name="passing_year" required />
-        </div>
-        <div>
-          {/* Field for Passing Month */}
-          <label htmlFor="passing_month">Passing Month:</label>
-          <input type="text" id="passing_month" name="passing_month" required />
-        </div>
-        <div>
-          {/* Field for Board */}
-          <label htmlFor="board">Board:</label>
-          <input type="text" id="board" name="board" required />
-        </div>
-        <div>
-          {/* Field for Institute Name */}
-          <label htmlFor="institute_name">Institute Name:</label>
-          <input type="text" id="institute_name" name="institute_name" required />
-        </div>
-        <div>
-          {/* Field for Result Type */}
-          <label htmlFor="result_type">Result Type:</label>
-          <input type="text" id="result_type" name="result_type" required />
-        </div>
-        <div>
-          {/* Field for Result */}
-          <label htmlFor="result">Result:</label>
-          <input type="text" id="result" name="result" required />
-        </div>
-        <div>
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
+      <div>
+        <h1>Student Academic Info Form</h1>
+        <form action="/submit" method="POST">
+          <div>
+            <label for="student_id">Student ID:</label>
+            <input type="text" id="student_id" name="student_id" required />
+          </div>
+          <div>
+            <label for="medium_of_exam">Medium of Exam:</label>
+            <input type="text" id="medium_of_exam" name="medium_of_exam" required />
+          </div>
+          <div>
+            <label for="seat_number">Seat Number:</label>
+            <input type="text" id="seat_number" name="seat_number" required />
+          </div>
+          <div>
+            <label for="passing_year">Passing Year:</label>
+            <input type="text" id="passing_year" name="passing_year" required />
+          </div>
+          <div>
+            <label for="passing_month">Passing Month:</label>
+            <input type="text" id="passing_month" name="passing_month" required />
+          </div>
+          <div>
+            <label for="board">Board:</label>
+            <input type="text" id="board" name="board" required />
+          </div>
+          <div>
+            <label for="institute_name">Institute Name:</label>
+            <input type="text" id="institute_name" name="institute_name" required />
+          </div>
+          <div>
+            <label for="result_type">Result Type:</label>
+            <input type="text" id="result_type" name="result_type" required />
+          </div>
+          <div>
+            <label for="result">Result:</label>
+            <input type="text" id="result" name="result" required />
+          </div>
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+      </div>
 
-      <h1>Student Contact Info Form</h1>
-      <form action="/submit" method="POST">
-        <div>
-          <label htmlFor="student_id">Student ID:</label>
-          <input type="text" id="student_id" name="student_id" required />
-        </div>
-        <div>
-          {/* Field for Address Line 1 */}
-          <label htmlFor="address_line_1">Address Line 1:</label>
-          <input type="text" id="address_line_1" name="address_line_1" required />
-        </div>
-        <div>
-          {/* Field for Address Line 2 */}
-          <label htmlFor="address_line_2">Address Line 2:</label>
-          <input type="text" id="address_line_2" name="address_line_2" />
-        </div>
-        <div>
-          {/* Field for Address Line 3 */}
-          <label htmlFor="address_line_3">Address Line 3:</label>
-          <input type="text" id="address_line_3" name="address_line_3" />
-        </div>
-        <div>
-          {/* Field for City */}
-          <label htmlFor="city">City:</label>
-          <input type="text" id="city" name="city" required />
-        </div>
-        <div>
-          {/* Field for State */}
-          <label htmlFor="state">State:</label>
-          <input type="text" id="state" name="state" />
-        </div>
-        <div>
-          {/* Field for Pincode */}
-          <label htmlFor="pincode">Pincode:</label>
-          <input type="text" id="pincode" name="pincode" required />
-        </div>
-        <div>
-          {/* Field for Country */}
-          <label htmlFor="country">Country:</label>
-          <input type="text" id="country" name="country" required />
-        </div>
-        <div>
-          {/* Field for Mobile Number */}
-          <label htmlFor="mobile_number">Mobile Number:</label>
-          <input type="text" id="mobile_number" name="mobile_number" required />
-        </div>
-        <div>
-          {/* Field for Alternate Mobile Number */}
-          <label htmlFor="alternate_mobile_number">Alternate Mobile Number:</label>
-          <input type="text" id="alternate_mobile_number" name="alternate_mobile_number" />
-        </div>
-        <div>
-          {/* Field for Email */}
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div>
-          {/* Field for Local Address Line 1 */}
-          <label htmlFor="local_address_line_1">Local Address Line 1:</label>
-          <input type="text" id="local_address_line_1" name="local_address_line_1" required />
-        </div>
-        <div>
-          {/* Field for Local Address Line 2 */}
-          <label htmlFor="local_address_line_2">Local Address Line 2:</label>
-          <input type="text" id="local_address_line_2" name="local_address_line_2" />
-        </div>
-        <div>
-          {/* Field for Local Address Line 3 */}
-          <label htmlFor="local_address_line_3">Local Address Line 3:</label>
-          <input type="text" id="local_address_line_3" name="local_address_line_3" />
-        </div>
-        <div>
-          {/* Field for Local City */}
-          <label htmlFor="local_city">Local City:</label>
-          <input type="text" id="local_city" name="local_city" required />
-        </div>
-        <div>
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
+
+      <div>
+        <h1>Student Contact Info Form</h1>
+        <form action="/submit" method="POST">
+          <div>
+            <label for="student_id">Student ID:</label>
+            <input type="text" id="student_id" name="student_id" required />
+          </div>
+          <div>
+            <label for="address_line_1">Address Line 1:</label>
+            <input type="text" id="address_line_1" name="address_line_1" required />
+          </div>
+          <div>
+            <label for="address_line_2">Address Line 2:</label>
+            <input type="text" id="address_line_2" name="address_line_2" />
+          </div>
+          <div>
+            <label for="address_line_3">Address Line 3:</label>
+            <input type="text" id="address_line_3" name="address_line_3" />
+          </div>
+          <div>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required />
+          </div>
+          <div>
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" />
+          </div>
+          <div>
+            <label for="pincode">Pincode:</label>
+            <input type="text" id="pincode" name="pincode" required />
+          </div>
+          <div>
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required />
+          </div>
+          <div>
+            <label for="mobile_number">Mobile Number:</label>
+            <input type="text" id="mobile_number" name="mobile_number" required />
+          </div>
+          <div>
+            <label for="alternate_mobile_number">Alternate Mobile Number:</label>
+            <input type="text" id="alternate_mobile_number" name="alternate_mobile_number" />
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="local_address_line_1">Local Address Line 1:</label>
+            <input type="text" id="local_address_line_1" name="local_address_line_1" required />
+          </div>
+          <div>
+            <label for="local_address_line_2">Local Address Line 2:</label>
+            <input type="text" id="local_address_line_2" name="local_address_line_2" />
+          </div>
+          <div>
+            <label for="local_address_line_3">Local Address Line 3:</label>
+            <input type="text" id="local_address_line_3" name="local_address_line_3" />
+          </div>
+          <div>
+            <label for="local_city">Local City:</label>
+            <input type="text" id="local_city" name="local_city" required />
+          </div>
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+      </div>
+
 
       <h1>Student Details Form</h1>
       <form action="/submit" method="POST">
