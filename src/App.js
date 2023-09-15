@@ -8,6 +8,12 @@ import TPO_Form from './Components/TPO/TPO_Form';
 import Student_Form from './Components/Student/Student_Form';
 import Login from './Components/Login/Login';
 import { NavbarNested } from './Components/NavbarNested';
+import Display_Student from './Components/Student/Display_Student';
+import Display_Tto from './Components/TTO/Display_Tto';
+import Display_Admin from './Components/Admin/Display_Admin';
+import Display_Faculty from './Components/Faculty/Display_Faculty';
+import All_Faculty from './Components/Faculty/All_Faculty';
+import All_Admin from './Components/Admin/All_Admin';
 
 function App() {
   return (
@@ -24,7 +30,14 @@ function App() {
           <Route path="/create-hod" element={<HOD_Form/>} />
           <Route path="/create-faculty" element={<Faculty_Form/>} />
           <Route path="/create-tpo" element={<TPO_Form/>} />
-          <Route path="/create-student" element={<Student_Form/>} />
+          <Route path="/create-student" element={<Student_Form />} />
+          <Route path="/display-student" element={<Display_Student/>} />
+          <Route path="/display-tto/:id" element={<Display_Tto/>} />
+          <Route path="/display-admin/:id" element={<Display_Admin/>} />
+          <Route path="/display-faculty/:id" element={<Display_Faculty/>} />
+          <Route path="/all-faculty" element={<All_Faculty/>} />
+          <Route path="/all-admin" element={<All_Admin/>} />
+          
         </Routes>
       </Router>
     </div>

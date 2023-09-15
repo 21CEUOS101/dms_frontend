@@ -1,14 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
 
-function Display_Faculty() {
-
-  const {id} = useParams();
+function All_Admin() {
+    
   const [data, setData] = useState();
 
   const getData = () => {
-    axios.get(`http://localhost:3001/faculty/getSpecificFacultyDetails/${id}`).then((data) => {
+    axios.get(`http://localhost:3001/admin/getAllAdminDetails`).then((data) => {
       console.log(data?.data);
       setData(data?.data);
     })
@@ -19,7 +17,7 @@ function Display_Faculty() {
   },[])
   return (
     <>
-          <div>Display_Faculty</div>
+          <div>All_Admin</div>
           <p>
               {
                   data != undefined && JSON.stringify(data)
@@ -29,4 +27,4 @@ function Display_Faculty() {
   )
 }
 
-export default Display_Faculty
+export default All_Admin
