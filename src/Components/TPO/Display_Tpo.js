@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import Profile from '../Profile';
 
 function Display_Tpo() {
 
@@ -22,7 +23,7 @@ function Display_Tpo() {
           <div>Display_Tpo</div>
           <p>
               {
-                  data !== undefined && JSON.stringify(data)
+                  data !== undefined && <Profile data={data}/>
               }
           </p>
     </>

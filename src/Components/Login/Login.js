@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './login.css';
 import 'boxicons/css/boxicons.min.css';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AppContext } from '../../App';
+import axios from 'axios';
 
 function Login() {
 
+    const [data, setData] = useState();
+    const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
     const schema = yup.object().shape(
         {
             id: yup.string().required("Id is required").min(5),
@@ -24,7 +28,30 @@ function Login() {
 
     const onSubmit = (data) => {
         console.log(data);
-    }
+        setData(data);
+    } 
+
+    const login = (user_id , role , password) => {
+        const data = {
+            user_id: user_id,
+            role: role,
+            password : password
+        }
+        axios.post('http://localhost:3001/login' , data).then((data) => {
+            if (data.data.status == "success")
+            {
+                setIsLoggedIn(true);
+            }
+            else
+            {
+                setIsLoggedIn(false);
+            }
+        })
+    } 
+
+    useEffect(() => {
+        login(data?.id, data?.role, data?.password);
+    }, [data]);
   return (
       <>
         <div className="container-xxl">
@@ -99,7 +126,9 @@ function Login() {
             </div>
             </div>
         </div>
-        </div>
+          </div>
+          
+          <p>{isLoggedIn && "Login Successful"}</p>
       </>
   )
 }
