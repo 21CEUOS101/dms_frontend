@@ -49,10 +49,6 @@ const mockdata = [
 ];
 
 const useStyles = createStyles((theme) => ({
-  navbar: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
-    paddingBottom: 0,
-  },
 
   header: {
     padding: theme.spacing.md,
@@ -89,7 +85,7 @@ export function NavbarNested() {
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
   return (
-    <Navbar height={800} width={{ sm: 300 }} p="md" className={classes.navbar}>
+    <Navbar height={800} width={{ sm: 300 }} p="md" className="bg-white py-0 h-screen">
       <Navbar.Section className={classes.header}>
         <Group position="apart">
           {/* <Logo width={rem(120)} /> */}

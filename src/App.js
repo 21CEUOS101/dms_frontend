@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App justify-between flex">
       <Router>
-        <div className='inline'>
+        <div className='inline h-screen'>
           <NavbarNested/>
         </div>
         <Routes>
@@ -45,7 +45,6 @@ function App() {
           <Route path="/all-admin" element={<All_Admin/>} />
           <Route path="/all-tto" element={<All_TTO/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
-          
         </Routes>
       </Router>
     </div>

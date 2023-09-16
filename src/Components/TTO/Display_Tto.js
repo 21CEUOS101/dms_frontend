@@ -8,7 +8,7 @@ function Display_Tto() {
   const [data, setData] = useState([]);
 
   const getData = () => {
-    axios.get('http://localhost:3001/tto/getSpecificTTODetails/${id}').then((data) => {
+    axios.get(`http://localhost:3001/tto/getSpecificTTODetails/${id}`).then((data) => {
       console.log(data?.data);
       setData(data?.data);
     })
@@ -20,6 +20,11 @@ function Display_Tto() {
   return (
     <>
       <div>Display_Tto</div>
+      <p>
+              {
+                  data !== undefined && JSON.stringify(data)
+              }
+      </p>
     </>
   )
 }
