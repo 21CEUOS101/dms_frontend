@@ -14,6 +14,10 @@ import Display_Admin from './Components/Admin/Display_Admin';
 import Display_Faculty from './Components/Faculty/Display_Faculty';
 import All_Faculty from './Components/Faculty/All_Faculty';
 import All_Admin from './Components/Admin/All_Admin';
+import All_TTO from './Components/TTO/All_TTO';
+import All_HOD from './Components/HOD/All_HOD';
+import Display_Tpo from './Components/TPO/Display_Tpo';
+import Display_HOD from './Components/HOD/Display_HOD';
 
 function App() {
   return (
@@ -33,10 +37,14 @@ function App() {
           <Route path="/create-student" element={<Student_Form />} />
           <Route path="/display-student" element={<Display_Student/>} />
           <Route path="/display-tto/:id" element={<Display_Tto/>} />
+          <Route path="/display-tpo/:id" element={<Display_Tpo/>} />
+          <Route path="/display-hod/:id" element={<Display_HOD/>} />
           <Route path="/display-admin/:id" element={<Display_Admin/>} />
           <Route path="/display-faculty/:id" element={<Display_Faculty/>} />
           <Route path="/all-faculty" element={<All_Faculty/>} />
           <Route path="/all-admin" element={<All_Admin/>} />
+          <Route path="/all-tto" element={<All_TTO/>} />
+          <Route path="/all-hod" element={<All_HOD/>} />
           
         </Routes>
       </Router>

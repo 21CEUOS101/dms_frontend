@@ -1,14 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
 
-function Display_Tpo() {
+function All_HOD() {
 
-  const {id} = useParams();
   const [data, setData] = useState();
 
   const getData = () => {
-    axios.get(`http://localhost:3001/tpo/getSpecificTPODetails/${id}`).then((data) => {
+    axios.get(`http://localhost:3001/hod/getAllHOD`).then((data) => {
       console.log(data?.data);
       setData(data?.data);
     })
@@ -19,7 +17,7 @@ function Display_Tpo() {
   },[])
   return (
     <>
-          <div>Display_Tpo</div>
+          <div>All_HOD</div>
           <p>
               {
                   data !== undefined && JSON.stringify(data)
@@ -29,4 +27,4 @@ function Display_Tpo() {
   )
 }
 
-export default Display_Tpo
+export default All_HOD

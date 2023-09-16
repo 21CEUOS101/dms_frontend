@@ -8,7 +8,7 @@ function Display_Tto() {
   const [data, setData] = useState([]);
 
   const getData = () => {
-    axios.get('').then((data) => {
+    axios.get('http://localhost:3001/tto/getSpecificTTODetails/${id}').then((data) => {
       console.log(data?.data);
       setData(data?.data);
     })
