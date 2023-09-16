@@ -1,0 +1,38 @@
+/* profileStyles.css */
+
+/* Center the profile box */
+.col-lg-6 {
+    margin-top: 50px;
+  }
+  
+  /* Left column styles */
+  .profile-img {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid #fff;
+    border-radius: 50%;
+  }
+  
+  .profile-label .label {
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border-radius: 3px;
+  }
+  
+  /* User details styles */
+  .profile-user-details {
+    margin-top: 20px;
+  }
+  
+  .profile-user-details-item {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
