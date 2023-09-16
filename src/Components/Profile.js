@@ -20,6 +20,7 @@ import {
 function Profile(props) {
 
     const user = props.data;
+    
   return (
       <>
       <div>Profile</div>

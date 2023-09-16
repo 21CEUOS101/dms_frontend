@@ -3,10 +3,10 @@ import {
   IconNotes,
   IconCalendarStats,
   IconGauge,
-  IconPresentationAnalytics,
-  IconFileAnalytics,
-  IconAdjustments,
-  IconLock,
+  // IconPresentationAnalytics,
+  // IconFileAnalytics,
+  // IconAdjustments,
+  // IconLock,
 } from '@tabler/icons-react';
 import { UserButton } from './UserButton';
 import { LinksGroup } from './NavbarLinksGroup';
