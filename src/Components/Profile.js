@@ -22,7 +22,8 @@ function Profile(props) {
     const user = props.data;
   return (
       <>
-        <div>Profile</div>
+      <div>Profile</div>
+      <p>{JSON.stringify(user)}</p>
         <section style={{ backgroundColor: '#eee' }}>
       <MDBContainer className="py-5">
         <MDBRow>
