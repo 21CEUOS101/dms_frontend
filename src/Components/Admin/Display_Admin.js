@@ -22,7 +22,7 @@ function Display_Admin() {
           <div>Display_Admin</div>
           <p>
               {
-                  data != undefined && JSON.stringify(data)
+                  data !== undefined && JSON.stringify(data)
               }
           </p>
     </>

@@ -20,7 +20,7 @@ function All_Faculty() {
           <div>All_Faculty</div>
           <p>
               {
-                  data != undefined && JSON.stringify(data)
+                  data !== undefined && JSON.stringify(data)
               }
           </p>
     </>

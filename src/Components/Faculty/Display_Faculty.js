@@ -22,7 +22,7 @@ function Display_Faculty() {
           <div>Display_Faculty</div>
           <p>
               {
-                  data != undefined && JSON.stringify(data)
+                  data !== undefined && JSON.stringify(data)
               }
           </p>
     </>

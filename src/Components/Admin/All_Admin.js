@@ -20,7 +20,7 @@ function All_Admin() {
           <div>All_Admin</div>
           <p>
               {
-                  data != undefined && JSON.stringify(data)
+                  data !== undefined && JSON.stringify(data)
               }
           </p>
     </>
