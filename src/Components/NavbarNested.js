@@ -14,38 +14,50 @@ import React from 'react';
 
 const mockdata = [
   { label: 'Dashboard', icon: IconGauge },
+  { label: 'Profile', icon: IconGauge },
   {
-    label: 'Market news',
+    label: 'Student',
     icon: IconNotes,
     initiallyOpened: true,
     links: [
-      { label: 'Overview', link: '/' },
-      { label: 'Forecasts', link: '/' },
-      { label: 'Outlook', link: '/' },
-      { label: 'Real time', link: '/' },
+      { label: 'Add Student', link: '/' },
+      { label: 'View & Update Student', link: '/' },
+      { label: 'Marks Entry', link: '/' },
     ],
   },
   {
-    label: 'Releases',
+    label: 'Faculty',
     icon: IconCalendarStats,
     links: [
-      { label: 'Upcoming releases', link: '/' },
-      { label: 'Previous releases', link: '/' },
-      { label: 'Releases schedule', link: '/' },
+      { label: 'Add Faculty', link: '/' },
+      { label: 'View & Update Faculty', link: '/' },
     ],
   },
-  { label: 'Analytics', icon: IconPresentationAnalytics },
-  { label: 'Contracts', icon: IconFileAnalytics },
-  { label: 'Settings', icon: IconAdjustments },
   {
-    label: 'Security',
-    icon: IconLock,
+    label: 'TPO',
+    icon: IconCalendarStats,
     links: [
-      { label: 'Enable 2FA', link: '/' },
-      { label: 'Change password', link: '/' },
-      { label: 'Recovery codes', link: '/' },
+      { label: 'Add TPO', link: '/' },
+      { label: 'View & Update TPO', link: '/' },
     ],
   },
+  {
+    label: 'TTO',
+    icon: IconCalendarStats,
+    links: [
+      { label: 'Add TTO', link: '/' },
+      { label: 'View & Update TTO', link: '/' },
+    ],
+  },
+  {
+    label: 'Course',
+    icon: IconCalendarStats,
+    links: [
+      { label: 'Create Course', link: '/' },
+      { label: 'View & Update Course', link: '/' },
+    ],
+  },
+
 ];
 
 const useStyles = createStyles((theme) => ({
