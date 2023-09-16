@@ -18,6 +18,7 @@ import All_TTO from './Components/TTO/All_TTO';
 import All_HOD from './Components/HOD/All_HOD';
 import Display_Tpo from './Components/TPO/Display_Tpo';
 import Display_HOD from './Components/HOD/Display_HOD';
+import All_TPO from './Components/TPO/All_TPO';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="/all-admin" element={<All_Admin/>} />
           <Route path="/all-tto" element={<All_TTO/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
+          <Route path="/all-tpo" element={<All_TPO/>} />
         </Routes>
       </Router>
     </div>
