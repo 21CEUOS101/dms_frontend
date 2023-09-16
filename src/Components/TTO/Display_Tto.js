@@ -6,7 +6,7 @@ import Profile from '../Profile';
 function Display_Tto() {
 
   const {id} = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
 
   const getData = () => {
     axios.get(`http://localhost:3001/tto/getSpecificTTODetails/${id}`).then((data) => {
