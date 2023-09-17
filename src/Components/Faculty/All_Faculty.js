@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ViewAll from '../ViewAll';
-import './all.css';
+import '../all.css';
 
 function All_Faculty() {
   const [data, setData] = useState();
@@ -18,8 +18,8 @@ function All_Faculty() {
   }, []);
 
   return (
-    <div style={divStyle}>
-      <div style={titleStyle}>All_Faculty</div>
+    <div className='divStyle'>
+      <div className='textStyle'>All_Faculty</div>
       <div>
         {data !== undefined && <ViewAll data={data} />}
       </div>

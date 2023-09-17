@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ViewAll from '../ViewAll';
-import './all.css';
+import '../all.css';
 
 function All_TPO() {
   const [data, setData] = useState();
@@ -18,8 +18,8 @@ function All_TPO() {
   }, []);
 
   return (
-    <div style={divStyle}>
-      <div style={titleStyle}>All_TPO</div>
+    <div className='divStyle'>
+      <div className='textStyle'>All_TPO</div>
       <div>
         {data !== undefined && <ViewAll data={data} />}
       </div>
