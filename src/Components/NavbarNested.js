@@ -3,21 +3,18 @@ import {
   IconNotes,
   IconCalendarStats,
   IconGauge,
-  // IconPresentationAnalytics,
-  // IconFileAnalytics,
-  // IconAdjustments,
-  // IconLock,
+  IconHome,
+  IconSchool,
 } from '@tabler/icons-react';
 import { UserButton } from './UserButton';
 import { LinksGroup } from './NavbarLinksGroup';
 import React from 'react';
 
 const mockdata = [
-  { label: 'Dashboard', icon: IconGauge },
-  { label: 'Profile', icon: IconGauge },
+  { label: 'Dashboard', icon: IconHome },
   {
     label: 'Student',
-    icon: IconNotes,
+    icon: IconSchool,
     initiallyOpened: true,
     links: [
       { label: 'Add Student', link: '/create-student' },
