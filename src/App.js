@@ -19,6 +19,7 @@ import All_HOD from './Components/HOD/All_HOD';
 import Display_Tpo from './Components/TPO/Display_Tpo';
 import Display_HOD from './Components/HOD/Display_HOD';
 import All_TPO from './Components/TPO/All_TPO';
+import ViewResult from './Components/Student/ViewResult';
 export const AppContext = createContext();
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
           <Route path="/create-tpo" element={<TPO_Form/>} />
           <Route path="/create-student" element={<Student_Form />} />
           <Route path="/display-student/:id" element={<Display_Student/>} />
+          <Route path="/display-result/:id" element={<ViewResult/>} />
           <Route path="/display-tto/:id" element={<Display_Tto/>} />
           <Route path="/display-tpo/:id" element={<Display_Tpo/>} />
           <Route path="/display-hod/:id" element={<Display_HOD/>} />
