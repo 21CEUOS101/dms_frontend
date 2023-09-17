@@ -24,6 +24,9 @@ const mockdata = [
       { label: 'View Student', link: '/' },
       { label: 'Update Student', link: '/' },
       { label: 'Marks Entry', link: '/' },
+      { label: 'Exam Result', link: '/' },
+      { label: 'Fees', link: '/' },
+      { label: 'View TimeTable', link: '/' },
     ],
   },
   {
@@ -42,6 +45,9 @@ const mockdata = [
       { label: 'Add TPO', link: '/' },
       { label: 'View TPO', link: '/' },
       { label: 'Update TPO', link: '/' },
+      { label: 'View Placement Company', link: '/' },
+      { label: 'Add Placement Company', link: '/' },
+      { label: 'Update Placement Company', link: '/' },
     ],
   },
   {
@@ -51,6 +57,9 @@ const mockdata = [
       { label: 'Add TTO', link: '/' },
       { label: 'View TTO', link: '/' },
       { label: 'Update TTO', link: '/' },
+      { label: 'View TimeTable', link: '/' },
+      { label: 'Update TimeTable', link: '/' },
+      { label: 'Add TimeTable', link: '/' },
     ],
   },
   {
@@ -62,6 +71,7 @@ const mockdata = [
       { label: 'Update Course', link: '/' },
     ],
   },
+  { label: 'Make Announcement', icon: IconGauge },
 
 ];
 

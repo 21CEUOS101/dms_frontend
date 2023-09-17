@@ -5,14 +5,17 @@ function Profile(props) {
   const user = props.data;
 
   return (
-    <div className="profile-container">
+    <div className="profile-container w-auto">
       {Object.keys(user).map((key,index) => {
-        return (
-          <div className="profile-info" key={index}>
-            <span className="profile-key">{key}:</span>
-            <span className="profile-value">{user[key]}</span>
-          </div>
-        );
+        if (index !== 0)
+        {
+          return (
+            <div className="profile-info" key={index}>
+              <span className="profile-key">{key}:</span>
+              <span className="profile-value">{user[key]}</span>
+            </div>
+          );
+        }
       })}
     </div>
   );

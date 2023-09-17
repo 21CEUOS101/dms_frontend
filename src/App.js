@@ -24,6 +24,8 @@ export const AppContext = createContext();
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [id, setId] = useState();
+  
   return (
     <AppContext.Provider value={{isLoggedIn , setIsLoggedIn}}>
     <div className="App justify-start flex">
