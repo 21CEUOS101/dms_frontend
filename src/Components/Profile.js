@@ -6,13 +6,13 @@ function Profile(props) {
 
   return (
     <div className="profile-container w-auto">
-      {Object.keys(user).map((key,index) => {
+      {Object?.keys(user)?.map((key,index) => {
         if (index !== 0)
         {
           return (
             <div className="profile-info" key={index}>
               <span className="profile-key">{key}:</span>
-              <span className="profile-value">{user[key]}</span>
+              <span className="profile-value">{JSON.stringify(user[key])}</span>
             </div>
           );
         }

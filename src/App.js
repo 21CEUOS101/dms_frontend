@@ -50,7 +50,7 @@ function App() {
           <Route path="/create-faculty" element={<Faculty_Form/>} />
           <Route path="/create-tpo" element={<TPO_Form/>} />
           <Route path="/create-student" element={<Student_Form />} />
-          <Route path="/display-student" element={<Display_Student/>} />
+          <Route path="/display-student/:id" element={<Display_Student/>} />
           <Route path="/display-tto/:id" element={<Display_Tto/>} />
           <Route path="/display-tpo/:id" element={<Display_Tpo/>} />
           <Route path="/display-hod/:id" element={<Display_HOD/>} />

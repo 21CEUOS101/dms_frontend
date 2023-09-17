@@ -17,14 +17,25 @@ function Display_Student() {
 
   useEffect(() => {
     getData();
-  },[])
+  }, []);
+
+  const studentDetails = data?.studentDetails[0];
+  const studentGuardianInfo = data?.studentGuardianInfo[0];
+  const studentOtherDetails = data?.studentOtherDetails[0];
   return (
     <>
           <div>Display_Student</div>
           <div>
               {
-                  data !== undefined && <Profile data={data}/>
+                  data !== undefined && <Profile data={studentDetails !== undefined && studentDetails}/>
               }
+              {
+                  data !== undefined && <Profile data={studentGuardianInfo !== undefined && studentGuardianInfo}/>
+              }
+              {
+                  data !== undefined && <Profile data={studentOtherDetails !== undefined && studentOtherDetails}/>
+              }
+              
           </div>
     </>
   )
