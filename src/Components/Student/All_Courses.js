@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ViewAll from '../ViewAll';
-import './all.css';
+import '../all.css';
 
 function All_Courses() {
   const [data, setData] = useState();
@@ -21,7 +21,7 @@ function All_Courses() {
     <div className='divStyle'>
       <div className='textStyle'>All_Courses</div>
       <div>
-        {data !== undefined && <ViewAll data={data} />}
+        {data !== undefined && <ViewAll data={data?.courseDetails} />}
       </div>
     </div>
   );

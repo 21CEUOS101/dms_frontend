@@ -20,6 +20,7 @@ import Display_Tpo from './Components/TPO/Display_Tpo';
 import Display_HOD from './Components/HOD/Display_HOD';
 import All_TPO from './Components/TPO/All_TPO';
 import ViewResult from './Components/Student/ViewResult';
+import All_Courses from './Components/Student/All_Courses';
 export const AppContext = createContext();
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
           <Route path="/all-tto" element={<All_TTO/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
           <Route path="/all-tpo" element={<All_TPO/>} />
+          <Route path="/all-courses" element={<All_Courses/>} />
         </Routes>
       </Router>
       </div>
