@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import ViewAll from '../ViewAll';
 
 function All_Faculty() {
 
@@ -20,7 +21,7 @@ function All_Faculty() {
           <div>All_Faculty</div>
           <div>
               {
-                  data !== undefined && JSON.stringify(data)
+                  data !== undefined && <ViewAll data={data}/>
               }
           </div>
     </>
