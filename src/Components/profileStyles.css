@@ -1,24 +1,35 @@
-/* Container for the profile information */
+/* profileStyles.css */
+
+/* Style for the profile title */
+.profile-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #007BFF; /* Change to your preferred color */
+}
+
+/* Style for the profile container */
 .profile-container {
   width: 300px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
+  background-color: #f5f5f5; /* Light gray background color */
+  border: 1px solid #ddd; /* Light gray border color */
   border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Style for each key-value pair */
 .profile-info {
   margin-bottom: 10px;
-  padding: 5px;
+  padding: 10px;
   background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 3px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 /* Style for the keys (property names) */
@@ -36,7 +47,67 @@
   padding: 5px;
 }
 
-/* Highlight the values */
-.profile-value:hover {
+/* Highlight the values on hover */
+.profile-info:hover {
   background-color: #f0f0f0;
+}
+
+/* Add some spacing between key-value pairs */
+.profile-info + .profile-info {
+  margin-top: 5px;
+}
+
+/* Add some space below the container */
+.profile-container + .profile-container {
+  margin-top: 20px;
+}
+
+/* Style for the profile picture */
+.profile-picture {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  width: 150px; /* Adjust the size as needed */
+  height: 150px; /* Adjust the size as needed */
+  border-radius: 50%;
+  border: 4px solid #007BFF; /* Change to your preferred color */
+}
+
+/* Style for the additional information section */
+.profile-bio {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.profile-bio h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.profile-bio p {
+  color: #777;
+  line-height: 1.4;
+}
+
+/* Style for a button (example) */
+.profile-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF; /* Change to your preferred color */
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.profile-button:hover {
+  background-color: #0056b3; /* Change to a slightly darker shade on hover */
 }
