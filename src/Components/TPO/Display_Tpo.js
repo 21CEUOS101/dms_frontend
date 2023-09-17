@@ -17,15 +17,16 @@ function Display_Tpo() {
 
   useEffect(() => {
     getData();
-  },[])
+  }, []);
+
   return (
     <>
           <div>Display_Tpo</div>
-          <p>
+          <div>
               {
                   data !== undefined && <Profile data={data}/>
               }
-          </p>
+          </div>
     </>
   )
 }

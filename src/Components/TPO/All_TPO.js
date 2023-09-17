@@ -18,11 +18,11 @@ function All_TPO() {
   return (
     <>
           <div>All_TPO</div>
-          <p>
+          <div>
               {
                   data !== undefined && JSON.stringify(data)
               }
-          </p>
+          </div>
     </>
   )
 }

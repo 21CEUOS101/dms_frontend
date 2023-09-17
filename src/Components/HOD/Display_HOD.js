@@ -21,11 +21,11 @@ function Display_HOD() {
   return (
     <>
           <div>Display_HOD</div>
-          <p>
+          <div>
               {
                   data !== undefined && <Profile data={data}/>
               }
-          </p>
+          </div>
     </>
   )
 }

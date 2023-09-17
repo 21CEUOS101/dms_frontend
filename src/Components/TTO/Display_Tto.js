@@ -21,11 +21,11 @@ function Display_Tto() {
   return (
     <>
       <div>Display_Tto</div>
-      <p>
+      <div>
               {
           data !== undefined && <Profile data={data}/>
               }
-      </p>
+      </div>
     </>
   )
 }

@@ -18,11 +18,11 @@ function All_TTO() {
   return (
     <>
           <div>All_TTO</div>
-          <p>
+          <div>
               {
                   data !== undefined && JSON.stringify(data)
               }
-          </p>
+          </div>
     </>
   )
 }

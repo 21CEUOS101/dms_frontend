@@ -21,11 +21,11 @@ function Display_Faculty() {
   return (
     <>
           <div>Display_Faculty</div>
-          <p>
+          <div>
               {
                   data !== undefined && <Profile data={data}/>
               }
-          </p>
+          </div>
     </>
   )
 }

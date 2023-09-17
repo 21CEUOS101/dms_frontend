@@ -18,11 +18,11 @@ function All_Admin() {
   return (
     <>
           <div>All_Admin</div>
-          <p>
+          <div>
               {
                   data !== undefined && JSON.stringify(data)
               }
-          </p>
+          </div>
     </>
   )
 }

@@ -18,11 +18,11 @@ function All_HOD() {
   return (
     <>
           <div>All_HOD</div>
-          <p>
+          <div>
               {
                   data !== undefined && JSON.stringify(data)
               }
-          </p>
+          </div>
     </>
   )
 }

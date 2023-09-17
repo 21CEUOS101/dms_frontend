@@ -1,8 +1,6 @@
 import {
   UnstyledButton,
-  UnstyledButtonProps,
   Group,
-  Avatar,
   Text,
   createStyles,
 } from '@mantine/core';
@@ -26,7 +24,6 @@ export function UserButton({ image, name, email, icon, ...others }) {
   return (
     <UnstyledButton className={classes.user} {...others}>
       <Group>
-        <Avatar src={image} radius="xl" />
 
         <div style={{ flex: 1 }}>
           <Text size="sm" weight={500}>

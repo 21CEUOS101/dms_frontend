@@ -105,7 +105,6 @@ export function NavbarNested() {
     <Navbar height={800} width={{ sm: 300 }} p="md" className="bg-white py-0 h-screen">
       <Navbar.Section className={classes.header}>
         <Group position="apart">
-          {/* <Logo width={rem(120)} /> */}
           <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
         </Group>
       </Navbar.Section>

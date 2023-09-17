@@ -21,11 +21,11 @@ function Display_Admin() {
   return (
     <>
           <div>Display_Admin</div>
-          <p>
+          <div>
               {
                   data !== undefined && <Profile data={data}/>
               }
-          </p>
+          </div>
     </>
   )
 }

@@ -61,7 +61,7 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }) {
       component="a"
       className={classes.link}
       href={link.link}
-      key={link.label}
+      key={link.label} // Provide a unique key using link.label
       onClick={(event) => event.preventDefault()}
     >
       {link.label}
@@ -115,7 +115,7 @@ export function NavbarLinksGroup() {
         backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
       })}
     >
-      <LinksGroup {...mockdata} />
+      <LinksGroup {...mockdata} key={mockdata.label}/>
     </Box>
   );
 }

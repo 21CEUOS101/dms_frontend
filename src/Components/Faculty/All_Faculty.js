@@ -18,11 +18,11 @@ function All_Faculty() {
   return (
     <>
           <div>All_Faculty</div>
-          <p>
+          <div>
               {
                   data !== undefined && JSON.stringify(data)
               }
-          </p>
+          </div>
     </>
   )
 }
