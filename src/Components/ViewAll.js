@@ -2,8 +2,8 @@ import React from "react";
 import "./ViewAll.css";
 
 function ViewAll(props) {
-  const faculties = props.data;
-  const keys = faculties.length > 0 ? Object.keys(faculties[0]) : [];
+  const value = props.data;
+  const keys = value.length > 0 ? Object.keys(value[0]) : [];
 
   
   return (
@@ -11,19 +11,34 @@ function ViewAll(props) {
       <table className="faculty-table">
         <thead>
           <tr>
-            {keys.map((key) => (
-              <th key={key}>{key}</th>
-            ))}
+            {
+              keys.map((key, index) => {
+                if (index !== 0)
+                {
+                  return (
+                    <th key={key}>{key}</th>
+                  );
+                }
+              })
+            }
           </tr>
         </thead>
         <tbody>
-          {faculties.map((faculty, index) => (
-            <tr key={index}>
-              {keys.map((key) => (
-                <td key={key}>{faculty[key]}</td>
-              ))}
-            </tr>
-          ))}
+          {value.map((value, index) => {
+            if (index !== 0)
+            {
+              return (<tr key={index}>
+                {
+                  keys.map((key,i) => {
+                    if (i !== 0)
+                    {
+                      return (<td key={key}>{value[key]}</td>);
+                    }
+                })
+                }
+              </tr>)
+            }
+          })}
         </tbody>
       </table>
     </div>

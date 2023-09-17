@@ -44,8 +44,8 @@ function Login() {
                 localStorage.setItem("user", JSON.stringify({
                     user_id: user_id,
                     role: role,
-                    password : password
-                }))
+                    password: password
+                }));
             }
             else
             {
@@ -92,7 +92,7 @@ function Login() {
                         id="password"
                         className="form-control"
                         name="password"
-                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                        placeholder="dd/mm/yyyy"
                         aria-describedby="password"
                         {...register("password")}
                         />
