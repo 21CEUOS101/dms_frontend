@@ -64,7 +64,8 @@ const mockdata = [
     icon: IconCalendarStats,
     links: [
       { label: 'Create Course', link: '/create-course' },
-      { label: 'View Course', link: '/all-course' },
+      { label: 'View Current Course', link: '/current-course' },
+      { label: 'View Courses', link: '/all-courses' },
       { label: 'Update Course', link: '/' },
     ],
   },
