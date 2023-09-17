@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import TTO_Form from './Components/TTO/TTO_Form';
 import CourseDetails_Form from './Components/Student/CourseDetails_Form';
@@ -19,13 +19,21 @@ import All_HOD from './Components/HOD/All_HOD';
 import Display_Tpo from './Components/TPO/Display_Tpo';
 import Display_HOD from './Components/HOD/Display_HOD';
 import All_TPO from './Components/TPO/All_TPO';
-
 export const AppContext = createContext();
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [id, setId] = useState();
+  const [user, setUser] = useState({});
   
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <AppContext.Provider value={{isLoggedIn , setIsLoggedIn}}>
     <div className="App justify-start flex">
