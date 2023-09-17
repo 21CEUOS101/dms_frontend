@@ -9,21 +9,22 @@ function TTO_Form() {
 
   const [data, setData] = useState({});
   const [status, setStatus] = useState("");
+  const [error, setError] = useState();
 
   const schema = yup.object().shape({
-    id: yup.string().required("ID is required"),
-    name: yup.string().required("Name is required"),
-    email: yup.string().email().required("Email is required"),
-    mobile_number: yup.string().transform(
+    tto_id: yup.string().required("ID is required").min(5),
+    tto_name: yup.string().required("Name is required").min(5),
+    tto_email: yup.string().email().required("Email is required"),
+    tto_mobile_number: yup.string().transform(
       (value) => (isNaN(value) ? undefined : value)
     ).required("Mobile Number is required").min(10).max(10),
-    experience: yup.number().required("Experience is required"),
-    qualification: yup.string().required("Qualification is required"),
-    designation: yup.string().required("Designation is required"),
-    department: yup.string().required("Department is required"),
+    tto_experience: yup.number().required("Experience is required").positive().integer(),
+    tto_qualification: yup.string().required("Qualification is required"),
+    tto_designation: yup.string().required("Designation is required"),
+    tto_department: yup.string().required("Department is required"),
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm(
+  const { register, handleSubmit, formState: { errors } , reset } = useForm(
     {
       resolver: yupResolver(schema),
     }
@@ -32,25 +33,48 @@ function TTO_Form() {
   const onSubmit = (data) => {
     console.log(data);
     setData(data);
-  }
+    setTimeout(() => {
+        setData(null);
+    }, 2000);
+    reset();
+}
 
-  const createTTO = () => {
-    axios.post(`http://localhost:3001/admin/createTTO`, data).then((data) => {
+  const createTTO = async() => {
+    await axios.post(`http://localhost:3001/admin/createTTO`, data).then((data) => {
       console.log("success");
-      setStatus(data?.data?.message);
+      console.log(data?.data?.message?._message);
+      console.log(data?.data);
+
+      if(data?.data?.message?.errors !== undefined)
+      {
+        setError(data?.data?.message?._message);
+      }
+      else
+      {
+        setStatus(data?.data?.message);
+            setTimeout(() => {
+                setStatus("");
+            }, 2000);
+      }
     }, 
     (error) => {
       console.log(JSON.stringify(error));
-      setStatus(data?.data?.message);
+      setError(error);
     }
     );
   }
 
 
   useEffect(() => {
-    console.log(data);
-    createTTO();
+    if(data !== undefined && data !== null)
+    {
+      createTTO();
+    }
   }, [data]);
+
+  useEffect(() => {
+      setStatus("");
+  }, [error]);
 
 
   return (
@@ -65,57 +89,57 @@ function TTO_Form() {
             <div className="row mb-3">
               <label className="col-sm-5 col-form-label" htmlFor="tto_id">TTO ID:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_id" name="tto_id" required {...register("id")} />
-                  {errors?.id && <p className="text-danger">{errors?.id?.message}</p>}
+                  <input type="text" className="form-control" id="tto_id" name="tto_id" required {...register("tto_id")} />
+                  <p className="text-danger">{errors?.id?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
               <label className="col-sm-5 col-form-label" htmlFor="tto_name">TTO Name:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_name" name="tto_name" required {...register("name")} />
-                  {errors?.name && <p className="text-danger">{errors?.name?.message}</p>}
+                  <input type="text" className="form-control" id="tto_name" name="tto_name" required {...register("tto_name")} />
+                  <p className="text-danger">{errors?.name?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
               <label className="col-sm-5 col-form-label" htmlFor="tto_email">TTO Email:</label>
               <div className="col-sm-10">
-                  <input type="email" className="form-control" id="tto_email" name="tto_email" required {...register("email")} />
-                  {errors?.email && <p className="text-danger">{errors?.email?.message}</p>}
+                  <input type="email" className="form-control" id="tto_email" name="tto_email" required {...register("tto_email")} />
+                  <p className="text-danger">{errors?.email?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
               <label className="col-sm-5 col-form-label" htmlFor="tto_mobile_number">TTO Mobile Number:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control phone-mask" id="tto_mobile_number" name="tto_mobile_number" required {...register("mobile_number")} />
-                  {errors?.mobile_number && <p className="text-danger">{errors?.mobile_number?.message}</p>}
+                  <input type="text" className="form-control phone-mask" id="tto_mobile_number" name="tto_mobile_number" required {...register("tto_mobile_number")} />
+                  <p className="text-danger">{errors?.mobile_number?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
               <label className="col-sm-5 col-form-label" htmlFor="tto_experience">TTO Experience:</label>
               <div className="col-sm-10">
-                  <input type="number" className="form-control" id="tto_experience" name="tto_experience" required {...register("experience")} />
-                  {errors?.experience && <p className="text-danger">{errors?.experience?.message}</p>}
+                  <input type="number" className="form-control" id="tto_experience" name="tto_experience" required {...register("tto_experience")} />
+                  <p className="text-danger">{errors?.experience?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
               <label className="col-sm-5 col-form-label" htmlFor="tto_qualification">TTO Qualification:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_qualification" name="tto_qualification" required {...register("qualification")} />
-                  {errors?.qualification && <p className="text-danger">{errors?.qualification?.message}</p>}
+                  <input type="text" className="form-control" id="tto_qualification" name="tto_qualification" required {...register("tto_qualification")} />
+                  <p className="text-danger">{errors?.qualification?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
               <label className="col-sm-5 col-form-label" htmlFor="tto_designation">TTO Designation:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_designation" name="tto_designation" required {...register("designation")} />
-                  {errors?.designation && <p className="text-danger">{errors?.designation?.message}</p>}
+                  <input type="text" className="form-control" id="tto_designation" name="tto_designation" required {...register("tto_designation")} />
+                  <p className="text-danger">{errors?.designation?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
               <label className="col-sm-5 col-form-label" htmlFor="tto_department">TTO Department:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_department" name="tto_department" required {...register("department")} />
-                  {errors?.department && <p className="text-danger">{errors?.department?.message}</p>}
+                  <input type="text" className="form-control" id="tto_department" name="tto_department" required {...register("tto_department")} />
+                  <p className="text-danger">{errors?.department?.message}</p>
               </div>
             </div>
             <div className="row justify-content-end">
@@ -124,6 +148,7 @@ function TTO_Form() {
               </div>
               </div>
               {status !== "" && <p>{status}</p>}
+              {error !== undefined && <p className="text-danger">{error}</p>}
           </form>
         </div>
       </div>

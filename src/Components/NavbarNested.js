@@ -27,6 +27,16 @@ const mockdata = [
     ],
   },
   {
+    label: 'HOD',
+    icon: IconSchool,
+    initiallyOpened: true,
+    links: [
+      { label: 'Add HOD', link: '/create-hod' },
+      { label: 'View HOD', link: '/all-hod' },
+      { label: 'Update HOD', link: '/' },
+    ],
+  },
+  {
     label: 'Faculty',
     icon: IconCalendarStats,
     links: [
