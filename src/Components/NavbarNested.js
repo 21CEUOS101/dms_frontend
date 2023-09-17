@@ -21,7 +21,7 @@ const mockdata = [
     initiallyOpened: true,
     links: [
       { label: 'Add Student', link: '/create-student' },
-      { label: 'View Student', link: '/' },
+      { label: 'View Student', link: '/all-student' },
       { label: 'Update Student', link: '/' },
       { label: 'Marks Entry', link: '/' },
       { label: 'Exam Result', link: '/' },
@@ -34,7 +34,7 @@ const mockdata = [
     icon: IconCalendarStats,
     links: [
       { label: 'Add Faculty', link: '/create-faculty' },
-      { label: 'View Faculty', link: '/' },
+      { label: 'View Faculty', link: '/all-faculty' },
       { label: 'Update Faculty', link: '/' },
     ],
   },
@@ -43,7 +43,7 @@ const mockdata = [
     icon: IconCalendarStats,
     links: [
       { label: 'Add TPO', link: '/create-tpo' },
-      { label: 'View TPO', link: '/' },
+      { label: 'View TPO', link: '/all-tpo' },
       { label: 'Update TPO', link: '/' },
       { label: 'View Placement Company', link: '/' },
       { label: 'Add Placement Company', link: '/' },
@@ -55,7 +55,7 @@ const mockdata = [
     icon: IconCalendarStats,
     links: [
       { label: 'Add TTO', link: '/create-tto' },
-      { label: 'View TTO', link: '/' },
+      { label: 'View TTO', link: '/all-tto' },
       { label: 'Update TTO', link: '/' },
       { label: 'View TimeTable', link: '/' },
       { label: 'Update TimeTable', link: '/' },
@@ -67,7 +67,7 @@ const mockdata = [
     icon: IconCalendarStats,
     links: [
       { label: 'Create Course', link: '/create-course' },
-      { label: 'View Course', link: '/' },
+      { label: 'View Course', link: '/all-course' },
       { label: 'Update Course', link: '/' },
     ],
   },
