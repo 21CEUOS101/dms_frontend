@@ -10,6 +10,7 @@ import {
   rem,
 } from '@mantine/core';
 import { IconCalendarStats, IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -57,15 +58,13 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }) {
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft;
   const items = (hasLinks ? links : []).map((link) => (
     <>
-      <Text
-      component="a"
+    <Link
+      to={link.link} // Use the "to" attribute for routing
       className={classes.link}
-      href={link.link}
       key={link.label} // Provide a unique key using link.label
-      onClick={(event) => event.preventDefault()}
     >
       {link.label}
-    </Text>
+    </Link>
     </>  
   ));
 
