@@ -12,8 +12,21 @@ function Placement_Company_Form() {
   const schema = yup.object().shape({
     placement_company_id: yup.string().required("Company ID is required"),
     placement_company_name: yup.string().required("Company Name is required"),
-    // Add more validation rules for other fields...
-  });
+    placement_company_email: yup.string().email().required("Company Email is required"),
+    placement_company_mobile_number: yup.string().required("Mobile Number is required"),
+    placement_company_address: yup.string().required("Company Address is required"),
+    placement_company_city: yup.string().required("City is required"),
+    placement_company_state: yup.string().required("State is required"),
+    placement_company_pincode: yup.string().required("Pincode is required"),
+    placement_company_country: yup.string().required("Country is required"),
+    placement_company_website: yup.string().url().required("Website URL is required"),
+    placement_company_type: yup.string().required("Company Type is required"),
+    placement_company_description: yup.string().required("Company Description is required"),
+    placement_company_job_role: yup.array().of(yup.string()).required("Job Roles are required"),
+    placement_company_job_description: yup.array().of(yup.string()).required("Job Descriptions are required"),
+    no_of_student_placed: yup.string().required("Number of Students Placed is required"),
+});
+
 
   const {
     register,
