@@ -27,6 +27,7 @@ import Placement_Company_Form from './Components/TPO/Placement_Company_Form';
 import Time_Table_Form from './Components/TTO/Time_Table_Form';
 import All_Placement_Company from './Components/TPO/All_Placement_Company';
 import All_Students from './Components/Student/All_Students';
+import Course_Form from './Components/Student/CourseDetails_Form';
 export const AppContext = createContext();
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
           <Route path='/marks-entry' element={<Marks_Entry_Form/>}/>
           <Route path='/add-placement-company' element={<Placement_Company_Form/>} />
           <Route path='/add-timetable' element={<Time_Table_Form/>} />
+          <Route path='/create-course' element={<Course_Form/>} />
         </Routes>
       </Router>
       </div>
