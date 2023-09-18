@@ -21,7 +21,7 @@ const mockdata = [
       { label: 'View Student', link: '/all-student' },
       { label: 'Update Student', link: '/' },
       { label: 'Marks Entry', link: '/' },
-      { label: 'Exam Result', link: '/' },
+      { label: 'Exam Result', link: '/marks-entry' },
       { label: 'Fees', link: '/' },
       { label: 'View TimeTable', link: '/' },
     ],

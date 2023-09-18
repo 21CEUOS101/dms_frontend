@@ -22,6 +22,7 @@ import All_TPO from './Components/TPO/All_TPO';
 import ViewResult from './Components/Student/ViewResult';
 import All_Courses from './Components/Student/All_Courses';
 import Admin_Form from './Components/Admin/Admin_Form';
+import Marks_Entry_Form from './Components/Student/Marks_Entry_Form';
 export const AppContext = createContext();
 
 function App() {
@@ -66,7 +67,8 @@ function App() {
           <Route path="/all-tto" element={<All_TTO/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
           <Route path="/all-tpo" element={<All_TPO/>} />
-          <Route path="/all-courses" element={<All_Courses/>} />
+          <Route path="/all-courses" element={<All_Courses />} />
+          <Route path='/marks-entry' element={<Marks_Entry_Form/>}/>
         </Routes>
       </Router>
       </div>
