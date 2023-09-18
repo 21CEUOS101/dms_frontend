@@ -30,8 +30,8 @@ const Update_Tto = () => {
 
     const updateData = async () => {
         await axios.patch(`http://localhost:3001/admin/updateTTO`, formData).then((data) => {
-            console.log(data?.data?.acknowledged);
-            setStatus(data?.data?.acknowledged ? "Data Updated Successfully!" : "Data Updation Failed!");
+            console.log(data?.data);
+            setStatus(data?.data?.message);
             setTimeout(() => {
                 setStatus("");
             }
