@@ -25,7 +25,8 @@ const Update_Course = () => {
   const [status, setStatus] = useState("");
 
   const preData = async () => {
-    axios.get(`http://localhost:3001/student/getCourseDetails/${id}`).then(
+    console.log(id);
+    axios.get(`http://localhost:3001/admin/getCourseBySubjectCode/${id}`).then(
       (data) => {
         console.log(data?.data);
         setFormData(data?.data);

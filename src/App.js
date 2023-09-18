@@ -81,8 +81,8 @@ function App() {
           <Route path="/update-tpo/:id" element={<Update_TPO/>} />
           <Route path="/update-faculty/:id" element={<Update_Faculty/>} />
           <Route path="/update-hod/:id" element={<Update_HOD/>} />
-          <Route path="/update-Admin/:id" element={<Update_Admin/>} />
-          <Route path="/update-Course/:id" element={<Update_Course/>} />
+          <Route path="/update-admin/:id" element={<Update_Admin/>} />
+          <Route path="/update-course/:id" element={<Update_Course/>} />
           <Route path="/update-placement-company/:id" element={<Update_Placement_Company/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
           <Route path="/all-tpo" element={<All_TPO/>} />
