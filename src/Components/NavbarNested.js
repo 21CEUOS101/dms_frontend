@@ -18,7 +18,7 @@ const mockdata = [
     initiallyOpened: true,
     links: [
       { label: 'Add Student', link: '/create-student' },
-      { label: 'View Students', link: '/all-students' },
+      { label: 'View Students', link: '/all-student' },
       { label: 'Marks Entry', link: '/marks-entry' },
       { label: 'Exam Result', link: '/' },
       { label: 'Fees', link: '/' },
@@ -76,7 +76,7 @@ const mockdata = [
     links: [
       { label: 'Create Course', link: '/create-course' },
       { label: 'View Current Course', link: '/current-course' },
-      { label: 'View Courses', link: '/all-courses' },
+      { label: 'View Courses', link: '/all-course' },
     ],
   },
   { label: 'Make Announcement', icon: IconGauge },

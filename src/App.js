@@ -74,9 +74,9 @@ function App() {
           <Route path="/update-tto/:id" element={<Update_Tto/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
           <Route path="/all-tpo" element={<All_TPO/>} />
-          <Route path="/all-courses" element={<All_Courses />} />
+          <Route path="/all-course" element={<All_Courses />} />
           <Route path="/all-placement-company" element={<All_Placement_Company/>} />
-          <Route path="/all-students" element={<All_Students/>} />
+          <Route path="/all-student" element={<All_Students/>} />
           <Route path='/marks-entry' element={<Marks_Entry_Form/>}/>
           <Route path='/add-placement-company' element={<Placement_Company_Form/>} />
           <Route path='/add-timetable' element={<Time_Table_Form/>} />
