@@ -39,7 +39,7 @@ function TPO_Form() {
         reset();
     }
   
-    const createTTO = async() => {
+    const createTPO = async() => {
      await axios.post(`http://localhost:3001/admin/createTPO`, data).then((data) => {
         console.log("success");
         console.log(data?.data?.message?.errors);
@@ -69,7 +69,7 @@ function TPO_Form() {
     useEffect(() => {
         if(data !== undefined && data !== null)
         {
-          createTTO();
+          createTPO();
         }
       }, [data]);
 

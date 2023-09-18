@@ -39,7 +39,7 @@ function Faculty_Form() {
       reset();
   }
   
-    const createTTO = async() => {
+    const createFaculty = async() => {
       await axios.post(`http://localhost:3001/admin/addFacultyDetails`, data).then((data) => {
         console.log("success");
         console.log(data?.data?.message?._message);
@@ -68,7 +68,7 @@ function Faculty_Form() {
     useEffect(() => {
       if(data !== undefined && data !== null)
       {
-        createTTO();
+        createFaculty();
       }
     }, [data]);
   

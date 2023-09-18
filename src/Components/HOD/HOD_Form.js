@@ -39,7 +39,7 @@ function HOD_Form() {
         reset();
     }
   
-    const createTTO = async() => {
+    const createHOD = async() => {
       await axios.post(`http://localhost:3001/hod/addNewHOD`, data).then((data) => {
         console.log(data?.data?.message?.errors);
         console.log(data?.data?.message?._message);
@@ -69,7 +69,7 @@ function HOD_Form() {
     useEffect(() => {
       if(data !== undefined && data !== null)
       {
-        createTTO();
+        createHOD();
       }
     }, [data]);
 
