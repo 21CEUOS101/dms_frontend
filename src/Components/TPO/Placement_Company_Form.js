@@ -46,8 +46,7 @@ function Placement_Company_Form() {
   };
 
   const createPlacementCompanyDetails = async () => {
-    // Replace with your API endpoint
-    await axios.post(`YOUR_BACKEND_API_URL_HERE`, data).then(
+    await axios.post(`http://localhost:3001/tpo/createNewPlacementCompanyDetails`, data).then(
       (response) => {
         if (response?.data?.message?.errors !== undefined) {
           setError(response?.data?.message?._message);

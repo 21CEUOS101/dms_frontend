@@ -46,7 +46,7 @@ function Time_Table_Form() {
   const createTimeTableBlock = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/time-table/addNewBlock",
+        "http://localhost:3001/tto/addTimeTableBlockDetails",
         data
       );
       setStatus(response.data.message);
