@@ -21,6 +21,7 @@ import Display_HOD from './Components/HOD/Display_HOD';
 import All_TPO from './Components/TPO/All_TPO';
 import ViewResult from './Components/Student/ViewResult';
 import All_Courses from './Components/Student/All_Courses';
+import Admin_Form from './Components/Admin/Admin_Form';
 export const AppContext = createContext();
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/create-faculty" element={<Faculty_Form/>} />
           <Route path="/create-tpo" element={<TPO_Form/>} />
           <Route path="/create-student" element={<Student_Form />} />
+          <Route path="/create-admin" element={<Admin_Form />} />
           <Route path="/display-student/:id" element={<Display_Student/>} />
           <Route path="/display-result/:id" element={<ViewResult/>} />
           <Route path="/display-tto/:id" element={<Display_Tto/>} />

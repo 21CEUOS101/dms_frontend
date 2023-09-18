@@ -49,9 +49,9 @@ const mockdata = [
     label: 'Admin',
     icon: IconCalendarStats,
     links: [
-      { label: 'Add Faculty', link: '/create-admin' },
-      { label: 'View Faculty', link: '/all-admin' },
-      { label: 'Update Faculty', link: '/' },
+      { label: 'Add Admin', link: '/create-admin' },
+      { label: 'View Admin', link: '/all-admin' },
+      { label: 'Update Admin', link: '/' },
     ],
   },
   {

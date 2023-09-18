@@ -38,7 +38,7 @@ function Admin_Form() {
 }
 
   const createAdmin = async() => {
-    await axios.post(`http://localhost:3001/admin/createTTO`, data).then((data) => {
+    await axios.post(`http://localhost:3001/hod/addNewAdmin`, data).then((data) => {
       console.log("success");
       console.log(data?.data?.message?._message);
       console.log(data?.data);
@@ -57,7 +57,7 @@ function Admin_Form() {
     }, 
     (error) => {
       console.log(JSON.stringify(error));
-      setError(error);
+      setError(JSON.parse(error));
     }
     );
   }
