@@ -26,8 +26,9 @@ import Marks_Entry_Form from './Components/Student/Marks_Entry_Form';
 import Placement_Company_Form from './Components/TPO/Placement_Company_Form';
 import Time_Table_Form from './Components/TTO/Time_Table_Form';
 import All_Placement_Company from './Components/TPO/All_Placement_Company';
-import All_Students from './Components/Student/All_Students';
 import Course_Form from './Components/Student/CourseDetails_Form';
+import All_Students from './Components/Student/All_Students';
+import Update_Tto from './Components/TTO/Update_Tto';
 export const AppContext = createContext();
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
           <Route path="/all-faculty" element={<All_Faculty/>} />
           <Route path="/all-admin" element={<All_Admin/>} />
           <Route path="/all-tto" element={<All_TTO/>} />
+          <Route path="/update-tto/:id" element={<Update_Tto/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
           <Route path="/all-tpo" element={<All_TPO/>} />
           <Route path="/all-courses" element={<All_Courses />} />

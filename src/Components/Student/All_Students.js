@@ -4,7 +4,7 @@ import ViewAll from '../ViewAll';
 import '../all.css';
 
 function All_Students() {
-  const [data, setData] = useState();
+    const [data, setData] = useState();
 
   const getData = () => {
     axios.get(`http://localhost:3001/student/getAllStudents`).then((data) => {
