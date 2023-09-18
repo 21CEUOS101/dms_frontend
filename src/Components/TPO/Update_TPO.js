@@ -2,23 +2,23 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Update_Tto = () => {
+const Update_TPO = () => {
     const {id} = useParams();
   const [formData, setFormData] = useState({
-    tto_id: '',
-    tto_name: '',
-    tto_email: '',
-    tto_mobile_number: '',
-    tto_experience: '',
-    tto_qualification: '',
-    tto_designation: '',
-    tto_department: '',
+    tpo_id: '',
+    tpo_name: '',
+    tpo_email: '',
+    tpo_mobile_number: '',
+    tpo_experience: '',
+    tpo_qualification: '',
+    tpo_designation: '',
+    tpo_department: '',
   });
     
     const [status, setStatus] = useState("");
     
     const preData = async () => {
-        axios.get(`http://localhost:3001/admin/getSpecificTTODetails/${id}`).then((data) => {
+        axios.get(`http://localhost:3001/admin/getSpecificTPODetails/${id}`).then((data) => {
             console.log(data?.data);
             setFormData(data?.data);
         },
@@ -29,7 +29,7 @@ const Update_Tto = () => {
     }
 
     const updateData = async () => {
-        await axios.patch(`http://localhost:3001/admin/updateTTO`, formData).then((data) => {
+        await axios.patch(`http://localhost:3001/admin/updateTPO`, formData).then((data) => {
             console.log(data?.data?.acknowledged);
             setStatus(data?.data?.acknowledged ? "Data Updated Successfully!" : "Data Updation Failed!");
             setTimeout(() => {
@@ -55,33 +55,33 @@ const Update_Tto = () => {
 
   const handleSubmit = async (e) => {
       e.preventDefault();
-    if (formData.tto_mobile_number.length !== 10)
+    if (formData.tpo_mobile_number.length !== 10)
     {
         alert("Mobile Number should be of 10 digits!");
         return;
     }
-    if (formData.tto_id.length < 5)
+    if (formData.tpo_id.length < 5)
     {
-        console.log(formData.tto_id.length);
+        console.log(formData.tpo_id.length);
         alert("ID should be of 5 characters!");
         return;
     }
-    if (formData.tto_name.length < 5)
+    if (formData.tpo_name.length < 5)
     {
         alert("Name should be of atleast 5 characters!");
         return;
     }
-    if (isNaN(formData.tto_experience))
+    if (isNaN(formData.tpo_experience))
     {
         alert("Experience should be a number!");
         return;
     }
-    if (formData.tto_experience < 0)
+    if (formData.tpo_experience < 0)
     {
         alert("Experience should be a positive integer!");
         return;
     }
-    if(formData.tto_id === '' || formData.tto_name === '' || formData.tto_email === '' || formData.tto_mobile_number === '' || formData.tto_experience === '' || formData.tto_qualification === '' || formData.tto_designation === '' || formData.tto_department === '')
+    if(formData.tpo_id === '' || formData.tpo_name === '' || formData.tpo_email === '' || formData.tpo_mobile_number === '' || formData.tpo_experience === '' || formData.tpo_qualification === '' || formData.tpo_designation === '' || formData.tpo_department === '')
     {
         alert("Please fill all the fields!");
         return;
@@ -99,99 +99,99 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <h1 className="mb-3">TTODetails Form</h1>
+      <h1 className="mb-3">tpoDetails Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="tto_id" className="form-label">TTO ID:</label>
+          <label htmlFor="tpo_id" className="form-label">tpo ID:</label>
           <input
             type="text"
-            id="tto_id"
-            name="tto_id"
-            value={formData.tto_id}
+            id="tpo_id"
+            name="tpo_id"
+            value={formData.tpo_id}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_name" className="form-label">TTO Name:</label>
+          <label htmlFor="tpo_name" className="form-label">tpo Name:</label>
           <input
             type="text"
-            id="tto_name"
-            name="tto_name"
-            value={formData.tto_name}
+            id="tpo_name"
+            name="tpo_name"
+            value={formData.tpo_name}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_email" className="form-label">TTO Email:</label>
+          <label htmlFor="tpo_email" className="form-label">tpo Email:</label>
           <input
             type="email"
-            id="tto_email"
-            name="tto_email"
-            value={formData.tto_email}
+            id="tpo_email"
+            name="tpo_email"
+            value={formData.tpo_email}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_mobile_number" className="form-label">TTO Mobile Number:</label>
+          <label htmlFor="tpo_mobile_number" className="form-label">tpo Mobile Number:</label>
           <input
             type="text"
-            id="tto_mobile_number"
-            name="tto_mobile_number"
-            value={formData.tto_mobile_number}
+            id="tpo_mobile_number"
+            name="tpo_mobile_number"
+            value={formData.tpo_mobile_number}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_experience" className="form-label">TTO Experience:</label>
+          <label htmlFor="tpo_experience" className="form-label">tpo Experience:</label>
           <input
             type="text"
-            id="tto_experience"
-            name="tto_experience"
-            value={formData.tto_experience}
+            id="tpo_experience"
+            name="tpo_experience"
+            value={formData.tpo_experience}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_qualification" className="form-label">TTO Qualification:</label>
+          <label htmlFor="tpo_qualification" className="form-label">tpo Qualification:</label>
           <input
             type="text"
-            id="tto_qualification"
-            name="tto_qualification"
-            value={formData.tto_qualification}
+            id="tpo_qualification"
+            name="tpo_qualification"
+            value={formData.tpo_qualification}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_designation" className="form-label">TTO Designation:</label>
+          <label htmlFor="tpo_designation" className="form-label">tpo Designation:</label>
           <input
             type="text"
-            id="tto_designation"
-            name="tto_designation"
-            value={formData.tto_designation}
+            id="tpo_designation"
+            name="tpo_designation"
+            value={formData.tpo_designation}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_department" className="form-label">TTO Department:</label>
+          <label htmlFor="tpo_department" className="form-label">tpo Department:</label>
           <input
             type="text"
-            id="tto_department"
-            name="tto_department"
-            value={formData.tto_department}
+            id="tpo_department"
+            name="tpo_department"
+            value={formData.tpo_department}
             onChange={handleChange}
             className="form-control"
             required
@@ -204,4 +204,4 @@ useEffect(() => {
   );
 };
 
-export default Update_Tto
+export default Update_TPO;

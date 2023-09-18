@@ -28,7 +28,12 @@ import Time_Table_Form from './Components/TTO/Time_Table_Form';
 import All_Placement_Company from './Components/TPO/All_Placement_Company';
 import Course_Form from './Components/Student/CourseDetails_Form';
 import All_Students from './Components/Student/All_Students';
+import Update_TPO from './Components/TPO/Update_TPO';
 import Update_Tto from './Components/TTO/Update_Tto';
+import Update_Faculty from './Components/Faculty/Update_Faculty';
+import Update_HOD from './Components/HOD/Update_HOD';
+import Update_Admin from './Components/Admin/Update_Admin';
+import Update_Placement_Company from './Components/TPO/Update_Placement_Company';
 export const AppContext = createContext();
 
 function App() {
@@ -72,6 +77,11 @@ function App() {
           <Route path="/all-admin" element={<All_Admin/>} />
           <Route path="/all-tto" element={<All_TTO/>} />
           <Route path="/update-tto/:id" element={<Update_Tto/>} />
+          <Route path="/update-tpo/:id" element={<Update_TPO/>} />
+          <Route path="/update-faculty/:id" element={<Update_Faculty/>} />
+          <Route path="/update-hod/:id" element={<Update_HOD/>} />
+          <Route path="/update-Admin/:id" element={<Update_Admin/>} />
+          <Route path="/update-placement-company/:id" element={<Update_Placement_Company/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
           <Route path="/all-tpo" element={<All_TPO/>} />
           <Route path="/all-course" element={<All_Courses />} />

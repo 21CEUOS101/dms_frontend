@@ -2,23 +2,23 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const Update_Tto = () => {
+const Update_Faculty = () => {
     const {id} = useParams();
   const [formData, setFormData] = useState({
-    tto_id: '',
-    tto_name: '',
-    tto_email: '',
-    tto_mobile_number: '',
-    tto_experience: '',
-    tto_qualification: '',
-    tto_designation: '',
-    tto_department: '',
+    faculty_id: '',
+    faculty_name: '',
+    faculty_email: '',
+    faculty_mobile_number: '',
+    faculty_experience: '',
+    faculty_qualification: '',
+    faculty_designation: '',
+    faculty_department: '',
   });
     
     const [status, setStatus] = useState("");
     
     const preData = async () => {
-        axios.get(`http://localhost:3001/admin/getSpecificTTODetails/${id}`).then((data) => {
+        axios.get(`http://localhost:3001/admin/getSpecificfacultyDetails/${id}`).then((data) => {
             console.log(data?.data);
             setFormData(data?.data);
         },
@@ -29,7 +29,7 @@ const Update_Tto = () => {
     }
 
     const updateData = async () => {
-        await axios.patch(`http://localhost:3001/admin/updateTTO`, formData).then((data) => {
+        await axios.patch(`http://localhost:3001/admin/updatefaculty`, formData).then((data) => {
             console.log(data?.data?.acknowledged);
             setStatus(data?.data?.acknowledged ? "Data Updated Successfully!" : "Data Updation Failed!");
             setTimeout(() => {
@@ -55,33 +55,33 @@ const Update_Tto = () => {
 
   const handleSubmit = async (e) => {
       e.preventDefault();
-    if (formData.tto_mobile_number.length !== 10)
+    if (formData.faculty_mobile_number.length !== 10)
     {
         alert("Mobile Number should be of 10 digits!");
         return;
     }
-    if (formData.tto_id.length < 5)
+    if (formData.faculty_id.length < 5)
     {
-        console.log(formData.tto_id.length);
+        console.log(formData.faculty_id.length);
         alert("ID should be of 5 characters!");
         return;
     }
-    if (formData.tto_name.length < 5)
+    if (formData.faculty_name.length < 5)
     {
         alert("Name should be of atleast 5 characters!");
         return;
     }
-    if (isNaN(formData.tto_experience))
+    if (isNaN(formData.faculty_experience))
     {
         alert("Experience should be a number!");
         return;
     }
-    if (formData.tto_experience < 0)
+    if (formData.faculty_experience < 0)
     {
         alert("Experience should be a positive integer!");
         return;
     }
-    if(formData.tto_id === '' || formData.tto_name === '' || formData.tto_email === '' || formData.tto_mobile_number === '' || formData.tto_experience === '' || formData.tto_qualification === '' || formData.tto_designation === '' || formData.tto_department === '')
+    if(formData.faculty_id === '' || formData.faculty_name === '' || formData.faculty_email === '' || formData.faculty_mobile_number === '' || formData.faculty_experience === '' || formData.faculty_qualification === '' || formData.faculty_designation === '' || formData.faculty_department === '')
     {
         alert("Please fill all the fields!");
         return;
@@ -99,99 +99,99 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <h1 className="mb-3">TTODetails Form</h1>
+      <h1 className="mb-3">facultyDetails Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="tto_id" className="form-label">TTO ID:</label>
+          <label htmlFor="faculty_id" className="form-label">Faculty ID:</label>
           <input
             type="text"
-            id="tto_id"
-            name="tto_id"
-            value={formData.tto_id}
+            id="faculty_id"
+            name="faculty_id"
+            value={formData.faculty_id}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_name" className="form-label">TTO Name:</label>
+          <label htmlFor="faculty_name" className="form-label">Faculty Name:</label>
           <input
             type="text"
-            id="tto_name"
-            name="tto_name"
-            value={formData.tto_name}
+            id="faculty_name"
+            name="faculty_name"
+            value={formData.faculty_name}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_email" className="form-label">TTO Email:</label>
+          <label htmlFor="faculty_email" className="form-label">Faculty Email:</label>
           <input
             type="email"
-            id="tto_email"
-            name="tto_email"
-            value={formData.tto_email}
+            id="faculty_email"
+            name="faculty_email"
+            value={formData.faculty_email}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_mobile_number" className="form-label">TTO Mobile Number:</label>
+          <label htmlFor="faculty_mobile_number" className="form-label">Faculty Mobile Number:</label>
           <input
             type="text"
-            id="tto_mobile_number"
-            name="tto_mobile_number"
-            value={formData.tto_mobile_number}
+            id="faculty_mobile_number"
+            name="faculty_mobile_number"
+            value={formData.faculty_mobile_number}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_experience" className="form-label">TTO Experience:</label>
+          <label htmlFor="faculty_experience" className="form-label">Faculty Experience:</label>
           <input
             type="text"
-            id="tto_experience"
-            name="tto_experience"
-            value={formData.tto_experience}
+            id="faculty_experience"
+            name="faculty_experience"
+            value={formData.faculty_experience}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_qualification" className="form-label">TTO Qualification:</label>
+          <label htmlFor="faculty_qualification" className="form-label">faculty Qualification:</label>
           <input
             type="text"
-            id="tto_qualification"
-            name="tto_qualification"
-            value={formData.tto_qualification}
+            id="faculty_qualification"
+            name="faculty_qualification"
+            value={formData.faculty_qualification}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_designation" className="form-label">TTO Designation:</label>
+          <label htmlFor="faculty_designation" className="form-label">Faculty Designation:</label>
           <input
             type="text"
-            id="tto_designation"
-            name="tto_designation"
-            value={formData.tto_designation}
+            id="faculty_designation"
+            name="faculty_designation"
+            value={formData.faculty_designation}
             onChange={handleChange}
             className="form-control"
             required
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tto_department" className="form-label">TTO Department:</label>
+          <label htmlFor="faculty_department" className="form-label">Faculty Department:</label>
           <input
             type="text"
-            id="tto_department"
-            name="tto_department"
-            value={formData.tto_department}
+            id="faculty_department"
+            name="faculty_department"
+            value={formData.faculty_department}
             onChange={handleChange}
             className="form-control"
             required
@@ -204,4 +204,4 @@ useEffect(() => {
   );
 };
 
-export default Update_Tto
+export default Update_Faculty
