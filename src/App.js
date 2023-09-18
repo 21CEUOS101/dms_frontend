@@ -40,7 +40,7 @@ function App() {
     <AppContext.Provider value={{isLoggedIn , setIsLoggedIn}}>
     <div className="App justify-start flex">
       <Router>
-        <div className='inline h-screen'>
+        <div className='inline h-full sticky'>
           <NavbarNested/>
         </div>
         <Routes>

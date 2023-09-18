@@ -46,6 +46,15 @@ const mockdata = [
     ],
   },
   {
+    label: 'Admin',
+    icon: IconCalendarStats,
+    links: [
+      { label: 'Add Faculty', link: '/create-admin' },
+      { label: 'View Faculty', link: '/all-admin' },
+      { label: 'Update Faculty', link: '/' },
+    ],
+  },
+  {
     label: 'TPO',
     icon: IconCalendarStats,
     links: [
@@ -119,24 +128,44 @@ export function NavbarNested() {
   const { classes } = useStyles();
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
+  const [isCollapse, setIsCollapse] = React.useState("");
+
+  const Collapse = () => {
+    if (isCollapse === "")
+    {
+      setIsCollapse("collapse");
+    }
+    else
+    {
+      setIsCollapse("");
+    }
+  }
+
+
   return (
-    <Navbar height={800} width={{ sm: 300 }} p="md" className="bg-white py-0 h-screen">
-      <Navbar.Section className={classes.header}>
-        <Group position="apart">
-          <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
-        </Group>
-      </Navbar.Section>
+    <>
+      <button onClick={Collapse}>-Logo</button>
+      <div className={isCollapse}>
+        <Navbar height={800} width={{ sm: 300 }} p="md" className="bg-white py-0 h-screen sticky">
+        <Navbar.Section className={classes.header}>
+          <Group position="apart">
+              <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
+              
+          </Group>
+        </Navbar.Section>
 
-      <Navbar.Section grow className={classes.links} component={ScrollArea}>
-        <div className={classes.linksInner}>{links}</div>
-      </Navbar.Section>
+        <Navbar.Section grow className={classes.links} component={ScrollArea}>
+          <div className={classes.linksInner}>{links}</div>
+        </Navbar.Section>
 
-      <Navbar.Section className={classes.footer}>
-        <UserButton
-          name="Ashish H. Prajapati"
-          email="prajapatiashish40567@gmail.com"
-        />
-      </Navbar.Section>
-    </Navbar>
+        <Navbar.Section className={classes.footer}>
+          <UserButton
+            name="Ashish H. Prajapati"
+            email="prajapatiashish40567@gmail.com"
+          />
+        </Navbar.Section>
+      </Navbar>
+      </div>
+    </>
   );
 }
