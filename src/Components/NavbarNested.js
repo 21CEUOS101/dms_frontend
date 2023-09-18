@@ -75,7 +75,7 @@ const mockdata = [
       { label: 'Update TTO', link: '/' },
       { label: 'View TimeTable', link: '/' },
       { label: 'Update TimeTable', link: '/' },
-      { label: 'Add TimeTable', link: '/' },
+      { label: 'Add TimeTable', link: '/add-timetable' },
     ],
   },
   {
