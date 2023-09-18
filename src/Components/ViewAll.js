@@ -25,19 +25,16 @@ function ViewAll(props) {
         </thead>
         <tbody>
           {value.map((value, index) => {
-            if (index !== 0)
-            {
-              return (<tr key={index}>
-                {
-                  keys.map((key,i) => {
-                    if (i !== 0)
-                    {
-                      return (<td key={key}>{value[key]}</td>);
-                    }
-                })
-                }
-              </tr>)
-            }
+            return (<tr key={index}>
+              {
+                keys.map((key,i) => {
+                  if (i !== 0)
+                  {
+                    return (<td key={key}>{value[key]}</td>);
+                  }
+              })
+              }
+            </tr>)
           })}
         </tbody>
       </table>

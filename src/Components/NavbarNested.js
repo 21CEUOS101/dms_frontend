@@ -18,7 +18,7 @@ const mockdata = [
     initiallyOpened: true,
     links: [
       { label: 'Add Student', link: '/create-student' },
-      { label: 'View Student', link: '/all-student' },
+      { label: 'View Student', link: '/all-students' },
       { label: 'Update Student', link: '/' },
       { label: 'Marks Entry', link: '/marks-entry' },
       { label: 'Exam Result', link: '/' },
