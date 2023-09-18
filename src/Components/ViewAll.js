@@ -53,7 +53,7 @@ function ViewAll(props) {
                   }
                 })
               }
-              <td><Link className="view-button" to={`${update_url}${id}`}>Update</Link></td>
+              <td><Link className="view-button" to={`${update_url}/${id}`}>Update</Link></td>
               <td><button className="view-button-delete" onClick={() => Delete(id)}>Delete</button></td>
             </tr>)
           })}
