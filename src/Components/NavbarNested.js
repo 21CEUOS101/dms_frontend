@@ -62,7 +62,7 @@ const mockdata = [
       { label: 'View TPO', link: '/all-tpo' },
       { label: 'Update TPO', link: '/' },
       { label: 'View Placement Company', link: '/' },
-      { label: 'Add Placement Company', link: '/' },
+      { label: 'Add Placement Company', link: '/add-placement-company' },
       { label: 'Update Placement Company', link: '/' },
     ],
   },
