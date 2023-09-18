@@ -19,7 +19,6 @@ const mockdata = [
     links: [
       { label: 'Add Student', link: '/create-student' },
       { label: 'View Students', link: '/all-students' },
-      { label: 'Update Student', link: '/' },
       { label: 'Marks Entry', link: '/marks-entry' },
       { label: 'Exam Result', link: '/' },
       { label: 'Fees', link: '/' },
@@ -33,7 +32,6 @@ const mockdata = [
     links: [
       { label: 'Add HOD', link: '/create-hod' },
       { label: 'View HOD', link: '/all-hod' },
-      { label: 'Update HOD', link: '/' },
     ],
   },
   {
@@ -42,7 +40,6 @@ const mockdata = [
     links: [
       { label: 'Add Faculty', link: '/create-faculty' },
       { label: 'View Faculty', link: '/all-faculty' },
-      { label: 'Update Faculty', link: '/' },
     ],
   },
   {
@@ -51,7 +48,6 @@ const mockdata = [
     links: [
       { label: 'Add Admin', link: '/create-admin' },
       { label: 'View Admin', link: '/all-admin' },
-      { label: 'Update Admin', link: '/' },
     ],
   },
   {
@@ -60,10 +56,8 @@ const mockdata = [
     links: [
       { label: 'Add TPO', link: '/create-tpo' },
       { label: 'View TPO', link: '/all-tpo' },
-      { label: 'Update TPO', link: '/' },
       { label: 'View Placement Company', link: '/all-placement-company' },
       { label: 'Add Placement Company', link: '/add-placement-company' },
-      { label: 'Update Placement Company', link: '/' },
     ],
   },
   {
@@ -72,9 +66,7 @@ const mockdata = [
     links: [
       { label: 'Add TTO', link: '/create-tto' },
       { label: 'View TTO', link: '/all-tto' },
-      { label: 'Update TTO', link: '/update-tto' },
       { label: 'View TimeTable', link: '/' },
-      { label: 'Update TimeTable', link: '/' },
       { label: 'Add TimeTable', link: '/add-timetable' },
     ],
   },
@@ -85,7 +77,6 @@ const mockdata = [
       { label: 'Create Course', link: '/create-course' },
       { label: 'View Current Course', link: '/current-course' },
       { label: 'View Courses', link: '/all-courses' },
-      { label: 'Update Course', link: '/' },
     ],
   },
   { label: 'Make Announcement', icon: IconGauge },
