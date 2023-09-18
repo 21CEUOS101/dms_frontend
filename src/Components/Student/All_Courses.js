@@ -5,7 +5,7 @@ import '../all.css';
 
 function All_Courses() {
   const [data, setData] = useState();
-
+  const [refresh, setRefresh] = useState(false);
   const getData = () => {
     axios.get(`http://localhost:3001/student/getAllCourseDetails`).then((data) => {
       console.log(data?.data);
@@ -15,13 +15,13 @@ function All_Courses() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [refresh]);
 
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_Courses</div>
       <div>
-        {data !== undefined && <ViewAll data={data?.courseDetails} />}
+        {data !== undefined && <ViewAll data={data?.courseDetails} setRefresh={setRefresh} refresh={refresh}/>}
       </div>
     </div>
   );

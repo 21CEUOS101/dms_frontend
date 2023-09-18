@@ -5,6 +5,7 @@ import '../all.css';
 
 function All_HOD() {
   const [data, setData] = useState();
+  const [refresh, setRefresh] = useState(false);
 
   const getData = () => {
     axios.get(`http://localhost:3001/hod/getAllHOD`).then((data) => {
@@ -15,13 +16,13 @@ function All_HOD() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [refresh]);
 
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_HOD</div>
       <div>
-        {data !== undefined && <ViewAll data={data} />}
+        {data !== undefined && <ViewAll data={data} setRefresh={setRefresh} refresh={refresh}/>}
       </div>
     </div>
   );

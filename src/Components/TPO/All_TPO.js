@@ -5,6 +5,7 @@ import '../all.css';
 
 function All_TPO() {
   const [data, setData] = useState();
+  const [refresh, setRefresh] = useState(false);
 
   const getData = () => {
     axios.get(`http://localhost:3001/tpo/getAllTPODetails`).then((data) => {
@@ -15,13 +16,13 @@ function All_TPO() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [refresh]);
 
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_TPO</div>
       <div>
-        {data !== undefined && <ViewAll data={data} />}
+        {data !== undefined && <ViewAll data={data} setRefresh={setRefresh} refresh={refresh}/>}
       </div>
     </div>
   );

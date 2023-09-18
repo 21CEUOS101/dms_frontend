@@ -5,6 +5,7 @@ import '../all.css';
 
 function All_Students() {
     const [data, setData] = useState();
+    const [refresh, setRefresh] = useState(false);
 
   const getData = () => {
     axios.get(`http://localhost:3001/student/getAllStudents`).then((data) => {
@@ -15,13 +16,13 @@ function All_Students() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [refresh]);
 
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_Students</div>
       <div>
-        {data !== undefined && <ViewAll data={data?.studentDetails} />}
+        {data !== undefined && <ViewAll data={data?.studentDetails} setRefresh={setRefresh} refresh={refresh}x/>}
       </div>
     </div>
   );

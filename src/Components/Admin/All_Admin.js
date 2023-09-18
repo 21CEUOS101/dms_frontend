@@ -5,6 +5,7 @@ import '../all.css';
 
 function All_Admin() {
   const [data, setData] = useState();
+  const [refresh, setRefresh] = useState(false);
 
   const getData = () => {
     axios.get(`http://localhost:3001/admin/getAllAdminDetails`).then((data) => {
@@ -15,13 +16,13 @@ function All_Admin() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [refresh]);
 
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_Admin</div>
       <div>
-        {data !== undefined && <ViewAll data={data} />}
+        {data !== undefined && <ViewAll data={data} setRefresh={setRefresh} refresh={refresh}/>}
       </div>
     </div>
   );
