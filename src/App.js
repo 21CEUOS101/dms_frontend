@@ -33,6 +33,7 @@ import Update_Tto from './Components/TTO/Update_Tto';
 import Update_Faculty from './Components/Faculty/Update_Faculty';
 import Update_HOD from './Components/HOD/Update_HOD';
 import Update_Admin from './Components/Admin/Update_Admin';
+import Update_Course from './Components/Student/Update_Course';
 import Update_Placement_Company from './Components/TPO/Update_Placement_Company';
 export const AppContext = createContext();
 
@@ -81,6 +82,7 @@ function App() {
           <Route path="/update-faculty/:id" element={<Update_Faculty/>} />
           <Route path="/update-hod/:id" element={<Update_HOD/>} />
           <Route path="/update-Admin/:id" element={<Update_Admin/>} />
+          <Route path="/update-Course/:id" element={<Update_Course/>} />
           <Route path="/update-placement-company/:id" element={<Update_Placement_Company/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
           <Route path="/all-tpo" element={<All_TPO/>} />

@@ -99,10 +99,10 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <h1 className="mb-3">hodDetails Form</h1>
+      <h1 className="mb-3">HODDetails Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="hod_id" className="form-label">hod ID:</label>
+          <label htmlFor="hod_id" className="form-label">HOD ID:</label>
           <input
             type="text"
             id="hod_id"
@@ -114,7 +114,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="hod_name" className="form-label">hod Name:</label>
+          <label htmlFor="hod_name" className="form-label">HOD Name:</label>
           <input
             type="text"
             id="hod_name"
@@ -126,7 +126,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="hod_email" className="form-label">hod Email:</label>
+          <label htmlFor="hod_email" className="form-label">HOD Email:</label>
           <input
             type="email"
             id="hod_email"
@@ -138,7 +138,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="hod_mobile_number" className="form-label">hod Mobile Number:</label>
+          <label htmlFor="hod_mobile_number" className="form-label">HOD Mobile Number:</label>
           <input
             type="text"
             id="hod_mobile_number"
@@ -150,7 +150,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="hod_experience" className="form-label">hod Experience:</label>
+          <label htmlFor="hod_experience" className="form-label">HOD Experience:</label>
           <input
             type="text"
             id="hod_experience"
@@ -162,7 +162,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="hod_qualification" className="form-label">hod Qualification:</label>
+          <label htmlFor="hod_qualification" className="form-label">HOD Qualification:</label>
           <input
             type="text"
             id="hod_qualification"
@@ -174,7 +174,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="hod_designation" className="form-label">hod Designation:</label>
+          <label htmlFor="hod_designation" className="form-label">HOD Designation:</label>
           <input
             type="text"
             id="hod_designation"
@@ -186,7 +186,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="hod_department" className="form-label">hod Department:</label>
+          <label htmlFor="hod_department" className="form-label">HOD Department:</label>
           <input
             type="text"
             id="hod_department"

@@ -115,7 +115,7 @@ const Update_Placement_Company = () => {
 
   return (
     <div className="container">
-      <h1 className="mb-3">placement_companyDetails Form</h1>
+      <h1 className="mb-3">PlacementCompanyDetails Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="placement_company_id" className="form-label">

@@ -99,7 +99,7 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <h1 className="mb-3">facultyDetails Form</h1>
+      <h1 className="mb-3">FacultyDetails Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="faculty_id" className="form-label">Faculty ID:</label>

@@ -99,10 +99,10 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <h1 className="mb-3">tpoDetails Form</h1>
+      <h1 className="mb-3">TPODetails Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="tpo_id" className="form-label">tpo ID:</label>
+          <label htmlFor="tpo_id" className="form-label">TPO ID:</label>
           <input
             type="text"
             id="tpo_id"
@@ -114,7 +114,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tpo_name" className="form-label">tpo Name:</label>
+          <label htmlFor="tpo_name" className="form-label">TPO Name:</label>
           <input
             type="text"
             id="tpo_name"
@@ -126,7 +126,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tpo_email" className="form-label">tpo Email:</label>
+          <label htmlFor="tpo_email" className="form-label">TPO Email:</label>
           <input
             type="email"
             id="tpo_email"
@@ -138,7 +138,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tpo_mobile_number" className="form-label">tpo Mobile Number:</label>
+          <label htmlFor="tpo_mobile_number" className="form-label">TPO Mobile Number:</label>
           <input
             type="text"
             id="tpo_mobile_number"
@@ -150,7 +150,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tpo_experience" className="form-label">tpo Experience:</label>
+          <label htmlFor="tpo_experience" className="form-label">TPO Experience:</label>
           <input
             type="text"
             id="tpo_experience"
@@ -162,7 +162,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tpo_qualification" className="form-label">tpo Qualification:</label>
+          <label htmlFor="tpo_qualification" className="form-label">TPO Qualification:</label>
           <input
             type="text"
             id="tpo_qualification"
@@ -174,7 +174,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tpo_designation" className="form-label">tpo Designation:</label>
+          <label htmlFor="tpo_designation" className="form-label">TPO Designation:</label>
           <input
             type="text"
             id="tpo_designation"
@@ -186,7 +186,7 @@ useEffect(() => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tpo_department" className="form-label">tpo Department:</label>
+          <label htmlFor="tpo_department" className="form-label">TPO Department:</label>
           <input
             type="text"
             id="tpo_department"
