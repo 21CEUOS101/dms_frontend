@@ -87,56 +87,42 @@ function Admin_Form() {
             <div className="row mb-3">
               <label className="col-sm-5 col-form-label" htmlFor="tto_id">Admin ID:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_id" name="tto_id" required {...register("tto_id")} />
+                  <input type="text" className="form-control" id="tto_id" name="tto_id" required {...register("admin_id")} />
                   <p className="text-danger">{errors?.id?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="tto_name">Admin Name:</label>
+              <label className="col-sm-5 col-form-label" htmlFor="admin_name">Admin Name:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_name" name="tto_name" required {...register("tto_name")} />
+                  <input type="text" className="form-control" id="admin_name" name="admin_name" required {...register("admin_name")} />
                   <p className="text-danger">{errors?.name?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="tto_email">Admin Email:</label>
+              <label className="col-sm-5 col-form-label" htmlFor="admin_email">Admin Email:</label>
               <div className="col-sm-10">
-                  <input type="email" className="form-control" id="tto_email" name="tto_email" required {...register("tto_email")} />
+                  <input type="email" className="form-control" id="admin_email" name="admin_email" required {...register("admin_email")} />
                   <p className="text-danger">{errors?.email?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="tto_mobile_number">Admin Mobile Number:</label>
+              <label className="col-sm-5 col-form-label" htmlFor="admin_mobile_number">Admin Mobile Number:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control phone-mask" id="tto_mobile_number" name="tto_mobile_number" required {...register("tto_mobile_number")} />
+                  <input type="text" className="form-control phone-mask" id="admin_mobile_number" name="admin_mobile_number" required {...register("admin_mobile_number")} />
                   <p className="text-danger">{errors?.mobile_number?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="tto_experience">Admin Experience:</label>
+              <label className="col-sm-5 col-form-label" htmlFor="admin_designation">Admin Designation:</label>
               <div className="col-sm-10">
-                  <input type="number" className="form-control" id="tto_experience" name="tto_experience" required {...register("tto_experience")} />
-                  <p className="text-danger">{errors?.experience?.message}</p>
-              </div>
-            </div>
-            <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="tto_qualification">Admin Qualification:</label>
-              <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_qualification" name="tto_qualification" required {...register("tto_qualification")} />
-                  <p className="text-danger">{errors?.qualification?.message}</p>
-              </div>
-            </div>
-            <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="tto_designation">Admin Designation:</label>
-              <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_designation" name="tto_designation" required {...register("tto_designation")} />
+                  <input type="text" className="form-control" id="admin_designation" name="admin_designation" required {...register("admin_designation")} />
                   <p className="text-danger">{errors?.designation?.message}</p>
               </div>
             </div>
             <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="tto_department">Admin Department:</label>
+              <label className="col-sm-5 col-form-label" htmlFor="admin_department">Admin Department:</label>
               <div className="col-sm-10">
-                  <input type="text" className="form-control" id="tto_department" name="tto_department" required {...register("tto_department")} />
+                  <input type="text" className="form-control" id="admin_department" name="admin_department" required {...register("admin_department")} />
                   <p className="text-danger">{errors?.department?.message}</p>
               </div>
             </div>
