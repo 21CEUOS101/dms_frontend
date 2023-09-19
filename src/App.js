@@ -35,6 +35,7 @@ import Update_HOD from './Components/HOD/Update_HOD';
 import Update_Admin from './Components/Admin/Update_Admin';
 import Update_Course from './Components/Student/Update_Course';
 import Update_Placement_Company from './Components/TPO/Update_Placement_Company';
+import Dashboard_HOD from './Components/HOD/Dashboard_HOD';
 export const AppContext = createContext();
 
 function App() {
@@ -92,7 +93,8 @@ function App() {
           <Route path='/marks-entry' element={<Marks_Entry_Form/>}/>
           <Route path='/add-placement-company' element={<Placement_Company_Form/>} />
           <Route path='/add-timetable' element={<Time_Table_Form/>} />
-          <Route path='/create-course' element={<Course_Form/>} />
+          <Route path='/create-course' element={<Course_Form />} />
+          <Route path='/dashboard-hod' element={<Dashboard_HOD />} />
         </Routes>
       </Router>
       </div>

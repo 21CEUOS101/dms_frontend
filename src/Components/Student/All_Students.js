@@ -21,7 +21,7 @@ function All_Students() {
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_Students</div>
-      <div>
+      <div className=' grid place-items-center h-screen'>
         {data !== undefined && <ViewAll data={data?.studentDetails} setRefresh={setRefresh} refresh={refresh}x/>}
       </div>
     </div>

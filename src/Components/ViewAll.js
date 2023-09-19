@@ -9,7 +9,7 @@ function ViewAll(props) {
 
   // Put the role here
   const role = "/tpo";
-
+  const view_url = `/display${window.location.pathname.slice(4)}`;
   const update_url = `/update${window.location.pathname.slice(4)}`;
   const delete_url = `/delete${window.location.pathname.slice(4)}`;
   console.log(update_url);
@@ -37,6 +37,7 @@ function ViewAll(props) {
                 }
               })
             }
+            <th>View</th>
             <th>Update</th>
             <th>Delete</th>
           </tr>
@@ -53,6 +54,7 @@ function ViewAll(props) {
                   }
                 })
               }
+              <td><Link className="view-button-view" to={`${view_url}/${id}`}>View</Link></td>
               <td><Link className="view-button" to={`${update_url}/${id}`}>Update</Link></td>
               <td><button className="view-button-delete" onClick={() => Delete(id)}>Delete</button></td>
             </tr>)

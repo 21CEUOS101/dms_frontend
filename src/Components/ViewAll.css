@@ -114,4 +114,21 @@ td .view-button-delete:hover {
   color: #fff; /* Change to your desired hover text color */
 }
 
+td .view-button-view {
+  /* Define your styles here */
+  display: inline-block;
+  padding: 10px 20px;
+  color: #000000; /* Change to your desired text color */
+  text-decoration: none;
+  border: 1px solid #a1a1a1; /* Change to your desired border style and color */
+  border-radius: 4px; /* Add border-radius for rounded corners if desired */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Hover state for the button */
+td .view-button-view:hover {
+  background-color: #d5d5d5; /* Change to your desired hover background color */
+  color: #000000; /* Change to your desired hover text color */
+}
+
   

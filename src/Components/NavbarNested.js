@@ -11,7 +11,7 @@ import { LinksGroup } from './NavbarLinksGroup';
 import React from 'react';
 
 const mockdata = [
-  { label: 'Dashboard', icon: IconHome },
+  { label: 'Dashboard', icon: IconHome , link: '/dashboard-hod'},
   {
     label: 'Student',
     icon: IconSchool,
@@ -135,7 +135,7 @@ export function NavbarNested() {
 
   return (
     <>
-      <button onClick={Collapse}>-Logo</button>
+      <button onClick={Collapse}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg></button>
       <div className={isCollapse}>
         <Navbar height={800} width={{ sm: 300 }} p="md" className="bg-white py-0 h-screen sticky">
         <Navbar.Section className={classes.header}>

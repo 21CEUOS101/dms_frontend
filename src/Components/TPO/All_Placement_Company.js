@@ -21,7 +21,7 @@ function All_Placement_Company() {
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_Placement_Company</div>
-      <div>
+      <div className=' grid place-items-center h-screen'>
         {data !== undefined && <ViewAll data={data} setRefresh={setRefresh} refresh={refresh}/>}
       </div>
     </div>

@@ -20,7 +20,7 @@ function All_Faculty() {
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_Faculty</div>
-      <div>
+      <div className=' grid place-items-center h-screen'>
         {data !== undefined && <ViewAll data={data}  setRefresh={setRefresh} refresh={refresh}/>}
       </div>
     </div>

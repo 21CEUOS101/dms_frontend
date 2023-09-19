@@ -21,7 +21,7 @@ function All_HOD() {
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_HOD</div>
-      <div>
+      <div className=' grid place-items-center h-screen'>
         {data !== undefined && <ViewAll data={data} setRefresh={setRefresh} refresh={refresh}/>}
       </div>
     </div>

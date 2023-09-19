@@ -21,10 +21,10 @@ function Display_Tto() {
   return (
     <>
       <div>Display_Tto</div>
-      <div>
-              {
-          data !== undefined && <Profile data={data}/>
-              }
+      <div className='grid place-items-center h-screen'>
+        {
+            data !== undefined && <Profile data={data}/>
+        }
       </div>
     </>
   )
