@@ -39,7 +39,7 @@ const Update_Course = () => {
 
   const updateData = async () => {
     await axios
-      .patch(`http://localhost:3001/student/updateCourse`, formData)
+      .patch(`http://localhost:3001/admin/updateCourseDetails`, formData)
       .then(
         (data) => {
           console.log(data?.data?.acknowledged);

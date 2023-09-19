@@ -13,35 +13,35 @@ function Course_Form() {
   const schema = yup.object().shape({
     subject_code: yup.string().required("Subject Code is required"),
     subject_name: yup.string().required("Subject Name is required"),
-    subject_credit: yup.string().required("Subject Credit is required"),
+    subject_credit: yup.number().required("Subject Credit is required"),
     subject_alias: yup.string().required("Subject Alias is required"),
-    semester: yup.string().required("Semester is required"),
+    semester: yup.number().required("Semester is required"),
     theory_min_passing_marks: yup
-      .string()
+      .number()
       .required("Theory Min Passing Marks is required"),
     theory_min_passing_marks2: yup
-      .string()
+      .number()
       .required("Theory Min Passing Marks 2 is required"),
     theory_total_marks: yup.string().required("Theory Total Marks is required"),
     sessional_min_passing_marks: yup
-      .string()
+      .number()
       .required("Sessional Min Passing Marks is required"),
     sessional_min_passing_marks2: yup
-      .string()
+      .number()
       .required("Sessional Min Passing Marks 2 is required"),
     sessional_total_marks: yup
-      .string()
+      .number()
       .required("Sessional Total Marks is required"),
     practical_min_passing_marks: yup
-      .string()
+      .number()
       .required("Practical Min Passing Marks is required"),
     practical_min_passing_marks2: yup
-      .string()
+      .number()
       .required("Practical Min Passing Marks 2 is required"),
     practical_total_marks: yup
-      .string()
+      .number()
       .required("Practical Total Marks is required"),
-    isElective: yup.string().required("Is Elective is required"),
+    isElective: yup.string().required("Is Elective is required").oneOf(["Yes", "No"])
   });
 
   const {
@@ -63,16 +63,16 @@ function Course_Form() {
   };
 
   const createSubject = async () => {
-    await axios.post(`http://localhost:3001/subject/addNewSubject`, data).then(
+    await axios.post(`http://localhost:3001/admin/createCourseDetails`, data).then(
       (data) => {
-        console.log(data?.data?.message?.errors);
+        console.log("success");
         console.log(data?.data?.message?._message);
-        console.log(data?.data.message);
-        console.log(data);
+        console.log(data?.data);
 
         if (data?.data?.message?.errors !== undefined) {
           setError(data?.data?.message?._message);
-        } else {
+        }
+        else {
           setStatus(data?.data?.message);
           setTimeout(() => {
             setStatus("");
@@ -80,8 +80,7 @@ function Course_Form() {
         }
       },
       (error) => {
-        console.log(error);
-        setError(error);
+        console.log(JSON.stringify(error));
       }
     );
   };

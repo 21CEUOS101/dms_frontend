@@ -28,8 +28,8 @@ const Update_HOD = () => {
         )
     }
 
-    const updateData = async () => {
-        await axios.patch(`http://localhost:3001/hod/updatehod`, formData).then((data) => {
+  const updateData = async () => {
+        await axios.patch(`http://localhost:3001/hod/updateHODDetails`, formData).then((data) => {
             console.log(data?.data?.acknowledged);
             setStatus(data?.data?.acknowledged ? "Data Updated Successfully!" : "Data Updation Failed!");
             setTimeout(() => {

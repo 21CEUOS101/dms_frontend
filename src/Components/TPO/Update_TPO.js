@@ -30,8 +30,8 @@ const Update_TPO = () => {
 
     const updateData = async () => {
         await axios.patch(`http://localhost:3001/admin/updateTPO`, formData).then((data) => {
-            console.log(data?.data?.acknowledged);
-            setStatus(data?.data?.acknowledged ? "Data Updated Successfully!" : "Data Updation Failed!");
+            console.log(data?.data);
+            setStatus(data?.data?.message);
             setTimeout(() => {
                 setStatus("");
             }

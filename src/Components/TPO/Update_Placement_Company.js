@@ -40,7 +40,7 @@ const Update_Placement_Company = () => {
 
   const updateData = async () => {
     await axios
-      .patch(`http://localhost:3001/tpo/updateplacementcompany`, formData)
+      .patch(`http://localhost:3001/tpo/update-placement_company`, formData)
       .then(
         (data) => {
           console.log(data?.data?.acknowledged);
@@ -83,23 +83,12 @@ const Update_Placement_Company = () => {
       alert("Name should be of atleast 5 characters!");
       return;
     }
-    if (isNaN(formData.placement_company_experience)) {
-      alert("Experience should be a number!");
-      return;
-    }
-    if (formData.placement_company_experience < 0) {
-      alert("Experience should be a positive integer!");
-      return;
-    }
     if (
       formData.placement_company_id === "" ||
       formData.placement_company_name === "" ||
       formData.placement_company_email === "" ||
       formData.placement_company_mobile_number === "" ||
-      formData.placement_company_experience === "" ||
-      formData.placement_company_qualification === "" ||
-      formData.placement_company_designation === "" ||
-      formData.placement_company_department === ""
+      formData.placement_company_qualification === ""
     ) {
       alert("Please fill all the fields!");
       return;

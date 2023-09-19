@@ -27,17 +27,16 @@ const Update_Admin = () => {
     }
 
     const updateData = async () => {
-        await axios.patch(`http://localhost:3001/admin/updateadmin`, formData).then((data) => {
-            console.log(data?.data?.acknowledged);
-            setStatus(data?.data?.acknowledged ? "Data Updated Successfully!" : "Data Updation Failed!");
-            setTimeout(() => {
+        await axios.patch(`http://localhost:3001/hod/updateAdmin`, formData).then((data) => {
+              console.log(data?.data?.acknowledged);
+              setStatus(
+                data?.data?.acknowledged
+                  ? "Data Updated Successfully!"
+                  : "Data Updation Failed!"
+              );
+              setTimeout(() => {
                 setStatus("");
-            }
-            , 2000);
-        },
-            (error) => {
-                console.log(error);
-                setStatus(JSON.stringify(error));
+              }, 2000);
             }
         )
     }

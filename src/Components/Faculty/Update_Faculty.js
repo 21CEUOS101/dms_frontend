@@ -29,7 +29,7 @@ const Update_Faculty = () => {
     }
 
     const updateData = async () => {
-        await axios.patch(`http://localhost:3001/admin/updatefaculty`, formData).then((data) => {
+        await axios.patch(`http://localhost:3001/admin/updateFacultyDetails`, formData).then((data) => {
             console.log(data?.data?.acknowledged);
             setStatus(data?.data?.acknowledged ? "Data Updated Successfully!" : "Data Updation Failed!");
             setTimeout(() => {
