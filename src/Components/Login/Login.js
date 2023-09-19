@@ -20,7 +20,7 @@ function Login() {
         }
     )
 
-    const { register, handleSubmit , formState : {errors} } = useForm({
+    const { register, handleSubmit , formState : {errors} , reset } = useForm({
             resolver : yupResolver(schema),
     });
 
@@ -42,18 +42,18 @@ function Login() {
             if (data.data.status === "success")
             {
                 setIsLoggedIn(true);
-                localStorage.setItem("user", {
-                    id: data.data?.id,
-                    role: data.data?.role,
-                    email : data.data?.email,
-                })
-                console.log(localStorage.getItem("user").at(0));
+                localStorage.setItem("role", data?.data?.role);
+                localStorage.setItem("email", data?.data?.email);
+                localStorage.setItem("id", data?.data?.id);
+                localStorage.setItem("password", data?.data?.password);
+                console.log(localStorage.getItem("role"));
+                
             }
             else
             {
                 console.log("Login Failed");
-                setIsLoggedIn(false);
             }
+            reset();
         })
     } 
 

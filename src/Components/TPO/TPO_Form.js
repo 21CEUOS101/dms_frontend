@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 
 function TPO_Form() {
-
+    const role = localStorage.getItem("role");
     const [data, setData] = useState({});
     const [status, setStatus] = useState("");
     const [error, setError] = useState();
@@ -40,7 +40,7 @@ function TPO_Form() {
     }
   
     const createTPO = async() => {
-     await axios.post(`http://localhost:3001/admin/createTPO`, data).then((data) => {
+     await axios.post(`http://localhost:3001/${role}/createTPO`, data).then((data) => {
         console.log("success");
         console.log(data?.data?.message?.errors);
           console.log(data?.data?.message?._message);
@@ -59,8 +59,14 @@ function TPO_Form() {
         }
       }, 
       (error) => {
-        console.log(JSON.stringify(error));
-        setError(error);
+        if (error.message === "Request failed with status code 404")
+        {
+          alert("You are not allowed to add Faculty Details");
+        }
+        else
+        {
+          console.log(JSON.stringify(error));
+        }
       }
       );
     }

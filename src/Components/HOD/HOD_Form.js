@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 
 function HOD_Form() {
-
+    const role = localStorage.getItem("role");
     const [data, setData] = useState();
     const [status, setStatus] = useState();
     const [error, setError] = useState();
@@ -40,7 +40,7 @@ function HOD_Form() {
     }
   
     const createHOD = async() => {
-      await axios.post(`http://localhost:3001/hod/addNewHOD`, data).then((data) => {
+      await axios.post(`http://localhost:3001/${role}/addNewHOD`, data).then((data) => {
         console.log(data?.data?.message?.errors);
         console.log(data?.data?.message?._message);
           console.log(data?.data.message);
@@ -59,8 +59,14 @@ function HOD_Form() {
         }
       }, 
       (error) => {
-          console.log(error);
-          setError(error);
+        if (error.message === "Request failed with status code 404")
+        {
+          alert("You are not allowed to add Faculty Details");
+        }
+        else
+        {
+          console.log(JSON.stringify(error));
+        }
       }
       );
     }

@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 
 function Admin_Form() {
-
+  const role = localStorage.getItem("role");
   const [data, setData] = useState();
   const [status, setStatus] = useState("");
   const [error, setError] = useState();
@@ -38,7 +38,7 @@ function Admin_Form() {
 }
 
   const createAdmin = async() => {
-    await axios.post(`http://localhost:3001/hod/addNewAdmin`, data).then((data) => {
+    await axios.post(`http://localhost:3001/${role}/addNewAdmin`, data).then((data) => {
       console.log("success");
       console.log(data?.data?.message?._message);
       console.log(data?.data);
@@ -56,8 +56,14 @@ function Admin_Form() {
       }
     }, 
     (error) => {
-      console.log(JSON.stringify(error));
-      setError(JSON.parse(error));
+      if (error.message === "Request failed with status code 404")
+        {
+          alert("You are not allowed to add Faculty Details");
+        }
+        else
+        {
+          console.log(JSON.stringify(error));
+        }
     }
     );
   }

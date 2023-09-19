@@ -42,22 +42,32 @@ import Dashboard_Faculty from './Components/Faculty/Dashboard_Faculty';
 import Dashboard_Student from './Components/Student/Dashboard_Student';
 import Dashboard_Tpo from './Components/TPO/Dashboard_Tpo';
 import Dashboard_Tto from './Components/TTO/Dashboard_Tto';
+import axios from 'axios';
 export const AppContext = createContext();
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({});
-  
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
-      setIsLoggedIn(true);
-    }
-  }, []);
+  console.log(localStorage.getItem("id"));
 
-  console.log(user);
+  const checkLogin = async () => {
+
+    await axios.post('http://localhost:3001/login', {
+      user_id: localStorage.getItem("id"),
+      role: localStorage.getItem("role"),
+      password: localStorage.getItem("password")
+    }).then((data) => {
+      console.log(data?.data);
+      if (data.data.status === "success") {
+        setIsLoggedIn(true);
+      }
+      else {
+        console.log("Login Failed");
+        setIsLoggedIn(false);
+      }
+    })
+  }
+
+  useEffect(() => checkLogin(), []);
   console.log(isLoggedIn);
 
   return (
