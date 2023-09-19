@@ -36,6 +36,11 @@ import Update_Admin from './Components/Admin/Update_Admin';
 import Update_Course from './Components/Student/Update_Course';
 import Update_Placement_Company from './Components/TPO/Update_Placement_Company';
 import Dashboard_HOD from './Components/HOD/Dashboard_HOD';
+import Dashboard_Admin from './Components/Admin/Dashboard_Admin';
+import Dashboard_Faculty from './Components/Faculty/Dashboard_Faculty';
+import Dashboard_Student from './Components/Student/Dashboard_Student';
+import Dashboard_Tpo from './Components/TPO/Dashboard_Tpo';
+import Dashboard_Tto from './Components/TTO/Dashboard_Tto';
 export const AppContext = createContext();
 
 function App() {
@@ -50,6 +55,9 @@ function App() {
       setIsLoggedIn(true);
     }
   }, []);
+
+  console.log(user);
+  console.log(isLoggedIn);
 
   return (
     <AppContext.Provider value={{isLoggedIn , setIsLoggedIn}}>
@@ -95,6 +103,11 @@ function App() {
           <Route path='/add-timetable' element={<Time_Table_Form/>} />
           <Route path='/create-course' element={<Course_Form />} />
           <Route path='/dashboard-hod' element={<Dashboard_HOD />} />
+          <Route path='/dashboard-admin' element={<Dashboard_Admin />} />
+          <Route path='/dashboard-faculty' element={<Dashboard_Faculty />} />
+          <Route path='/dashboard-student' element={<Dashboard_Student />} />
+          <Route path='/dashboard-tpo' element={<Dashboard_Tpo />} />
+          <Route path='/dashboard-tto' element={<Dashboard_Tto />} />
         </Routes>
       </Router>
       </div>

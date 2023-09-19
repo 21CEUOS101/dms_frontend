@@ -8,7 +8,7 @@ function ViewAll(props) {
   const keys = value.length > 0 ? Object.keys(value[0]) : [];
 
   // Put the role here
-  const role = "/tpo";
+  const role = "/admin";
   const view_url = `/display${window.location.pathname.slice(4)}`;
   const update_url = `/update${window.location.pathname.slice(4)}`;
   const delete_url = `/delete${window.location.pathname.slice(4)}`;

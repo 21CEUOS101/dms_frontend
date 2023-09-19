@@ -14,9 +14,7 @@ function Login() {
     const schema = yup.object().shape(
         {
             id: yup.string().required("Id is required").min(5),
-            password: yup.string().required("Password is required").test((value) => {
-                return /^\d{2}\/\d{2}\/\d{4}$/.test(value);
-            }),
+            password: yup.string().required("Password is required"),
             role : yup.string().required("Role is required").oneOf(["student","faculty","hod","tto","tpo","admin"]),
             isRemember : yup.boolean(),
         }
@@ -31,13 +29,15 @@ function Login() {
         setData(data);
     } 
 
-    const login = (user_id , role , password) => {
+    const login = async (user_id, role, password) => {
+        console.log("Login Function");
         const data = {
             user_id: user_id,
             role: role,
             password : password
         }
-        axios.post('http://localhost:3001/login' , data).then((data) => {
+        await axios.post('http://localhost:3001/login', data).then((data) => {
+            console.log(data.data);
             if (data.data.status == "success")
             {
                 setIsLoggedIn(true);
@@ -46,9 +46,11 @@ function Login() {
                     role: role,
                     password: password
                 }));
+                console.log("Login Successful");
             }
             else
             {
+                console.log("Login Failed");
                 setIsLoggedIn(false);
             }
         })
@@ -92,7 +94,7 @@ function Login() {
                         id="password"
                         className="form-control"
                         name="password"
-                        placeholder="dd/mm/yyyy"
+                        placeholder=".........."
                         aria-describedby="password"
                         {...register("password")}
                         />
