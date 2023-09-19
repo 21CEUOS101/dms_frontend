@@ -107,8 +107,9 @@ useEffect(() => {
             type="text"
             id="hod_id"
             name="hod_id"
+            disabled
             value={formData.hod_id}
-            onChange={handleChange}
+            // onChange={handleChange}
             className="form-control"
             required
           />

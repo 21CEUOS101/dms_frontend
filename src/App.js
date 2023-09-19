@@ -35,6 +35,7 @@ import Update_HOD from './Components/HOD/Update_HOD';
 import Update_Admin from './Components/Admin/Update_Admin';
 import Update_Course from './Components/Student/Update_Course';
 import Update_Placement_Company from './Components/TPO/Update_Placement_Company';
+import Update_Student from './Components/Student/Update_Student';
 import Dashboard_HOD from './Components/HOD/Dashboard_HOD';
 import Dashboard_Admin from './Components/Admin/Dashboard_Admin';
 import Dashboard_Faculty from './Components/Faculty/Dashboard_Faculty';
@@ -93,6 +94,7 @@ function App() {
           <Route path="/update-admin/:id" element={<Update_Admin/>} />
           <Route path="/update-course/:id" element={<Update_Course/>} />
           <Route path="/update-placement-company/:id" element={<Update_Placement_Company/>} />
+          <Route path="/update-student/:id" element={<Update_Student/>} />
           <Route path="/all-hod" element={<All_HOD/>} />
           <Route path="/all-tpo" element={<All_TPO/>} />
           <Route path="/all-course" element={<All_Courses />} />
