@@ -31,22 +31,23 @@ function Login() {
 
     const login = async (user_id, role, password) => {
         console.log("Login Function");
-        const data = {
+        const check = {
             user_id: user_id,
             role: role,
             password : password
         }
-        await axios.post('http://localhost:3001/login', data).then((data) => {
-            console.log(data.data);
-            if (data.data.status == "success")
+        console.log(check);
+        await axios.post('http://localhost:3001/login', check).then((data) => {
+            console.log(data?.data);
+            if (data.data.status === "success")
             {
                 setIsLoggedIn(true);
-                localStorage.setItem("user", JSON.stringify({
-                    user_id: user_id,
-                    role: role,
-                    password: password
-                }));
-                console.log("Login Successful");
+                localStorage.setItem("user", {
+                    id: data.data?.id,
+                    role: data.data?.role,
+                    email : data.data?.email,
+                })
+                console.log(localStorage.getItem("user").at(0));
             }
             else
             {
@@ -129,13 +130,13 @@ function Login() {
                         <button className="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                     </div>
                 </form>
+                {isLoggedIn && <p>"Login Successful"</p>}
                 </div>
             </div>
             </div>
         </div>
           </div>
           
-          <p>{isLoggedIn && "Login Successful"}</p>
       </>
   )
 }
