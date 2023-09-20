@@ -13,8 +13,8 @@ function ViewAll(props) {
   const [sortOrder, setSortOrder] = useState("asc"); // Default sorting order
   const [itemsPerPage, setItemsPerPage] = useState(10); // Default items per page
 
-  // const role = localStorage.getItem("role");
-  const role = `/hod`;
+  const role = localStorage.getItem("role");
+  // const role = `/hod`;
   const view_url = `/display${window.location.pathname.slice(4)}`;
   const update_url = `/update${window.location.pathname.slice(4)}`;
   const delete_url = `/delete${window.location.pathname.slice(4)}`;
