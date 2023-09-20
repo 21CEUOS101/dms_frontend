@@ -26,25 +26,29 @@ const UpdateGuardianInfo = ({ id }) => {
   };
 
   const updateData = async () => {
-    await axios.patch(`http://localhost:3001/admin/updateStudentGuardianInfo`, formData).then(
-      (data) => {
-
-        console.log(data);
-        setStatus(
-          data?.data?.message
-            ? "Guardian Info Updated Successfully!"
-            : "Guardian Info Updation Failed!"
-        );
-        setTimeout(() => {
-          setStatus("");
-        }, 2000);
-      },
-      (error) => {
-        console.log(error);
-        setStatus(JSON.stringify(error));
-      }
-    );
+    try {
+      const response = await axios.patch(
+        "http://localhost:3001/admin/updateStudentGuardianInfo",
+        formData
+      );
+  
+      console.log("Update response:", response.data); // Log the response
+  
+      setStatus(
+        response.data.message
+          ? "Guardian Info Updated Successfully!"
+          : "Guardian Info Updation Failed!"
+      );
+  
+      setTimeout(() => {
+        setStatus("");
+      }, 2000);
+    } catch (error) {
+      console.error("Update error:", error); // Log any errors
+      setStatus("Guardian Info Updation Failed!");
+    }
   };
+  
 
   const handleChange = (e) => {
     e.preventDefault();
