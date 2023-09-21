@@ -3,7 +3,7 @@ import './form.css';
 
 function Student_Form() {
   return (
-    <div className='grid grid-cols-2 gap-20'>
+    <div className='grid grid-cols-3 gap-20'>
       <div className='bg-slate-50 px-10 py-5 h-auto border-2 rounded'>
         <h1 className='text-base font-semibold leading-7 text-gray-900'>Student Details Form</h1>
         <form action="/submit" method="POST"  className="space-y-12">

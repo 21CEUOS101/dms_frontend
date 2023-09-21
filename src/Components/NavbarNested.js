@@ -22,7 +22,7 @@ const mockdata = [
       { label: 'Marks Entry', link: '/marks-entry' },
       { label: 'Exam Result', link: '/' },
       { label: 'Fees', link: '/' },
-      { label: 'View TimeTable', link: '/' },
+      { label: 'View TimeTable', link: '/display-timetable' },
     ],
   },
   {
