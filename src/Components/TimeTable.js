@@ -24,9 +24,11 @@ function findClosestTimeSlot(time) {
   return timeSlots.find((slot) => slot === time) || timeSlots[0];
 }
 
-function TimeTable({ data }) {
+function TimeTable({ data , timetableId }) {
+  
+  const filteredData = data.filter((entry) => entry.time_table_id === timetableId);
   // Group data by day and time
-  const groupedData = data.reduce((acc, entry) => {
+  const groupedData = filteredData.reduce((acc, entry) => {
     const day = entry.time_table_block_day;
     const time = entry.time_table_block_time;
     if (!acc[day]) {

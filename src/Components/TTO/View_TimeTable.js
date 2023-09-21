@@ -20,7 +20,7 @@ function View_TimeTable() {
   return (
     <div className='divStyle'>
       <div>
-        {data !== undefined && <TimeTable data={data} setRefresh={setRefresh} refresh={refresh}/>}
+        {data !== undefined && <TimeTable data={data} setRefresh={setRefresh} refresh={refresh} timetableId={"101"}/>}
       </div>
     </div>
   );
