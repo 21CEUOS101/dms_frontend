@@ -16,12 +16,28 @@ function View_TimeTable() {
   useEffect(() => {
     getData();
   }, [refresh]);
+    
+    let set = new Set();
+
+    data?.map((value, index) => {
+        set.add(value.time_table_id);
+    });
+
+    console.log(set);
+
+    let arr = Array.from(set);
 
   return (
     <div className='divStyle'>
-      <div>
-        {data !== undefined && <TimeTable data={data} setRefresh={setRefresh} refresh={refresh} timetableId={"101"}/>}
-      </div>
+        {
+            arr?.map((value, index) => {
+                return (
+                    <div key={index}>
+                        {data !== undefined && <TimeTable data={data} setRefresh={setRefresh} refresh={refresh} timetableId={value}/>}
+                    </div>  
+                );
+            })
+        }
     </div>
   );
 }
