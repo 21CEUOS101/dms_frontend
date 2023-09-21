@@ -63,10 +63,10 @@ function Login() {
   return (
       <>
         <div className="container-xxl">
-        <div className="authentication-wrapper authentication-basic container-p-y">
+        <div className="authentication-wrapper authentication-basic container-p-y h-fit">
             <div className="authentication-inner">
-            <div className="card">
-                <div className="card-body">
+            <div>
+                <div>
                 
                 <form id="formAuthentication" className="mb-3" onSubmit={handleSubmit(onSubmit)} method="POST">
                     <div className="mb-3">
