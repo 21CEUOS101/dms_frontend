@@ -32,10 +32,10 @@ const UpdateGuardianInfo = ({ id }) => {
         formData
       );
   
-      console.log("Update response:", response.data); // Log the response
+      console.log("Update response:", response.data.acknowledged); // Log the response
   
       setStatus(
-        response.data.message
+        response.data.acknowledged
           ? "Guardian Info Updated Successfully!"
           : "Guardian Info Updation Failed!"
       );
