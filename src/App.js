@@ -43,6 +43,7 @@ import Dashboard_Student from './Components/Student/Dashboard_Student';
 import Dashboard_Tpo from './Components/TPO/Dashboard_Tpo';
 import Dashboard_Tto from './Components/TTO/Dashboard_Tto';
 import axios from 'axios';
+import View_TimeTable from './Components/TTO/View_TimeTable';
 export const AppContext = createContext();
 
 function App() {
@@ -120,6 +121,7 @@ function App() {
           <Route path='/dashboard-student' element={<Dashboard_Student />} />
           <Route path='/dashboard-tpo' element={<Dashboard_Tpo />} />
           <Route path='/dashboard-tto' element={<Dashboard_Tto />} />
+          <Route path='/display-timetable' element={<View_TimeTable />} />
         </Routes>
       </Router>
       </div>
