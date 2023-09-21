@@ -4,6 +4,8 @@ import Card from './Card';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import BarChart from './BarChart';
+import './Dashboard_HOD.css';
+
 
 function Dashboard_HOD() {
 
