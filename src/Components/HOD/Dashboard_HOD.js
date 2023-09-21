@@ -15,7 +15,6 @@ function Dashboard_HOD() {
   const [no_of_tpo, setNo_of_tpo] = useState(0);
   const [no_of_companies, setNo_of_companies] = useState(0);
   const [no_of_admins, setNo_of_admins] = useState(0);
-  const [studentByDepartment, setStudentByDepartment] = useState();
 
 
   const role = localStorage.getItem("role");
@@ -48,7 +47,7 @@ function Dashboard_HOD() {
   return (
     <div className=' grid grid-flow-row'>
       <div className='grid grid-cols-3 gap-y-4 gap-x-4 h-fit place-content-center'>
-          <Card title={"No. of Students Currently"} number={no_of_students}/>
+          <Card title={"No. of Students Currently Enrolled"} number={no_of_students}/>
           <Card title={"No. of Faculties"} number={no_of_faculty}/>
           <Card title={"No. of TTO"} number={no_of_tto}/>
           <Card title={"No. of TPO"} number={no_of_tpo}/>
@@ -60,7 +59,7 @@ function Dashboard_HOD() {
 
       <div className='grid grid-cols-2'>
         <BarChart link={`http://localhost:3001/${role}/getStudentCountByDepartment/`} isYear={true}/>
-        <BarChart link={`http://localhost:3001/${role}/getStudentNumberD2D`} isYear={false}/>
+        <BarChart link={`http://localhost:3001/${role}/getStudentNumberD2D/`} isYear={true}/>
       </div>
     </div>
   )

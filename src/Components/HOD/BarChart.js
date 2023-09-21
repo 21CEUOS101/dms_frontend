@@ -9,6 +9,7 @@ function BarChart(props) {
     const [year, setYear] = useState(new Date().getFullYear());
     
     const url = props.link + (props.isYear ? `${year}` : "");
+    console.log(url);
 
     const getData = async () => {
 
@@ -33,7 +34,7 @@ function BarChart(props) {
     }
     
   return (
-    <div className=' h-fit px-2 py-2 w-3/4 border-2 shadow-md'>
+    <div className=' h-fit px-2 py-2 w-5/6 border-2 shadow-md'>
         <select className="form-select" aria-label="Default select example" onChange={(e) => setYear(e.target.value)}>
           <option value={new Date().getFullYear()} selected> {new Date().getFullYear()} </option>
           {dropdown}
