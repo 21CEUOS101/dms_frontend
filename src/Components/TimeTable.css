@@ -76,3 +76,11 @@
   background-color: #3498db;
   color: white;
 }
+
+/* Add responsive design for smaller screens */
+@media screen and (max-width: 768px) {
+  .timetable th,
+  .timetable td {
+    padding: 8px;
+  }
+}
