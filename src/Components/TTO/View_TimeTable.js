@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ViewAll from '../ViewAll';
 import '../all.css';
+import TimeTable from '../TimeTable';
 
 function View_TimeTable() {
   const [data, setData] = useState();
@@ -19,9 +19,8 @@ function View_TimeTable() {
 
   return (
     <div className='divStyle'>
-      <div className='textStyle'>View_TimeTable</div>
       <div>
-        {data !== undefined && <ViewAll data={data} setRefresh={setRefresh} refresh={refresh}/>}
+        {data !== undefined && <TimeTable data={data} setRefresh={setRefresh} refresh={refresh}/>}
       </div>
     </div>
   );
