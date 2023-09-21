@@ -81,7 +81,7 @@ const UpdateGuardianInfo = ({ id }) => {
 
   return (
     <div className="container">
-      <h1 className="mb-3">Guardian Information Form</h1>
+      <h1 className="mb-3">Guardian Information Update</h1>
       <form onSubmit={handleSubmit}>
       <div className="mb-3">
           <label htmlFor="student_id" className="form-label">

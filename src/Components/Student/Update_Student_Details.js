@@ -128,7 +128,7 @@ const UpdateStudentDetails = ({ id }) => {
   
   return (
     <div className="container">
-      <h1 className="mb-3">StudentDetails Form</h1>
+      <h1 className="mb-3">Student Details Update</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="student_id" className="form-label">
