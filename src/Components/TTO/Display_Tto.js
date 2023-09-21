@@ -21,7 +21,7 @@ function Display_Tto() {
   return (
     <>
       <div>Display_Tto</div>
-      <div className='grid place-items-center h-screen'>
+      <div className='place-items-center grid-flow-col grid grid-cols-2'>
         {
             data !== undefined && <Profile data={data}/>
         }

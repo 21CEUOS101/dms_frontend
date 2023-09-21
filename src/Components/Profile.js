@@ -5,7 +5,7 @@ function Profile(props) {
   const user = props.data;
 
   return (
-    <div className="profile-container w-auto">
+    <div className="profile-container w-auto px-3 py-3 h-fit">
       {Object?.keys(user)?.map((key,index) => {
         if (index !== 0)
         {

@@ -25,7 +25,7 @@ function Display_Student() {
   return (
     <>
           <div>Display_Student</div>
-          <div>
+          <div className='grid grid-cols-3'>
               {
                   data !== undefined && <Profile data={studentDetails !== undefined && studentDetails}/>
               }

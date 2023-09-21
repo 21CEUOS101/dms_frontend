@@ -12,8 +12,8 @@
 /* Style for the profile container */
 .profile-container {
   width: 300px;
-  margin: 20px auto; /* Increased top and bottom margin */
-  padding: 20px;
+  margin: 10px auto; /* Increased top and bottom margin */
+  padding: 10px;
   background-color: #f5f5f5; /* Light gray background color */
   border: 1px solid #ddd; /* Light gray border color */
   border-radius: 5px;
@@ -22,7 +22,7 @@
 
 /* Style for each key-value pair */
 .profile-info {
-  margin-bottom: 15px; /* Increased margin */
+  margin-bottom: 10px; /* Increased margin */
   padding: 15px; /* Increased padding */
   background-color: #ffffff;
   border: 1px solid #e1e1e1;
@@ -67,7 +67,7 @@
 .profile-picture {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px; /* Increased margin-bottom */
+  margin-bottom: 20px; /* Increased margin-bottom */
 }
 
 .profile-picture img {
