@@ -260,6 +260,28 @@ const SemResult = () => {
       
       const excludeFields = ["_id", "student_id", "semester", "batch_year"];
 
+      const tableHeader = (
+        <thead>
+          <tr>
+            {Object.keys(studentData).map((fieldName) => (
+              !excludeFields.includes(fieldName) && (
+                <th key={`header-${fieldName}`}>{aliasMapping[fieldName] || fieldName}</th>
+              )
+            ))}
+          </tr>
+        </thead>
+      );
+    
+      const tableRows = studentData.subject_code.map((subjectCode, index) => (
+        <tr key={`data-${subjectCode}`}>
+          {Object.keys(studentData).map((fieldName) => (
+            !excludeFields.includes(fieldName) && (
+              <td key={`data-${fieldName}`}>{renderValue(studentData[fieldName][index])}</td>
+            )
+          ))}
+        </tr>
+      ));
+    
       return (
         <div>
           <h1>Student Data</h1>
@@ -273,28 +295,8 @@ const SemResult = () => {
             <h2>Batch Year: {studentData.batch_year}</h2>
           </div>
           <table>
-            <thead>
-              <tr>
-                {Object.keys(studentData)
-                  .filter((fieldName) => !excludeFields.includes(fieldName))
-                  .map((fieldName) => (
-                    <th key={`header-${fieldName}`}>{aliasMapping[fieldName] || fieldName}</th>
-                  ))}
-              </tr>
-            </thead>
-            <tbody>
-              {studentData.subject_code.map((subjectCode, index) => (
-                <tr key={`data-${subjectCode}`}>
-                  <td>{subjectCode}</td>
-                  <td>{studentData.subject_name[index]}</td>
-                  {Object.keys(studentData)
-                    .filter((fieldName) => !excludeFields.includes(fieldName))
-                    .map((fieldName) => (
-                      <td key={`data-${fieldName}`}>{renderValue(studentData[fieldName][index])}</td>
-                    ))}
-                </tr>
-              ))}
-            </tbody>
+            {tableHeader}
+            <tbody>{tableRows}</tbody>
           </table>
         </div>
       );
