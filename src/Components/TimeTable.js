@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import './TimeTable.css';
+import * as XLSX from 'xlsx';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const timeSlots = [
   '8:30 AM - 9:30 AM',
@@ -42,20 +43,68 @@ function TimeTable({ data, timetableId, onEditClick }) {
 
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
-  const generatePDF = () => {
-    html2canvas(tableRef.current).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('landscape');
-      const imgWidth = 148;
-      const imgHeight = ((canvas.height * imgWidth) + 1000) / canvas.width;
-      pdf.addImage(imgData, 'PNG', imgWidth/2 , 0, imgWidth, imgHeight);
-      pdf.save('timetable.pdf');
+  const tableColumns = [['Time', ...days]]; // Define tableColumns here
+
+  function downloadExcel() {
+    const wsData = [['Time', ...days]];
+
+    timeSlots.forEach((timeSlot) => {
+      const rowData = [timeSlot];
+      days.forEach((day) => {
+        if (groupedData[day] && groupedData[day][timeSlot]) {
+          const entries = groupedData[day][timeSlot];
+          const cellData = entries.map((entry) => `${entry.time_table_block_subject} - ${entry.time_table_block_faculty}`);
+          rowData.push(cellData.join('\n'));
+        } else {
+          rowData.push('');
+        }
+      });
+      wsData.push(rowData);
     });
-  };
+
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.aoa_to_sheet(wsData);
+    XLSX.utils.book_append_sheet(wb, ws, 'Timetable');
+    XLSX.writeFile(wb, 'timetable.xlsx');
+  }
+
+  function downloadPDF() {
+    const doc = new jsPDF();
+
+    const tableData = timeSlots.map((timeSlot) => {
+      const rowData = [timeSlot];
+      days.forEach((day) => {
+        if (groupedData[day] && groupedData[day][timeSlot]) {
+          const entries = groupedData[day][timeSlot];
+          const cellData = entries.map((entry) => `${entry.time_table_block_subject} - ${entry.time_table_block_faculty}`);
+          rowData.push(cellData.join('\n'));
+        } else {
+          rowData.push('');
+        }
+      });
+      return rowData;
+    });
+
+    doc.autoTable({
+      head: tableColumns,
+      body: tableData,
+      startY: 20,
+      styles: {
+        cellPadding: 4,
+        fontSize: 10,
+        halign: 'center',
+      },
+      columnStyles: {
+        0: { fontStyle: 'bold' },
+      },
+      margin: { top: 30 },
+    });
+
+    doc.save('timetable.pdf');
+  }
 
   return (
     <div>
-      <button onClick={generatePDF}>Download PDF</button>
       <div className="timetable">
         <table ref={tableRef}>
           <thead>
@@ -90,6 +139,10 @@ function TimeTable({ data, timetableId, onEditClick }) {
             ))}
           </tbody>
         </table>
+      </div>
+      <div>
+        <button onClick={downloadExcel}>Download Excel</button>
+        <button onClick={downloadPDF}>Download PDF</button>
       </div>
     </div>
   );
