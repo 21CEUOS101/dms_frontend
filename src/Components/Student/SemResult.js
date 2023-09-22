@@ -197,6 +197,7 @@ const SemResult = () => {
         "cpi": 7.13,
         "result_status": "Pass"
       };
+      
       const renderValue = (value) => {
         if (Array.isArray(value)) {
           return value.join(', ');
@@ -206,32 +207,98 @@ const SemResult = () => {
         return value;
       };
     
-      const tableRows = [];
-  
-        for (const field in studentData) {
-            if (studentData.hasOwnProperty(field)) {
-            const values = Array.isArray(studentData[field]) ? studentData[field] : [studentData[field]];
-            for (const value of values) {
-                tableRows.push(
-                <tr key={`${field}-${value}`}>
-                    <th>{field}</th>
-                    <td>{renderValue(value)}</td>
+      const aliasMapping = {
+        "_id": "ID",
+        "student_id": "Stdnt ID",
+        "semester": "Semester",
+        "batch_year": "Batch Yr",
+        "subject_code": "Sub Code",
+        "subject_name": "Sub Name",
+        "sessional1_marks": "Sess 1 Mk",
+        "sessional2_marks": "Sess 2 Mk",
+        "sessional3_marks": "Sess 3 Mk",
+        "sessional1_present": "Sess 1 Pr",
+        "sessional2_present": "Sess 2 Pr",
+        "sessional3_present": "Sess 3 Pr",
+        "sessional1_attendance": "Sess 1 At",
+        "sessional2_attendance": "Sess 2 At",
+        "sessional3_attendance": "Sess 3 At",
+        "sessional1_total_attendance": "Sess 1 T At",
+        "sessional2_total_attendance": "Sess 2 T At",
+        "sessional3_total_attendance": "Sess 3 T At",
+        "sessional1_practical_attendance": "Sess 1 P At",
+        "sessional2_practical_attendance": "Sess 2 P At",
+        "sessional3_practical_attendance": "Sess 3 P At",
+        "sessional1_total_practical_attendance": "Sess 1 T P At",
+        "sessional2_total_practical_attendance": "Sess 2 T P At",
+        "sessional3_total_practical_attendance": "Sess 3 T P At",
+        "block_marks": "Block Mk",
+        "block_present": "Block Pr",
+        "external_marks": "Ext Mk",
+        "external_status": "Ext Sts",
+        "avg_sessional_marks": "Avg Sess Mk",
+        "sessional_status": "Sess Sts",
+        "avg_practical_marks": "Avg Prac Mk",
+        "practical_status": "Prac Sts",
+        "termwork_marks": "Term Mk",
+        "termwork_status": "Term Sts",
+        "total_marks": "Total Mk",
+        "max_total_marks": "Max Total",
+        "subject_points": "Subj Pts",
+        "subject_grade": "Subj Grd",
+        "subject_credit": "Subj Crd",
+        "subject_status": "Subj Sts",
+        "spi_credit": "SPI Crd",
+        "spi_points": "SPI Pts",
+        "spi": "SPI",
+        "cpi_credit": "CPI Crd",
+        "cpi_points": "CPI Pts",
+        "cpi": "CPI",
+        "result_status": "Rslt Sts",
+        // Add alias for other fields here...
+      };
+      
+      const excludeFields = ["_id", "student_id", "semester", "batch_year"];
+
+      return (
+        <div>
+          <h1>Student Data</h1>
+          <div>
+            <h2>Student ID: {studentData.student_id}</h2>
+          </div>
+          <div>
+            <h2>Semester: {studentData.semester}</h2>
+          </div>
+          <div>
+            <h2>Batch Year: {studentData.batch_year}</h2>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(studentData)
+                  .filter((fieldName) => !excludeFields.includes(fieldName))
+                  .map((fieldName) => (
+                    <th key={`header-${fieldName}`}>{aliasMapping[fieldName] || fieldName}</th>
+                  ))}
+              </tr>
+            </thead>
+            <tbody>
+              {studentData.subject_code.map((subjectCode, index) => (
+                <tr key={`data-${subjectCode}`}>
+                  <td>{subjectCode}</td>
+                  <td>{studentData.subject_name[index]}</td>
+                  {Object.keys(studentData)
+                    .filter((fieldName) => !excludeFields.includes(fieldName))
+                    .map((fieldName) => (
+                      <td key={`data-${fieldName}`}>{renderValue(studentData[fieldName][index])}</td>
+                    ))}
                 </tr>
-                );
-            }
-            }
-        }
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    };
     
+    export default SemResult;
     
-
-  return (
-    <div>
-    <h1>Student Data</h1>
-    <table>
-      <tbody>{tableRows}</tbody>
-    </table>
-  </div>
-  );
-};
-
-export default SemResult;
