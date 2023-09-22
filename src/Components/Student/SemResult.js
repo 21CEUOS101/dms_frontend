@@ -258,7 +258,7 @@ const SemResult = () => {
         // Add alias for other fields here...
       };
       
-      const excludeFields = ["_id", "student_id", "semester", "batch_year"];
+      const excludeFields = ["_id", "student_id", "semester", "batch_year" , "spi_credit", "spi_points", "spi", "cpi_credit", "cpi_points", "cpi", "result_status"];
 
       const tableHeader = (
         <thead>
@@ -297,7 +297,30 @@ const SemResult = () => {
           <table>
             {tableHeader}
             <tbody>{tableRows}</tbody>
-          </table>
+              </table>
+            
+            <div>
+                <h2>SPI Credit : {studentData.spi_credit}</h2>
+            </div>
+            <div>
+                <h2>SPI Points : {studentData.spi_points}</h2>
+            </div>
+            <div>
+                <h2>SPI : {studentData.spi}</h2>
+            </div>    
+            <div>
+                <h2>CPI Credit : {studentData.cpi_credit}</h2>
+            </div>    
+            <div>
+                <h2>CPI Points : {studentData.cpi_points}</h2>
+            </div>
+            <div>
+                <h2>CPI : {studentData.cpi}</h2>
+            </div>
+            <div>
+                <h2>Result Status : {studentData.result_status}</h2>
+            </div>  
+            
         </div>
       );
     };
