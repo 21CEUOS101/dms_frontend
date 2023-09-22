@@ -44,6 +44,8 @@ import Dashboard_Tpo from './Components/TPO/Dashboard_Tpo';
 import Dashboard_Tto from './Components/TTO/Dashboard_Tto';
 import axios from 'axios';
 import View_TimeTable from './Components/TTO/View_TimeTable';
+import Display_Course from './Components/Student/Display_Course';
+import SemResult from './Components/Student/SemResult';
 export const AppContext = createContext();
 
 function App() {
@@ -122,6 +124,8 @@ function App() {
           <Route path='/dashboard-tpo' element={<Dashboard_Tpo />} />
           <Route path='/dashboard-tto' element={<Dashboard_Tto />} />
           <Route path='/display-timetable' element={<View_TimeTable />} />
+          <Route path='/current-course' element={<Display_Course />} />
+          <Route path='/sem-result' element={<SemResult />} />
         </Routes>
       </Router>
       </div>

@@ -85,73 +85,73 @@ function HOD_Form() {
 
 
   return (
-    <div class="col-xxl">
-        <div class="card mb-4">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <h5 class="mb-0">HODDetails Form</h5>
-                <small class="text-muted float-end">Default label</small>
+    <div className="col-xxl">
+        <div className="card mb-4 h-auto w-fit">
+            <div className="card-header d-flex align-items-center justify-content-between">
+                <h5 className="mb-0">HODDetails Form</h5>
+                <small className="text-muted float-end">Default label</small>
             </div>
-            <div class="card-body">
-                <form onSubmit={handleSubmit(onSubmit)} method="POST">
-                    <div class="row mb-3">
-                        <label class="col-sm-5 col-form-label" for="hod_id">HOD ID:</label>
-                        <div class="col-sm-10">
-                              <input type="text" class="form-control" id="hod_id" name="hod_id" required {...register("hod_id")} />
+            <div className="card-body">
+                <form onSubmit={handleSubmit(onSubmit)} method="POST" className=''>
+                    <div className="row mb-3">
+                        <label className="col-sm-5 col-form-label" for="hod_id">HOD ID:</label>
+                        <div className="col-sm-10">
+                              <input type="text" className="form-control" id="hod_id" name="hod_id" required {...register("hod_id")} />
                               <p className='text-danger'>{errors?.hod_id?.message}</p>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-5 col-form-label" for="hod_name">HOD Name:</label>
-                        <div class="col-sm-10">
-                              <input type="text" class="form-control" id="hod_name" name="hod_name" required {...register("hod_name")} />
+                    <div className="row mb-3">
+                        <label className="col-sm-5 col-form-label" for="hod_name">HOD Name:</label>
+                        <div className="col-sm-10">
+                              <input type="text" className="form-control" id="hod_name" name="hod_name" required {...register("hod_name")} />
                                 <p className='text-danger'>{errors?.hod_name?.message}</p>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-5 col-form-label" for="hod_email">HOD Email:</label>
-                        <div class="col-sm-10">
-                              <input type="email" class="form-control" id="hod_email" name="hod_email" required {...register("hod_email")} />
+                    <div className="row mb-3">
+                        <label className="col-sm-5 col-form-label" for="hod_email">HOD Email:</label>
+                        <div className="col-sm-10">
+                              <input type="email" className="form-control" id="hod_email" name="hod_email" required {...register("hod_email")} />
                                 <p className='text-danger'>{errors?.hod_email?.message}</p>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-5 col-form-label" for="hod_mobile_number">HOD Mobile Number:</label>
-                        <div class="col-sm-10">
-                              <input type="tel" class="form-control phone-mask" id="hod_mobile_number" name="hod_mobile_number" required {...register("hod_mobile_number")} />
+                    <div className="row mb-3">
+                        <label className="col-sm-5 col-form-label" for="hod_mobile_number">HOD Mobile Number:</label>
+                        <div className="col-sm-10">
+                              <input type="tel" className="form-control phone-mask" id="hod_mobile_number" name="hod_mobile_number" required {...register("hod_mobile_number")} />
                                 <p className='text-danger'>{errors?.hod_mobile_number?.message}</p>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-5 col-form-label" for="hod_experience">HOD Experience:</label>
-                        <div class="col-sm-10">
-                              <input type="number" class="form-control" id="hod_experience" name="hod_experience" required {...register("hod_experience")} />
+                    <div className="row mb-3">
+                        <label className="col-sm-5 col-form-label" for="hod_experience">HOD Experience:</label>
+                        <div className="col-sm-10">
+                              <input type="number" className="form-control" id="hod_experience" name="hod_experience" required {...register("hod_experience")} />
                                 <p className='text-danger'>{errors?.hod_experience?.message}</p>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-5 col-form-label" for="hod_qualification">HOD Qualification:</label>
-                        <div class="col-sm-10">
-                              <input type="text" class="form-control" id="hod_qualification" name="hod_qualification" required {...register("hod_qualification")} />
+                    <div className="row mb-3">
+                        <label className="col-sm-5 col-form-label" for="hod_qualification">HOD Qualification:</label>
+                        <div className="col-sm-10">
+                              <input type="text" className="form-control" id="hod_qualification" name="hod_qualification" required {...register("hod_qualification")} />
                                 <p className='text-danger'>{errors?.hod_qualification?.message}</p>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-5 col-form-label" for="hod_designation">HOD Designation:</label>
-                        <div class="col-sm-10">
-                              <input type="text" class="form-control" id="hod_designation" name="hod_designation" required {...register("hod_designation")} />
+                    <div className="row mb-3">
+                        <label className="col-sm-5 col-form-label" for="hod_designation">HOD Designation:</label>
+                        <div className="col-sm-10">
+                              <input type="text" className="form-control" id="hod_designation" name="hod_designation" required {...register("hod_designation")} />
                                 <p className='text-danger'>{errors?.hod_designation?.message}</p>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-sm-5 col-form-label" for="hod_department">HOD Department:</label>
-                        <div class="col-sm-10">
-                              <input type="text" class="form-control" id="hod_department" name="hod_department" required {...register("hod_department")} />
+                    <div className="row mb-3">
+                        <label className="col-sm-5 col-form-label" for="hod_department">HOD Department:</label>
+                        <div className="col-sm-10">
+                              <input type="text" className="form-control" id="hod_department" name="hod_department" required {...register("hod_department")} />
                                 <p className='text-danger'>{errors?.hod_department?.message}</p>
                         </div>
                     </div>
-                    <div class="row justify-content-end">
-                        <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                    <div className="row justify-content-center">
+                        <div className="col-sm-10">
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </div>
                       </div>
                         {status !== undefined && <p>{status}</p>}

@@ -4,15 +4,20 @@ import { useParams } from 'react-router-dom';
 import Profile from '../Profile';
 
 function Display_Course() {
-    
+  // const role = localStorage.getItem("role");
+  const role = "student";
+  // const id = localStorage.getItem("id");
+  const id = "123456789";
   const [data, setData] = useState();
+  
 
-//   const getData = () => {
-//     axios.get(`http://localhost:3001/tto/getSpecificTTODetails/${id}`).then((data) => {
-//       console.log(data?.data);
-//       setData(data?.data);
-//     })
-//   }
+
+  const getData = () => {
+    axios.get(`http://localhost:3001/${role}/getCourseForCurrentSemester/${id}`).then((data) => {
+      console.log(data?.data);
+      setData(data?.data);
+    });
+  }
 
   useEffect(() => {
     getData();
@@ -22,7 +27,7 @@ function Display_Course() {
       <div>Display_Course</div>
       <div>
               {
-        //   data !== undefined && <Profile data={data}/>
+                  data !== undefined && data != null && <Profile data={data?.courseDetails[0]}/>
               }
       </div>
     </>
