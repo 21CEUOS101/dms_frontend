@@ -61,7 +61,7 @@ function TPO_Form() {
       (error) => {
         if (error.message === "Request failed with status code 404")
         {
-          alert("You are not allowed to add Faculty Details");
+          alert("You are not allowed to add TPO Details");
         }
         else
         {
