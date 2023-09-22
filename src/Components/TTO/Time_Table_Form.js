@@ -1,72 +1,65 @@
-import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import '../form.css';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 
-function Time_Table_Form() {
-  const [data, setData] = useState(null);
-  const [status, setStatus] = useState("");
-  const [error, setError] = useState("");
+function TimeTableBlockForm() {
+  const [data, setData] = useState({});
+  const [status, setStatus] = useState('');
+  const [error, setError] = useState();
 
   const schema = yup.object().shape({
-    time_table_block_id: yup
-      .string()
-      .required("Time Table Block ID is required"),
-    time_table_id: yup.string().required("Time Table ID is required"),
-    time_table_block_day: yup.string().required("Day is required"),
-    time_table_block_time: yup.string().required("Time is required"),
-    time_table_block_subject: yup.string().required("Subject is required"),
-    time_table_block_faculty: yup.string().required("Faculty is required"),
-    time_table_block_room_no: yup.string().required("Room Number is required"),
-    time_table_block_department: yup
-      .string()
-      .required("Department is required"),
-    time_table_block_semester: yup.string().required("Semester is required"),
-    time_table_block_section: yup.string().required("Section is required"),
-    time_table_block_section_no: yup
-      .string()
-      .required("Section Number is required"),
+    time_table_block_id: yup.string().required('ID is required'),
+    time_table_id: yup.string().required('Time Table ID is required'),
+    time_table_block_day: yup.string().required('Day is required'),
+    time_table_block_time: yup.string().required('Time is required'),
+    time_table_block_subject: yup.string().required('Subject is required'),
+    time_table_block_faculty: yup.string().required('Faculty is required'),
+    time_table_block_room_no: yup.string().required('Room Number is required'),
+    time_table_block_department: yup.string().required('Department is required'),
+    time_table_block_semester: yup.string().required('Semester is required'),
+    time_table_block_section: yup.string().required('Section is required'),
+    time_table_block_section_no: yup.string().required('Section Number is required'),
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = (data) => {
+    console.log(data);
     setData(data);
     reset();
   };
 
   const createTimeTableBlock = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/tto/addTimeTableBlockDetails",
-        data
-      );
-      setStatus(response.data.message);
-      setError("");
-    } catch (err) {
-      setError(err.message || "An error occurred.");
-      setStatus("");
-    }
+    console.log('createTimeTableBlock');
+    await axios.post('http://localhost:3001/tto/addTimeTableBlockDetails', data).then(
+      (data) => {
+        console.log(data?.data);
+        if (data?.data?.message?.errors !== undefined) {
+          setError(data?.data?.message?._message);
+        } else {
+          setStatus(data?.data?.message);
+          setTimeout(() => {
+            setStatus('');
+          }, 2000);
+        }
+      },
+      (error) => {
+        console.log(JSON.stringify(error));
+      }
+    );
   };
 
   useEffect(() => {
-    if (data) {
+    if (data !== undefined && data !== null) {
+      console.log(JSON.stringify(data));
       createTimeTableBlock();
     }
   }, [data]);
-
-  useEffect(() => {
-    setStatus("");
-    setError("");
-  }, [error]);
 
   return (
     <div className="col-xxl">
@@ -78,259 +71,95 @@ function Time_Table_Form() {
         <div className="card-body">
           <form onSubmit={handleSubmit(onSubmit)} method="POST">
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_id"
-              >
-                Time Table Block ID:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_id">Time Table Block ID:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_id"
-                  name="time_table_block_id"
-                  required
-                  {...register("time_table_block_id")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_id?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_id" name="time_table_block_id" required {...register("time_table_block_id")} />
+                <p className="text-danger">{errors?.time_table_block_id?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_id"
-              >
-                Time Table ID:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_id">Time Table ID:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_id"
-                  name="time_table_id"
-                  required
-                  {...register("time_table_id")}
-                />
+                <input type="text" className="form-control" id="time_table_id" name="time_table_id" required {...register("time_table_id")} />
                 <p className="text-danger">{errors?.time_table_id?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_day"
-              >
-                Day:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_day">Day:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_day"
-                  name="time_table_block_day"
-                  required
-                  {...register("time_table_block_day")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_day?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_day" name="time_table_block_day" required {...register("time_table_block_day")} />
+                <p className="text-danger">{errors?.time_table_block_day?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_time"
-              >
-                Time:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_time">Time:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_time"
-                  name="time_table_block_time"
-                  required
-                  {...register("time_table_block_time")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_time?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_time" name="time_table_block_time" required {...register("time_table_block_time")} />
+                <p className="text-danger">{errors?.time_table_block_time?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_subject"
-              >
-                Subject:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_subject">Subject:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_subject"
-                  name="time_table_block_subject"
-                  required
-                  {...register("time_table_block_subject")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_subject?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_subject" name="time_table_block_subject" required {...register("time_table_block_subject")} />
+                <p className="text-danger">{errors?.time_table_block_subject?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_faculty"
-              >
-                Faculty:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_faculty">Faculty:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_faculty"
-                  name="time_table_block_faculty"
-                  required
-                  {...register("time_table_block_faculty")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_faculty?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_faculty" name="time_table_block_faculty" required {...register("time_table_block_faculty")} />
+                <p className="text-danger">{errors?.time_table_block_faculty?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_room_no"
-              >
-                Room Number:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_room_no">Room Number:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_room_no"
-                  name="time_table_block_room_no"
-                  required
-                  {...register("time_table_block_room_no")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_room_no?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_room_no" name="time_table_block_room_no" required {...register("time_table_block_room_no")} />
+                <p className="text-danger">{errors?.time_table_block_room_no?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_department"
-              >
-                Department:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_department">Department:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_department"
-                  name="time_table_block_department"
-                  required
-                  {...register("time_table_block_department")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_department?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_department" name="time_table_block_department" required {...register("time_table_block_department")} />
+                <p className="text-danger">{errors?.time_table_block_department?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_semester"
-              >
-                Semester:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_semester">Semester:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_semester"
-                  name="time_table_block_semester"
-                  required
-                  {...register("time_table_block_semester")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_semester?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_semester" name="time_table_block_semester" required {...register("time_table_block_semester")} />
+                <p className="text-danger">{errors?.time_table_block_semester?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_section"
-              >
-                Section:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_section">Section:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_section"
-                  name="time_table_block_section"
-                  required
-                  {...register("time_table_block_section")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_section?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_section" name="time_table_block_section" required {...register("time_table_block_section")} />
+                <p className="text-danger">{errors?.time_table_block_section?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="time_table_block_section_no"
-              >
-                Section Number:
-              </label>
+              <label className="col-sm-5 col-form-label" htmlFor="time_table_block_section_no">Section Number:</label>
               <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="time_table_block_section_no"
-                  name="time_table_block_section_no"
-                  required
-                  {...register("time_table_block_section_no")}
-                />
-                <p className="text-danger">
-                  {errors?.time_table_block_section_no?.message}
-                </p>
+                <input type="text" className="form-control" id="time_table_block_section_no" name="time_table_block_section_no" required {...register("time_table_block_section_no")} />
+                <p className="text-danger">{errors?.time_table_block_section_no?.message}</p>
               </div>
             </div>
-
             <div className="row justify-content-end">
               <div className="col-sm-10">
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
+                <button type="submit" className="btn btn-primary">Submit</button>
               </div>
             </div>
-            {status && <p>{status}</p>}
-            {error && <p className="text-danger">{error}</p>}
+            {status !== '' && <p>{status}</p>}
+            {error !== undefined && <p className="text-danger">{error}</p>}
           </form>
         </div>
       </div>
     </div>
   );
+  
 }
 
-export default Time_Table_Form;
+export default TimeTableBlockForm;
