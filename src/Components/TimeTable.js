@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 import './TimeTable.css';
 
 // Define time slots
@@ -24,7 +26,8 @@ function findClosestTimeSlot(time) {
   return timeSlots.find((slot) => slot === time) || timeSlots[0];
 }
 
-function TimeTable({ data , timetableId }) {
+function TimeTable({ data, timetableId }) {
+  const tableRef = useRef(null);
 
   const filteredData = data.filter((entry) => entry.time_table_id === timetableId);
   // Group data by day and time
@@ -48,41 +51,57 @@ function TimeTable({ data , timetableId }) {
   // Define days
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
+  const generatePDF = () => {
+    // Capture the table element using html2canvas
+    html2canvas(tableRef.current).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('landscape');
+      const imgWidth = 208;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      pdf.save('timetable.pdf');
+    });
+  };
+
   return (
-    <div className="timetable">
-      <table>
-        <thead>
-          <tr>
-            <th>Time</th>
-            {days.map((day) => (
-              <th key={day}>{day}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {timeSlots.map((timeSlot, index) => (
-            <tr key={index}>
-              <td>{timeSlot}</td>
+    <div>
+      <button onClick={generatePDF}>Download PDF</button>
+      <div className="timetable">
+        <table ref={tableRef}>
+          <thead>
+            <tr>
+              <th>Time</th>
               {days.map((day) => (
-                <td key={day}>
-                  {groupedData[day] && groupedData[day][timeSlot] ? (
-                    groupedData[day][timeSlot].map((entry) => (
-                      <div className="timetable-entry" key={entry.time_table_block_id}>
-                        <p>{entry.time_table_block_subject}</p>
-                        <p>{entry.time_table_block_faculty}</p>
-                        <p>{entry.time_table_block_room_no}</p>
-                      </div>
-                    ))
-                  ) : (
-                    ''
-                  )}
-                </td>
+                <th key={day}>{day}</th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {timeSlots.map((timeSlot, index) => (
+              <tr key={index}>
+                <td>{timeSlot}</td>
+                {days.map((day) => (
+                  <td key={day}>
+                    {groupedData[day] && groupedData[day][timeSlot] ? (
+                      groupedData[day][timeSlot].map((entry) => (
+                        <div className="timetable-entry" key={entry.time_table_block_id}>
+                          <p>{entry.time_table_block_subject}</p>
+                          <p>{entry.time_table_block_faculty}</p>
+                          <p>{entry.time_table_block_room_no}</p>
+                        </div>
+                      ))
+                    ) : (
+                      ''
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
+
 export default TimeTable;
