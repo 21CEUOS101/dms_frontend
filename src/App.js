@@ -46,7 +46,6 @@ import axios from 'axios';
 import View_TimeTable from './Components/TTO/View_TimeTable';
 import Display_Course from './Components/Student/Display_Course';
 import SemResult from './Components/Student/SemResult';
-import Make_Announcement from './Components/MakeAnnouncement';
 import Update_Time_Table from './Components/TTO/Update_Time_Table';
 export const AppContext = createContext();
 
@@ -128,7 +127,6 @@ function App() {
           <Route path='/display-timetable' element={<View_TimeTable />} />
           <Route path='/current-course' element={<Display_Course />} />
           <Route path='/sem-result' element={<SemResult />} />
-          <Route path='/make-announcement' element={<Make_Announcement />} />
           <Route path='/update-timetable/:bid/:ttid' element={<Update_Time_Table />} />
         </Routes>
       </Router>
