@@ -1,10 +1,9 @@
 import { Navbar, Group, Code, ScrollArea, createStyles, rem } from '@mantine/core';
 import {
-  IconNotes,
-  IconCalendarStats,
-  IconGauge,
   IconHome,
-  IconSchool,
+  IconMan,
+  IconBook,
+  IconMail
 } from '@tabler/icons-react';
 import { UserButton } from './UserButton';
 import { LinksGroup } from './NavbarLinksGroup';
@@ -50,10 +49,10 @@ export function NavbarNested() {
   const { role } = useContext(AppContext);
 
   const mockdata = [
-    { label: 'Dashboard', icon: IconHome , link: `/dashboard-${role}`},
+    { label: 'Dashboard', icon: IconHome, links: [{link : `/dashboard-${role}` , label : 'Home'}]  },
     {
       label: 'Student',
-      icon: IconSchool,
+      icon: IconMan,
       initiallyOpened: true,
       links: [
         ["admin"].includes(role) && { label: 'Add Student', link: '/create-student' },
@@ -66,7 +65,7 @@ export function NavbarNested() {
     },
     {
       label: 'HOD',
-      icon: IconSchool,
+      icon: IconMan,
       initiallyOpened: true,
       links: [
         ["hod"].includes(role) && { label: 'Add HOD', link: '/create-hod' },
@@ -75,7 +74,7 @@ export function NavbarNested() {
     },
     {
       label: 'Faculty',
-      icon: IconCalendarStats,
+      icon: IconMan,
       links: [
         ["admin"].includes(role) && { label: 'Add Faculty', link: '/create-faculty' },
         ["hod","faculty","admin"].includes(role) && { label: 'View Faculty', link: '/all-faculty' },
@@ -83,7 +82,7 @@ export function NavbarNested() {
     },
     {
       label: 'Admin',
-      icon: IconCalendarStats,
+      icon: IconMan,
       links: [
         ["hod"].includes(role) && { label: 'Add Admin', link: '/create-admin' },
         ["admin","hod"].includes(role) && { label: 'View Admin', link: '/all-admin' },
@@ -91,7 +90,7 @@ export function NavbarNested() {
     },
     {
       label: 'TPO',
-      icon: IconCalendarStats,
+      icon: IconMan,
       links: [
         ["admin"].includes(role) && { label: 'Add TPO', link: '/create-tpo' },
         ["admin","hod","tpo"].includes(role) && { label: 'View TPO', link: '/all-tpo' },
@@ -101,7 +100,7 @@ export function NavbarNested() {
     },
     {
       label: 'TTO',
-      icon: IconCalendarStats,
+      icon: IconMan,
       links: [
         ["admin"].includes(role) && { label: 'Add TTO', link: '/create-tto' },
         ["admin","tto","hod"].includes(role) && { label: 'View TTO', link: '/all-tto' },
@@ -111,14 +110,14 @@ export function NavbarNested() {
     },
     {
       label: 'Course',
-      icon: IconCalendarStats,
+      icon: IconBook,
       links: [
         ["admin"].includes(role) && { label: 'Create Course', link: '/create-course' },
         ["student"].includes(role) && { label: 'View Current Course', link: '/current-course' },
         ["admin","hod","student","faculty"].includes(role) && { label: 'View Courses', link: '/all-course' },
       ].filter((item) => item !== false),
     },
-    { label: 'Make Announcement', icon: IconGauge },
+    { label: 'Make Announcement', icon: IconMail , links: [{link : '/make-announcement' , label : 'Make email'}] },
 
   ];
   

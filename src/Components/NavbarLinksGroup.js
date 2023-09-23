@@ -56,16 +56,16 @@ export function LinksGroup({ icon: Icon, label, initiallyOpened, links }) {
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft;
-  const items = (hasLinks ? links : []).map((link) => (
+  let items = (hasLinks ? links : []).map((link) => (
     <>
-    <Link
-      to={link.link} // Use the "to" attribute for routing
-      className={classes.link}
-      key={link.label} // Provide a unique key using link.label
-    >
-      {link.label}
-    </Link>
-    </>  
+      <Link
+        to={link.link} // Use the "to" attribute for routing
+        className={classes.link}
+        key={link.label} // Provide a unique key using link.label
+      >
+        {link.label}
+      </Link>
+    </>
   ));
 
   return (
