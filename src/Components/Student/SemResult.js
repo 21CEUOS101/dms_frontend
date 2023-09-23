@@ -1,82 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./result.css";
+import { useParams } from "react-router-dom";
 
 const SemResult = () => {
+  const { id } = useParams();
   const [selectedSemester, setSelectedSemester] = useState(null);
   const [showInternal, setShowInternal] = useState(false);
   const [showExternal, setShowExternal] = useState(false);
-
-  const studentData = {
-    _id: {
-      $oid: "650699cb5630e430ab3b7a2f",
-    },
-    student_id: "54321",
-    semester: 1,
-    batch_year: 2023,
-    subject_code: ["SUB001", "SUB002", "SUB003"],
-    subject_name: ["Mathematics", "Physics", "Chemistry"],
-    sessional1_marks: [85, 80, 90],
-    sessional2_marks: [75, 77, 82],
-    sessional3_marks: [88, 84, 86],
-    sessional1_present: ["Yes", "Yes", "Yes"],
-    sessional2_present: ["Yes", "Yes", "Yes"],
-    sessional3_present: ["Yes", "Yes", "Yes"],
-    sessional1_attendance: [92, 89, 93],
-    sessional2_attendance: [90, 87, 94],
-    sessional3_attendance: [87, 91, 95],
-    sessional1_total_attendance: [300, 300, 300],
-    sessional2_total_attendance: [300, 300, 300],
-    sessional3_total_attendance: [300, 300, 300],
-    sessional1_practical_attendance: [91, 86, 89],
-    sessional2_practical_attendance: [89, 93, 91],
-    sessional3_practical_attendance: [87, 91, 93],
-    sessional1_total_practical_attendance: [300, 300, 300],
-    sessional2_total_practical_attendance: [300, 300, 300],
-    sessional3_total_practical_attendance: [300, 300, 300],
-    block_marks: [72, 76, 81],
-    block_present: ["Yes", "Yes", "Yes"],
-    external_marks: [86, 89, 92],
-    external_status: ["Pass", "Pass", "Pass"],
-    avg_sessional_marks: [84.33, 80.33, 86],
-    sessional_status: ["Pass", "Pass", "Pass"],
-    avg_practical_marks: [89.67, 90.67, 92],
-    practical_status: ["Pass", "Pass", "Pass"],
-    termwork_marks: [92, 94, 89],
-    termwork_status: ["Pass", "Pass", "Pass"],
-    total_marks: [339, 346, 357],
-    max_total_marks: [500, 500, 500],
-    subject_points: [6.78, 7.5, 8.1],
-    subject_grade: ["B+", "A", "A+"],
-    subject_credit: [3, 4, 3],
-    subject_status: ["Pass", "Pass", "Pass"],
-    spi_credit: 10,
-    spi_points: 21.39,
-    spi: 7.13,
-    cpi_credit: 10,
-    cpi_points: 21.39,
-    cpi: 7.13,
-    result_status: "Pass",
-  };
-
-
-  const semesterDataAvailable = studentData.semester === selectedSemester;
-
-  const handleSemesterChange = (event) => {
-    const selectedSemester = parseInt(event.target.value);
-    setSelectedSemester(selectedSemester);
-    setShowInternal(false);
-    setShowExternal(false);
-  };
-
-  const handleOptionClick = (option) => {
-    if (option === "Internal") {
-      setShowInternal(true);
-      setShowExternal(false);
-    } else if (option === "External") {
-      setShowInternal(false);
-      setShowExternal(true);
-    }
-  };
+  const [studentExamResults, setStudentExamResults] = useState([]);
+  const [studentData, setStudentData] = useState(null);
 
   const renderValue = (value) => {
     if (Array.isArray(value)) {
@@ -86,6 +19,22 @@ const SemResult = () => {
     }
     return value;
   };
+
+  // Fetch student exam results from the server on component mount
+  const preData = async () => {
+    console.log("Hello" + id);
+    axios
+      .get(`http://localhost:3001/student/getStudentExamResult/${id}`)
+      .then((response) => {
+        setStudentExamResults(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching student exam results: ", error);
+      });
+  };
+  useEffect(() => {
+    preData();
+  }, []);
 
   const aliasMapping = {
     _id: "ID",
@@ -135,7 +84,7 @@ const SemResult = () => {
     cpi_points: "CPI Pts",
     cpi: "CPI",
     result_status: "Rslt Sts",
-    // Add alias for other fields here...
+    // Add mappings for other fields as needed...
   };
 
   const includeFieldsFirstTable = [
@@ -175,7 +124,7 @@ const SemResult = () => {
     </thead>
   );
 
-  const tableRowsFirstTable = studentData.subject_code.map(
+  const tableRowsFirstTable = studentData?.subject_code.map(
     (subjectCode, index) => (
       <tr key={`data-${subjectCode}`}>
         {includeFieldsFirstTable.map((fieldName) => (
@@ -218,7 +167,7 @@ const SemResult = () => {
     </thead>
   );
 
-  const tableRowsSecondTable = studentData.subject_code.map(
+  const tableRowsSecondTable = studentData?.subject_code.map(
     (subjectCode, index) => (
       <tr key={`data-${subjectCode}`}>
         {includeFieldsSecondTable.map((fieldName) => (
@@ -229,6 +178,39 @@ const SemResult = () => {
       </tr>
     )
   );
+  
+  const handleSemesterChange = (event) => {
+    const selectedSemester = parseInt(event.target.value);
+    setSelectedSemester(selectedSemester);
+    setShowInternal(false);
+    setShowExternal(false);
+
+    // Filter the student data for the selected semester
+    const filteredData = studentExamResults.find(
+      (result) => result.semester === selectedSemester
+    );
+
+    if (filteredData) {
+      setStudentData(filteredData);
+    } else {
+      // Handle the case when no data is found for the selected semester
+      setStudentData(null); // You can set it to null or an empty object as needed
+    }
+  };
+
+  const handleOptionClick = (option) => {
+    if (option === "Internal") {
+      setShowInternal(true);
+      setShowExternal(false);
+    } else if (option === "External") {
+      setShowInternal(false);
+      setShowExternal(true);
+    }
+  };
+
+  
+  
+
   return (
     <div>
       <h1>Student Data</h1>
@@ -238,7 +220,7 @@ const SemResult = () => {
         <label htmlFor="semesterSelect">Select Semester: </label>
         <select
           id="semesterSelect"
-          value={selectedSemester  || ""}
+          value={selectedSemester || ""}
           onChange={handleSemesterChange}
         >
           <option value={null}>Select Semester</option>
@@ -254,26 +236,22 @@ const SemResult = () => {
         </select>
       </div>
 
-      {semesterDataAvailable ? (
+      {studentData && (
         <div>
           {/* Buttons to toggle between internal and external */}
           <div>
-            <button onClick={() => handleOptionClick("Internal")}>Internal</button>
-            <button onClick={() => handleOptionClick("External")}>External</button>
+            <button onClick={() => handleOptionClick("Internal")}>
+              Internal
+            </button>
+            <button onClick={() => handleOptionClick("External")}>
+              External
+            </button>
           </div>
-        </div>
-      ) : (
-        <div>
-          {!semesterDataAvailable && selectedSemester !== null && (
-            <div className="unavailable-message">
-              Selected semester data is not available.
-            </div>
-          )}
         </div>
       )}
 
-      {/* Display the selected table if showInternal is true */}
-      {showInternal && semesterDataAvailable && (
+      {/* Render the selected table if showInternal is true */}
+      {showInternal && studentData && (
         <div>
           <h2>Internal Table for Semester {selectedSemester}</h2>
           <table>
@@ -283,8 +261,8 @@ const SemResult = () => {
         </div>
       )}
 
-      {/* Display the selected table if showExternal is true */}
-      {showExternal && semesterDataAvailable && (
+      {/* Render the selected table if showExternal is true */}
+      {showExternal && studentData && (
         <div>
           <h2>External Table for Semester {selectedSemester}</h2>
           <table>
@@ -292,26 +270,32 @@ const SemResult = () => {
             <tbody>{tableRowsSecondTable}</tbody>
           </table>
           <div>
-            <h2>SPI Credit : {studentData.spi_credit}</h2>
+            <h2>SPI Credit: {studentData.spi_credit}</h2>
           </div>
           <div>
-            <h2>SPI Points : {studentData.spi_points}</h2>
+            <h2>SPI Points: {studentData.spi_points}</h2>
           </div>
           <div>
-            <h2>SPI : {studentData.spi}</h2>
+            <h2>SPI: {studentData.spi}</h2>
           </div>
           <div>
-            <h2>CPI Credit : {studentData.cpi_credit}</h2>
+            <h2>CPI Credit: {studentData.cpi_credit}</h2>
           </div>
           <div>
-            <h2>CPI Points : {studentData.cpi_points}</h2>
+            <h2>CPI Points: {studentData.cpi_points}</h2>
           </div>
           <div>
-            <h2>CPI : {studentData.cpi}</h2>
+            <h2>CPI: {studentData.cpi}</h2>
           </div>
           <div>
-            <h2>Result Status : {studentData.result_status}</h2>
+            <h2>Result Status: {studentData.result_status}</h2>
           </div>
+        </div>
+      )}
+
+      {!studentData && (
+        <div className="unavailable-message">
+          Selected semester data is not available.
         </div>
       )}
     </div>

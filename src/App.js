@@ -126,7 +126,7 @@ function App() {
           <Route path='/dashboard-tto' element={<Dashboard_Tto />} />
           <Route path='/display-timetable' element={<View_TimeTable />} />
           <Route path='/current-course' element={<Display_Course />} />
-          <Route path='/sem-result' element={<SemResult />} />
+          <Route path='/sem-result/:id' element={<SemResult />} />
           <Route path='/update-timetable/:bid/:ttid' element={<Update_Time_Table />} />
         </Routes>
       </Router>
