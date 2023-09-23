@@ -50,6 +50,7 @@ import ErrorPage from './Components/ErrorPage';
 import NA from './Components/NA';
 import Display_Current_Course from './Components/Student/Display_Current_Course';
 import Update_Time_Table from './Components/TTO/Update_Time_Table';
+import LogOut from './Components/LogOut';
 export const AppContext = createContext();
 
 function App() {
@@ -84,7 +85,7 @@ function App() {
     <div className="App justify-start flex">
       <Router>
         <div className='inline h-full sticky'>
-          <NavbarNested/>
+          {isLoggedIn && <NavbarNested/>}
         </div>
         <Routes>
           <Route path="/" element={<h1>Home</h1>} />
@@ -133,7 +134,9 @@ function App() {
           <Route path='/display-course/:id' element={(isLoggedIn) ? ((["tto","student","hod"].includes(localStorage.getItem("role"))) ? <Display_Course/> : <NA/>) : <Login/>} />
           <Route path='/current-course' element={(isLoggedIn) ? ((["student","admin","hod","faculty","tto"].includes(localStorage.getItem("role"))) ? <Display_Current_Course/> : <NA/>) : <Login/>} />
           <Route path='/sem-result/:id' element = {(isLoggedIn) ? ((["student", "hod", "admin", "faculty"].includes(localStorage.getItem("role"))) ? <SemResult/> : <NA/ >) : <Login/>} / >
-          <Route path='/update-timetable/:bid/:ttid' element={(isLoggedIn) ? ((["tto"].includes(localStorage.getItem("role"))) ? <Update_Time_Table/> : <NA/ >) : <Login/>}  />
+          <Route path='/update-timetable/:bid/:ttid' element={(isLoggedIn) ? ((["tto"].includes(localStorage.getItem("role"))) ? <Update_Time_Table /> : <NA />) : <Login />} />
+          <Route path='/logout' element={isLoggedIn ? <LogOut/> : <Login/>} />
+            <Route path='*' element={<ErrorPage />} />
         </Routes>
       </Router>
       </div>
