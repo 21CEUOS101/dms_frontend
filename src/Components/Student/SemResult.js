@@ -235,7 +235,14 @@ const SemResult = () => {
           {/* Add more semester options as needed */}
         </select>
       </div>
-
+      
+      {/* Render "Select your sem" message if selectedSemester is null */}
+      {selectedSemester === null && (
+        <div className="select-semester-message">
+          Select your semester to view the results.
+        </div>
+      )}
+      
       {studentData && (
         <div>
           {/* Buttons to toggle between internal and external */}
@@ -293,7 +300,7 @@ const SemResult = () => {
         </div>
       )}
 
-      {!studentData && (
+      {selectedSemester !== null && studentData === null && (
         <div className="unavailable-message">
           Selected semester data is not available.
         </div>
