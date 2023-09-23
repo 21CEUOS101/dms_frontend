@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './TimeTable.css';
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
@@ -104,48 +105,52 @@ function TimeTable({ data, timetableId, onEditClick }) {
   }
 
   return (
-    <div>
-      <div className="timetable">
-        <table ref={tableRef}>
-          <thead>
-            <tr>
-              <th>Time</th>
-              {days.map((day) => (
-                <th key={day}>{day}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {timeSlots.map((timeSlot, index) => (
-              <tr key={index}>
-                <td>{timeSlot}</td>
+      <div>
+        <div className="timetable">
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                <th>Time</th>
                 {days.map((day) => (
-                  <td key={day}>
-                    {groupedData[day] && groupedData[day][timeSlot] ? (
-                      groupedData[day][timeSlot].map((entry) => (
-                        <div className="timetable-entry" key={entry.time_table_block_id}>
-                          <p>{entry.time_table_block_subject}</p>
-                          <p>{entry.time_table_block_faculty}</p>
-                          <p>{entry.time_table_block_room_no}</p>
-                          <button onClick={() => onEditClick(entry.time_table_id)}>Edit</button>
-                        </div>
-                      ))
-                    ) : (
-                      ''
-                    )}
-                  </td>
+                  <th key={day}>{day}</th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {timeSlots.map((timeSlot, index) => (
+                <tr key={index}>
+                  <td>{timeSlot}</td>
+                  {days.map((day) => (
+                    <td key={day}>
+                      {groupedData[day] && groupedData[day][timeSlot] ? (
+                        groupedData[day][timeSlot].map((entry) => (
+                          <div className="timetable-entry" key={entry.time_table_block_id}>
+                            <p>{entry.time_table_block_subject}</p>
+                            <p>{entry.time_table_block_faculty}</p>
+                            <p>{entry.time_table_block_room_no}</p>
+                            <Link
+                              to={`/update-timetable/${entry.time_table_block_id}/${entry.time_table_id}`}
+                            >
+                              Edit
+                            </Link>
+                          </div>
+                        ))
+                      ) : (
+                        ''
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <button onClick={downloadExcel}>Download Excel</button>
+          <button onClick={downloadPDF}>Download PDF</button>
+        </div>
       </div>
-      <div>
-        <button onClick={downloadExcel}>Download Excel</button>
-        <button onClick={downloadPDF}>Download PDF</button>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default TimeTable;
