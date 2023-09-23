@@ -10,7 +10,7 @@ import axios from 'axios';
 function Login() {
 
     const [data, setData] = useState();
-    const { isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+    const { isLoggedIn, setIsLoggedIn , role , setRole } = useContext(AppContext);
     const schema = yup.object().shape(
         {
             id: yup.string().required("Id is required").min(5),
@@ -47,7 +47,7 @@ function Login() {
                 localStorage.setItem("id", data?.data?.id);
                 localStorage.setItem("password", data?.data?.password);
                 console.log(localStorage.getItem("role"));
-                
+                setRole(localStorage.getItem("role"));
             }
             else
             {

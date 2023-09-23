@@ -18,6 +18,9 @@ function ViewAll(props) {
   const view_url = `/display${window.location.pathname.slice(4)}`;
   const update_url = `/update${window.location.pathname.slice(4)}`;
   const delete_url = `/delete${window.location.pathname.slice(4)}`;
+  const result_url = `/sem-result`;
+  const check = window.location.pathname.slice(5) === "student";
+  console.log(window.location.pathname.slice(5));
 
   const Delete = async (id) => {
     await axios
@@ -102,8 +105,9 @@ function ViewAll(props) {
               }
             })}
             <th>View</th>
-            <th>Update</th>
-            <th>Delete</th>
+            {["admin"].includes(role) &&<th>Update</th>}
+            {["admin"].includes(role) &&<th>Delete</th>}
+            {["admin","faculty","hod"] && check && <th>Result</th>}
           </tr>
         </thead>
         <tbody>
@@ -121,19 +125,24 @@ function ViewAll(props) {
                     View
                   </Link>
                 </td>
-                <td>
+                {["admin"].includes(role) && <td>
                   <Link className="view-button" to={`${update_url}/${id}`}>
                     Update
                   </Link>
-                </td>
-                <td>
+                </td>}
+                {["admin"].includes(role) && <td>
                   <button
                     className="view-button-delete"
                     onClick={() => Delete(id)}
                   >
                     Delete
                   </button>
-                </td>
+                </td>}
+                {["admin","faculty","hod"] && check && <td>
+                  <Link className="view-button" to={`${result_url}/${id}`} >
+                    Result
+                  </Link>
+                </td>}
               </tr>
             );
           })}

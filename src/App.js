@@ -56,6 +56,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   console.log(localStorage.getItem("id"));
 
+  const [role , setRole] = useState(localStorage.getItem("role"));
+
   const checkLogin = async () => {
 
     await axios.post('http://localhost:3001/login', {
@@ -78,7 +80,7 @@ function App() {
   console.log(isLoggedIn);
 
   return (
-    <AppContext.Provider value={{isLoggedIn , setIsLoggedIn}}>
+    <AppContext.Provider value={{isLoggedIn , setIsLoggedIn , role , setRole}}>
     <div className="App justify-start flex">
       <Router>
         <div className='inline h-full sticky'>

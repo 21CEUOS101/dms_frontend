@@ -8,82 +8,10 @@ import {
 } from '@tabler/icons-react';
 import { UserButton } from './UserButton';
 import { LinksGroup } from './NavbarLinksGroup';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../App';
 
-const role = localStorage.getItem("role");
 
-const mockdata = [
-  { label: 'Dashboard', icon: IconHome , link: `/dashboard-${role}`},
-  {
-    label: 'Student',
-    icon: IconSchool,
-    initiallyOpened: true,
-    links: [
-      ["admin"].includes(role) && { label: 'Add Student', link: '/create-student' },
-      ["admin","faculty","hod","tto","tpo"].includes(role) && { label: 'View Students', link: '/all-student' },
-      ["faculty"].includes(role) && { label: 'Marks Entry', link: '/marks-entry' },
-      ["student","admin","faculty","hod","tto","tpo"].includes(role) && { label: 'Exam Result', link: '/' },
-      ["hod","student","admin"].includes(role) && { label: 'Fees', link: '/' },
-      ["tto","student","admin","faculty","hod"].includes(role) && { label: 'View TimeTable', link: '/' },
-    ].filter((item) => item !== false),
-  },
-  {
-    label: 'HOD',
-    icon: IconSchool,
-    initiallyOpened: true,
-    links: [
-      ["hod"].includes(role) && { label: 'Add HOD', link: '/create-hod' },
-      ["hod","faculty","student"].includes(role) && { label: 'View HOD', link: '/all-hod' },
-    ].filter((item) => item !== false),
-  },
-  {
-    label: 'Faculty',
-    icon: IconCalendarStats,
-    links: [
-      ["admin"].includes(role) && { label: 'Add Faculty', link: '/create-faculty' },
-      ["hod","faculty","admin"].includes(role) && { label: 'View Faculty', link: '/all-faculty' },
-    ].filter((item) => item !== false),
-  },
-  {
-    label: 'Admin',
-    icon: IconCalendarStats,
-    links: [
-      ["hod"].includes(role) && { label: 'Add Admin', link: '/create-admin' },
-      ["admin","hod"].includes(role) && { label: 'View Admin', link: '/all-admin' },
-    ].filter((item) => item !== false),
-  },
-  {
-    label: 'TPO',
-    icon: IconCalendarStats,
-    links: [
-      ["admin"].includes(role) && { label: 'Add TPO', link: '/create-tpo' },
-      ["admin","hod","tpo"].includes(role) && { label: 'View TPO', link: '/all-tpo' },
-      ["tpo","hod","student"].includes(role) && { label: 'View Placement Company', link: '/all-placement-company' },
-      ["tpo"].includes(role) && { label: 'Add Placement Company', link: '/add-placement-company' },
-    ].filter((item) => item !== false),
-  },
-  {
-    label: 'TTO',
-    icon: IconCalendarStats,
-    links: [
-      ["admin"].includes(role) && { label: 'Add TTO', link: '/create-tto' },
-      ["admin","tto","hod"].includes(role) && { label: 'View TTO', link: '/all-tto' },
-      ["tto"].includes(role) && { label: 'View TimeTable', link: '/display-timetable' },
-      ["tto"].includes(role) && { label: 'Add TimeTable', link: '/add-timetable' },
-    ].filter((item) => item !== false),
-  },
-  {
-    label: 'Course',
-    icon: IconCalendarStats,
-    links: [
-      ["admin"].includes(role) && { label: 'Create Course', link: '/create-course' },
-      ["student"].includes(role) && { label: 'View Current Course', link: '/current-course' },
-      ["admin","hod","student","faculty"].includes(role) && { label: 'View Courses', link: '/all-course' },
-    ].filter((item) => item !== false),
-  },
-  { label: 'Make Announcement', icon: IconGauge },
-
-];
 
 const useStyles = createStyles((theme) => ({
 
@@ -118,6 +46,82 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function NavbarNested() {
+
+  const { role } = useContext(AppContext);
+
+  const mockdata = [
+    { label: 'Dashboard', icon: IconHome , link: `/dashboard-${role}`},
+    {
+      label: 'Student',
+      icon: IconSchool,
+      initiallyOpened: true,
+      links: [
+        ["admin"].includes(role) && { label: 'Add Student', link: '/create-student' },
+        ["admin","faculty","hod","tto","tpo"].includes(role) && { label: 'View Students', link: '/all-student' },
+        ["faculty"].includes(role) && { label: 'Marks Entry', link: '/marks-entry' },
+        ["student","admin","faculty","hod","tto","tpo"].includes(role) && { label: 'Exam Result', link: '/' },
+        ["hod","student","admin"].includes(role) && { label: 'Fees', link: '/' },
+        ["tto","student","admin","faculty","hod"].includes(role) && { label: 'View TimeTable', link: '/' },
+      ].filter((item) => item !== false),
+    },
+    {
+      label: 'HOD',
+      icon: IconSchool,
+      initiallyOpened: true,
+      links: [
+        ["hod"].includes(role) && { label: 'Add HOD', link: '/create-hod' },
+        ["hod","faculty","student"].includes(role) && { label: 'View HOD', link: '/all-hod' },
+      ].filter((item) => item !== false),
+    },
+    {
+      label: 'Faculty',
+      icon: IconCalendarStats,
+      links: [
+        ["admin"].includes(role) && { label: 'Add Faculty', link: '/create-faculty' },
+        ["hod","faculty","admin"].includes(role) && { label: 'View Faculty', link: '/all-faculty' },
+      ].filter((item) => item !== false),
+    },
+    {
+      label: 'Admin',
+      icon: IconCalendarStats,
+      links: [
+        ["hod"].includes(role) && { label: 'Add Admin', link: '/create-admin' },
+        ["admin","hod"].includes(role) && { label: 'View Admin', link: '/all-admin' },
+      ].filter((item) => item !== false),
+    },
+    {
+      label: 'TPO',
+      icon: IconCalendarStats,
+      links: [
+        ["admin"].includes(role) && { label: 'Add TPO', link: '/create-tpo' },
+        ["admin","hod","tpo"].includes(role) && { label: 'View TPO', link: '/all-tpo' },
+        ["tpo","hod","student"].includes(role) && { label: 'View Placement Company', link: '/all-placement-company' },
+        ["tpo"].includes(role) && { label: 'Add Placement Company', link: '/add-placement-company' },
+      ].filter((item) => item !== false),
+    },
+    {
+      label: 'TTO',
+      icon: IconCalendarStats,
+      links: [
+        ["admin"].includes(role) && { label: 'Add TTO', link: '/create-tto' },
+        ["admin","tto","hod"].includes(role) && { label: 'View TTO', link: '/all-tto' },
+        ["tto"].includes(role) && { label: 'View TimeTable', link: '/display-timetable' },
+        ["tto"].includes(role) && { label: 'Add TimeTable', link: '/add-timetable' },
+      ].filter((item) => item !== false),
+    },
+    {
+      label: 'Course',
+      icon: IconCalendarStats,
+      links: [
+        ["admin"].includes(role) && { label: 'Create Course', link: '/create-course' },
+        ["student"].includes(role) && { label: 'View Current Course', link: '/current-course' },
+        ["admin","hod","student","faculty"].includes(role) && { label: 'View Courses', link: '/all-course' },
+      ].filter((item) => item !== false),
+    },
+    { label: 'Make Announcement', icon: IconGauge },
+
+  ];
+  
   const { classes } = useStyles();
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
