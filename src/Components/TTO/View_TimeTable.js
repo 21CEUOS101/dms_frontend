@@ -53,9 +53,6 @@ const role = localStorage.getItem("role");
                         <div key={index}>
                             {data !== undefined && <TimeTable data={data} setRefresh={setRefresh} refresh={refresh} timetableId={value}/>}
                         </div>
-                        <div>
-                            <button onClick={() => print(value)}>Download</button>
-                        </div>
                     </>
                 );
             })
