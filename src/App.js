@@ -46,6 +46,9 @@ import axios from 'axios';
 import View_TimeTable from './Components/TTO/View_TimeTable';
 import Display_Course from './Components/Student/Display_Course';
 import SemResult from './Components/Student/SemResult';
+import ErrorPage from './Components/ErrorPage';
+import NA from './Components/NA';
+import Display_Current_Course from './Components/Student/Display_Current_Course';
 import Update_Time_Table from './Components/TTO/Update_Time_Table';
 export const AppContext = createContext();
 
@@ -84,50 +87,51 @@ function App() {
         <Routes>
           <Route path="/" element={<h1>Home</h1>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/create-tto" element={<TTO_Form/>} />
-          <Route path="/create-courseDetails" element={<CourseDetails_Form/>} />
-          <Route path="/create-hod" element={<HOD_Form/>} />
-          <Route path="/create-faculty" element={<Faculty_Form/>} />
-          <Route path="/create-tpo" element={<TPO_Form/>} />
-          <Route path="/create-student" element={<Student_Form />} />
-          <Route path="/create-admin" element={<Admin_Form />} />
-          <Route path="/display-student/:id" element={<Display_Student/>} />
-          <Route path="/display-result/:id" element={<ViewResult/>} />
-          <Route path="/display-tto/:id" element={<Display_Tto/>} />
-          <Route path="/display-tpo/:id" element={<Display_Tpo/>} />
-          <Route path="/display-hod/:id" element={<Display_HOD/>} />
-          <Route path="/display-admin/:id" element={<Display_Admin/>} />
-          <Route path="/display-faculty/:id" element={<Display_Faculty/>} />
-          <Route path="/all-faculty" element={<All_Faculty/>} />
-          <Route path="/all-admin" element={<All_Admin/>} />
-          <Route path="/all-tto" element={<All_TTO/>} />
-          <Route path="/update-tto/:id" element={<Update_Tto/>} />
-          <Route path="/update-tpo/:id" element={<Update_TPO/>} />
-          <Route path="/update-faculty/:id" element={<Update_Faculty/>} />
-          <Route path="/update-hod/:id" element={<Update_HOD/>} />
-          <Route path="/update-admin/:id" element={<Update_Admin/>} />
-          <Route path="/update-course/:id" element={<Update_Course/>} />
-          <Route path="/update-placement-company/:id" element={<Update_Placement_Company/>} />
-          <Route path="/update-student/:id" element={<Update_Student/>} />
-          <Route path="/all-hod" element={<All_HOD/>} />
-          <Route path="/all-tpo" element={<All_TPO/>} />
-          <Route path="/all-course" element={<All_Courses />} />
-          <Route path="/all-placement-company" element={<All_Placement_Company/>} />
-          <Route path="/all-student" element={<All_Students/>} />
-          <Route path='/marks-entry' element={<Marks_Entry_Form/>}/>
-          <Route path='/add-placement-company' element={<Placement_Company_Form/>} />
-          <Route path='/add-timetable' element={<Time_Table_Form/>} />
-          <Route path='/create-course' element={<Course_Form />} />
-          <Route path='/dashboard-hod' element={<Dashboard_HOD />} />
-          <Route path='/dashboard-admin' element={<Dashboard_Admin />} />
-          <Route path='/dashboard-faculty' element={<Dashboard_Faculty />} />
-          <Route path='/dashboard-student' element={<Dashboard_Student />} />
-          <Route path='/dashboard-tpo' element={<Dashboard_Tpo />} />
-          <Route path='/dashboard-tto' element={<Dashboard_Tto />} />
-          <Route path='/display-timetable' element={<View_TimeTable />} />
-          <Route path='/current-course' element={<Display_Course />} />
-          <Route path='/sem-result/:id' element={<SemResult />} />
-          <Route path='/update-timetable/:bid/:ttid' element={<Update_Time_Table />} />
+          <Route path="/create-tto" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <TTO_Form/> : <NA/>) : <Login/>} />
+          <Route path="/create-courseDetails" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <CourseDetails_Form/> : <NA/>) : <Login/>} />
+          <Route path="/create-hod" element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <HOD_Form/> : <NA/>) : <Login/>} />
+          <Route path="/create-faculty" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <Faculty_Form/> : <NA/>) : <Login/>} />
+          <Route path="/create-tpo" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <TPO_Form/> : <NA/>) : <Login/>} />
+          <Route path="/create-student" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <Student_Form/> : <NA/>) : <Login/>} />
+          <Route path="/create-admin" element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <Admin_Form/> : <NA/>) : <Login/>} />
+          <Route path="/display-student/:id" element={(isLoggedIn) ? ((["admin","hod","tpo","tto","student","faculty"].includes(localStorage.getItem("role"))) ? <Display_Student/> : <NA/>) : <Login/>} />
+          <Route path="/display-result/:id" element={(isLoggedIn) ? ((["admin","hod","tpo","tto","student","faculty"].includes(localStorage.getItem("role"))) ? <ViewResult/> : <NA/>) : <Login/>} />
+          <Route path="/display-tto/:id" element={(isLoggedIn) ? ((["admin","hod","tto"].includes(localStorage.getItem("role"))) ? <Display_Tto/> : <NA/>) : <Login/>} />
+          <Route path="/display-tpo/:id" element={(isLoggedIn) ? ((["admin","hod","tpo"].includes(localStorage.getItem("role"))) ? <Display_Tpo/> : <NA/>) : <Login/>} />
+          <Route path="/display-hod/:id" element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <Display_HOD/> : <NA/>) : <Login/>} />
+          <Route path="/display-admin/:id" element={(isLoggedIn) ? ((["admin","hod"].includes(localStorage.getItem("role"))) ? <Display_Admin/> : <NA/>) : <Login/>} />
+          <Route path="/display-faculty/:id" element={(isLoggedIn) ? ((["admin","hod","faculty"].includes(localStorage.getItem("role"))) ? <Display_Faculty/> : <NA/>) : <Login/>} />
+          <Route path="/all-faculty" element= {(isLoggedIn) ? ((["admin","hod","faculty"].includes(localStorage.getItem("role"))) ? <All_Faculty/> : <NA/>) : <Login/>}/>
+          <Route path="/all-admin" element={(isLoggedIn) ? ((["admin","hod"].includes(localStorage.getItem("role"))) ? <All_Admin/> : <NA/>) : <Login/>} />
+          <Route path="/all-tto" element={(isLoggedIn) ? ((["admin","hod","tto"].includes(localStorage.getItem("role"))) ? <All_TTO/> : <NA/>) : <Login/>} />
+          <Route path="/update-tto/:id" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <Update_Tto/> : <NA/>) : <Login/>}/>
+          <Route path="/update-tpo/:id" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <Update_TPO/> : <NA/>) : <Login/>} />
+          <Route path="/update-faculty/:id" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <Update_Faculty/> : <NA/>) : <Login/>} />
+          <Route path="/update-hod/:id" element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <Update_HOD/> : <NA/>) : <Login/>} />
+          <Route path="/update-admin/:id" element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <Update_Admin/> : <NA/>) : <Login/>} />
+          <Route path="/update-course/:id" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <Update_Course/> : <NA/>) : <Login/>} />
+          <Route path="/update-placement-company/:id" element={(isLoggedIn) ? ((["admin","tpo"].includes(localStorage.getItem("role"))) ? <Update_Placement_Company/> : <NA/>) : <Login/>}/>
+          <Route path="/update-student/:id" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <Update_Student/> : <NA/>) : <Login/>} />
+          <Route path="/all-hod" element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <All_HOD/> : <NA/>) : <Login/>} />
+          <Route path="/all-tpo" element={(isLoggedIn) ? ((["admin","hod","tpo"].includes(localStorage.getItem("role"))) ? <All_TPO/> : <NA/>) : <Login/>} />
+          <Route path="/all-course" element={(isLoggedIn) ? ((["admin","hod","student","faculty"].includes(localStorage.getItem("role"))) ? <All_Courses/> : <NA/>) : <Login/>} />
+          <Route path="/all-placement-company" element={(isLoggedIn) ? ((["admin","hod","tpo","student","faculty"].includes(localStorage.getItem("role"))) ? <All_Placement_Company/> : <NA/>) : <Login/>} />
+          <Route path="/all-student" element={(isLoggedIn) ? ((["admin","hod","tpo","tto","student","faculty"].includes(localStorage.getItem("role"))) ? <All_Students/> : <NA/>) : <Login/>} />
+          <Route path='/marks-entry' element={(isLoggedIn) ? ((["faculty"].includes(localStorage.getItem("role"))) ? <Marks_Entry_Form/> : <NA/>) : <Login/>}/>
+          <Route path='/add-placement-company' element={(isLoggedIn) ? ((["tpo"].includes(localStorage.getItem("role"))) ? <Placement_Company_Form/> : <NA/>) : <Login/>} />
+          <Route path='/add-timetable' element={(isLoggedIn) ? ((["tto"].includes(localStorage.getItem("role"))) ? <Time_Table_Form/> : <NA/>) : <Login/>} />
+          <Route path='/create-course' element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <CourseDetails_Form/> : <NA/>) : <Login/>}/>
+          <Route path='/dashboard-hod' element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <Dashboard_HOD/> : <NA/>) : <Login/>} />
+          <Route path='/dashboard-admin' element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <Dashboard_Admin/> : <NA/>) : <Login/>} />
+          <Route path='/dashboard-faculty' element={(isLoggedIn) ? ((["faculty"].includes(localStorage.getItem("role"))) ? <Dashboard_Faculty/> : <NA/>) : <Login/>} />
+          <Route path='/dashboard-student' element={(isLoggedIn) ? ((["student"].includes(localStorage.getItem("role"))) ? <Dashboard_Student/> : <NA/>) : <Login/>} />
+          <Route path='/dashboard-tpo' element={(isLoggedIn) ? ((["tpo"].includes(localStorage.getItem("role"))) ? <Dashboard_Tpo/> : <NA/>) : <Login/>} />
+          <Route path='/dashboard-tto' element={(isLoggedIn) ? ((["tto"].includes(localStorage.getItem("role"))) ? <Dashboard_Tto/> : <NA/>) : <Login/>}/>
+          <Route path='/display-timetable' element={(isLoggedIn) ? ((["tto","student","hod"].includes(localStorage.getItem("role"))) ? <View_TimeTable/> : <NA/>) : <Login/>} />
+          <Route path='/display-course/:id' element={(isLoggedIn) ? ((["tto","student","hod"].includes(localStorage.getItem("role"))) ? <Display_Course/> : <NA/>) : <Login/>} />
+          <Route path='/current-course' element={(isLoggedIn) ? ((["student","admin","hod","faculty","tto"].includes(localStorage.getItem("role"))) ? <Display_Current_Course/> : <NA/>) : <Login/>} />
+          <Route path='/sem-result/:id' element = {(isLoggedIn) ? ((["student", "hod", "admin", "faculty"].includes(localStorage.getItem("role"))) ? <SemResult/> : <NA/ >) : <Login/>} / >
+          <Route path='/update-timetable/:bid/:ttid' element={(isLoggedIn) ? ((["tto"].includes(localStorage.getItem("role"))) ? <Update_Time_Table/> : <NA/ >) : <Login/>}  />
         </Routes>
       </Router>
       </div>

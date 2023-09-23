@@ -10,74 +10,76 @@ import { UserButton } from './UserButton';
 import { LinksGroup } from './NavbarLinksGroup';
 import React from 'react';
 
+const role = localStorage.getItem("role");
+
 const mockdata = [
-  { label: 'Dashboard', icon: IconHome , link: '/dashboard-hod'},
+  { label: 'Dashboard', icon: IconHome , link: `/dashboard-${role}`},
   {
     label: 'Student',
     icon: IconSchool,
     initiallyOpened: true,
     links: [
-      { label: 'Add Student', link: '/create-student' },
-      { label: 'View Students', link: '/all-student' },
-      { label: 'Marks Entry', link: '/marks-entry' },
-      { label: 'Exam Result', link: '/' },
-      { label: 'Fees', link: '/' },
-      { label: 'View TimeTable', link: '/display-timetable' },
-    ],
+      ["admin"].includes(role) && { label: 'Add Student', link: '/create-student' },
+      ["admin","faculty","hod","tto","tpo"].includes(role) && { label: 'View Students', link: '/all-student' },
+      ["faculty"].includes(role) && { label: 'Marks Entry', link: '/marks-entry' },
+      ["student","admin","faculty","hod","tto","tpo"].includes(role) && { label: 'Exam Result', link: '/' },
+      ["hod","student","admin"].includes(role) && { label: 'Fees', link: '/' },
+      ["tto","student","admin","faculty","hod"].includes(role) && { label: 'View TimeTable', link: '/' },
+    ].filter((item) => item !== false),
   },
   {
     label: 'HOD',
     icon: IconSchool,
     initiallyOpened: true,
     links: [
-      { label: 'Add HOD', link: '/create-hod' },
-      { label: 'View HOD', link: '/all-hod' },
-    ],
+      ["hod"].includes(role) && { label: 'Add HOD', link: '/create-hod' },
+      ["hod","faculty","student"].includes(role) && { label: 'View HOD', link: '/all-hod' },
+    ].filter((item) => item !== false),
   },
   {
     label: 'Faculty',
     icon: IconCalendarStats,
     links: [
-      { label: 'Add Faculty', link: '/create-faculty' },
-      { label: 'View Faculty', link: '/all-faculty' },
-    ],
+      ["admin"].includes(role) && { label: 'Add Faculty', link: '/create-faculty' },
+      ["hod","faculty","admin"].includes(role) && { label: 'View Faculty', link: '/all-faculty' },
+    ].filter((item) => item !== false),
   },
   {
     label: 'Admin',
     icon: IconCalendarStats,
     links: [
-      { label: 'Add Admin', link: '/create-admin' },
-      { label: 'View Admin', link: '/all-admin' },
-    ],
+      ["hod"].includes(role) && { label: 'Add Admin', link: '/create-admin' },
+      ["admin","hod"].includes(role) && { label: 'View Admin', link: '/all-admin' },
+    ].filter((item) => item !== false),
   },
   {
     label: 'TPO',
     icon: IconCalendarStats,
     links: [
-      { label: 'Add TPO', link: '/create-tpo' },
-      { label: 'View TPO', link: '/all-tpo' },
-      { label: 'View Placement Company', link: '/all-placement-company' },
-      { label: 'Add Placement Company', link: '/add-placement-company' },
-    ],
+      ["admin"].includes(role) && { label: 'Add TPO', link: '/create-tpo' },
+      ["admin","hod","tpo"].includes(role) && { label: 'View TPO', link: '/all-tpo' },
+      ["tpo","hod","student"].includes(role) && { label: 'View Placement Company', link: '/all-placement-company' },
+      ["tpo"].includes(role) && { label: 'Add Placement Company', link: '/add-placement-company' },
+    ].filter((item) => item !== false),
   },
   {
     label: 'TTO',
     icon: IconCalendarStats,
     links: [
-      { label: 'Add TTO', link: '/create-tto' },
-      { label: 'View TTO', link: '/all-tto' },
-      { label: 'View TimeTable', link: '/' },
-      { label: 'Add TimeTable', link: '/add-timetable' },
-    ],
+      ["admin"].includes(role) && { label: 'Add TTO', link: '/create-tto' },
+      ["admin","tto","hod"].includes(role) && { label: 'View TTO', link: '/all-tto' },
+      ["tto"].includes(role) && { label: 'View TimeTable', link: '/display-timetable' },
+      ["tto"].includes(role) && { label: 'Add TimeTable', link: '/add-timetable' },
+    ].filter((item) => item !== false),
   },
   {
     label: 'Course',
     icon: IconCalendarStats,
     links: [
-      { label: 'Create Course', link: '/create-course' },
-      { label: 'View Current Course', link: '/current-course' },
-      { label: 'View Courses', link: '/all-course' },
-    ],
+      ["admin"].includes(role) && { label: 'Create Course', link: '/create-course' },
+      ["student"].includes(role) && { label: 'View Current Course', link: '/current-course' },
+      ["admin","hod","student","faculty"].includes(role) && { label: 'View Courses', link: '/all-course' },
+    ].filter((item) => item !== false),
   },
   { label: 'Make Announcement', icon: IconGauge },
 
@@ -151,8 +153,8 @@ export function NavbarNested() {
 
         <Navbar.Section className={classes.footer}>
           <UserButton
-            name="Ashish H. Prajapati"
-            email="prajapatiashish40567@gmail.com"
+            name={localStorage.getItem("id")}
+            email={localStorage.getItem("email")}
           />
         </Navbar.Section>
       </Navbar>

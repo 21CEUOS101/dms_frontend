@@ -34,8 +34,6 @@ export function UserButton({ image, name, email, icon, ...others }) {
             {email}
           </Text>
         </div>
-
-        {icon || <IconChevronRight size="0.9rem" stroke={1.5} />}
       </Group>
     </UnstyledButton>
   );
