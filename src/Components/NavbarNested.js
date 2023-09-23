@@ -49,7 +49,7 @@ export function NavbarNested() {
   const { role } = useContext(AppContext);
 
   const mockdata = [
-    { label: 'Dashboard', icon: IconHome, links: [{link : `/dashboard-${role}` , label : 'Home'}]  },
+    { label: 'Dashboard', icon: IconHome, links: [["hod"].includes(role) && {link : `/dashboard-${role}` , label : 'Home'}].filter((item) => item !== false)  },
     {
       label: 'Student',
       icon: IconMan,
@@ -120,6 +120,14 @@ export function NavbarNested() {
     { label: 'Make Announcement', icon: IconMail , links: [{link : '/make-announcement' , label : 'Make email'}] },
 
   ];
+
+  mockdata.map((item) => {
+    if (item.links.length === 0)
+    {
+      // remove that item
+      mockdata.splice(mockdata.indexOf(item), 1);
+    }
+  });
   
   const { classes } = useStyles();
   const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
