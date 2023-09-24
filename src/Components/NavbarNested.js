@@ -117,7 +117,7 @@ export function NavbarNested() {
         ["admin","hod","student","faculty"].includes(role) && { label: 'View Courses', link: '/all-course' },
       ].filter((item) => item !== false),
     },
-    // { label: 'Make Announcement', icon: IconMail, links: [{ link: '/make-announcement', label: 'Make email' }] },
+    { label: 'Make Announcement', icon: IconMail, links: [["tto","tpo","hod","faculty","admin","student"].includes(role) && { link: '/make-announcement', label: 'Make email' }] },
     { label: 'Logout', icon: IconMail, links: [{ link: '/logout', label: 'Logout' }] },
 
   ];
