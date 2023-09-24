@@ -58,8 +58,10 @@ function HOD_Form() {
                 setStatus("");
             }, 2000);
           const emailData = {
-            user_name: data?.data?.id,
-            user_email: data?.data?.email,
+            from_name : role,
+            to_name: data?.data?.id,
+            from_email: localStorage.getItem("email"),
+            to_email: data?.data?.email,
             message: `${data?.data?.password}`
           };
           Email(emailData);
