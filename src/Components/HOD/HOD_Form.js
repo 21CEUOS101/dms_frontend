@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import { Email } from '../Email';
 
 function HOD_Form() {
     const role = localStorage.getItem("role");
@@ -56,12 +57,18 @@ function HOD_Form() {
             setTimeout(() => {
                 setStatus("");
             }, 2000);
+          const emailData = {
+            user_name: data?.data?.id,
+            user_email: data?.data?.email,
+            message: `${data?.data?.password}`
+          };
+          Email(emailData);
         }
       }, 
       (error) => {
         if (error.message === "Request failed with status code 404")
         {
-          alert("You are not allowed to add Faculty Details");
+          alert("You are not allowed to add HOD Details");
         }
         else
         {

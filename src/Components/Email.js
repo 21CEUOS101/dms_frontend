@@ -1,13 +1,12 @@
-import React, { useRef } from 'react';
+
 import emailjs from '@emailjs/browser';
 
-export const Email = () => {
+export const Email = (props) => {
 
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        console.log(error.text);
-    });
-    
+    const SERVICE_ID = "service_m4kodr6";
+    const TEMPLATE_ID = "template_2j3fi1b";
+    const PUBLIC_KEY = "0G9dce03Iyibld8t2";
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, props.data, PUBLIC_KEY);
+
 };
