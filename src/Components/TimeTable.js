@@ -103,7 +103,7 @@ function TimeTable({ data, timetableId, onEditClick }) {
 
     doc.save('timetable.pdf');
   }
-
+  const role = localStorage.getItem("role");
   return (
       <div>
         <div className="timetable">
@@ -128,11 +128,11 @@ function TimeTable({ data, timetableId, onEditClick }) {
                             <p>{entry.time_table_block_subject}</p>
                             <p>{entry.time_table_block_faculty}</p>
                             <p>{entry.time_table_block_room_no}</p>
-                            <Link
+                            {role === "tto" && <Link
                               to={`/update-timetable/${entry.time_table_block_id}/${entry.time_table_id}`}
                             >
                               Edit
-                            </Link>
+                            </Link>}
                           </div>
                         ))
                       ) : (
