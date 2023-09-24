@@ -54,6 +54,7 @@ import Update_Exam_Result from './Components/Student/Update_Exam_Result';
 import MakeAnnouncement from './Components/MakeAnnouncement'
 import LogOut from './Components/LogOut';
 import HomePage from './Components/HomePage';
+import Display_Placement_Company from './Components/TPO/Display_Placement_Company';
 export const AppContext = createContext();
 
 function App() {
@@ -138,7 +139,7 @@ function App() {
           <Route path='/current-course' element={(isLoggedIn) ? ((["student","admin","hod","faculty","tto"].includes(localStorage.getItem("role"))) ? <Display_Current_Course/> : <NA/>) : <Login/>} />
           <Route path='/sem-result/:id' element = {(isLoggedIn) ? ((["student", "hod", "admin", "faculty"].includes(localStorage.getItem("role"))) ? <SemResult/> : <NA/ >) : <Login/>} / >
           <Route path='/update-timetable/:bid/:ttid' element={(isLoggedIn) ? ((["tto"].includes(localStorage.getItem("role"))) ? <Update_Time_Table /> : <NA />) : <Login />} />
-          
+          <Route path='/display-placement_company/:id' element={(isLoggedIn) ? ((["tpo","hod","student"].includes(localStorage.getItem("role"))) ? <Display_Placement_Company /> : <NA />) : <Login />} />
           <Route path='/make-announcement' element={(isLoggedIn) ? ((["tto","tpo","hod","faculty"].includes(localStorage.getItem("role"))) ? <MakeAnnouncement /> : <NA />) : <Login />} />
           <Route path='/update-result/:sem/:sid' element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <Update_Exam_Result/> : <NA/ >) : <Login/>}  />
           <Route path='/logout' element={isLoggedIn ? <LogOut/> : <Login/>} />

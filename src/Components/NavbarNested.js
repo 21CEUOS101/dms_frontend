@@ -58,7 +58,7 @@ export function NavbarNested() {
         ["admin"].includes(role) && { label: 'Add Student', link: '/create-student' },
         ["admin","faculty","hod","tto","tpo"].includes(role) && { label: 'View Students', link: '/all-student' },
         ["faculty"].includes(role) && { label: 'Marks Entry', link: '/marks-entry' },
-        ["student","admin","faculty","hod","tto","tpo"].includes(role) && { label: 'Exam Result', link: '/' },
+        ["student"].includes(role) && { label: 'Exam Result', link: '/' },
         ["hod","student","admin"].includes(role) && { label: 'Fees', link: '/' },
         ["tto","student","admin","faculty","hod"].includes(role) && { label: 'View TimeTable', link: '/' },
       ].filter((item) => item !== false),
@@ -104,7 +104,7 @@ export function NavbarNested() {
       links: [
         ["admin"].includes(role) && { label: 'Add TTO', link: '/create-tto' },
         ["admin","tto","hod"].includes(role) && { label: 'View TTO', link: '/all-tto' },
-        ["tto"].includes(role) && { label: 'View TimeTable', link: '/display-timetable' },
+        ["tto","hod"].includes(role) && { label: 'View TimeTable', link: '/display-timetable' },
         ["tto"].includes(role) && { label: 'Add TimeTable', link: '/add-timetable' },
       ].filter((item) => item !== false),
     },
