@@ -24,7 +24,7 @@ function findClosestTimeSlot(time) {
 function TimeTable({ data, timetableId, onEditClick }) {
   const tableRef = useRef(null);
 
-  const filteredData = data.filter((entry) => entry.time_table_id === timetableId);
+  const filteredData = data.filter((entry) => entry.time_table_block_semester === timetableId);
 
   const groupedData = filteredData.reduce((acc, entry) => {
     const day = entry.time_table_block_day;
