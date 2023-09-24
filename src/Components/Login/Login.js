@@ -62,7 +62,7 @@ function Login() {
     }, [data]);
   return (
       <>
-        <div className="container-xxl">
+        <div className="container-xx grid place-items-center">
         <div className="authentication-wrapper authentication-basic container-p-y h-fit">
             <div className="authentication-inner">
             <div>

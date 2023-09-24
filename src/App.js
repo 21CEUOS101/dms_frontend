@@ -53,6 +53,7 @@ import Update_Time_Table from './Components/TTO/Update_Time_Table';
 import Update_Exam_Result from './Components/Student/Update_Exam_Result';
 import MakeAnnouncement from './Components/MakeAnnouncement'
 import LogOut from './Components/LogOut';
+import HomePage from './Components/HomePage';
 export const AppContext = createContext();
 
 function App() {
@@ -90,7 +91,7 @@ function App() {
           {isLoggedIn && <NavbarNested/>}
         </div>
         <Routes>
-          <Route path="/" element={<h1>Home</h1>} />
+          <Route path="/" element={isLoggedIn ? <HomePage/> : <Login/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/create-tto" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <TTO_Form/> : <NA/>) : <Login/>} />
           <Route path="/create-courseDetails" element={(isLoggedIn) ? ((["admin"].includes(localStorage.getItem("role"))) ? <CourseDetails_Form/> : <NA/>) : <Login/>} />
