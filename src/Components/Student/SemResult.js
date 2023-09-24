@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./result.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const SemResult = () => {
   const { id } = useParams();
@@ -10,6 +10,7 @@ const SemResult = () => {
   const [showExternal, setShowExternal] = useState(false);
   const [studentExamResults, setStudentExamResults] = useState([]);
   const [studentData, setStudentData] = useState(null);
+  const role = localStorage.getItem("role");
 
   const renderValue = (value) => {
     if (Array.isArray(value)) {
@@ -178,9 +179,11 @@ const SemResult = () => {
       </tr>
     )
   );
-  
+
   const handleSemesterChange = (event) => {
-    const selectedSemester = parseInt(event.target.value);
+    const selectedSemesterValue = event.target.value;
+    const selectedSemester =
+      selectedSemesterValue !== "" ? parseInt(selectedSemesterValue) : null;
     setSelectedSemester(selectedSemester);
     setShowInternal(false);
     setShowExternal(false);
@@ -208,9 +211,6 @@ const SemResult = () => {
     }
   };
 
-  
-  
-
   return (
     <div>
       <h1>Student Data</h1>
@@ -235,14 +235,14 @@ const SemResult = () => {
           {/* Add more semester options as needed */}
         </select>
       </div>
-      
+
       {/* Render "Select your sem" message if selectedSemester is null */}
       {selectedSemester === null && (
         <div className="select-semester-message">
           Select your semester to view the results.
         </div>
       )}
-      
+
       {studentData && (
         <div>
           {/* Buttons to toggle between internal and external */}
@@ -297,6 +297,14 @@ const SemResult = () => {
           <div>
             <h2>Result Status: {studentData.result_status}</h2>
           </div>
+        </div>
+      )}
+
+      {selectedSemester !== null && studentData && role === "faculty" && (
+        <div>
+          <Link to={`/update-result/${selectedSemester}/${id}`}>
+            <button>Update Result</button>
+          </Link>
         </div>
       )}
 
