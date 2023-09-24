@@ -50,6 +50,7 @@ import ErrorPage from './Components/ErrorPage';
 import NA from './Components/NA';
 import Display_Current_Course from './Components/Student/Display_Current_Course';
 import Update_Time_Table from './Components/TTO/Update_Time_Table';
+import Update_Exam_Result from './Components/Student/Update_Exam_Result';
 import LogOut from './Components/LogOut';
 export const AppContext = createContext();
 
@@ -135,6 +136,7 @@ function App() {
           <Route path='/current-course' element={(isLoggedIn) ? ((["student","admin","hod","faculty","tto"].includes(localStorage.getItem("role"))) ? <Display_Current_Course/> : <NA/>) : <Login/>} />
           <Route path='/sem-result/:id' element = {(isLoggedIn) ? ((["student", "hod", "admin", "faculty"].includes(localStorage.getItem("role"))) ? <SemResult/> : <NA/ >) : <Login/>} / >
           <Route path='/update-timetable/:bid/:ttid' element={(isLoggedIn) ? ((["tto"].includes(localStorage.getItem("role"))) ? <Update_Time_Table /> : <NA />) : <Login />} />
+          <Route path='/update-result/:sem/:sid' element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <Update_Exam_Result/> : <NA/ >) : <Login/>}  />
           <Route path='/logout' element={isLoggedIn ? <LogOut/> : <Login/>} />
             <Route path='*' element={<ErrorPage />} />
         </Routes>
