@@ -7,6 +7,6 @@ export const Email = (props) => {
     const TEMPLATE_ID = "template_2j3fi1b";
     const PUBLIC_KEY = "0G9dce03Iyibld8t2";
 
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, props.data, PUBLIC_KEY);
+    emailjs.send(SERVICE_ID, TEMPLATE_ID,props.emailData,PUBLIC_KEY);
 
 };
