@@ -134,14 +134,14 @@ function App() {
           <Route path='/dashboard-student' element={(isLoggedIn) ? ((["student"].includes(localStorage.getItem("role"))) ? <Dashboard_Student/> : <NA/>) : <Login/>} />
           <Route path='/dashboard-tpo' element={(isLoggedIn) ? ((["tpo"].includes(localStorage.getItem("role"))) ? <Dashboard_Tpo/> : <NA/>) : <Login/>} />
           <Route path='/dashboard-tto' element={(isLoggedIn) ? ((["tto"].includes(localStorage.getItem("role"))) ? <Dashboard_Tto/> : <NA/>) : <Login/>}/>
-          <Route path='/display-timetable' element={(isLoggedIn) ? ((["tto","student","hod"].includes(localStorage.getItem("role"))) ? <View_TimeTable/> : <NA/>) : <Login/>} />
-          <Route path='/display-course/:id' element={(isLoggedIn) ? ((["tto","student","hod"].includes(localStorage.getItem("role"))) ? <Display_Course/> : <NA/>) : <Login/>} />
+          <Route path='/display-timetable' element={(isLoggedIn) ? ((["tto","student","hod","faculty"].includes(localStorage.getItem("role"))) ? <View_TimeTable/> : <NA/>) : <Login/>} />
+          <Route path='/display-course/:id' element={(isLoggedIn) ? ((["tto","student","hod","admin","faculty"].includes(localStorage.getItem("role"))) ? <Display_Course/> : <NA/>) : <Login/>} />
           <Route path='/current-course' element={(isLoggedIn) ? ((["student","admin","hod","faculty","tto"].includes(localStorage.getItem("role"))) ? <Display_Current_Course/> : <NA/>) : <Login/>} />
           <Route path='/sem-result/:id' element = {(isLoggedIn) ? ((["student", "hod", "admin", "faculty"].includes(localStorage.getItem("role"))) ? <SemResult/> : <NA/ >) : <Login/>} / >
           <Route path='/update-timetable/:bid/:ttid' element={(isLoggedIn) ? ((["tto"].includes(localStorage.getItem("role"))) ? <Update_Time_Table /> : <NA />) : <Login />} />
           <Route path='/display-placement-company/:id' element={(isLoggedIn) ? ((["tpo","hod","student"].includes(localStorage.getItem("role"))) ? <Display_Placement_Company /> : <NA />) : <Login />} />
           <Route path='/make-announcement' element={(isLoggedIn) ? ((["tto","tpo","hod","faculty","admin","student"].includes(localStorage.getItem("role"))) ? <MakeAnnouncement /> : <NA />) : <Login />} />
-          <Route path='/update-result/:sem/:sid' element={(isLoggedIn) ? ((["hod"].includes(localStorage.getItem("role"))) ? <Update_Exam_Result/> : <NA/ >) : <Login/>}  />
+          <Route path='/update-result/:sem/:sid' element={(isLoggedIn) ? ((["faculty"].includes(localStorage.getItem("role"))) ? <Update_Exam_Result/> : <NA/ >) : <Login/>}  />
           <Route path='/logout' element={isLoggedIn ? <LogOut/> : <Login/>} />
           <Route path='*' element={<ErrorPage />} />
         </Routes>

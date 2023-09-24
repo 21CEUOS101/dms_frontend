@@ -59,8 +59,7 @@ export function NavbarNested() {
         ["admin","faculty","hod","tto","tpo"].includes(role) && { label: 'View Students', link: '/all-student' },
         ["faculty"].includes(role) && { label: 'Marks Entry', link: '/marks-entry' },
         ["student"].includes(role) && { label: 'Exam Result', link: '/' },
-        ["hod","student","admin"].includes(role) && { label: 'Fees', link: '/' },
-        ["tto","student","admin","faculty","hod"].includes(role) && { label: 'View TimeTable', link: '/display-timetable' },
+        ["tto","student","faculty","hod"].includes(role) && { label: 'View TimeTable', link: '/display-timetable' },
       ].filter((item) => item !== false),
     },
     {
@@ -69,7 +68,7 @@ export function NavbarNested() {
       initiallyOpened: true,
       links: [
         ["hod"].includes(role) && { label: 'Add HOD', link: '/create-hod' },
-        ["hod","faculty","student"].includes(role) && { label: 'View HOD', link: '/all-hod' },
+        ["hod"].includes(role) && { label: 'View HOD', link: '/all-hod' },
       ].filter((item) => item !== false),
     },
     {
@@ -154,7 +153,7 @@ export function NavbarNested() {
         <Navbar height={800} width={{ sm: 300 }} p="md" className="bg-white py-0 h-screen sticky">
         <Navbar.Section className={classes.header}>
           <Group position="apart">
-              <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
+              <Code sx={{ fontWeight: 700 }}>DDU-UMS</Code>
               
           </Group>
         </Navbar.Section>

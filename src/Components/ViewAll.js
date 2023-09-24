@@ -24,7 +24,7 @@ function ViewAll(props) {
 
   const Delete = async (id) => {
     await axios
-      .delete(`http://localhost:3001${role}${delete_url}/${id}`)
+      .delete(`http://localhost:3001/${role}${delete_url}/${id}`)
       .then((data) => {
         console.log(data?.data);
         props.setRefresh(!props.refresh); // This is a hack to refresh the page
