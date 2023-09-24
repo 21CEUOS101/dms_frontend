@@ -4,43 +4,87 @@ import ViewAll from '../ViewAll';
 import '../all.css';
 
 function All_Students() {
-    const [data, setData] = useState();
-    const [refresh, setRefresh] = useState(false);
+  const [data, setData] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+  const [sessionNumbers, setSessionNumbers] = useState([]);
+  const [selectedSession, setSelectedSession] = useState(''); // Selected session number
 
-    const formate_student = (data) => {
-        let formated_data = [];
-        data.forEach((element) => {
-            let temp = {
-                _id : element._id,
-                student_id: element.student_id,
-                full_name: element.full_name,
-                student_roll_number: element.student_roll_number,
-                date_of_birth: element.date_of_birth,
-                gender: element.gender,
-            };
-        formated_data.push(temp);
-        });
-        return formated_data;
-    };
+  // Fetch session numbers
+  const fetchSessionNumbers = () => {
+    axios.get(`http://localhost:3001/student/getUniqueSessionNumbers`)
+      .then((response) => {
+        console.log(response.data);
+        setSessionNumbers(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching session numbers:', error);
+      });
+  };
 
-  const getData = () => {
-      axios.get(`http://localhost:3001/student/getAllStudents`).then((data) => {
-      console.log(formate_student(data?.data?.studentDetails));
-      setData(formate_student(data?.data?.studentDetails));
+  const formate_student = (data) => {
+    let formated_data = [];
+    data.forEach((element) => {
+        let temp = {
+            _id : element._id,
+            student_id: element.student_id,
+            full_name: element.full_name,
+            student_roll_number: element.student_roll_number,
+            date_of_birth: element.date_of_birth,
+            gender: element.gender,
+        };
+    formated_data.push(temp);
     });
-  }
+    return formated_data;
+};
 
   useEffect(() => {
-    getData();
-  }, [refresh]);
+    // Fetch session numbers when the component mounts
+    fetchSessionNumbers();
+  }, []);
+
+  // Fetch student data based on the selected session number
+  const fetchStudentData = (sessionNumber) => {
+    axios.get(`http://localhost:3001/student/getStudentsBySession/${sessionNumber}`)
+      .then((response) => {
+        console.log('Fetched student data:', response.data);
+        setData(formate_student(response.data));
+      })
+      .catch((error) => {
+        console.error('Error fetching student data:', error);
+      });
+  };
+
+  // Handle session selection change
+  const handleSessionChange = (e) => {
+    const selectedSessionNumber = e.target.value;
+    setSelectedSession(selectedSessionNumber);
+    // Fetch student data based on the selected session
+    fetchStudentData(selectedSessionNumber);
+  };
 
   return (
     <div className='divStyle'>
       <div className='textStyle'>All_Students</div>
       <div className='grid place-items-center h-screen'>
-        {data !== undefined && <ViewAll data={data} setRefresh={setRefresh} refresh={refresh}x/>}
+        <div>
+          {/* Dropdown menu for selecting session number */}
+          <label>Select Session Number:</label>
+          <select
+            value={selectedSession}
+            onChange={handleSessionChange}
+          >
+            <option value="">-- Select Session --</option>
+            {sessionNumbers.map((sessionNumber) => (
+              <option key={sessionNumber} value={sessionNumber}>
+                {sessionNumber}
+              </option>
+            ))}
+          </select>
+        </div>
+        {data !== undefined && <ViewAll data={data} setRefresh={setRefresh} refresh={refresh} />}
       </div>
     </div>
   );
 }
+
 export default All_Students;
