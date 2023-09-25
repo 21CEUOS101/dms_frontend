@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import "./ViewAll.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from 'react-router-dom';
 
 function ViewAll(props) {
   const value = props.data;
   const keys = value.length > 0 ? Object.keys(value[0]) : [];
+  const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
   const [sortBy, setSortBy] = useState(null); // State for sorting
@@ -20,16 +23,51 @@ function ViewAll(props) {
   const delete_url = `/delete${window.location.pathname.slice(4)}`;
   const result_url = `/sem-result`;
   const check = window.location.pathname.slice(5) === "student";
-  const check2 = window.location.pathname.slice(5) === "hod" || window.location.pathname.slice(5) === "admin" || window.location.pathname.slice(5) === "placement-company";
+  const check2 = window.location.pathname.slice(5) === "hod" || window.location.pathname.slice(5) === "admin";
+  const check3 = window.location.pathname.slice(5) === "placement-company"
   console.log(window.location.pathname.slice(5));
 
   const Delete = async (id) => {
-    await axios
-      .delete(`http://localhost:3001/${role}${delete_url}/${id}`)
-      .then((data) => {
-        console.log(data?.data);
-        props.setRefresh(!props.refresh); // This is a hack to refresh the page
-      });
+    // Show a confirmation dialog before deleting
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this item!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        // User confirmed, proceed with deletion
+        try {
+          await axios.delete(`http://localhost:3001/${role}${delete_url}/${id}`);
+          Swal.fire('Deleted!', 'The item has been deleted.', 'success');
+          props.setRefresh(!props.refresh); // Refresh the page
+        } catch (error) {
+          Swal.fire('Error', 'An error occurred while deleting the item.', 'error');
+        }
+      }
+    });
+  };
+
+  // Function to handle the update link click
+  const handleUpdateClick = (e, id) => {
+    e.preventDefault();
+    // Show a confirmation dialog before navigating to the update page
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to go to the update page?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // User confirmed, navigate to the update page
+        const updatePageUrl = `${update_url}/${id}`;
+        navigate(updatePageUrl);
+      }
+    });
   };
 
   const sortTable = (field) => {
@@ -106,8 +144,8 @@ function ViewAll(props) {
               }
             })}
             <th>View</th>
-            {["admin","hod","tpo"].includes(role) && check2 && <th>Update</th>}
-            {["admin","hod","tpo"].includes(role) && check2 && <th>Delete</th>}
+            {((["admin"].includes(role) && !check2) || (check2 && ["hod"].includes(role)) || (check3 && ["tpo"].includes(role))) && <th>Update</th>}
+            {((["admin"].includes(role) && !check2) || (check2 && ["hod"].includes(role)) || (check3 && ["tpo"].includes(role))) && <th>Delete</th>}
             {["admin","faculty","hod"] && check && <th>Result</th>}
           </tr>
         </thead>
@@ -126,12 +164,15 @@ function ViewAll(props) {
                     View
                   </Link>
                 </td>
-                {["admin","hod","tpo"].includes(role) && check2 && <td>
-                  <Link className="view-button" to={`${update_url}/${id}`}>
+                {((["admin"].includes(role) && !check2) || (check2 && ["hod"].includes(role)) || (check3 && ["tpo"].includes(role))) && <td>
+                  <Link className="view-button"
+                    to="#"
+                    onClick={(e) => handleUpdateClick(e, id)}
+                  >
                     Update
                   </Link>
                 </td>}
-                {["admin","hod","tpo"].includes(role) && check2 && <td>
+                {((["admin"].includes(role) && !check2) || (check2 && ["hod"].includes(role)) || (check3 && ["tpo"].includes(role))) && <td>
                   <button
                     className="view-button-delete"
                     onClick={() => Delete(id)}
