@@ -21,20 +21,29 @@ function All_Students() {
       });
   };
 
-  const format_student = (data) => {
-    let formated_data = [];
-    data.forEach((element) => {
-      let temp = {
-        _id: element._id,
-        student_id: element.student_id,
-        full_name: element.full_name,
-        student_roll_number: element.student_roll_number,
-        date_of_birth: element.date_of_birth,
-        gender: element.gender,
-      };
-      formated_data.push(temp);
+  const aliasStudentDataFields = (originalData) => {
+    if (!originalData) {
+      return [];
+    }
+
+    const aliasMap = {
+      _id: 'Student ID',
+      student_id: 'ID',
+      full_name: 'Full Name',
+      student_roll_number: 'Roll Number',
+      date_of_birth: 'Date of Birth',
+      gender: 'Gender',
+    };
+
+    return originalData.map((item) => {
+      const aliasedItem = {};
+      for (const key in item) {
+        if (aliasMap[key]) {
+          aliasedItem[aliasMap[key]] = item[key];
+        }
+      }
+      return aliasedItem;
     });
-    return formated_data;
   };
 
   useEffect(() => {
@@ -48,7 +57,7 @@ function All_Students() {
       axios.get(`http://localhost:3001/student/getStudentsBySession/${selectedSession}`)
         .then((response) => {
           console.log('Fetched student data:', response.data);
-          setData(format_student(response.data));
+          setData(aliasStudentDataFields(response.data));
         })
         .catch((error) => {
           console.error('Error fetching student data:', error);
