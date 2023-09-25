@@ -23,10 +23,11 @@ const SemResult = () => {
 
   // Fetch student exam results from the server on component mount
   const preData = async () => {
-    console.log("Hello" + id);
+    console.log(id);
     axios
       .get(`http://localhost:3001/student/getStudentExamResult/${id}`)
       .then((response) => {
+        console.log(response.data);
         setStudentExamResults(response.data);
       })
       .catch((error) => {
@@ -190,7 +191,7 @@ const SemResult = () => {
 
     // Filter the student data for the selected semester
     const filteredData = studentExamResults.find(
-      (result) => result.semester === selectedSemester
+      (result) => parseInt(result.semester) === selectedSemester
     );
 
     if (filteredData) {
