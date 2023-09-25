@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
+import "./MakeAnnouncement.css"
 import axios from "axios";
-import "./all.css";
 import Swal from "sweetalert2";
 
 function All_Students() {
@@ -442,27 +442,38 @@ function All_Students() {
         .post("http://localhost:3001/mail/make-announcement", emailData)
         .then((response) => {
           console.log("Email sent successfully:", response.data.message);
-          alert("Email sent successfully");
+          Swal.fire({
+            icon: "success",
+            title: "Success!",
+            text: "Email sent successfully",
+          });
           localStorage.setItem("secretKey", secretKey);
         })
         .catch((error) => {
           console.error("Error sending email:", error);
-          alert("Error sending email");
+          Swal.fire({
+            icon: "error",
+            title: "Error!",
+            text: "Error sending email",
+          });
         });
     } else {
       console.error("Please select at least one student email.");
-      alert("Please select at least one student email.");
+      Swal.fire({
+        icon: "warning",
+        title: "Warning!",
+        text: "Please select at least one student email",
+      });
     }
   };
 
   return (
-    <div className="divStyle grid place-items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-      <div className="textStyle">Make Announcement</div>
-      <div className="grid place-items-center h-screen w-full mx-5">
-        <div className="grid grid-cols-2 gap-1 font-mono">
-          <label className="block">
+    <div className="make-announcement max-w-400px mx-auto p-20 border border-gray-300 rounded bg-white shadow-md">
+      <div className="font-bold mb-5 text-center">Make Announcement</div>
+      <div className="grid grid-cols-2 gap-1 font-mono">
+      <label className="block">
             <p className="mb-2">Students</p>
-            <select name="student" id="student" onChange={handleSelectStudent}>
+            <select name="student" className="styled-dropdown" id="student" onChange={handleSelectStudent}>
               <option value="select" selected>
                 Select
               </option>
@@ -474,7 +485,7 @@ function All_Students() {
           </label>
           <label className="block">
             <p className="mb-2">Faculty</p>
-            <select name="faculty" id="faculty" onChange={handleSelectFaculty}>
+            <select name="faculty" className="styled-dropdown" id="faculty" onChange={handleSelectFaculty}>
               <option value="select" selected>
                 Select
               </option>
@@ -484,7 +495,7 @@ function All_Students() {
           </label>
           <label className="block">
             <p className="mb-2">HOD</p>
-            <select name="hod" id="hod" onChange={handleSelectHod}>
+            <select name="hod" className="styled-dropdown" id="hod" onChange={handleSelectHod}>
               <option value="select" selected>
                 Select
               </option>
@@ -494,7 +505,7 @@ function All_Students() {
           </label>
           <label className="block">
             <p className="mb-2">TPO</p>
-            <select name="tpo" id="tpo" onChange={handleSelectTpo}>
+            <select name="tpo" className="styled-dropdown" id="tpo" onChange={handleSelectTpo}>
               <option value="select" selected>
                 Select
               </option>
@@ -504,7 +515,7 @@ function All_Students() {
           </label>
           <label className="block">
             <p className="mb-2">TTO</p>
-            <select name="tto" id="tto" onChange={handleSelectTto}>
+            <select name="tto" className="styled-dropdown" id="tto" onChange={handleSelectTto}>
               <option value="select" selected>
                 Select
               </option>
@@ -514,7 +525,7 @@ function All_Students() {
           </label>
           <label className="block">
             <p className="mb-2">Admin</p>
-            <select name="admin" id="admin" onChange={handleSelectAdmin}>
+            <select name="admin" className="styled-dropdown" id="admin" onChange={handleSelectAdmin}>
               <option value="select" selected>
                 Select
               </option>
@@ -522,49 +533,62 @@ function All_Students() {
               <option value="branch_wise">Branch Wise</option>
             </select>
           </label>
-        </div>
-        <div>
-          <button onClick={CombineMails}>Confirm Selected Mails</button>
-        </div>
-        <div>
-          {selectedEmails.length > 0 && (
-            <div className="textStyle">Selected Emails</div>
-          )}
-          {selectedEmails.length > 0 &&
-            selectedEmails?.map((email) => <div key={email}>{email}</div>)}
-        </div>
-        <input
-          type="text"
-          placeholder="From (Your Email)"
-          value={fromEmail}
-          onChange={handleFromEmailChange}
-        />
-        <input
-          type="text"
-          placeholder="Secret Key"
-          value={secretKey}
-          onChange={handleSecretKeyChange}
-        />
-        <input
-          type="text"
-          placeholder="Subject"
-          value={subject}
-          onChange={handleSubjectChange}
-        />
-        <textarea placeholder="Text" value={text} onChange={handleTextChange} />
+      </div>
+      <div className="mt-5">
         <button
-          onClick={sendEmail}
-          disabled={
-            !selectedEmails.length ||
-            !subject ||
-            !text ||
-            !fromEmail ||
-            !secretKey
-          }
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+          onClick={CombineMails}
         >
-          Send Email
+          Confirm Selected Mails
         </button>
       </div>
+      <div>
+        {selectedEmails.length > 0 && (
+          <div className="font-bold mt-5">Selected Emails</div>
+        )}
+        {selectedEmails.length > 0 &&
+          selectedEmails?.map((email) => <div key={email}>{email}</div>)}
+      </div>
+      <input
+        className="w-full p-2 border border-gray-300 rounded mt-5"
+        type="text"
+        placeholder="From (Your Email)"
+        value={fromEmail}
+        onChange={handleFromEmailChange}
+      />
+      <input
+        className="w-full p-2 border border-gray-300 rounded mt-2"
+        type="text"
+        placeholder="Secret Key"
+        value={secretKey}
+        onChange={handleSecretKeyChange}
+      />
+      <input
+        className="w-full p-2 border border-gray-300 rounded mt-2"
+        type="text"
+        placeholder="Subject"
+        value={subject}
+        onChange={handleSubjectChange}
+      />
+      <textarea
+        className="w-full p-2 border border-gray-300 rounded mt-2 h-32"
+        placeholder="Text"
+        value={text}
+        onChange={handleTextChange}
+      />
+      <button
+        className="bg-blue-500 text-white py-2 px-4 rounded mt-5 cursor-pointer"
+        onClick={sendEmail}
+        disabled={
+          !selectedEmails.length ||
+          !subject ||
+          !text ||
+          !fromEmail ||
+          !secretKey
+        }
+      >
+        Send Email
+      </button>
     </div>
   );
 }
