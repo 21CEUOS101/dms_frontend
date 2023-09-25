@@ -36,7 +36,7 @@ const Update_Time_Table = () => {
     const updateData = async () => {
         await axios.patch(`http://localhost:3001/tto/updateTimeTableBlockDetails/${bid}/${ttid}`, formData).then((data) => {
             console.log(data?.data);
-            setStatus(data?.data?.message);
+            setStatus(data?.data?.acknowledge);
             setTimeout(() => {
                 setStatus("");
             }

@@ -40,9 +40,15 @@ function ViewAll(props) {
       if (result.isConfirmed) {
         // User confirmed, proceed with deletion
         try {
-          await axios.delete(`http://localhost:3001/${role}${delete_url}/${id}`);
-          Swal.fire('Deleted!', 'The item has been deleted.', 'success');
-          props.setRefresh(!props.refresh); // Refresh the page
+          await axios.delete(`http://localhost:3001/${role}${delete_url}/${id}`).then(
+            () => {
+              props.setRefresh(!props.refresh); // Refresh the page
+              Swal.fire('Deleted!', 'The item has been deleted.', 'success');
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
         } catch (error) {
           Swal.fire('Error', 'An error occurred while deleting the item.', 'error');
         }
@@ -146,7 +152,7 @@ function ViewAll(props) {
             <th>View</th>
             {((["admin"].includes(role) && !check2) || (check2 && ["hod"].includes(role)) || (check3 && ["tpo"].includes(role))) && <th>Update</th>}
             {((["admin"].includes(role) && !check2) || (check2 && ["hod"].includes(role)) || (check3 && ["tpo"].includes(role))) && <th>Delete</th>}
-            {["admin","faculty","hod"] && check && <th>Result</th>}
+            {["admin","faculty","hod"].includes(role) && check && <th>Result</th>}
           </tr>
         </thead>
         <tbody>
@@ -180,7 +186,7 @@ function ViewAll(props) {
                     Delete
                   </button>
                 </td>}
-                {["admin","faculty","hod"] && check && <td>
+                {["admin","faculty","hod"].includes(role) && check && <td>
                   <Link className="view-button" to={`${result_url}/${id}`} >
                     Result
                   </Link>

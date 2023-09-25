@@ -22,8 +22,8 @@ function Placement_Company_Form() {
     placement_company_website: yup.string().url().required("Website URL is required"),
     placement_company_type: yup.string().required("Company Type is required"),
     placement_company_description: yup.string().required("Company Description is required"),
-    placement_company_job_role: yup.array().of(yup.string()).required("Job Roles are required"),
-    placement_company_job_description: yup.array().of(yup.string()).required("Job Descriptions are required"),
+    placement_company_job_role: yup.string().required("Job Roles are required"),
+    placement_company_job_description: yup.string().required("Job Descriptions are required"),
     no_of_student_placed: yup.string().required("Number of Students Placed is required"),
 });
 
@@ -48,8 +48,9 @@ function Placement_Company_Form() {
   const createPlacementCompanyDetails = async () => {
     await axios.post(`http://localhost:3001/tpo/createNewPlacementCompanyDetails`, data).then(
       (response) => {
-        if (response?.data?.message?.errors !== undefined) {
-          setError(response?.data?.message?._message);
+        console.log(response);
+        if (response?.data?.errors !== undefined) {
+          setError(response?.data?._message);
         } else {
           setStatus(response?.data?.message);
           setTimeout(() => {
@@ -158,7 +159,7 @@ function Placement_Company_Form() {
               </label>
               <div className="col-sm-10">
                 <input
-                  type="tel"
+                  type="text"
                   className="form-control phone-mask"
                   id="placement_company_mobile_number"
                   name="placement_company_mobile_number"
