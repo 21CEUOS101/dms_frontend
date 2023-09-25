@@ -76,8 +76,8 @@ function Placement_Company_Form() {
   }, [error]);
 
   return (
-    <div className="col-xxl">
-      <div className="card mb-4">
+    <div className="col-xxl grid place-items-center">
+      <div className="card mb-4 h-auto w-fit">
         <div className="card-header d-flex align-items-center justify-content-between">
           <h5 className="mb-0">Placement Company Details Form</h5>
           <small className="text-muted float-end">Default label</small>

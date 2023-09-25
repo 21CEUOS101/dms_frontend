@@ -94,7 +94,7 @@ function HOD_Form() {
 
 
   return (
-    <div className="col-xxl">
+    <div className="col-xxl grid place-items-center">
         <div className="card mb-4 h-auto w-fit">
             <div className="card-header d-flex align-items-center justify-content-between">
                 <h5 className="mb-0">HODDetails Form</h5>

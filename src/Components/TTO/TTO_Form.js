@@ -94,8 +94,8 @@ function TTO_Form() {
 
   return (
     <>
-      <div className="col-xxl">
-      <div className="card mb-4">
+      <div className="col-xxl grid place-items-center">
+      <div className="card mb-4 h-auto w-fit">
         <div className="card-header d-flex align-items-center justify-content-between">
           <h5 className="mb-0">TTODetails Form</h5>
         </div>
@@ -163,7 +163,6 @@ function TTO_Form() {
               </div>
               </div>
               {status !== "" && <p>{status}</p>}
-              {error !== undefined && <p className="text-danger">{error}</p>}
           </form>
         </div>
       </div>
