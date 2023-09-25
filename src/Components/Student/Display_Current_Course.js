@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import Profile from '../Profile';
 
 function Display_Current_Course() {
-  // const role = localStorage.getItem("role");
-  const role = "student";
-  // const id = localStorage.getItem("id");
-  const id = "123456789";
+  const role = localStorage.getItem("role");
+  // const role = "student";
+  const id = localStorage.getItem("id");
+  // const id = "123456789";
   const [data, setData] = useState();
   
 
