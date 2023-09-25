@@ -13,43 +13,42 @@ function Student_Form() {
   const [status, setStatus] = useState();
   const [error, setError] = useState();
 
-//   const schema = yup.object().shape({
-//     student_id: yup.string().required("Student id is required").min(5),
-//     reporting_date: yup.string().required().test(
-//       'is-valid-date',
-//       'Invalid date format',
-//       (value) => {
-//         // Define a regular expression for the "YYYY-MM-DD" format
-//         const dateFormatRegex = /^\d{4}-\d{2}-\d{2}$/;
-//         if (!dateFormatRegex.test(value)) {
-//           return false; // Invalid format
-//         }
-//         return true;
-//       }
-//     ),
-//     admission_type: yup.string().required("Admission type is required"),
-//     first_name: yup.string().required("First Name is required"),
-//     middle_name: yup.string().required("Middle Name is required"),
-//     last_name: yup.string().required("Last Name is required"),
-//     name_format: yup.string().required("Name Formate required"),
-//     full_name: yup.string().required("Full Name is required"),
-//     gender: yup.string().required("Gender is required"),
-//     date_of_birth: req.body.date_of_birth,
-//     birth_place: req.body.birth_place,
-//     ACPC_seat_allotment_date: req.body.ACPC_seat_allotment_date,
-//     isD2D: Boolean(req.body.isD2D) ,
-//     enrollment_year: req.body.enrollment_year,
-//     degree: req.body.degree,
-//     qualifying_exam_roll_number: req.body.qualifying_exam_roll_number,
-//     session_number: req.body.session_number,
-//     batch_year: req.body.batch_year,
-//     student_id: req.body.student_id,
-//     old_student_id: req.body.old_student_id,
-//     merit_rank: req.body.merit_rank,
-//     cast_category: req.body.cast_category,
-//     student_email: req.body.student_email,
-//     student_roll_number: req.body.student_roll_number,
-// });
+  const schema = yup.object().shape({
+    student_id: yup.string().required("Student id is required").min(5),
+    reporting_date: yup.string().required().test(
+      'is-valid-date',
+      'Invalid date format',
+      (value) => {
+        // Define a regular expression for the "YYYY-MM-DD" format
+        const dateFormatRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dateFormatRegex.test(value)) {
+          return false; // Invalid format
+        }
+        return true;
+      }
+    ),
+admissionTypeSchema : yup.string().required('Admission type is required'),
+firstNameSchema : yup.string().required('First Name is required'),
+middleNameSchema : yup.string().required('Middle Name is required'),
+lastNameSchema : yup.string().required('Last Name is required'),
+nameFormatSchema : yup.string().required('Name Format required'),
+fullNameSchema : yup.string().required('Full Name is required'),
+ genderSchema : yup.string().required('Gender is required'),
+ dateOfBirthSchema : yup.string().required('Date of Birth is required'),
+ birthPlaceSchema : yup.string().required('Birth Place is required'),
+ ACPCSeatAllotmentDateSchema : yup.string().required('ACPC Seat Allotment Date is required'),
+ isD2DSchema : yup.boolean().required('isD2D is required'),
+ enrollmentYearSchema : yup.string().required('Enrollment Year is required'),
+ degreeSchema : yup.string().required('Degree is required'),
+ qualifyingExamRollNumberSchema : yup.string().required('Qualifying Exam Roll Number is required'),
+sessionNumberSchema : yup.string().required('Session Number is required'),
+ batchYearSchema : yup.string().required('Batch Year is required'),
+ oldStudentIdSchema : yup.string().required('Old Student ID is required'),
+ meritRankSchema : yup.string().required('Merit Rank is required'),
+ castCategorySchema : yup.string().required('Cast Category is required'),
+ studentEmailSchema : yup.string().required('Student Email is required'),
+ studentRollNumberSchema : yup.string().required('Student Roll Number is required'),
+});
 
   const { register, handleSubmit, formState: { errors } , reset } = useForm(
     {
