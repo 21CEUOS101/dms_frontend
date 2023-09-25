@@ -9,6 +9,7 @@ function LogOut() {
         localStorage.removeItem("id");
         localStorage.removeItem("email");
         localStorage.removeItem("password");
+        localStorage.removeItem("secretKey");
         setIsLoggedIn(false);
     }
 

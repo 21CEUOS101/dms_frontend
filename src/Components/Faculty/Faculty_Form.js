@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import { Email } from '../Email';
 
 function Faculty_Form() {
     const role = localStorage.getItem("role");
@@ -55,6 +56,14 @@ function Faculty_Form() {
               setTimeout(() => {
                   setStatus("");
               }, 2000);
+            const emailData = {
+              from_name : role,
+              to_name: data?.data?.id,
+              from_email: localStorage.getItem("email"),
+              to_email: data?.data?.email,
+              message: `${data?.data?.password}`
+            };
+            Email(emailData);
         }
       }, 
       (error) => {
