@@ -145,9 +145,23 @@ function TimeTable({ data, timetableId, onEditClick }) {
             </tbody>
           </table>
         </div>
-        <div>
-          <button onClick={downloadExcel}>Download Excel</button>
-          <button onClick={downloadPDF}>Download PDF</button>
+        <div className="mb-4 space-y-2">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mx-2"
+            onClick={() => {
+              downloadPDF()
+            }}
+          >
+            Download PDF
+          </button>
+          <button
+            className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded"
+            onClick={() => {
+              downloadExcel()
+            }}
+          >
+            Download Excel
+          </button>
         </div>
       </div>
     );

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../all.css';
 import TimeTable from '../TimeTable';
 
 function View_TimeTable() {
@@ -37,27 +36,30 @@ function View_TimeTable() {
   const filteredData = selectedSemester ? data.filter((value) => value.time_table_block_semester === selectedSemester) : [];
 
   return (
-    <div className='divStyle'>
-      <div>
-        <label>Select Semester:</label>
-        <select
-          value={selectedSemester || ""}
-          onChange={handleSemesterChange}
-        >
-          <option value="">Select Semester</option>
-          {uniqueSemesters.map((semester) => (
-            <option key={semester} value={semester}>
-              {semester}
-            </option>
-          ))}
-        </select>
+    <div className="bg-gray-100 min-h-screen p-4">
+      <div className="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 className="text-2xl font-bold mb-4">View Timetable</h1>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">Select Semester:</label>
+          <select
+            value={selectedSemester || ""}
+            onChange={handleSemesterChange}
+            className="w-full p-2 border border-gray-300 rounded"
+          >
+            <option value="">Select Semester</option>
+            {uniqueSemesters.map((semester) => (
+              <option key={semester} value={semester}>
+                {semester}
+              </option>
+            ))}
+          </select>
+        </div>
+        {filteredData.length > 0 ? (
+          <TimeTable data={filteredData} timetableId={selectedSemester} />
+        ) : (
+          <p>No timetable data available for the selected semester.</p>
+        )}
       </div>
-      {filteredData.length > 0 ? (
-  <TimeTable data={filteredData} timetableId={selectedSemester} />
-) : (
-  <p>No timetable data available for the selected semester.</p>
-)}
-
     </div>
   );
 }
