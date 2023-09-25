@@ -116,21 +116,16 @@ export function NavbarNested() {
         ["admin","hod","student","faculty"].includes(role) && { label: 'View Courses', link: '/all-course' },
       ].filter((item) => item !== false),
     },
-    { label: 'Make Announcement', icon: IconMail, links: [["tto","tpo","hod","faculty","admin"].includes(role) && { link: '/make-announcement', label: 'Make email' }] },
-    { label: 'Logout', icon: IconMail, links: [{ link: '/logout', label: 'Logout' }] },
+    { label: 'Make Announcement', icon: IconMail, links: [["tto","tpo","hod","faculty","admin"].includes(role) && { link: '/make-announcement', label: 'Make email' }].filter((item) => item !== false) },
+    { label: 'Logout', icon: IconMail, links: [{ link: '/logout', label: 'Logout' }].filter((item) => item !== false) },
 
   ];
+  const filteredMockdata = mockdata.filter((item) => item.links && item.links.length > 0);
 
-  mockdata.map((item) => {
-    if (item.links.length === 0)
-    {
-      // remove that item
-      mockdata.splice(mockdata.indexOf(item), 1);
-    }
-  });
+  console.log(filteredMockdata);
   
   const { classes } = useStyles();
-  const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
+  const links = filteredMockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
   const [isCollapse, setIsCollapse] = React.useState("");
 

@@ -6,8 +6,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AppContext } from "../../App";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+    const navigate = useNavigate();
   const [data, setData] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const { isLoggedIn, setIsLoggedIn, role, setRole } = useContext(AppContext);
@@ -53,8 +55,10 @@ function Login() {
         localStorage.setItem("password", data?.data?.password);
         console.log(localStorage.getItem("role"));
         setRole(localStorage.getItem("role"));
+        navigate("/");
       } else {
         console.log("Login Failed");
+        navigate("/login");
       }
       reset();
     });
