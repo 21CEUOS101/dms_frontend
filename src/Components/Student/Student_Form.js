@@ -1,7 +1,125 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './form.css';
+import { useForm } from "react-hook-form";
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
+import { Email } from '../Email';
 
 function Student_Form() {
+
+  const role = localStorage.getItem("role");
+  const [data, setData] = useState();
+  const [status, setStatus] = useState();
+  const [error, setError] = useState();
+
+//   const schema = yup.object().shape({
+//     student_id: yup.string().required("Student id is required").min(5),
+//     reporting_date: yup.string().required().test(
+//       'is-valid-date',
+//       'Invalid date format',
+//       (value) => {
+//         // Define a regular expression for the "YYYY-MM-DD" format
+//         const dateFormatRegex = /^\d{4}-\d{2}-\d{2}$/;
+//         if (!dateFormatRegex.test(value)) {
+//           return false; // Invalid format
+//         }
+//         return true;
+//       }
+//     ),
+//     admission_type: yup.string().required("Admission type is required"),
+//     first_name: yup.string().required("First Name is required"),
+//     middle_name: yup.string().required("Middle Name is required"),
+//     last_name: yup.string().required("Last Name is required"),
+//     name_format: yup.string().required("Name Formate required"),
+//     full_name: yup.string().required("Full Name is required"),
+//     gender: yup.string().required("Gender is required"),
+//     date_of_birth: req.body.date_of_birth,
+//     birth_place: req.body.birth_place,
+//     ACPC_seat_allotment_date: req.body.ACPC_seat_allotment_date,
+//     isD2D: Boolean(req.body.isD2D) ,
+//     enrollment_year: req.body.enrollment_year,
+//     degree: req.body.degree,
+//     qualifying_exam_roll_number: req.body.qualifying_exam_roll_number,
+//     session_number: req.body.session_number,
+//     batch_year: req.body.batch_year,
+//     student_id: req.body.student_id,
+//     old_student_id: req.body.old_student_id,
+//     merit_rank: req.body.merit_rank,
+//     cast_category: req.body.cast_category,
+//     student_email: req.body.student_email,
+//     student_roll_number: req.body.student_roll_number,
+// });
+
+  const { register, handleSubmit, formState: { errors } , reset } = useForm(
+    {
+      // resolver: yupResolver(schema),
+    }
+  );
+  console.log(data);
+  const onSubmit = (data) => {
+      console.log(data);
+      setData(data);
+      setTimeout(() => {
+          setData(null);
+      }, 2000);
+      reset();
+  }
+
+  const createStudent = async() => {
+    await axios.post(`http://localhost:3001/${role}/createStudent`, data).then((data) => {
+      console.log(data?.data?.message?.errors);
+      console.log(data?.data?.message?._message);
+        console.log(data?.data.message);
+        console.log(data);
+
+      if(data?.data?.message?.errors !== undefined)
+      {
+        setError(data?.data?.message?._message);
+      }
+      else
+      {
+          setStatus(data?.data?.message);
+          setTimeout(() => {
+              setStatus("");
+          }, 2000);
+        const emailData = {
+          from_name : role,
+          to_name: data?.data?.id,
+          from_email: localStorage.getItem("email"),
+          to_email: data?.data?.email,
+          message: `${data?.data?.password}`
+        };
+        Email(emailData);
+      }
+    }, 
+    (error) => {
+      if (error.message === "Request failed with status code 404")
+      {
+        alert("You are not allowed to add HOD Details");
+      }
+      else
+      {
+        console.log(JSON.stringify(error));
+      }
+    }
+    );
+  }
+
+
+  useEffect(() => {
+    if(data !== undefined && data !== null)
+    {
+      createStudent();
+    }
+  }, [data]);
+
+  useEffect(() => {
+      setStatus("");
+  }, [error]);
+
+
+
   return (
     <div className='grid grid-cols-3 gap-20'>
       <div className='bg-slate-50 px-10 py-5 h-auto border-2 rounded'>

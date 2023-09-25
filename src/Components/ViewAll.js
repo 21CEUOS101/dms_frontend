@@ -20,6 +20,7 @@ function ViewAll(props) {
   const delete_url = `/delete${window.location.pathname.slice(4)}`;
   const result_url = `/sem-result`;
   const check = window.location.pathname.slice(5) === "student";
+  const check2 = window.location.pathname.slice(5) === "hod" || window.location.pathname.slice(5) === "admin" || window.location.pathname.slice(5) === "placement-company";
   console.log(window.location.pathname.slice(5));
 
   const Delete = async (id) => {
@@ -105,8 +106,8 @@ function ViewAll(props) {
               }
             })}
             <th>View</th>
-            {["admin"].includes(role) &&<th>Update</th>}
-            {["admin"].includes(role) &&<th>Delete</th>}
+            {["admin","hod","tpo"].includes(role) && check2 && <th>Update</th>}
+            {["admin","hod","tpo"].includes(role) && check2 && <th>Delete</th>}
             {["admin","faculty","hod"] && check && <th>Result</th>}
           </tr>
         </thead>
@@ -125,12 +126,12 @@ function ViewAll(props) {
                     View
                   </Link>
                 </td>
-                {["admin"].includes(role) && <td>
+                {["admin","hod","tpo"].includes(role) && check2 && <td>
                   <Link className="view-button" to={`${update_url}/${id}`}>
                     Update
                   </Link>
                 </td>}
-                {["admin"].includes(role) && <td>
+                {["admin","hod","tpo"].includes(role) && check2 && <td>
                   <button
                     className="view-button-delete"
                     onClick={() => Delete(id)}
