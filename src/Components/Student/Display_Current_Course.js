@@ -25,10 +25,10 @@ function Display_Current_Course() {
   return (
     <>
       <div>Display_Course</div>
-      <div>
-              {
-                  data !== undefined && data != null && <Profile data={data?.courseDetails[0]}/>
-              }
+      <div className='grid grid-cols-3'>
+        {data?.courseDetails.map((item, index) => (
+          <Profile key={index} data={item} />
+        ))}
       </div>
     </>
   )
