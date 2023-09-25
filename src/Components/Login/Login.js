@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { AppContext } from "../../App";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Login() {
     const navigate = useNavigate();
@@ -57,15 +58,23 @@ function Login() {
         setRole(localStorage.getItem("role"));
         navigate("/");
       } else {
-        console.log("Login Failed");
-        navigate("/login");
+          console.log("Login Failed");
+          Swal.fire({
+            icon: 'error',
+            title: 'Login Failed',
+            text: 'Invalid credentials. Please try again.',
+          });
       }
       reset();
     });
   };
 
-  useEffect(() => {
-    login(data?.id, data?.role, data?.password);
+    useEffect(() => {
+      
+      if (data?.user_id !== undefined || data?.password !== undefined || data?.role !== undefined)
+      {
+        login(data?.id, data?.role, data?.password);
+      }
   }, [data]);
   return (
     <>
@@ -103,9 +112,6 @@ function Login() {
                       <label className="form-label" htmlFor="password">
                         Password
                       </label>
-                      <a href="auth-forgot-password-basic.html">
-                        <small>Forgot Password?</small>
-                      </a>
                     </div>
                     <div className="input-group input-group-merge">
                       <input

@@ -40,7 +40,7 @@ const Update_Placement_Company = () => {
 
   const updateData = async () => {
     await axios
-      .patch(`http://localhost:3001/tpo/update-placement_company`, formData)
+      .patch(`http://localhost:3001/tpo/update-placement-company`, formData)
       .then(
         (data) => {
           console.log(data?.data?.acknowledged);
