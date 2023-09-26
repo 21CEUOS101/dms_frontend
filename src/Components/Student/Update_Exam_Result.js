@@ -22,6 +22,8 @@ const Update_Exam_Result = () => {
     axios
       .get(`http://localhost:3001/student/getStudentExamResultSem/${sem}/${sid}`)
       .then((data) => {
+        console.log("Pre Data");
+        console.log(data?.data);
         setFormData(data?.data);
       })
       .catch((error) => {
@@ -85,7 +87,7 @@ const Update_Exam_Result = () => {
             type="text"
             id="student_id"
             name="student_id"
-            value={formData.student_id}
+            value={formData?.student_id}
             disabled
             className="form-control"
             required
@@ -99,7 +101,7 @@ const Update_Exam_Result = () => {
             type="number"
             id="semester"
             name="semester"
-            value={formData.semester}
+            value={formData?.semester}
             onChange={(e) => handleChange(e, 'common', 'semester')}
             className="form-control"
             required
@@ -113,7 +115,7 @@ const Update_Exam_Result = () => {
             type="number"
             id="batch_year"
             name="batch_year"
-            value={formData.batch_year}
+            value={formData?.batch_year}
             onChange={(e) => handleChange(e, 'common', 'batch_year')}
             className="form-control"
             required
@@ -121,8 +123,8 @@ const Update_Exam_Result = () => {
         </div>
 
         {/* Fields for each subject */}
-{formData.subject_name &&
-  formData.subject_name.map((subject, index) => (
+{formData?.subject_name &&
+  formData?.subject_name.map((subject, index) => (
     <div key={subject}>
       <h3>{subject}</h3>
       {/* Sessional Marks */}
@@ -132,7 +134,7 @@ const Update_Exam_Result = () => {
           type="number"
           id={`sessional1_marks_${index}`}
           name={`sessional1_marks_${index}`}
-          value={formData.sessional1_marks[index]}
+          value={formData?.sessional1_marks[index]}
           onChange={(e) => handleChange(e, subject, 'sessional1_marks', index)}
           className="form-control"
           required
@@ -144,7 +146,7 @@ const Update_Exam_Result = () => {
           type="number"
           id={`sessional2_marks_${index}`}
           name={`sessional2_marks_${index}`}
-          value={formData.sessional2_marks[index]}
+          value={formData?.sessional2_marks[index]}
           onChange={(e) => handleChange(e, subject, 'sessional2_marks', index)}
           className="form-control"
           required
@@ -156,7 +158,7 @@ const Update_Exam_Result = () => {
           type="number"
           id={`sessional3_marks_${index}`}
           name={`sessional3_marks_${index}`}
-          value={formData.sessional3_marks[index]}
+          value={formData?.sessional3_marks[index]}
           onChange={(e) => handleChange(e, subject, 'sessional3_marks', index)}
           className="form-control"
           required
@@ -170,7 +172,7 @@ const Update_Exam_Result = () => {
           type="text"
           id={`sessional1_present_${index}`}
           name={`sessional1_present_${index}`}
-          value={formData.sessional1_present[index]}
+          value={formData?.sessional1_present[index]}
           onChange={(e) => handleChange(e, subject, 'sessional1_present', index)}
           className="form-control"
           required
@@ -194,7 +196,7 @@ const Update_Exam_Result = () => {
           type="text"
           id={`sessional3_present_${index}`}
           name={`sessional3_present_${index}`}
-          value={formData.sessional3_present[index]}
+          value={formData?.sessional3_present[index]}
           onChange={(e) => handleChange(e, subject, 'sessional3_present', index)}
           className="form-control"
           required
@@ -208,7 +210,7 @@ const Update_Exam_Result = () => {
           type="number"
           id={`sessional1_attendance_${index}`}
           name={`sessional1_attendance_${index}`}
-          value={formData.sessional1_attendance[index]}
+          value={formData?.sessional1_attendance[index]}
           onChange={(e) => handleChange(e, subject, 'sessional1_attendance', index)}
           className="form-control"
           required
@@ -220,7 +222,7 @@ const Update_Exam_Result = () => {
           type="number"
           id={`sessional2_attendance_${index}`}
           name={`sessional2_attendance_${index}`}
-          value={formData.sessional2_attendance[index]}
+          value={formData?.sessional2_attendance[index]}
           onChange={(e) => handleChange(e, subject, 'sessional2_attendance', index)}
           className="form-control"
           required
@@ -232,7 +234,7 @@ const Update_Exam_Result = () => {
           type="number"
           id={`sessional3_attendance_${index}`}
           name={`sessional3_attendance_${index}`}
-          value={formData.sessional3_attendance[index]}
+          value={formData?.sessional3_attendance[index]}
           onChange={(e) => handleChange(e, subject, 'sessional3_attendance', index)}
           className="form-control"
           required
@@ -246,7 +248,7 @@ const Update_Exam_Result = () => {
           type="number"
           id={`sessional1_total_attendance_${index}`}
           name={`sessional1_total_attendance_${index}`}
-          value={formData.sessional1_total_attendance[index]}
+          value={formData?.sessional1_total_attendance[index]}
           onChange={(e) => handleChange(e, subject, 'sessional1_total_attendance', index)}
           className="form-control"
           required
@@ -258,7 +260,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`sessional2_total_attendance_${index}`}
                     name={`sessional2_total_attendance_${index}`}
-                    value={formData.sessional2_total_attendance[index]}
+                    value={formData?.sessional2_total_attendance[index]}
                     onChange={(e) => handleChange(e, subject, 'sessional2_total_attendance', index)}
                     className="form-control"
                     required
@@ -270,7 +272,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`sessional3_total_attendance_${index}`}
                     name={`sessional3_total_attendance_${index}`}
-                    value={formData.sessional3_total_attendance[index]}
+                    value={formData?.sessional3_total_attendance[index]}
                     onChange={(e) => handleChange(e, subject, 'sessional3_total_attendance', index)}
                     className="form-control"
                     required
@@ -284,7 +286,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`sessional1_practical_attendance_${index}`}
                     name={`sessional1_practical_attendance_${index}`}
-                    value={formData.sessional1_practical_attendance[index]}
+                    value={formData?.sessional1_practical_attendance[index]}
                     onChange={(e) => handleChange(e, subject, 'sessional1_practical_attendance', index)}
                     className="form-control"
                     required
@@ -296,7 +298,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`sessional2_practical_attendance_${index}`}
                     name={`sessional2_practical_attendance_${index}`}
-                    value={formData.sessional2_practical_attendance[index]}
+                    value={formData?.sessional2_practical_attendance[index]}
                     onChange={(e) => handleChange(e, subject, 'sessional2_practical_attendance', index)}
                     className="form-control"
                     required
@@ -308,7 +310,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`sessional3_practical_attendance_${index}`}
                     name={`sessional3_practical_attendance_${index}`}
-                    value={formData.sessional3_practical_attendance[index]}
+                    value={formData?.sessional3_practical_attendance[index]}
                     onChange={(e) => handleChange(e, subject, 'sessional3_practical_attendance', index)}
                     className="form-control"
                     required
@@ -322,7 +324,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`sessional1_total_practical_attendance_${index}`}
                     name={`sessional1_total_practical_attendance_${index}`}
-                    value={formData.sessional1_total_practical_attendance[index]}
+                    value={formData?.sessional1_total_practical_attendance[index]}
                     onChange={(e) => handleChange(e, subject, 'sessional1_total_practical_attendance', index)}
                     className="form-control"
                     required
@@ -334,7 +336,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`sessional2_total_practical_attendance_${index}`}
                     name={`sessional2_total_practical_attendance_${index}`}
-                    value={formData.sessional2_total_practical_attendance[index]}
+                    value={formData?.sessional2_total_practical_attendance[index]}
                     onChange={(e) => handleChange(e, subject, 'sessional2_total_practical_attendance', index)}
                     className="form-control"
                     required
@@ -346,7 +348,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`sessional3_total_practical_attendance_${index}`}
                     name={`sessional3_total_practical_attendance_${index}`}
-                    value={formData.sessional3_total_practical_attendance[index]}
+                    value={formData?.sessional3_total_practical_attendance[index]}
                     onChange={(e) => handleChange(e, subject, 'sessional3_total_practical_attendance', index)}
                     className="form-control"
                     required
@@ -360,7 +362,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`block_marks_${index}`}
                     name={`block_marks_${index}`}
-                    value={formData.block_marks[index]}
+                    value={formData?.block_marks[index]}
                     onChange={(e) => handleChange(e, subject, 'block_marks', index)}
                     className="form-control"
                     required
@@ -372,7 +374,7 @@ const Update_Exam_Result = () => {
                     type="text"
                     id={`block_present_${index}`}
                     name={`block_present_${index}`}
-                    value={formData.block_present[index]}
+                    value={formData?.block_present[index]}
                     onChange={(e) => handleChange(e, subject, 'block_present', index)}
                     className="form-control"
                     required
@@ -386,7 +388,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`external_marks_${index}`}
                     name={`external_marks_${index}`}
-                    value={formData.external_marks[index]}
+                    value={formData?.external_marks[index]}
                     onChange={(e) => handleChange(e, subject, 'external_marks', index)}
                     className="form-control"
                     required
@@ -398,7 +400,7 @@ const Update_Exam_Result = () => {
                     type="text"
                     id={`external_status_${index}`}
                     name={`external_status_${index}`}
-                    value={formData.external_status[index]}
+                    value={formData?.external_status[index]}
                     onChange={(e) => handleChange(e, subject, 'external_status', index)}
                     className="form-control"
                     required
@@ -412,7 +414,7 @@ const Update_Exam_Result = () => {
                     type="number"
                     id={`termwork_marks_${index}`}
                     name={`termwork_marks_${index}`}
-                    value={formData.termwork_marks[index]}
+                    value={formData?.termwork_marks[index]}
                     onChange={(e) => handleChange(e, subject, 'termwork_marks', index)}
                     className="form-control"
                     required
@@ -424,7 +426,7 @@ const Update_Exam_Result = () => {
                     type="text"
                     id={`termwork_status_${index}`}
                     name={`termwork_status_${index}`}
-                    value={formData.termwork_status[index]}
+                    value={formData?.termwork_status[index]}
                     onChange={(e) => handleChange(e, subject, 'termwork_status', index)}
                     className="form-control"
                     required
