@@ -39,11 +39,12 @@ const Update_Placement_Company = () => {
   };
 
   const updateData = async () => {
+    console.log(formData);
     await axios
       .patch(`http://localhost:3001/tpo/update-placement-company`, formData)
       .then(
         (data) => {
-          console.log(data?.data?.acknowledged);
+          console.log(data?.data);
           setStatus(
             data?.data?.acknowledged
               ? "Data Updated Successfully!"

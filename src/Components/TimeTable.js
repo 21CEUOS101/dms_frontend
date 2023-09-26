@@ -105,7 +105,7 @@ function TimeTable({ data, timetableId, onEditClick }) {
   }
   const role = localStorage.getItem("role");
   return (
-      <div>
+      <div className=' grid place-items-center'>
         <div className="timetable">
           <table ref={tableRef}>
             <thead>

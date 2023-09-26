@@ -36,10 +36,10 @@ function View_TimeTable() {
   const filteredData = selectedSemester ? data.filter((value) => value.time_table_block_semester === selectedSemester) : [];
 
   return (
-    <div className="bg-gray-100 min-h-screen p-4">
-      <div className="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-gray-100 min-h-screen p-4  grid place-items-center w-full">
+      <div className="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow-md grid place-items-center">
         <h1 className="text-2xl font-bold mb-4">View Timetable</h1>
-        <div className="mb-4">
+        <div className="mb-4 ">
           <label className="block text-sm font-medium text-gray-700">Select Semester:</label>
           <select
             value={selectedSemester || ""}
