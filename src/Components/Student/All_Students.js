@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ViewAll from '../ViewAll';
-import '../all.css';
-function All_Students() {
+
+function AllStudents() {
   const [data, setData] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [sessionNumbers, setSessionNumbers] = useState([]);
   const [selectedSession, setSelectedSession] = useState(localStorage.getItem('selectedSession') || ''); // Selected session number
+
   // Fetch session numbers
   const fetchSessionNumbers = () => {
     axios.get(`http://localhost:3001/student/getUniqueSessionNumbers`)
@@ -19,67 +20,76 @@ function All_Students() {
       });
   };
 
-  const format_student = (data) => {
-    let formated_data = [];
-    data.forEach((element) => {
-      let temp = {
-        _id: element._id,
-        student_id: element.student_id,
-        full_name: element.full_name,
-        student_roll_number: element.student_roll_number,
-        date_of_birth: element.date_of_birth,
-        gender: element.gender,
-      };
-      formated_data.push(temp);
-    });
-    return formated_data;
+  const formatStudentData = (data) => {
+    return data.map((element) => ({
+      _id: element._id,
+      student_id: element.student_id,
+      full_name: element.full_name,
+      student_roll_number: element.student_roll_number,
+      date_of_birth: element.date_of_birth,
+      gender: element.gender,
+    }));
   };
 
   useEffect(() => {
     // Fetch session numbers when the component mounts
     fetchSessionNumbers();
   }, []);
+
   useEffect(() => {
     // Fetch student data based on the selected session number
     if (selectedSession) {
       axios.get(`http://localhost:3001/student/getStudentsBySession/${selectedSession}`)
         .then((response) => {
           console.log('Fetched student data:', response.data);
-          setData(format_student(response.data));
+          setData(formatStudentData(response.data));
         })
         .catch((error) => {
           console.error('Error fetching student data:', error);
         });
     }
   }, [selectedSession]);
+
   // Handle session selection change
   const handleSessionChange = (e) => {
     const selectedSessionNumber = e.target.value;
     setSelectedSession(selectedSessionNumber);
     localStorage.setItem('selectedSession', selectedSessionNumber); // Store selected session in localStorage
   };
+
   return (
-    <div className='divStyle'>
-      <div className='textStyle'>All_Students</div>
-      <div className='grid place-items-center h-screen'>
-        <div>
-          {/* Dropdown menu for selecting session number */}
-          <label>Select Session Number:</label>
-          <select
-            value={selectedSession}
-            onChange={handleSessionChange}
-          >
-            <option value="">-- Select Session --</option>
-            {sessionNumbers.map((sessionNumber) => (
-              <option key={sessionNumber} value={sessionNumber}>
-                {sessionNumber}
-              </option>
-            ))}
-          </select>
+    <div className="bg-gray-100 min-h-screen py-6 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-7xl mx-auto sm:px-6 lg:px-8">
+        <div className="bg-white overflow-hidden shadow-sm rounded-lg">
+          <div className="p-6 bg-white border-b border-gray-200">
+            <h1 className="text-3xl font-semibold mb-4">All Students</h1>
+            <div className="mb-4">
+              <label htmlFor="sessionSelect" className="block text-sm font-medium text-gray-700">
+                Select Session Number:
+              </label>
+              <select
+                id="sessionSelect"
+                value={selectedSession}
+                onChange={handleSessionChange}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              >
+                <option value="">-- Select Session --</option>
+                {sessionNumbers.map((sessionNumber) => (
+                  <option key={sessionNumber} value={sessionNumber}>
+                    {sessionNumber}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {data.length > 0 && (
+              <ViewAll data={data} setRefresh={setRefresh} refresh={refresh} />
+            )}
+          </div>
         </div>
-        {data !== undefined && <ViewAll data={data} setRefresh={setRefresh} refresh={refresh} />}
       </div>
     </div>
   );
 }
-export default All_Students;
+
+export default AllStudents;
