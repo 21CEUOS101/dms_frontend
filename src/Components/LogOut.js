@@ -22,6 +22,7 @@ function LogOut() {
         localStorage.removeItem('email');
         localStorage.removeItem('password');
         localStorage.removeItem('secretKey');
+        localStorage.removeItem('selectedSession');
         setIsLoggedIn(false);
         Swal.fire('Logged Out', 'You have been logged out', 'success');
       }
