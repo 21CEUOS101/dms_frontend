@@ -153,7 +153,6 @@ function TimeTableBlockForm() {
               </div>
             </div>
             {status !== '' && <p>{status}</p>}
-            {error !== undefined && <p className="text-danger">{error}</p>}
           </form>
         </div>
       </div>
