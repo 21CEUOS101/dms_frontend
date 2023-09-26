@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./result.css";
 import { useParams, Link } from "react-router-dom";
 
 const SemResult = () => {
@@ -20,10 +19,8 @@ const SemResult = () => {
     }
     return value;
   };
-
   // Fetch student exam results from the server on component mount
   const preData = async () => {
-    console.log(id);
     axios
       .get(`http://localhost:3001/student/getStudentExamResult/${id}`)
       .then((response) => {
@@ -34,10 +31,10 @@ const SemResult = () => {
         console.error("Error fetching student exam results: ", error);
       });
   };
+
   useEffect(() => {
     preData();
   }, []);
-
   const aliasMapping = {
     _id: "ID",
     student_id: "Stdnt ID",
@@ -180,7 +177,6 @@ const SemResult = () => {
       </tr>
     )
   );
-
   const handleSemesterChange = (event) => {
     const selectedSemesterValue = event.target.value;
     const selectedSemester =
@@ -213,33 +209,31 @@ const SemResult = () => {
   };
 
   return (
-    <div>
-      <h1>Student Data</h1>
+    <div className="container mx-auto max-w-screen-lg" style={{ maxWidth: '1400px' }}>
+      <h1 className="text-2xl font-bold mb-4">Student Data</h1>
 
-      {/* Select Semester */}
-      <div>
-        <label htmlFor="semesterSelect">Select Semester: </label>
+      <div className="mb-4">
+        <label htmlFor="semesterSelect" className="mr-2">
+          Select Semester:
+        </label>
         <select
           id="semesterSelect"
           value={selectedSemester || ""}
           onChange={handleSemesterChange}
+          className="border rounded p-2"
         >
           <option value={null}>Select Semester</option>
-          <option value={1}>Semester 1</option>
-          <option value={2}>Semester 2</option>
-          <option value={3}>Semester 3</option>
-          <option value={4}>Semester 4</option>
-          <option value={5}>Semester 5</option>
-          <option value={6}>Semester 6</option>
-          <option value={7}>Semester 7</option>
-          <option value={8}>Semester 8</option>
-          {/* Add more semester options as needed */}
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((semester) => (
+            <option key={semester} value={semester}>
+              Semester {semester}
+            </option>
+          ))}
         </select>
       </div>
 
       {/* Render "Select your sem" message if selectedSemester is null */}
       {selectedSemester === null && (
-        <div className="select-semester-message">
+        <div className="bg-yellow-100 text-yellow-800 p-2 rounded mb-4">
           Select your semester to view the results.
         </div>
       )}
@@ -247,70 +241,114 @@ const SemResult = () => {
       {studentData && (
         <div>
           {/* Buttons to toggle between internal and external */}
-          <div>
-            <button onClick={() => handleOptionClick("Internal")}>
+          <div className="mb-4">
+            <button
+              onClick={() => handleOptionClick("Internal")}
+              className={`mr-2 p-2 ${
+                showInternal ? "bg-blue-500 text-white" : "bg-gray-300"
+              }`}
+            >
               Internal
             </button>
-            <button onClick={() => handleOptionClick("External")}>
+            <button
+              onClick={() => handleOptionClick("External")}
+              className={`p-2 ${
+                showExternal ? "bg-blue-500 text-white" : "bg-gray-300"
+              }`}
+            >
               External
             </button>
           </div>
         </div>
       )}
 
-      {/* Render the selected table if showInternal is true */}
-      {showInternal && studentData && (
-        <div>
-          <h2>Internal Table for Semester {selectedSemester}</h2>
-          <table>
-            {tableHeaderFirstTable}
-            <tbody>{tableRowsFirstTable}</tbody>
-          </table>
-        </div>
-      )}
+{showInternal && studentData && (
+  <div>
+    <h2 className="text-xl font-bold">
+      Internal Table for Semester {selectedSemester}
+    </h2>
+    <div className="overflow-x-auto"> {/* Add this container for horizontal scrolling */}
+      <table className="w-full table-auto border-collapse border mt-2">
+        {tableHeaderFirstTable}
+        <tbody>
+          {tableRowsFirstTable.map((row, rowIndex) => (
+            <tr key={`data-${rowIndex}`}>
+              {React.Children.map(row.props.children, (cell, cellIndex) => (
+                <td
+                  key={`data-${rowIndex}-${cellIndex}`}
+                  className={`border p-2 ${
+                    includeFieldsFirstTable[cellIndex] === "sessional1_marks" ||
+                    includeFieldsFirstTable[cellIndex] === "sessional2_marks" ||
+                    includeFieldsFirstTable[cellIndex] === "sessional3_marks"
+                      ? "w-40" // Adjust the width for marks cells
+                      : ""
+                  }`}
+                >
+                  {cell.props.children}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+)}
 
-      {/* Render the selected table if showExternal is true */}
-      {showExternal && studentData && (
-        <div>
-          <h2>External Table for Semester {selectedSemester}</h2>
-          <table>
-            {tableHeaderSecondTable}
-            <tbody>{tableRowsSecondTable}</tbody>
-          </table>
-          <div>
-            <h2>SPI Credit: {studentData.spi_credit}</h2>
-          </div>
-          <div>
-            <h2>SPI Points: {studentData.spi_points}</h2>
-          </div>
-          <div>
-            <h2>SPI: {studentData.spi}</h2>
-          </div>
-          <div>
-            <h2>CPI Credit: {studentData.cpi_credit}</h2>
-          </div>
-          <div>
-            <h2>CPI Points: {studentData.cpi_points}</h2>
-          </div>
-          <div>
-            <h2>CPI: {studentData.cpi}</h2>
-          </div>
-          <div>
-            <h2>Result Status: {studentData.result_status}</h2>
-          </div>
-        </div>
-      )}
+{showExternal && studentData && (
+  <div>
+    <h2 className="text-xl font-bold">
+      External Table for Semester {selectedSemester}
+    </h2>
+    <div className="overflow-x-auto"> {/* Add this container for horizontal scrolling */}
+      <table className="w-full table-auto border-collapse border mt-2">
+        {tableHeaderSecondTable}
+        <tbody>
+          {tableRowsSecondTable.map((row, rowIndex) => (
+            <tr key={`data-${rowIndex}`}>
+              {React.Children.map(row.props.children, (cell, cellIndex) => (
+                <td
+                  key={`data-${rowIndex}-${cellIndex}`}
+                  className={`border p-2 ${
+                    includeFieldsSecondTable[cellIndex] === "external_marks"
+                      ? "w-16" // Adjust the width for marks cells
+                      : ""
+                  }`}
+                >
+                  {cell.props.children}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div className="mt-4">
+      <h2 className="font-bold">
+        SPI Credit: {studentData.spi_credit}
+      </h2>
+      <h2 className="font-bold">SPI Points: {studentData.spi_points}</h2>
+            <h2 className="font-bold">SPI: {studentData.spi}</h2>
+            <h2 className="font-bold">CPI Credit: {studentData.cpi_credit}</h2>
+            <h2 className="font-bold">CPI Points: {studentData.cpi_points}</h2>
+            <h2 className="font-bold">CPI: {studentData.cpi}</h2>
+            <h2 className="font-bold">Result Status: {studentData.result_status}</h2>
+    </div>
+  </div>
+)}
 
       {selectedSemester !== null && studentData && role === "faculty" && (
-        <div>
+        <div className="mt-4">
           <Link to={`/update-result/${selectedSemester}/${id}`}>
-            <button>Update Result</button>
+            <button className="bg-green-500 text-white p-2 rounded">
+              Update Result
+            </button>
           </Link>
         </div>
       )}
 
       {selectedSemester !== null && studentData === null && (
-        <div className="unavailable-message">
+        <div className="bg-red-100 text-red-800 p-2 rounded mt-4">
           Selected semester data is not available.
         </div>
       )}
