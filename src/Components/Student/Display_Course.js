@@ -4,10 +4,8 @@ import { useParams } from 'react-router-dom';
 import Profile from '../Profile';
 
 function Display_Course() {
-
-  const {id} = useParams();
-  // const role = localStorage.getItem("role");
-  const role = "admin";
+  const { id } = useParams();
+  const role = "admin"; // You can replace this with your actual role retrieval logic
   const [data, setData] = useState();
 
   const getData = () => {
@@ -21,17 +19,16 @@ function Display_Course() {
 
   useEffect(() => {
     getData();
-  },[])
+  }, [])
+
   return (
-    <>
-      <div>Display_Course</div>
+    <div className="bg-gray-100 p-4">
+      <div className="text-2xl font-bold mb-4">Display Course</div>
       <div>
-              {
-                  data !== undefined && data != null && <Profile data={data[0]}/>
-              }
+        {data !== undefined && data !== null && <Profile data={data[0]} />}
       </div>
-    </>
+    </div>
   )
 }
 
-export default Display_Course
+export default Display_Course;
