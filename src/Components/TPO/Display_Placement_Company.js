@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Profile from '../Profile';
 
 function Display_Placement_Company() {
-  const {id} = useParams();
+  const { id } = useParams();
   const [data, setData] = useState();
 
   const getData = () => {
@@ -19,14 +19,16 @@ function Display_Placement_Company() {
   }, []);
 
   return (
-    <>
-          <div>Display_Placement_Company</div>
-          <div>
-              {
-                  data !== undefined && <Profile data={data}/>
-              }
-          </div>
-    </>
+    <div className="bg-gray-200 p-4 grid place-item-center w-full">
+      <div className="text-2xl font-bold mb-4">
+        Display Placement Company
+      </div>
+      <div className="bg-white border p-4 shadow-md">
+        {data !== undefined && (
+          <Profile data={data} />
+        )}
+      </div>
+    </div>
   )
 }
 
