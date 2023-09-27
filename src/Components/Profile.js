@@ -1,5 +1,10 @@
 import React from 'react';
 
+// Define a custom CSS class for making text more bold
+const boldText = {
+  fontWeight: 'bold',
+};
+
 function Profile(props) {
   const user = props.data;
 
@@ -12,7 +17,7 @@ function Profile(props) {
               if (index !== 0) {
                 return (
                   <tr key={index} className="border-b border-gray-200 hover:bg-gray-100">
-                    <td className="px-6 py-4 whitespace-nowrap font-bold">{key}:</td>
+                    <td className="px-6 py-4 whitespace-nowrap" style={boldText}>{key}:</td>
                     <td className="px-6 py-4 whitespace-nowrap">{user[key]}</td>
                   </tr>
                 );
