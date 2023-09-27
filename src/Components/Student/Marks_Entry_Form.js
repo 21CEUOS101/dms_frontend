@@ -118,198 +118,208 @@ function Marks_Entry_Form() {
 
 
   return (
-    <>
-      <h1>Student Exam Result Form</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="student_id">Student ID:</label>
-          <input type="text" id="student_id" name="student_id" required {...register("student_id")} />
-        </div>
-        <div>
-          <label htmlFor="semester">Semester:</label>
-          <input type="text" id="semester" name="semester" required {...register("semester")} />
-        </div>
-        <div>
-          <label htmlFor="batch_year">Batch Year:</label>
-          <input type="text" id="batch_year" name="batch_year" required {...register("batch_year")} />
-        </div>
-        <div>
-          <label htmlFor="subject_code">Subject Code:</label>
-          <input type="text" id="subject_code" name="subject_code" required {...register("subject_code")} />
-        </div>
-        <div>
-          <label htmlFor="subject_name">Subject Name:</label>
-          <input type="text" id="subject_name" name="subject_name" required {...register("subject_name")} />
-        </div>
-        <div>
-          <label htmlFor="sessional1_marks">Sessional 1 Marks:</label>
-          <input type="text" id="sessional1_marks" name="sessional1_marks" required {...register("sessional1_marks")} />
-        </div>
-        <div>
-          <label htmlFor="sessional2_marks">Sessional 2 Marks:</label>
-          <input type="text" id="sessional2_marks" name="sessional2_marks" required {...register("sessional2_marks")} />
-        </div>
-        <div>
-          <label htmlFor="sessional3_marks">Sessional 3 Marks:</label>
-          <input type="text" id="sessional3_marks" name="sessional3_marks" required {...register("sessional3_marks")} />
-        </div>
-        <div>
-          <label htmlFor="sessional1_present">Sessional 1 Present:</label>
-          <input type="text" id="sessional1_present" name="sessional1_present" required {...register("sessional1_present")} />
-        </div>
-        <div>
-          <label htmlFor="sessional2_present">Sessional 2 Present:</label>
-          <input type="text" id="sessional2_present" name="sessional2_present" required {...register("sessional2_present")} />
-        </div>
-        <div>
-          <label htmlFor="sessional3_present">Sessional 3 Present:</label>
-          <input type="text" id="sessional3_present" name="sessional3_present" required {...register("sessional3_present")} />
-        </div>
-        <div>
-          <label htmlFor="sessional1_attendance">Sessional 1 Attendance:</label>
-          <input type="text" id="sessional1_attendance" name="sessional1_attendance" required {...register("sessional1_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional2_attendance">Sessional 2 Attendance:</label>
-          <input type="text" id="sessional2_attendance" name="sessional2_attendance" required {...register("sessional2_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional3_attendance">Sessional 3 Attendance:</label>
-          <input type="text" id="sessional3_attendance" name="sessional3_attendance" required {...register("sessional3_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional1_total_attendance">Sessional 1 Total Attendance:</label>
-          <input type="text" id="sessional1_total_attendance" name="sessional1_total_attendance" required {...register("sessional1_total_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional2_total_attendance">Sessional 2 Total Attendance:</label>
-          <input type="text" id="sessional2_total_attendance" name="sessional2_total_attendance" required {...register("sessional2_total_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional3_total_attendance">Sessional 3 Total Attendance:</label>
-          <input type="text" id="sessional3_total_attendance" name="sessional3_total_attendance" required {...register("sessional3_total_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional1_practical_attendance">Sessional 1 Practical Attendance:</label>
-          <input type="text" id="sessional1_practical_attendance" name="sessional1_practical_attendance" required {...register("sessional1_practical_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional2_practical_attendance">Sessional 2 Practical Attendance:</label>
-          <input type="text" id="sessional2_practical_attendance" name="sessional2_practical_attendance" required {...register("sessional2_practical_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional3_practical_attendance">Sessional 3 Practical Attendance:</label>
-          <input type="text" id="sessional3_practical_attendance" name="sessional3_practical_attendance" required {...register("sessional3_practical_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional1_total_practical_attendance">Sessional 1 Total Practical Attendance:</label>
-          <input type="text" id="sessional1_total_practical_attendance" name="sessional1_total_practical_attendance" required {...register("sessional1_total_practical_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional2_total_practical_attendance">Sessional 2 Total Practical Attendance:</label>
-          <input type="text" id="sessional2_total_practical_attendance" name="sessional2_total_practical_attendance" required {...register("sessional2_total_practical_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="sessional3_total_practical_attendance">Sessional 3 Total Practical Attendance:</label>
-          <input type="text" id="sessional3_total_practical_attendance" name="sessional3_total_practical_attendance" required {...register("sessional3_total_practical_attendance")} />
-        </div>
-        <div>
-          <label htmlFor="block_marks">Block Marks:</label>
-          <input type="text" id="block_marks" name="block_marks" required {...register("block_marks")} />
-        </div>
-        <div>
-          <label htmlFor="block_present">Block Present:</label>
-          <input type="text" id="block_present" name="block_present" required {...register("block_present")} />
-        </div>
-        <div>
-          <label htmlFor="external_marks">External Marks:</label>
-          <input type="text" id="external_marks" name="external_marks" required {...register("external_marks")} />
-        </div>
-        <div>
-          <label htmlFor="external_status">External Status:</label>
-          <input type="text" id="external_status" name="external_status" required {...register("external_status")} />
-        </div>
-        <div>
-          <label htmlFor="avg_sessional_marks">Average Sessional Marks:</label>
-          <input type="text" id="avg_sessional_marks" name="avg_sessional_marks" required {...register("avg_sessional_marks")} />
-        </div>
-        <div>
-          <label htmlFor="sessional_status">Sessional Status:</label>
-          <input type="text" id="sessional_status" name="sessional_status" required {...register("sessional_status")} />
-        </div>
-        <div>
-          <label htmlFor="avg_practical_marks">Average Practical Marks:</label>
-          <input type="text" id="avg_practical_marks" name="avg_practical_marks" required {...register("avg_practical_marks")} />
-        </div>
-        <div>
-          <label htmlFor="practical_status">Practical Status:</label>
-          <input type="text" id="practical_status" name="practical_status" required {...register("practical_status")} />
-        </div>
-        <div>
-          <label htmlFor="termwork_marks">Termwork Marks:</label>
-          <input type="text" id="termwork_marks" name="termwork_marks" required {...register("termwork_marks")} />
-        </div>
-        <div>
-          <label htmlFor="termwork_status">Termwork Status:</label>
-          <input type="text" id="termwork_status" name="termwork_status" required {...register("termwork_status")} />
-        </div>
-        <div>
-          <label htmlFor="total_marks">Total Marks:</label>
-          <input type="text" id="total_marks" name="total_marks" required {...register("total_marks")} />
-        </div>
-        <div>
-          <label htmlFor="max_total_marks">Max Total Marks:</label>
-          <input type="text" id="max_total_marks" name="max_total_marks" required {...register("max_total_marks")} />
-        </div>
-        <div>
-          <label htmlFor="subject_points">Subject Points:</label>
-          <input type="text" id="subject_points" name="subject_points" required {...register("subject_points")} />
-        </div>
-        <div>
-          <label htmlFor="subject_grade">Subject Grade:</label>
-          <input type="text" id="subject_grade" name="subject_grade" required {...register("subject_grade")} />
-        </div>
-        <div>
-          <label htmlFor="subject_credit">Subject Credit:</label>
-          <input type="text" id="subject_credit" name="subject_credit" required {...register("subject_credit")} />
-        </div>
-        <div>
-          <label htmlFor="subject_status">Subject Status:</label>
-          <input type="text" id="subject_status" name="subject_status" required {...register("subject_status")} />
-        </div>
-        <div>
-          <label htmlFor="spi_credit">SPI Credit:</label>
-          <input type="text" id="spi_credit" name="spi_credit" required {...register("spi_credit")} />
-        </div>
-        <div>
-          <label htmlFor="spi_points">SPI Points:</label>
-          <input type="text" id="spi_points" name="spi_points" required {...register("spi_points")} />
-        </div>
-        <div>
-          <label htmlFor="spi">SPI:</label>
-          <input type="text" id="spi" name="spi" required {...register("spi")} />
-        </div>
-        <div>
-          <label htmlFor="cpi_credit">CPI Credit:</label>
-          <input type="text" id="cpi_credit" name="cpi_credit" required {...register("cpi_credit")} />
-        </div>
-        <div>
-          <label htmlFor="cpi_points">CPI Points:</label>
-          <input type="text" id="cpi_points" name="cpi_points" required {...register("cpi_points")} />
-        </div>
-        <div>
-          <label htmlFor="cpi">CPI:</label>
-          <input type="text" id="cpi" name="cpi" required {...register("cpi")} />
-        </div>
-        <div>
-          <label htmlFor="result_status">Result Status:</label>
-          <input type="text" id="result_status" name="result_status" required {...register("result_status")} />
-        </div>
-        <div>
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
-    </>
+    <div className='w-full flex justify-center'>
+      <div className='bg-slate-100 mx-4 px-5 py-2 my-2 rounded-lg shadow-md'>
+        <h1 className='text-center text-xl font-bold mb-4'>Student Exam Result Form</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-3 gap-4'>
+          <div className=' col-span-1'>
+            <div>
+              <label htmlFor="student_id" className='block text-gray-700 font-bold mb-2'>Student ID:</label>
+              <input type="text" id="student_id" name="student_id" required {...register("student_id")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="semester" className='block text-gray-700 font-bold mb-2'>Semester:</label>
+              <input type="text" id="semester" name="semester" required {...register("semester")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="batch_year" className='block text-gray-700 font-bold mb-2'>Batch Year:</label>
+              <input type="text" id="batch_year" name="batch_year" required {...register("batch_year")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="subject_code" className='block text-gray-700 font-bold mb-2'>Subject Code:</label>
+              <input type="text" id="subject_code" name="subject_code" required {...register("subject_code")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="subject_name" className='block text-gray-700 font-bold mb-2'>Subject Name:</label>
+              <input type="text" id="subject_name" name="subject_name" required {...register("subject_name")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional1_marks" className='block text-gray-700 font-bold mb-2'>Sessional 1 Marks:</label>
+              <input type="text" id="sessional1_marks" name="sessional1_marks" required {...register("sessional1_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional2_marks" className='block text-gray-700 font-bold mb-2'>Sessional 2 Marks:</label>
+              <input type="text" id="sessional2_marks" name="sessional2_marks" required {...register("sessional2_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional3_marks" className='block text-gray-700 font-bold mb-2'>Sessional 3 Marks:</label>
+              <input type="text" id="sessional3_marks" name="sessional3_marks" required {...register("sessional3_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional1_present" className='block text-gray-700 font-bold mb-2'>Sessional 1 Present:</label>
+              <input type="text" id="sessional1_present" name="sessional1_present" required {...register("sessional1_present")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional2_present" className='block text-gray-700 font-bold mb-2'>Sessional 2 Present:</label>
+              <input type="text" id="sessional2_present" name="sessional2_present" required {...register("sessional2_present")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional3_present" className='block text-gray-700 font-bold mb-2'>Sessional 3 Present:</label>
+              <input type="text" id="sessional3_present" name="sessional3_present" required {...register("sessional3_present")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional1_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 1 Attendance:</label>
+              <input type="text" id="sessional1_attendance" name="sessional1_attendance" required {...register("sessional1_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional2_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 2 Attendance:</label>
+              <input type="text" id="sessional2_attendance" name="sessional2_attendance" required {...register("sessional2_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional3_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 3 Attendance:</label>
+              <input type="text" id="sessional3_attendance" name="sessional3_attendance" required {...register("sessional3_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional1_total_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 1 Total Attendance:</label>
+              <input type="text" id="sessional1_total_attendance" name="sessional1_total_attendance" required {...register("sessional1_total_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional2_total_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 2 Total Attendance:</label>
+              <input type="text" id="sessional2_total_attendance" name="sessional2_total_attendance" required {...register("sessional2_total_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional3_total_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 3 Total Attendance:</label>
+              <input type="text" id="sessional3_total_attendance" name="sessional3_total_attendance" required {...register("sessional3_total_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional1_practical_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 1 Practical Attendance:</label>
+              <input type="text" id="sessional1_practical_attendance" name="sessional1_practical_attendance" required {...register("sessional1_practical_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional2_practical_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 2 Practical Attendance:</label>
+              <input type="text" id="sessional2_practical_attendance" name="sessional2_practical_attendance" required {...register("sessional2_practical_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional3_practical_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 3 Practical Attendance:</label>
+              <input type="text" id="sessional3_practical_attendance" name="sessional3_practical_attendance" required {...register("sessional3_practical_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional1_total_practical_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 1 Total Practical Attendance:</label>
+              <input type="text" id="sessional1_total_practical_attendance" name="sessional1_total_practical_attendance" required {...register("sessional1_total_practical_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional2_total_practical_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 2 Total Practical Attendance:</label>
+              <input type="text" id="sessional2_total_practical_attendance" name="sessional2_total_practical_attendance" required {...register("sessional2_total_practical_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+          </div>
+          <div className=' col-span-1'>
+            <div>
+              <label htmlFor="sessional3_total_practical_attendance" className='block text-gray-700 font-bold mb-2'>Sessional 3 Total Practical Attendance:</label>
+              <input type="text" id="sessional3_total_practical_attendance" name="sessional3_total_practical_attendance" required {...register("sessional3_total_practical_attendance")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="block_marks" className='block text-gray-700 font-bold mb-2'>Block Marks:</label>
+              <input type="text" id="block_marks" name="block_marks" required {...register("block_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="block_present" className='block text-gray-700 font-bold mb-2'>Block Present:</label>
+              <input type="text" id="block_present" name="block_present" required {...register("block_present")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="external_marks" className='block text-gray-700 font-bold mb-2'>External Marks:</label>
+              <input type="text" id="external_marks" name="external_marks" required {...register("external_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="external_status" className='block text-gray-700 font-bold mb-2'>External Status:</label>
+              <input type="text" id="external_status" name="external_status" required {...register("external_status")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="avg_sessional_marks" className='block text-gray-700 font-bold mb-2'>Average Sessional Marks:</label>
+              <input type="text" id="avg_sessional_marks" name="avg_sessional_marks" required {...register("avg_sessional_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="sessional_status" className='block text-gray-700 font-bold mb-2'>Sessional Status:</label>
+              <input type="text" id="sessional_status" name="sessional_status" required {...register("sessional_status")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="avg_practical_marks" className='block text-gray-700 font-bold mb-2'>Average Practical Marks:</label>
+              <input type="text" id="avg_practical_marks" name="avg_practical_marks" required {...register("avg_practical_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="practical_status" className='block text-gray-700 font-bold mb-2'>Practical Status:</label>
+              <input type="text" id="practical_status" name="practical_status" required {...register("practical_status")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="termwork_marks" className='block text-gray-700 font-bold mb-2'>Termwork Marks:</label>
+              <input type="text" id="termwork_marks" name="termwork_marks" required {...register("termwork_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="termwork_status" className='block text-gray-700 font-bold mb-2'>Termwork Status:</label>
+              <input type="text" id="termwork_status" name="termwork_status" required {...register("termwork_status")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="total_marks" className='block text-gray-700 font-bold mb-2'>Total Marks:</label>
+              <input type="text" id="total_marks" name="total_marks" required {...register("total_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="max_total_marks" className='block text-gray-700 font-bold mb-2'>Max Total Marks:</label>
+              <input type="text" id="max_total_marks" name="max_total_marks" required {...register("max_total_marks")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="subject_points" className='block text-gray-700 font-bold mb-2'>Subject Points:</label>
+              <input type="text" id="subject_points" name="subject_points" required {...register("subject_points")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="subject_grade" className='block text-gray-700 font-bold mb-2'>Subject Grade:</label>
+              <input type="text" id="subject_grade" name="subject_grade" required {...register("subject_grade")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="subject_credit" className='block text-gray-700 font-bold mb-2'>Subject Credit:</label>
+              <input type="text" id="subject_credit" name="subject_credit" required {...register("subject_credit")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500' />
+            </div>
+            <div>
+              <label htmlFor="subject_status" className='block text-gray-700 font-bold mb-2'>Subject Status:</label>
+              <input type="text" id="subject_status" name="subject_status" required {...register("subject_status")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="spi_credit" className='block text-gray-700 font-bold mb-2'>SPI Credit:</label>
+              <input type="text" id="spi_credit" name="spi_credit" required {...register("spi_credit")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="spi_points" className='block text-gray-700 font-bold mb-2'>SPI Points:</label>
+              <input type="text" id="spi_points" name="spi_points" required {...register("spi_points")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="spi" className='block text-gray-700 font-bold mb-2'>SPI:</label>
+              <input type="text" id="spi" name="spi" required {...register("spi")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="cpi_credit" className='block text-gray-700 font-bold mb-2'>CPI Credit:</label>
+              <input type="text" id="cpi_credit" name="cpi_credit" required {...register("cpi_credit")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="cpi_points" className='block text-gray-700 font-bold mb-2'>CPI Points:</label>
+              <input type="text" id="cpi_points" name="cpi_points" required {...register("cpi_points")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+          </div>
+          <div>
+            <div>
+              <label htmlFor="cpi" className='block text-gray-700 font-bold mb-2'>CPI:</label>
+              <input type="text" id="cpi" name="cpi" required {...register("cpi")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+            <div>
+              <label htmlFor="result_status" className='block text-gray-700 font-bold mb-2'>Result Status:</label>
+              <input type="text" id="result_status" name="result_status" required {...register("result_status")} className='px-3 py-2 border rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500'/>
+            </div>
+          </div>
+          <div className=' col-span-3 grid place-items-center'>
+            <div className='w-fit'>
+              <input type="submit" value="Submit" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   )
 }
 
