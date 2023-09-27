@@ -19,14 +19,16 @@ function Display_Admin() {
     getData();
   },[])
   return (
-    <>
-          <div>Display_Admin</div>
-          <div>
-              {
-                  data !== undefined && <Profile data={data}/>
-              }
-          </div>
-    </>
+    <div className="bg-gray-200 p-4 grid place-item-center w-full h-fit">
+      <div className="text-2xl font-bold mb-4">
+        Display Admin
+      </div>
+      <div className="bg-white border p-4 shadow-md">
+        {data !== undefined && (
+          <Profile data={data} />
+        )}
+      </div>
+    </div>
   )
 }
 
