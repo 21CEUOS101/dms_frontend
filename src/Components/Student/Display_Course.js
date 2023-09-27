@@ -22,10 +22,14 @@ function Display_Course() {
   }, [])
 
   return (
-    <div className="bg-gray-100 p-4">
-      <div className="text-2xl font-bold mb-4">Display Course</div>
-      <div>
-        {data !== undefined && data !== null && <Profile data={data[0]} />}
+    <div className="bg-gray-200 p-4 grid place-item-center w-full">
+      <div className="text-2xl font-bold mb-4">
+        Display Course
+      </div>
+      <div className="bg-white border p-4 shadow-md">
+        {data !== undefined && (
+          <Profile data={data[0]} />
+        )}
       </div>
     </div>
   )
