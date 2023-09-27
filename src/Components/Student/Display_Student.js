@@ -23,8 +23,8 @@ function Display_Student() {
   const studentGuardianInfo = data?.studentGuardianInfo[0];
   const studentOtherDetails = data?.studentOtherDetails[0];
   return (
-    <>
-          <div>Display_Student</div>
+    <div className='w-full text-center bg-gray-200 p-4'>
+          <div className='text-2xl font-bold mb-4'>Display_Student</div>
           <div className='grid grid-cols-3'>
               {
                   data !== undefined && <Profile data={studentDetails !== undefined && studentDetails}/>
@@ -37,7 +37,7 @@ function Display_Student() {
               }
               
           </div>
-    </>
+    </div>
   )
 }
 

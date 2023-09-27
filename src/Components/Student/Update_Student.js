@@ -12,16 +12,32 @@ const Update_Student = () => {
   const { id } = useParams();
 
   return (
-    <div>
+    <div className="w-full text-center">
+
       <h1>Update Student</h1>
-      <UpdateStudentDetails id={id} />
-      <UpdateGuardianInfo id={id} />
-      <UpdateContactInfo id={id} />
-      <UpdateFeesInfo id={id} />
-      <UpdateAcademicsInfo id={id} />
-      <UpdateOtherInfo id={id} />
+      <div className="grid grid-cols-3">  
+        <div className="h-full">
+          <UpdateStudentDetails id={id} />
+        </div>
+        <div className="h-full">
+          <UpdateGuardianInfo id={id} />
+        </div>
+        <div className="h-full">
+          <UpdateContactInfo id={id} />
+        </div>
+        <div className="h-full">
+          <UpdateFeesInfo id={id} />
+        </div>
+        <div className="h-full">
+          <UpdateAcademicsInfo id={id} />
+        </div>
+        <div className="h-full">
+          <UpdateOtherInfo id={id} />
+        </div>
+      </div>
     </div>
   );
+  
 };
 
 export default Update_Student;
