@@ -21,7 +21,7 @@ function Display_Current_Course() {
 
   return (
     <div className="bg-gray-100 p-4">
-      <div className="text-2xl font-bold mb-4">Display Courses</div>
+      <div className="text-2xl font-bold mb-4 text-center">Display Courses</div>
       <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data?.courseDetails.map((item, index) => (
           <div key={index} className="w-full">
