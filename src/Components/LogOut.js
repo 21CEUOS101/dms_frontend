@@ -31,18 +31,19 @@ function LogOut() {
 
   return (
     <>
-      <div className='w-5/6 flex flex-col items-center'>
-        <h2 className='text-lg font-mono font-extrabold text-center'>
-          Are you sure you want to Log Out?
-        </h2>
-        <button
-          onClick={handleLogOut} // Use the updated function with the confirmation dialog
-          className='py-2 px-4 bg-blue-500 text-white rounded-md mt-4'
-        >
-          Log Out
-        </button>
-      </div>
-    </>
+    <div className='w-5/6 flex flex-col items-center justify-center h-screen'>
+      <h2 className='text-lg font-mono font-extrabold text-center'>
+        Are you sure you want to Log Out?
+      </h2>
+      <button
+        onClick={handleLogOut} // Use the updated function with the confirmation dialog
+        className='py-2 px-4 bg-blue-500 text-white rounded-md mt-4'
+      >
+        Log Out
+      </button>
+    </div>
+</>
+
   );
 }
 
