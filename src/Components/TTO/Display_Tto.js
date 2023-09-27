@@ -19,14 +19,16 @@ function Display_Tto() {
     getData();
   },[])
   return (
-    <>
-      <div>Display_Tto</div>
-      <div className='place-items-center grid-flow-col grid grid-cols-2'>
-        {
-            data !== undefined && <Profile data={data}/>
-        }
+    <div className="bg-gray-200 p-4 grid place-item-center w-full">
+      <div className="text-2xl font-bold mb-4">
+        Display TTO
       </div>
-    </>
+      <div className="bg-white border p-4 shadow-md">
+        {data !== undefined && (
+          <Profile data={data} />
+        )}
+      </div>
+    </div>
   )
 }
 
