@@ -1,19 +1,11 @@
-import { Navbar, Group, Code, ScrollArea, createStyles, rem } from '@mantine/core';
-import {
-  IconHome,
-  IconMan,
-  IconBook,
-  IconMail
-} from '@tabler/icons-react';
+import React, { useContext, useState } from 'react';
+import { Navbar, Group, Code, ScrollArea, createStyles, rem, Button, Box } from '@mantine/core';
+import { IconHome, IconMan, IconBook, IconMail, IconChevronLeft } from '@tabler/icons-react';
 import { UserButton } from './UserButton';
 import { LinksGroup } from './NavbarLinksGroup';
-import React, { useContext } from 'react';
 import { AppContext } from '../App';
-
-
-
+import logoImage from '../assets/img/DDU.png';
 const useStyles = createStyles((theme) => ({
-
   header: {
     padding: theme.spacing.md,
     paddingTop: 0,
@@ -24,17 +16,14 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
   },
-
   links: {
     marginLeft: `calc(${theme.spacing.md} * -1)`,
     marginRight: `calc(${theme.spacing.md} * -1)`,
   },
-
   linksInner: {
     paddingTop: theme.spacing.xl,
     paddingBottom: theme.spacing.xl,
   },
-
   footer: {
     marginLeft: `calc(${theme.spacing.md} * -1)`,
     marginRight: `calc(${theme.spacing.md} * -1)`,
@@ -42,12 +31,29 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
   },
+  collapseButton: {
+    position: 'absolute',
+    top: theme.spacing.sm,
+    left: theme.spacing.md,
+    zIndex: 999,
+  },
+  navbarContainer: {
+    position: 'sticky',
+    top: 0,
+    height: '100vh', // Adjust the height as needed
+  },
+  activeLink: {
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+  },
 }));
 
 export function NavbarNested() {
-
   const { role } = useContext(AppContext);
   const id = localStorage.getItem("id");
+  const [isCollapse, setIsCollapse] = React.useState("");
+  const [activeLink, setActiveLink] = useState("");
+
   const mockdata = [
     { label: 'Dashboard', icon: IconHome, links: [["hod"].includes(role) && {link : `/dashboard-${role}` , label : 'Home'}].filter((item) => item !== false)  },
     {
@@ -122,48 +128,48 @@ export function NavbarNested() {
   ];
   const filteredMockdata = mockdata.filter((item) => item.links && item.links.length > 0);
 
-  console.log(filteredMockdata);
-  
   const { classes } = useStyles();
-  const links = filteredMockdata.map((item) => <LinksGroup {...item} key={item.label} />);
-
-  const [isCollapse, setIsCollapse] = React.useState("");
+  const links = filteredMockdata.map((item) => (
+    <LinksGroup
+      {...item}
+      key={item.label}
+      setActiveLink={setActiveLink} // Pass setActiveLink to child component
+      activeLink={activeLink} // Pass activeLink to child component
+    />
+  ));
 
   const Collapse = () => {
-    if (isCollapse === "")
-    {
+    if (isCollapse === "") {
       setIsCollapse("collapse");
-    }
-    else
-    {
+    } else {
       setIsCollapse("");
     }
-  }
-
+  };
 
   return (
     <>
-      <button onClick={Collapse}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path></svg></button>
-      <div className={isCollapse}>
+      <button onClick={Collapse} className={classes.collapseButton}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
+        </svg>
+      </button>
+      <div className={`${isCollapse} ${classes.navbarContainer}`}>
         <Navbar height={800} width={{ sm: 300 }} p="md" className="bg-white py-0 h-screen sticky">
-        <Navbar.Section className={classes.header}>
-          <Group position="apart">
-              <Code sx={{ fontWeight: 700 }}>DDU-UMS</Code>
-              
-          </Group>
-        </Navbar.Section>
-
-        <Navbar.Section grow className={classes.links} component={ScrollArea}>
-          <div className={classes.linksInner}>{links}</div>
-        </Navbar.Section>
-
-        <Navbar.Section className={classes.footer}>
-          <UserButton
-            name={localStorage.getItem("id")}
-            email={localStorage.getItem("email")}
-          />
-        </Navbar.Section>
-      </Navbar>
+          <Navbar.Section className={classes.header} height={800}>
+            <Group position="apart">
+              <Code sx={{ fontWeight: 700 }}>DDU</Code>
+              <div style={{ display: 'flex', alignItems: 'center', paddingTop: rem(12), marginLeft: rem(30)}}>
+                <img src={logoImage} alt="DDU Logo" width="60" height="60" />
+              </div>
+            </Group>
+          </Navbar.Section>
+          <Navbar.Section grow className={classes.links} component={ScrollArea}>
+            <div className={classes.linksInner}>{links}</div>
+          </Navbar.Section>
+          <Navbar.Section className={classes.footer}>
+            <UserButton name={localStorage.getItem("id")} email={localStorage.getItem("email")} />
+          </Navbar.Section>
+        </Navbar>
       </div>
     </>
   );
