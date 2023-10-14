@@ -194,9 +194,9 @@ function Dashboard_HOD() {
         <Card title={"No. of Companies placement"} number={no_of_companies} />
       </div>
 
-      <div className='grid grid-cols-2'>
-        <BarChart link={`http://localhost:3001/${role}/getStudentCountByDepartment/`} isYear={true}/>
-        <BarChart link={`http://localhost:3001/${role}/getStudentNumberD2D/`} isYear={true}/>
+      <div className='flex flex-row space-x-10'>
+        <div className='w-3/6'><BarChart link={`http://localhost:3001/${role}/getStudentCountByDepartment/`} isYear={true}/></div>
+        <div className='w-3/6'><BarChart link={`http://localhost:3001/${role}/getStudentNumberD2D/`} isYear={true}/></div>
       </div>
     </div>
   );

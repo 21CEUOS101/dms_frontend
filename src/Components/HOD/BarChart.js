@@ -34,12 +34,17 @@ function BarChart(props) {
     }
     
   return (
-    <div className=' h-fit px-2 py-2 w-5/6 border-2 shadow-md'>
+    <div className=' h-fit px-2 py-2 border-2 shadow-md'>
         <select className="form-select" aria-label="Default select example" onChange={(e) => setYear(e.target.value)}>
           <option value={new Date().getFullYear()} selected> {new Date().getFullYear()} </option>
           {dropdown}
         </select>
-        <Bar data={{ labels: data?.map((item) => item._id), datasets: [{ label: "No. of Students", data: data?.map((item) => item.count), backgroundColor: "rgba(255, 99, 132, 0.2)", borderColor: "rgba(255, 99, 132, 1)", borderWidth: 1 }] }} options={{ indexAxis: 'x'}} />
+      <Bar data={{
+        labels: data?.map((item) => item._id), datasets: [{
+          label: "No. of Students", data: data?.map((item) => item.count), backgroundColor: "rgba(74,144,226,0.3)",
+          borderColor: "rgba(74,144,226,1)", borderWidth: 1
+        }]
+      }} options={{ indexAxis: 'x', aspectRatio: 1  , }} />
     </div>
   )
 }
