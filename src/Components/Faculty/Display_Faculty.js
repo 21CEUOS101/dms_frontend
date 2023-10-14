@@ -19,11 +19,11 @@ function Display_Faculty() {
     getData();
   },[])
   return (
-    <div className="bg-gray-200 p-4 grid place-item-center w-full">
+    <div className="w-full text-center bg-gray-200 p-4">
       <div className="text-2xl font-bold mb-4">
         Display Faculty
       </div>
-      <div className="bg-white border p-4 shadow-md">
+      <div className="grid grid-row-1">
         {data !== undefined && (
           <Profile data={data} />
         )}
