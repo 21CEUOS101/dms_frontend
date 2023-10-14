@@ -56,6 +56,7 @@ export function NavbarNested() {
 
   const mockdata = [
     { label: 'Dashboard', icon: IconHome, links: [["hod"].includes(role) && {link : `/dashboard-${role}` , label : 'Home'}].filter((item) => item !== false)  },
+    { label: 'Dashboard', icon: IconHome, links: [["student"].includes(role) && {link : `/display-${role}/${id}` , label : 'Profile'}].filter((item) => item !== false)  },
     {
       label: 'Student',
       icon: IconMan,
