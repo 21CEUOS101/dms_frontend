@@ -268,10 +268,22 @@ input[type="submit"]:hover {
   padding: 20px;
 }
 
-/* Style the form labels */
 .col-form-label {
   font-weight: bold;
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Display an ellipsis (...) for overflowing text */
+  width: 150px; /* Set a fixed width or adjust as needed */
+  flex: 0 0 33.333333%; /* Represents a 4-column layout */
+  max-width: 33.333333%;
+  text-align: center; /* Centers the text */
 }
+
+.col-form-label:hover {
+  overflow: visible; /* Show the full text on hover */
+  white-space: normal; /* Allow line breaks on hover */
+}
+
 
 /* Style the form inputs */
 .form-control {
