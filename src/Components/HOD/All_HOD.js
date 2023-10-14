@@ -9,20 +9,25 @@ function All_HOD() {
   const getData = () => {
     axios.get('http://localhost:3001/hod/getAllHOD')
       .then((response) => {
-        console.log(response.data);
-        setData(response.data);
+        const simplifiedData = response.data.map(({ _id, hod_id, hod_department, hod_designation }) => ({
+          _id,
+          hod_id,
+          hod_department,
+          hod_designation,
+        }));
+        setData(simplifiedData);
       })
       .catch((error) => {
         console.error('Error fetching HOD data:', error);
       });
-  }
+  };
 
   useEffect(() => {
     getData();
   }, [refresh]);
 
   return (
-    <div className="bg-gray-100 min-h-screen py-6 px-4 sm:px-6 lg:px-8">
+    <div className="bg-gray-100 min-h-screen py-6 px-4 sm:px-6 lg:px-8 flex place-items-center w-full">
       <div className="max-w-screen-7xl mx-auto sm:px-6 lg:px-8">
         <div className="bg-white overflow-hidden shadow-sm rounded-lg">
           <div className="p-6 bg-white border-b border-gray-200">
