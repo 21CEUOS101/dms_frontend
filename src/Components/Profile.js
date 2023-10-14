@@ -1,29 +1,25 @@
 import React from 'react';
-
-// Define a custom CSS class for making text more bold
-const boldText = {
-  fontWeight: 'bold',
-};
+import './Profile.css'; // Import your CSS file with styles
 
 function Profile(props) {
   const user = props.data;
 
   return (
-    <div className="bg-white shadow-md rounded my-6">
-      <div className="p-4">
-        <table className="min-w-max w-full table-auto">
-          <tbody className="text-gray-600 text-sm font-light">
-            {Object.keys(user).map((key, index) => {
-              if (index !== 0) {
-                return (
-                  <tr key={index} className="border-b border-gray-200 hover:bg-gray-100">
-                    <td className="px-6 py-4 whitespace-nowrap" style={boldText}>{key}:</td>
-                    <td className="px-6 py-4 whitespace-nowrap">{user[key]}</td>
-                  </tr>
-                );
-              }
-              return null;
-            })}
+    <div className="profile-container">
+      <div className="profile-table">
+        <table>
+          <tbody>
+            {Object.keys(user).map((key, index) => (
+              <tr key={index} className="profile-row">
+                <td className="profile-cell key-cell">
+                  {key}
+                </td>
+                <td className="profile-cell colon-cell">:</td>
+                <td className="profile-cell value-cell">
+                  {user[key]}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

@@ -1,0 +1,52 @@
+.profile-container {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 16px 0;
+    overflow-x: auto;
+  }
+  
+  .profile-table {
+    padding: 16px;
+  }
+  
+  table {
+    width: 100%;
+    white-space: nowrap;
+  }
+  
+  .profile-row {
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-cell {
+    padding: 12px 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  
+  .key-cell {
+    flex: 45%; /* Allocate 45% of the width for the key */
+    font-weight: bold; /* Make the key text bold */
+    font-size: 110%; /* Increase the font size by 10% */
+    padding-right: 2%; /* Adjust the padding between key and colon */
+  }
+  
+  .colon-cell {
+    flex: 10%; /* Allocate 10% for the colon */
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .value-cell {
+    flex: 45%; /* Allocate 45% for the value */
+    font-size: 16px;
+    text-align: left;
+  }
+  

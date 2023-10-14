@@ -25,7 +25,7 @@ function Display_Student() {
   return (
     <div className='w-full text-center bg-gray-200 p-4'>
           <div className='text-2xl font-bold mb-4'>Display_Student</div>
-          <div className='grid grid-cols-3'>
+          <div className='grid grid-row-3'>
               {
                   data !== undefined && <Profile data={studentDetails !== undefined && studentDetails}/>
               }
