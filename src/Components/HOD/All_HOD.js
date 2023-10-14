@@ -9,9 +9,10 @@ function All_HOD() {
   const getData = () => {
     axios.get('http://localhost:3001/hod/getAllHOD')
       .then((response) => {
-        const simplifiedData = response.data.map(({ _id, hod_id, hod_department, hod_designation }) => ({
+        const simplifiedData = response.data.map(({ _id, hod_id, hod_name, hod_department, hod_designation }) => ({
           _id,
           hod_id,
+          hod_name,
           hod_department,
           hod_designation,
         }));
