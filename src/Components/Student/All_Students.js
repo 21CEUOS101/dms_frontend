@@ -29,7 +29,6 @@ function AllStudents() {
       student_id: element.student_id,
       full_name: element.full_name,
       student_roll_number: element.student_roll_number,
-      date_of_birth: element.date_of_birth,
       gender: element.gender,
     }));
   };
