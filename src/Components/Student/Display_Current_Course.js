@@ -20,12 +20,14 @@ function Display_Current_Course() {
   }, [])
 
   return (
-    <div className="bg-gray-100 p-4">
-      <div className="text-2xl font-bold mb-4 text-center">Display Courses</div>
-      <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="w-full text-center bg-gray-200 p-4">
+      <div style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "20px" }}>Display Courses</div>
+       <hr style={{ border: "1px solid #333", margin: "10px 0" }} />
+      <div className="grid grid-row-3">
         {data?.courseDetails.map((item, index) => (
           <div key={index} className="w-full">
             <Profile data={item} />
+            <hr style={{ border: "1px solid #333", margin: "10px 0" }} />
           </div>
         ))}
       </div>
