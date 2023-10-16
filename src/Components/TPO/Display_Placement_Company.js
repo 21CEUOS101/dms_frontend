@@ -19,11 +19,12 @@ function Display_Placement_Company() {
   }, []);
 
   return (
-    <div className="bg-gray-200 p-4 grid place-item-center w-full">
-      <div className="text-2xl font-bold mb-4">
+    <div className="w-full text-center bg-gray-200 p-4">
+      <div style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "20px" }}>
         Display Placement Company
       </div>
-      <div className="bg-white border p-4 shadow-md">
+      <hr style={{ border: "1px solid #333", margin: "10px 0" }} />
+      <div className="grid grid-row-3">
         {data !== undefined && (
           <Profile data={data} />
         )}
