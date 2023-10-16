@@ -11,7 +11,6 @@ const SemResult = () => {
   const [studentData, setStudentData] = useState(null);
   const role = localStorage.getItem("role");
 
-  
   const renderValue = (value) => {
     if (Array.isArray(value)) {
       return value.join(", ");
@@ -210,7 +209,10 @@ const SemResult = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-screen-lg" style={{ maxWidth: '1400px' }}>
+    <div
+      className="container mx-auto max-w-screen-lg"
+      style={{ maxWidth: "1400px" }}
+    >
       <h1 className="text-2xl font-bold mb-4">Student Data</h1>
 
       <div className="mb-4">
@@ -263,106 +265,116 @@ const SemResult = () => {
         </div>
       )}
 
-{showInternal && studentData && (
-  <div>
-    <h2 className="text-xl font-bold">
-      Internal Table for Semester {selectedSemester}
-    </h2>
-    <div className="overflow-x-auto"> {/* Add this container for horizontal scrolling */}
-      <table className="w-full table-auto border-collapse border mt-2">
-        {tableHeaderFirstTable}
-        <tbody>
-          {tableRowsFirstTable.map((row, rowIndex) => (
-            <tr key={`data-${rowIndex}`}>
-              {React.Children.map(row.props.children, (cell, cellIndex) => (
-                <td
-                  key={`data-${rowIndex}-${cellIndex}`}
-                  className={`border p-2 ${
-                    includeFieldsFirstTable[cellIndex] === "sessional1_marks" ||
-                    includeFieldsFirstTable[cellIndex] === "sessional2_marks" ||
-                    includeFieldsFirstTable[cellIndex] === "sessional3_marks"
-                      ? "w-16" // Adjust the width for marks cells
-                      : ""
-                  }`}
-                >
-                  {cell.props.children}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  </div>
-)}
+      {showInternal && studentData && (
+        <div>
+          <h2 className="text-xl font-bold">
+            Internal Table for Semester {selectedSemester}
+          </h2>
+          <div className="overflow-x-auto">
+            {" "}
+            {/* Add this container for horizontal scrolling */}
+            <table className="w-full table-auto border-collapse border mt-2">
+              {tableHeaderFirstTable}
+              <tbody>
+                {tableRowsFirstTable.map((row, rowIndex) => (
+                  <tr key={`data-${rowIndex}`}>
+                    {React.Children.map(
+                      row.props.children,
+                      (cell, cellIndex) => (
+                        <td
+                          key={`data-${rowIndex}-${cellIndex}`}
+                          className={`border p-2 ${
+                            includeFieldsFirstTable[cellIndex] ===
+                              "sessional1_marks" ||
+                            includeFieldsFirstTable[cellIndex] ===
+                              "sessional2_marks" ||
+                            includeFieldsFirstTable[cellIndex] ===
+                              "sessional3_marks"
+                              ? "w-16" // Adjust the width for marks cells
+                              : ""
+                          }`}
+                        >
+                          {cell.props.children}
+                        </td>
+                      )
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
-{showExternal && studentData && (
-  <div>
-    <h2 className="text-xl font-bold">
-      External Table for Semester {selectedSemester}
-    </h2>
-    <div className="overflow-x-auto"> {/* Add this container for horizontal scrolling */}
-      <table className="w-full table-auto border-collapse border mt-2">
-        {tableHeaderSecondTable}
-        <tbody>
-          {tableRowsSecondTable.map((row, rowIndex) => (
-            <tr key={`data-${rowIndex}`}>
-              {React.Children.map(row.props.children, (cell, cellIndex) => (
-                <td
-                  key={`data-${rowIndex}-${cellIndex}`}
-                  className={`border p-2 ${
-                    includeFieldsSecondTable[cellIndex] === "external_marks"
-                      ? "w-16" // Adjust the width for marks cells
-                      : ""
-                  }`}
-                >
-                  {cell.props.children}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-    <div className="flex justify-center text-left p-4 ">
-      <table className="border border-collapse max-w-xs">
-        
-        <tbody>
-          <tr>
-            <td className="border p-2">SPI Credit</td>
-            <td className="p-2">{studentData.spi_credit}</td>
-          </tr>
-          <tr>
-            <td className="border p-2">SPI Points</td>
-            <td className="border p-2">{studentData.spi_points}</td>
-          </tr>
-          <tr>
-            <td className="border p-2">SPI</td>
-            <td className="border p-2">{studentData.spi}</td>
-          </tr>
-          <tr>
-            <td className="border p-2">CPI Credit</td>
-            <td className="border p-2">{studentData.cpi_credit}</td>
-          </tr>
-          <tr>
-            <td className="border p-2">CPI Points</td>
-            <td className="border p-2">{studentData.cpi_points}</td>
-          </tr>
-          <tr>
-            <td className="border p-2">CPI</td>
-            <td className="border p-2">{studentData.cpi}</td>
-          </tr>
-          <tr>
-            <td className="border p-2">Result Status</td>
-            <td className="border p-2">{studentData.result_status}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+      {showExternal && studentData && (
+        <div>
+          <h2 className="text-xl font-bold">
+            External Table for Semester {selectedSemester}
+          </h2>
+          <div className="overflow-x-auto">
+            <table className="w-full table-auto border-collapse border mt-2">
+              {tableHeaderSecondTable}
+              <tbody>
+                {tableRowsSecondTable.map((row, rowIndex) => (
+                  <tr key={`data-${rowIndex}`} className="border p-2">
+                    {React.Children.map(
+                      row.props.children,
+                      (cell, cellIndex) => (
+                        <td
+                          key={`data-${rowIndex}-${cellIndex}`}
+                          className={`border p-2 ${
+                            includeFieldsSecondTable[cellIndex] ===
+                            "external_marks"
+                              ? "w-16"
+                              : ""
+                          }`}
+                        >
+                          {cell.props.children}
+                        </td>
+                      )
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-
-  </div>
-)}
+          <div className="flex justify-center text-left p-4 ">
+            <table className="border border-collapse max-w-xs">
+              <tbody>
+                <tr>
+                  <td className="border p-2">SPI Credit</td>
+                  <td className="p-2">{studentData.spi_credit}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">SPI Points</td>
+                  <td className="border p-2">{studentData.spi_points}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">SPI</td>
+                  <td className="border p-2">{studentData.spi}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">CPI Credit</td>
+                  <td className="border p-2">{studentData.cpi_credit}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">CPI Points</td>
+                  <td className="border p-2">{studentData.cpi_points}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">CPI</td>
+                  <td className="border p-2">{studentData.cpi}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">Result Status</td>
+                  <td className="border p-2">{studentData.result_status}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
 
       {selectedSemester !== null && studentData && role === "faculty" && (
         <div className="mt-4">
