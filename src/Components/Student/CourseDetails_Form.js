@@ -96,325 +96,151 @@ function Course_Form() {
   }, [error]);
 
   return (
-    <div className="col-xxl">
-      <div className="card mb-4">
+    <div className="col-xxl grid place-items-center">
+      <div className="card mb-4 h-auto w-fit" style={{ width: '80%', padding: '20px' }}>
         <div className="card-header d-flex align-items-center justify-content-between">
-          <h5 className="mb-0">Subject Form</h5>
-          <small className="text-muted float-end">Default label</small>
+          <h5 className="mb-0">Course Details Form</h5>
         </div>
         <div className="card-body">
           <form onSubmit={handleSubmit(onSubmit)} method="POST">
             <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="subject_code">
-                Subject Code:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="subject_code"
-                  name="subject_code"
-                  required
-                  {...register("subject_code")}
-                />
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="subject_code">Subject Code</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="subject_code" name="subject_code" required {...register('subject_code')} />
                 <p className="text-danger">{errors?.subject_code?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="subject_name">
-                Subject Name:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="subject_name"
-                  name="subject_name"
-                  required
-                  {...register("subject_name")}
-                />
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="subject_name">Subject Name</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="subject_name" name="subject_name" required {...register('subject_name')} />
                 <p className="text-danger">{errors?.subject_name?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="subject_credit"
-              >
-                Subject Credit:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="subject_credit"
-                  name="subject_credit"
-                  required
-                  {...register("subject_credit")}
-                />
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="subject_credit">Subject Credit</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="subject_credit" name="subject_credit" required {...register('subject_credit')} />
                 <p className="text-danger">{errors?.subject_credit?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="subject_alias"
-              >
-                Subject Alias:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="subject_alias"
-                  name="subject_alias"
-                  required
-                  {...register("subject_alias")}
-                />
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="subject_alias">Subject Alias</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="subject_alias" name="subject_alias" required {...register('subject_alias')} />
                 <p className="text-danger">{errors?.subject_alias?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="semester">
-                Semester:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="semester"
-                  name="semester"
-                  required
-                  {...register("semester")}
-                />
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="semester">Semester</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="semester" name="semester" required {...register('semester')} />
                 <p className="text-danger">{errors?.semester?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="theory_min_passing_marks"
-              >
-                Theory Minimum Passing Marks:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="theory_min_passing_marks"
-                  name="theory_min_passing_marks"
-                  required
-                  {...register("theory_min_passing_marks")}
-                />
-                <p className="text-danger">
-                  {errors?.theory_min_passing_marks?.message}
-                </p>
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="theory_min_passing_marks">Theory Min Passing Marks</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="theory_min_passing_marks" name="theory_min_passing_marks" required {...register('theory_min_passing_marks')} />
+                <p className="text-danger">{errors?.theory_min_passing_marks?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="theory_min_passing_marks2"
-              >
-                Theory Minimum Passing Marks 2:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="theory_min_passing_marks2"
-                  name="theory_min_passing_marks2"
-                  required
-                  {...register("theory_min_passing_marks2")}
-                />
-                <p className="text-danger">
-                  {errors?.theory_min_passing_marks2?.message}
-                </p>
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="theory_min_passing_marks2">Theory Min Passing Marks 2</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="theory_min_passing_marks2" name="theory_min_passing_marks2" required {...register('theory_min_passing_marks2')} />
+                <p className="text-danger">{errors?.theory_min_passing_marks2?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="theory_total_marks"
-              >
-                Theory Total Marks:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="theory_total_marks"
-                  name="theory_total_marks"
-                  required
-                  {...register("theory_total_marks")}
-                />
-                <p className="text-danger">
-                  {errors?.theory_total_marks?.message}
-                </p>
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="theory_total_marks">Theory Total Marks</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="theory_total_marks" name="theory_total_marks" required {...register('theory_total_marks')} />
+                <p className="text-danger">{errors?.theory_total_marks?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="sessional_min_passing_marks"
-              >
-                Sessional Minimum Passing Marks:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="sessional_min_passing_marks"
-                  name="sessional_min_passing_marks"
-                  required
-                  {...register("sessional_min_passing_marks")}
-                />
-                <p className="text-danger">
-                  {errors?.sessional_min_passing_marks?.message}
-                </p>
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="sessional_min_passing_marks">Sessional Min Passing Marks</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="sessional_min_passing_marks" name="sessional_min_passing_marks" required {...register('sessional_min_passing_marks')} />
+                <p className="text-danger">{errors?.sessional_min_passing_marks?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="sessional_min_passing_marks2"
-              >
-                Sessional Minimum Passing Marks 2:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="sessional_min_passing_marks2"
-                  name="sessional_min_passing_marks2"
-                  required
-                  {...register("sessional_min_passing_marks2")}
-                />
-                <p className="text-danger">
-                  {errors?.sessional_min_passing_marks2?.message}
-                </p>
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="sessional_min_passing_marks2">Sessional Min Passing Marks 2</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="sessional_min_passing_marks2" name="sessional_min_passing_marks2" required {...register('sessional_min_passing_marks2')} />
+                <p className="text-danger">{errors?.sessional_min_passing_marks2?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="sessional_total_marks"
-              >
-                Sessional Total Marks:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="sessional_total_marks"
-                  name="sessional_total_marks"
-                  required
-                  {...register("sessional_total_marks")}
-                />
-                <p className="text-danger">
-                  {errors?.sessional_total_marks?.message}
-                </p>
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="sessional_total_marks">Sessional Total Marks</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="sessional_total_marks" name="sessional_total_marks" required {...register('sessional_total_marks')} />
+                <p className="text-danger">{errors?.sessional_total_marks?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="practical_min_passing_marks"
-              >
-                Practical Minimum Passing Marks:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="practical_min_passing_marks"
-                  name="practical_min_passing_marks"
-                  required
-                  {...register("practical_min_passing_marks")}
-                />
-                <p className="text-danger">
-                  {errors?.practical_min_passing_marks?.message}
-                </p>
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="practical_min_passing_marks">Practical Minimum Passing Marks</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="practical_min_passing_marks" name="practical_min_passing_marks" required {...register('practical_min_passing_marks')} />
+                <p className="text-danger">{errors?.practical_min_passing_marks?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="practical_min_passing_marks2"
-              >
-                Practical Minimum Passing Marks 2:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="practical_min_passing_marks2"
-                  name="practical_min_passing_marks2"
-                  required
-                  {...register("practical_min_passing_marks2")}
-                />
-                <p className="text-danger">
-                  {errors?.practical_min_passing_marks2?.message}
-                </p>
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="practical_min_passing_marks2">Practical Minimum Passing Marks 2</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="practical_min_passing_marks2" name="practical_min_passing_marks2" required {...register('practical_min_passing_marks2')} />
+                <p className="text-danger">{errors?.practical_min_passing_marks2?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label
-                className="col-sm-5 col-form-label"
-                htmlFor="practical_total_marks"
-              >
-                Practical Total Marks:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="practical_total_marks"
-                  name="practical_total_marks"
-                  required
-                  {...register("practical_total_marks")}
-                />
-                <p className="text-danger">
-                  {errors?.practical_total_marks?.message}
-                </p>
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="practical_total_marks">Practical Total Marks</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="practical_total_marks" name="practical_total_marks" required {...register('practical_total_marks')} />
+                <p className="text-danger">{errors?.practical_total_marks?.message}</p>
               </div>
             </div>
-
             <div className="row mb-3">
-              <label className="col-sm-5 col-form-label" htmlFor="isElective">
-                Is Elective:
-              </label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="isElective"
-                  name="isElective"
-                  required
-                  {...register("isElective")}
-                />
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="isElective">Is Elective</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="isElective" name="isElective" required {...register('isElective')} />
                 <p className="text-danger">{errors?.isElective?.message}</p>
               </div>
             </div>
-
-            <div className="row justify-content-end">
-              <div className="col-sm-10">
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
+            <div className="row justify-content-center">
+              <div className="col-sm-8">
+                <button type="submit" className="btn btn-primary">Submit</button>
               </div>
             </div>
             {status !== undefined && <p>{status}</p>}
@@ -424,6 +250,7 @@ function Course_Form() {
       </div>
     </div>
   );
+  
 }
 
 export default Course_Form;
