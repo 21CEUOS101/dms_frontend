@@ -11,6 +11,7 @@ const SemResult = () => {
   const [studentData, setStudentData] = useState(null);
   const role = localStorage.getItem("role");
 
+  
   const renderValue = (value) => {
     if (Array.isArray(value)) {
       return value.join(", ");
@@ -323,17 +324,43 @@ const SemResult = () => {
         </tbody>
       </table>
     </div>
-    <div className="mt-4">
-      <h2 className="font-bold">
-        SPI Credit: {studentData.spi_credit}
-      </h2>
-      <h2 className="font-bold">SPI Points: {studentData.spi_points}</h2>
-            <h2 className="font-bold">SPI: {studentData.spi}</h2>
-            <h2 className="font-bold">CPI Credit: {studentData.cpi_credit}</h2>
-            <h2 className="font-bold">CPI Points: {studentData.cpi_points}</h2>
-            <h2 className="font-bold">CPI: {studentData.cpi}</h2>
-            <h2 className="font-bold">Result Status: {studentData.result_status}</h2>
+    <div className="flex justify-center text-left p-4 ">
+      <table className="border border-collapse max-w-xs">
+        
+        <tbody>
+          <tr>
+            <td className="border p-2">SPI Credit</td>
+            <td className="p-2">{studentData.spi_credit}</td>
+          </tr>
+          <tr>
+            <td className="border p-2">SPI Points</td>
+            <td className="border p-2">{studentData.spi_points}</td>
+          </tr>
+          <tr>
+            <td className="border p-2">SPI</td>
+            <td className="border p-2">{studentData.spi}</td>
+          </tr>
+          <tr>
+            <td className="border p-2">CPI Credit</td>
+            <td className="border p-2">{studentData.cpi_credit}</td>
+          </tr>
+          <tr>
+            <td className="border p-2">CPI Points</td>
+            <td className="border p-2">{studentData.cpi_points}</td>
+          </tr>
+          <tr>
+            <td className="border p-2">CPI</td>
+            <td className="border p-2">{studentData.cpi}</td>
+          </tr>
+          <tr>
+            <td className="border p-2">Result Status</td>
+            <td className="border p-2">{studentData.result_status}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+
   </div>
 )}
 
