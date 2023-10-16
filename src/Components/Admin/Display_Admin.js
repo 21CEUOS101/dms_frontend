@@ -20,10 +20,10 @@ function Display_Admin() {
   },[])
   return (
     <div className="w-full text-center bg-gray-200 p-4">
-      <div className="text-2xl font-bold mb-4">
-        Display Admin
+      <div style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "20px" }}>
+        ADMIN PROFILE
       </div>
-      <div className="grid grid-row-1">
+      <div className="bg-white border p-4 shadow-md">
         {data !== undefined && (
           <Profile data={data} />
         )}

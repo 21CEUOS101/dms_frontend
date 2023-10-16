@@ -308,43 +308,45 @@ const SemResult = () => {
 
       {showExternal && studentData && (
         <div>
-          <h2 className="text-xl font-bold">
-            External Table for Semester {selectedSemester}
-          </h2>
           <div className="overflow-x-auto">
-            <table className="w-full table-auto border-collapse border mt-2">
-              {tableHeaderSecondTable}
-              <tbody>
-                {tableRowsSecondTable.map((row, rowIndex) => (
-                  <tr key={`data-${rowIndex}`} className="border p-2">
-                    {React.Children.map(
-                      row.props.children,
-                      (cell, cellIndex) => (
-                        <td
-                          key={`data-${rowIndex}-${cellIndex}`}
-                          className={`border p-2 ${
-                            includeFieldsSecondTable[cellIndex] ===
-                            "external_marks"
-                              ? "w-16"
-                              : ""
-                          }`}
-                        >
-                          {cell.props.children}
-                        </td>
-                      )
-                    )}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+  <div className="table-block">
+    <table className="w-full table-auto border-collapse border mt-2">
+      {tableHeaderSecondTable}
+      <tbody>
+        {tableRowsSecondTable.map((row, rowIndex) => (
+          <tr
+            key={`data-${rowIndex}`}
+            className={`border p-2`}
+          >
+            {React.Children.map(
+              row.props.children,
+              (cell, cellIndex) => (
+                <td
+                  key={`data-${rowIndex}-${cellIndex}`}
+                  className={`border p-2 ${
+                    includeFieldsSecondTable[cellIndex] === "external_marks"
+                      ? "w-16"
+                      : ""
+                  }`}
+                >
+                  {cell.props.children}
+                </td>
+              )
+            )}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
 
-          <div className="flex justify-center text-left p-4 ">
+
+          <div className="flex justify-center text-left p-4">
             <table className="border border-collapse max-w-xs">
               <tbody>
                 <tr>
                   <td className="border p-2">SPI Credit</td>
-                  <td className="p-2">{studentData.spi_credit}</td>
+                  <td className="border p-2">{studentData.spi_credit}</td>
                 </tr>
                 <tr>
                   <td className="border p-2">SPI Points</td>

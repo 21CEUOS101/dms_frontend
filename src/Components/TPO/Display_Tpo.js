@@ -21,10 +21,10 @@ function Display_Tpo() {
 
   return (
     <div className="w-full text-center bg-gray-200 p-4">
-      <div className="text-2xl font-bold mb-4">
-        Display TPO
+      <div style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "20px" }}>
+        TPO PROFILE
       </div>
-      <div className="grid grid-row-1">
+      <div className="bg-white border p-4 shadow-md">
         {data !== undefined && (
           <Profile data={data} />
         )}
