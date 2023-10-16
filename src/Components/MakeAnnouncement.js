@@ -468,8 +468,9 @@ function All_Students() {
   };
 
   return (
-    <div className="make-announcement max-w-400px mx-auto p-20 border border-gray-300 rounded bg-white shadow-md">
-      <div className="font-bold mb-5 text-center">Make Announcement</div>
+    <div className="make-announcement-container col-xxl grid place-items-center">
+      <div className="make-announcement-form">
+      <h1 className="form-title text-center">Make Announcement</h1>
       <div className="grid grid-cols-2 gap-1 font-mono">
       <label className="block">
             <p className="mb-2">Students</p>
@@ -589,6 +590,7 @@ function All_Students() {
       >
         Send Email
       </button>
+    </div>
     </div>
   );
 }
