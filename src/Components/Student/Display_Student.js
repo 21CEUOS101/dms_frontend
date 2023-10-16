@@ -1,18 +1,20 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import Profile from '../Profile';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Profile from "../Profile";
 
 function Display_Student() {
   const { id } = useParams();
   const [data, setData] = useState();
 
   const getData = () => {
-    axios.get(`http://localhost:3001/student/getStudentByRollNumber/${id}`).then((response) => {
-      console.log(response?.data);
-      setData(response?.data);
-    });
-  }
+    axios
+      .get(`http://localhost:3001/student/getStudentByRollNumber/${id}`)
+      .then((response) => {
+        console.log(response?.data);
+        setData(response?.data);
+      });
+  };
 
   useEffect(() => {
     getData();
@@ -23,9 +25,14 @@ function Display_Student() {
   const studentOtherDetails = data?.studentOtherDetails[0];
 
   return (
-    <div className='w-full text-center bg-gray-200 p-4'>
-      <div className='text-2xl font-bold mb-4'>Display_Student</div>
-      <div className='grid grid-row-3'>
+    <div className="w-full text-center bg-gray-200 p-4">
+      <div
+        style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "20px" }}
+      >
+        STUDENT PROFILE
+      </div>
+      <hr style={{ border: "1px solid #333", margin: "10px 0" }} />
+      <div className="grid grid-row-3">
         {data !== undefined && (
           <>
             <h1>Student Details</h1>
@@ -34,14 +41,20 @@ function Display_Student() {
         )}
         {data !== undefined && (
           <>
+            <hr style={{ border: "1px solid #333", margin: "10px 0" }} />
             <h1>Guardian Information</h1>
-            <Profile data={studentGuardianInfo !== undefined && studentGuardianInfo} />
+            <Profile
+              data={studentGuardianInfo !== undefined && studentGuardianInfo}
+            />
           </>
         )}
         {data !== undefined && (
           <>
+            <hr style={{ border: "1px solid #333", margin: "10px 0" }} />
             <h1>Other Details</h1>
-            <Profile data={studentOtherDetails !== undefined && studentOtherDetails} />
+            <Profile
+              data={studentOtherDetails !== undefined && studentOtherDetails}
+            />
           </>
         )}
       </div>
