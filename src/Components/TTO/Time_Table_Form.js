@@ -69,6 +69,8 @@ function TimeTableBlockForm() {
         </div>
         <div className="card-body">
           <form onSubmit={handleSubmit(onSubmit)} method="POST">
+            {/* Add form fields here */}
+            {/* ID */}
             <div className="row mb-3">
               <div className="col-sm-4" style={{ textAlign: 'left' }}>
                 <label htmlFor="time_table_block_id">Time Table Block ID</label>
@@ -78,6 +80,7 @@ function TimeTableBlockForm() {
                 <p className="text-danger">{errors?.time_table_block_id?.message}</p>
               </div>
             </div>
+            {/* Time Table ID */}
             <div className="row mb-3">
               <div className="col-sm-4" style={{ textAlign: 'left' }}>
                 <label htmlFor="time_table_id">Time Table ID</label>
@@ -87,6 +90,7 @@ function TimeTableBlockForm() {
                 <p className="text-danger">{errors?.time_table_id?.message}</p>
               </div>
             </div>
+            {/* Day */}
             <div className="row mb-3">
               <div className="col-sm-4" style={{ textAlign: 'left' }}>
                 <label htmlFor="time_table_block_day">Day</label>
@@ -96,6 +100,7 @@ function TimeTableBlockForm() {
                 <p className="text-danger">{errors?.time_table_block_day?.message}</p>
               </div>
             </div>
+            {/* Time */}
             <div className="row mb-3">
               <div className="col-sm-4" style={{ textAlign: 'left' }}>
                 <label htmlFor="time_table_block_time">Time</label>
@@ -105,6 +110,7 @@ function TimeTableBlockForm() {
                 <p className="text-danger">{errors?.time_table_block_time?.message}</p>
               </div>
             </div>
+            {/* Subject */}
             <div className="row mb-3">
               <div className="col-sm-4" style={{ textAlign: 'left' }}>
                 <label htmlFor="time_table_block_subject">Subject</label>
@@ -114,6 +120,7 @@ function TimeTableBlockForm() {
                 <p className="text-danger">{errors?.time_table_block_subject?.message}</p>
               </div>
             </div>
+            {/* Faculty */}
             <div className="row mb-3">
               <div className="col-sm-4" style={{ textAlign: 'left' }}>
                 <label htmlFor="time_table_block_faculty">Faculty</label>
@@ -123,19 +130,70 @@ function TimeTableBlockForm() {
                 <p className="text-danger">{errors?.time_table_block_faculty?.message}</p>
               </div>
             </div>
-            {/* Add other form fields similarly */}
+            {/* Room Number */}
+            <div className="row mb-3">
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="time_table_block_room_no">Room Number</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="time_table_block_room_no" name="time_table_block_room_no" required {...register('time_table_block_room_no')} />
+                <p className="text-danger">{errors?.time_table_block_room_no?.message}</p>
+              </div>
+            </div>
+            {/* Department */}
+            <div className="row mb-3">
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="time_table_block_department">Department</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="time_table_block_department" name="time_table_block_department" required {...register('time_table_block_department')} />
+                <p className="text-danger">{errors?.time_table_block_department?.message}</p>
+              </div>
+            </div>
+            {/* Semester */}
+            <div className="row mb-3">
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="time_table_block_semester">Semester</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="time_table_block_semester" name="time_table_block_semester" required {...register('time_table_block_semester')} />
+                <p className="text-danger">{errors?.time_table_block_semester?.message}</p>
+              </div>
+            </div>
+            {/* Section */}
+            <div className="row mb-3">
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="time_table_block_section">Section</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="time_table_block_section" name="time_table_block_section" required {...register('time_table_block_section')} />
+                <p className="text-danger">{errors?.time_table_block_section?.message}</p>
+              </div>
+            </div>
+            {/* Section Number */}
+            <div className="row mb-3">
+              <div className="col-sm-4" style={{ textAlign: 'left' }}>
+                <label htmlFor="time_table_block_section_no">Section Number</label>
+              </div>
+              <div className="col-sm-8">
+                <input type="text" className="form-control" id="time_table_block_section_no" name="time_table_block_section_no" required {...register('time_table_block_section_no')} />
+                <p className="text-danger">{errors?.time_table_block_section_no?.message}</p>
+              </div>
+            </div>
+            {/* Submit Button */}
             <div className="row justify-content-center">
               <div className="col-sm-8">
                 <button type="submit" className="btn btn-primary">Submit</button>
               </div>
             </div>
-            {status !== undefined && <p>{status}</p>}
-            {error !== undefined && <p className="text-danger">{error}</p>}
+            {/* Status and Error Messages */}
+            {status !== '' && <p>{status}</p>}
+            {error !== '' && <p className="text-danger">{error}</p>}
           </form>
         </div>
       </div>
     </div>
   );
-}  
+}
 
 export default TimeTableBlockForm;

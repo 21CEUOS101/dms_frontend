@@ -66,7 +66,7 @@ export function NavbarNested() {
         ["admin","faculty","hod","tto","tpo"].includes(role) && { label: 'View Students', link: '/all-student' },
         ["faculty"].includes(role) && { label: 'Marks Entry', link: '/marks-entry' },
         ["student"].includes(role) && { label: 'Exam Result', link: `/sem-result/${id}` },
-        ["tto","student","faculty","hod"].includes(role) && { label: 'View TimeTable', link: '/display-timetable' },
+        ["student","faculty","hod"].includes(role) && { label: 'View TimeTable', link: '/display-timetable' },
       ].filter((item) => item !== false),
     },
     {
