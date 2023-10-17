@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import "./YourTableStyles.css"; // Replace with the actual CSS file path.
+// import "./YourTableStyles.css"; // Replace with the actual CSS file path.
 
 const SemResult = () => {
   const { id } = useParams();
@@ -316,38 +316,46 @@ const SemResult = () => {
       {showInternal && studentData && (
         <div>
           <div className="button-container">
-            <button
-              onClick={() => handleSessionalClick(1)}
-              className={selectedSessional === 1 ? "active-button" : ""}
-            >
-              Sessional 1
-            </button>
-            <button
-              onClick={() => handleSessionalClick(2)}
-              className={selectedSessional === 2 ? "active-button" : ""}
-            >
-              Sessional 2
-            </button>
-            <button
-              onClick={() => handleSessionalClick(3)}
-              className={selectedSessional === 3 ? "active-button" : ""}
-            >
-              Sessional 3
-            </button>
-            <button
-              onClick={() => handleSessionalClick(4)}
-              className={selectedSessional === 4 ? "active-button" : ""}
-            >
-              Block
-            </button>
+            {Array.from({ length: 4 }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => handleSessionalClick(i + 1)}
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#0074d9",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  margin: "5px",
+                  background: selectedSessional === i + 1 ? "#0056b3" : "",
+                }}
+              >
+                {i === 3 ? "Block" : `Sessional ${i + 1}`}
+              </button>
+            ))}
           </div>
 
           <div className="table-container">
-            <table className="your-table-class">
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                margin: "20px 0",
+              }}
+            >
               <thead>
                 <tr>
                   {sessionalFields[selectedSessional].map((fieldName) => (
-                    <th key={`header-${fieldName}`}>
+                    <th
+                      key={`header-${fieldName}`}
+                      style={{
+                        border: "1px solid #ccc",
+                        padding: "8px",
+                        backgroundColor: "#f2f2f2",
+                        textAlign: "left",
+                      }}
+                    >
                       {aliasMapping[fieldName] || fieldName}
                     </th>
                   ))}
@@ -357,7 +365,18 @@ const SemResult = () => {
                 {studentData?.subject_code.map((subjectCode, index) => (
                   <tr key={`data-${subjectCode}`}>
                     {sessionalFields[selectedSessional].map((fieldName) => (
-                      <td key={`data-${fieldName}`}>
+                      <td
+                        key={`data-${fieldName}`}
+                        style={{
+                          border: "1px solid #ccc",
+                          padding: "8px",
+                          textAlign: "left",
+                          backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
                         {renderValue(studentData[fieldName][index])}
                       </td>
                     ))}
@@ -371,70 +390,8 @@ const SemResult = () => {
 
       {showExternal && studentData && (
         <div>
-          <div className="overflow-x-auto">
-            <div className="table-block">
-              <table className="w-full table-auto border-collapse border mt-2">
-                {tableHeaderSecondTable}
-                <tbody>
-                  {tableRowsSecondTable.map((row, rowIndex) => (
-                    <tr key={`data-${rowIndex}`} className={`border p-2`}>
-                      {React.Children.map(
-                        row.props.children,
-                        (cell, cellIndex) => (
-                          <td
-                            key={`data-${rowIndex}-${cellIndex}`}
-                            className={`border p-2 ${
-                              includeFieldsSecondTable[cellIndex] ===
-                              "external_marks"
-                                ? "w-16"
-                                : ""
-                            }`}
-                          >
-                            {cell.props.children}
-                          </td>
-                        )
-                      )}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="flex justify-center text-left p-4">
-            <table className="border border-collapse max-w-xs">
-              <tbody>
-                <tr>
-                  <td className="border p-2">SPI Credit</td>
-                  <td className="border p-2">{studentData.spi_credit}</td>
-                </tr>
-                <tr>
-                  <td className="border p-2">SPI Points</td>
-                  <td className="border p-2">{studentData.spi_points}</td>
-                </tr>
-                <tr>
-                  <td className="border p-2">SPI</td>
-                  <td className="border p-2">{studentData.spi}</td>
-                </tr>
-                <tr>
-                  <td className="border p-2">CPI Credit</td>
-                  <td className="border p-2">{studentData.cpi_credit}</td>
-                </tr>
-                <tr>
-                  <td className="border p-2">CPI Points</td>
-                  <td className="border p-2">{studentData.cpi_points}</td>
-                </tr>
-                <tr>
-                  <td className="border p-2">CPI</td>
-                  <td className="border p-2">{studentData.cpi}</td>
-                </tr>
-                <tr>
-                  <td className="border p-2">Result Status</td>
-                  <td className="border p-2">{studentData.result_status}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {tableHeaderSecondTable}
+          {tableRowsSecondTable}
         </div>
       )}
 
