@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import './form.css';
+import "./form.css";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -209,7 +209,7 @@ function Student_Form() {
 
   var Form1 = (
     <div className="">
-      <h1 className="card-header d-flex align-items-center justify-content-between">
+      <h1 className="text-base font-semibold leading-7 text-white text-center font-bold text-xl bg-indigo-500 p-4 h-10 rounded-lg flex items-center justify-center">
         Student Details Form
       </h1>
       <div className="grid grid-cols-3">
@@ -486,127 +486,58 @@ function Student_Form() {
   );
 
   var Form2 = (
-    <div className="col-xxl grid place-items-center">
-      <div
-        className="card mb-4 h-auto w-fit"
-        style={{ width: "80%", padding: "20px" }}
-      >
-        <h1 className="card-header d-flex align-items-center justify-content-between">
-          Student Guardian Info Form
-        </h1>
-        <div className="card-body">
-          <form onSubmit={handleSubmit(onSubmit)} method="POST">
-            <div className="row mb-3">
-              <div
-                className="col-sm-4"
-                style={{ textAlign: "left", width: "40%" }}
-              >
-                <label htmlFor="father_name" className="label-40">
-                  Father's Name:
-                </label>
-              </div>
-              <div className="col-sm-8" style={{ width: "60%" }}>
-                <input
-                  type="text"
-                  className="form-control my-input"
-                  id="father_name"
-                  name="father_name"
-                  required
-                  {...register("father_name")}
-                />
-                <p className="text-danger">{errors?.father_name?.message}</p>
-              </div>
-            </div>
+    <div>
+      <h1 className="text-base font-semibold leading-7 text-white text-center font-bold text-xl bg-indigo-500 p-4 h-10 rounded-lg flex items-center justify-center">
+        Student Guardian Info Form
+      </h1>
 
-            <div className="row mb-3">
-              <div
-                className="col-sm-4"
-                style={{ textAlign: "left", width: "40%" }}
-              >
-                <label htmlFor="father_occupation" className="label-40">
-                  Father's Occupation:
-                </label>
-              </div>
-              <div className="col-sm-8" style={{ width: "60%" }}>
-                <input
-                  type="text"
-                  className="form-control my-input"
-                  id="father_occupation"
-                  name="father_occupation"
-                  {...register("father_occupation")}
-                />
-                <p className="text-danger">
-                  {errors?.father_occupation?.message}
-                </p>
-              </div>
-            </div>
-
-            <div className="row mb-3">
-              <div
-                className="col-sm-4"
-                style={{ textAlign: "left", width: "40%" }}
-              >
-                <label htmlFor="organization_name" className="label-40">
-                  Organization Name:
-                </label>
-              </div>
-              <div className="col-sm-8" style={{ width: "60%" }}>
-                <input
-                  type="text"
-                  className="form-control my-input"
-                  id="organization_name"
-                  name="organization_name"
-                  {...register("organization_name")}
-                />
-              </div>
-            </div>
-
-            <div className="row mb-3">
-              <div
-                className="col-sm-4"
-                style={{ textAlign: "left", width: "40%" }}
-              >
-                <label htmlFor="annual_income" className="">
-                  Annual Income:
-                </label>
-              </div>
-              <div className="col-sm-8" style={{ width: "60%" }}>
-                <input
-                  type="text"
-                  className="form-control my-input"
-                  id="annual_income"
-                  name="annual_income"
-                  {...register("annual_income")}
-                />
-              </div>
-            </div>
-            <div className="row justify-content-center">
-              <div className="col-sm-8">
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  style={{
-                    display: "block",
-                    margin: "0 auto",
-                    marginTop: "20px",
-                    padding: "10px 20px",
-                  }}
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-            {status !== undefined && <p>{status}</p>}
-            {error !== undefined && <p className="text-danger">{error}</p>}
-          </form>
-        </div>
+      <div>
+        {/* Field htmlFor Father's Name */}
+        <label htmlFor="father_name">Father's Name:</label>
+        <input
+          type="text"
+          id="father_name"
+          name="father_name"
+          required
+          {...register("father_name")}
+        />
+      </div>
+      <div>
+        {/* Field htmlFor Father's Occupation */}
+        <label htmlFor="father_occupation">Father's Occupation:</label>
+        <input
+          type="text"
+          id="father_occupation"
+          name="father_occupation"
+          {...register("father_occupation")}
+        />
+      </div>
+      <div>
+        {/* Field htmlFor Organization Name */}
+        <label htmlFor="organization_name">Organization Name:</label>
+        <input
+          type="text"
+          id="organization_name"
+          name="organization_name"
+          {...register("organization_name")}
+        />
+      </div>
+      <div>
+        {/* Field htmlFor Annual Income */}
+        <label htmlFor="annual_income">Annual Income:</label>
+        <input
+          type="text"
+          id="annual_income"
+          name="annual_income"
+          {...register("annual_income")}
+        />
       </div>
     </div>
   );
 
   var Form3 = (
     <div className="border-b border-gray-900/10 pb-12">
-      <h1 className="text-base font-semibold text-3xl text-gray-900">
+      <h1 className="text-base font-semibold leading-7 text-white text-center font-bold text-xl bg-indigo-500 p-4 h-10 rounded-lg flex items-center justify-center">
         Student Academic Info Form
       </h1>
       <div className="mt-10 grid grid-cols-3">
@@ -767,7 +698,7 @@ function Student_Form() {
 
   var Form4 = (
     <div className="border-b border-gray-900/10 pb-12 ">
-      <h1 className="text-base font-semibold leading-7 text-gray-900">
+      <h1 className="text-base font-semibold leading-7 text-white text-center font-bold text-xl bg-indigo-500 p-4 h-10 rounded-lg flex items-center justify-center">
         Student Contact Info Form
       </h1>
       <div className="grid grid-cols-3 gap-4">
@@ -1041,236 +972,242 @@ function Student_Form() {
   );
 
   var Form5 = (
-    <div class="grid grid-cols-3 gap-4">
-      <h1 class="col-span-3 text-2xl font-bold mb-4">Student Fees Info Form</h1>
-      <div class="col-span-1">
-        <label
-          for="txn_date"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Transaction Date:
-        </label>
-        <input
-          type="text"
-          id="txn_date"
-          name="txn_date"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("txn_date")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="voucher_number"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Voucher Number:
-        </label>
-        <input
-          type="text"
-          id="voucher_number"
-          name="voucher_number"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("voucher_number")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="batch_year"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Batch Year:
-        </label>
-        <input
-          type="text"
-          id="batch_year"
-          name="batch_year"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("batch_year")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="session_no"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Session Number:
-        </label>
-        <input
-          type="number"
-          id="session_no"
-          name="session_no"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("session_no")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="admission_type"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Admission Type:
-        </label>
-        <input
-          type="text"
-          id="admission_type"
-          name="admission_type"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("admission_type")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="fees_amount"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Fees Amount:
-        </label>
-        <input
-          type="number"
-          id="fees_amount"
-          name="fees_amount"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("fees_amount")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="txn_status"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Transaction Status:
-        </label>
-        <input
-          type="text"
-          id="txn_status"
-          name="txn_status"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("txn_status")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="payment_mode"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Payment Mode:
-        </label>
-        <input
-          type="text"
-          id="payment_mode"
-          name="payment_mode"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("payment_mode")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="cheque_number"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Cheque Number:
-        </label>
-        <input
-          type="text"
-          id="cheque_number"
-          name="cheque_number"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("cheque_number")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="cheque_date"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Cheque Date:
-        </label>
-        <input
-          type="text"
-          id="cheque_date"
-          name="cheque_date"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("cheque_date")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="bank_name"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Bank Name:
-        </label>
-        <input
-          type="text"
-          id="bank_name"
-          name="bank_name"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("bank_name")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="paid_date"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Paid Date:
-        </label>
-        <input
-          type="text"
-          id="paid_date"
-          name="paid_date"
-          required
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("paid_date")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="reconsile_date"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Reconcile Date:
-        </label>
-        <input
-          type="text"
-          id="reconsile_date"
-          name="reconsile_date"
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("reconsile_date")}
-        />
-      </div>
-      <div class="col-span-1">
-        <label
-          for="reconsile_number"
-          class="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Reconcile Number:
-        </label>
-        <input
-          type="text"
-          id="reconsile_number"
-          name="reconsile_number"
-          class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
-          {...register("reconsile_number")}
-        />
+    <div className="border-b border-gray-900/10 pb-12 ">
+      <h1 class="text-base font-semibold leading-7 text-white text-center font-bold text-xl bg-indigo-500 p-4 h-10 rounded-lg flex items-center justify-center">
+        Student Fees Info Form
+      </h1>
+      <div class="grid grid-cols-3 gap-4">
+        <div class="col-span-1">
+          <label
+            for="txn_date"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Transaction Date:
+          </label>
+          <input
+            type="text"
+            id="txn_date"
+            name="txn_date"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("txn_date")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="voucher_number"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Voucher Number:
+          </label>
+          <input
+            type="text"
+            id="voucher_number"
+            name="voucher_number"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("voucher_number")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="batch_year"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Batch Year:
+          </label>
+          <input
+            type="text"
+            id="batch_year"
+            name="batch_year"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("batch_year")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="session_no"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Session Number:
+          </label>
+          <input
+            type="number"
+            id="session_no"
+            name="session_no"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("session_no")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="admission_type"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Admission Type:
+          </label>
+          <input
+            type="text"
+            id="admission_type"
+            name="admission_type"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("admission_type")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="fees_amount"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Fees Amount:
+          </label>
+          <input
+            type="number"
+            id="fees_amount"
+            name="fees_amount"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("fees_amount")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="txn_status"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Transaction Status:
+          </label>
+          <input
+            type="text"
+            id="txn_status"
+            name="txn_status"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("txn_status")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="payment_mode"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Payment Mode:
+          </label>
+          <input
+            type="text"
+            id="payment_mode"
+            name="payment_mode"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("payment_mode")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="cheque_number"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Cheque Number:
+          </label>
+          <input
+            type="text"
+            id="cheque_number"
+            name="cheque_number"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("cheque_number")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="cheque_date"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Cheque Date:
+          </label>
+          <input
+            type="text"
+            id="cheque_date"
+            name="cheque_date"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("cheque_date")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="bank_name"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Bank Name:
+          </label>
+          <input
+            type="text"
+            id="bank_name"
+            name="bank_name"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("bank_name")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="paid_date"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Paid Date:
+          </label>
+          <input
+            type="text"
+            id="paid_date"
+            name="paid_date"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("paid_date")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="reconsile_date"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Reconcile Date:
+          </label>
+          <input
+            type="text"
+            id="reconsile_date"
+            name="reconsile_date"
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("reconsile_date")}
+          />
+        </div>
+        <div class="col-span-1">
+          <label
+            for="reconsile_number"
+            class="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Reconcile Number:
+          </label>
+          <input
+            type="text"
+            id="reconsile_number"
+            name="reconsile_number"
+            class="w-full p-2 border border-gray-300 rounded-md focus:ring focus:ring-blue-400"
+            {...register("reconsile_number")}
+          />
+        </div>
       </div>
     </div>
   );
 
   var Form6 = (
     <div class="w-full mx-auto grid grid-cols-2">
-      <h1 class="text-2xl font-bold mb-1">Student Other Details Form</h1>
+      <h1 class="text-base font-semibold leading-7 text-white text-center font-bold text-xl bg-indigo-500 p-4 h-10 rounded-lg flex items-center justify-center">
+        Student Other Details Form
+      </h1>
       <div class="mb-1">
         <label for="sub_cast" class="block text-sm font-medium text-gray-700">
           Sub Cast:
@@ -1359,12 +1296,15 @@ function Student_Form() {
           {currentPage == 6 && Form6}
 
           {currentPage == 6 && (
-            <button
-              type="submit"
-              className="bg-blue-500 rounded-lg text-center w-auto"
-            >
-              Add Student
-            </button>
+           <div className="flex items-center justify-center m-4">
+           <button
+             type="submit"
+             className="bg-blue-500 rounded-lg text-center w-auto"
+           >
+             Add Student
+           </button>
+         </div>
+         
           )}
 
           {status}
