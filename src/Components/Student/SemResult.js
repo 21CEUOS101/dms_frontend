@@ -206,7 +206,15 @@ const SemResult = () => {
     <thead>
       <tr>
         {includeFieldsSecondTable.map((fieldName) => (
-          <th key={`header-${fieldName}`}>
+          <th
+            key={`header-${fieldName}`}
+            style={{
+              padding: "8px",
+              textAlign: "left",
+              border: "1px solid #ccc",
+              backgroundColor: "#f2f2f2",
+            }}
+          >
             {aliasMapping[fieldName] || fieldName}
           </th>
         ))}
@@ -218,13 +226,25 @@ const SemResult = () => {
     (subjectCode, index) => (
       <tr key={`data-${subjectCode}`}>
         {includeFieldsSecondTable.map((fieldName) => (
-          <td key={`data-${fieldName}`}>
+          <td
+            key={`data-${fieldName}`}
+            style={{
+              padding: "8px",
+              textAlign: "left",
+              border: "1px solid #ccc",
+              backgroundColor: index % 2 === 0 ? "#f2f2f2" : "#fff",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
             {renderValue(studentData[fieldName][index])}
           </td>
         ))}
       </tr>
     )
   );
+
   const handleSemesterChange = (event) => {
     const selectedSemesterValue = event.target.value;
     const selectedSemester =
@@ -390,8 +410,53 @@ const SemResult = () => {
 
       {showExternal && studentData && (
         <div>
-          {tableHeaderSecondTable}
-          {tableRowsSecondTable}
+          {/* Your external table */}
+          <div
+            style={{
+              maxWidth: "100%",
+              overflowX: "auto",
+            }}
+          >
+            <table className="your-table-class">
+              {tableHeaderSecondTable}
+              {tableRowsSecondTable}
+            </table>
+          </div>
+          {/* Additional table */}
+          <div className="flex justify-center text-left p-4">
+            <table className="border border-collapse max-w-xs">
+              <tbody>
+                <tr>
+                  <td className="border p-2">SPI Credit</td>
+                  <td className="border p-2">{studentData.spi_credit}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">SPI Points</td>
+                  <td className="border p-2">{studentData.spi_points}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">SPI</td>
+                  <td className="border p-2">{studentData.spi}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">CPI Credit</td>
+                  <td className="border p-2">{studentData.cpi_credit}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">CPI Points</td>
+                  <td className="border p-2">{studentData.cpi_points}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">CPI</td>
+                  <td className="border p-2">{studentData.cpi}</td>
+                </tr>
+                <tr>
+                  <td className="border p-2">Result Status</td>
+                  <td className="border p-2">{studentData.result_status}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
