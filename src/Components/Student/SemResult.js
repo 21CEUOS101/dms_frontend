@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import "./YourTableStyles.css"; // Replace with the actual CSS file path.
 
 const SemResult = () => {
   const { id } = useParams();
@@ -9,6 +10,8 @@ const SemResult = () => {
   const [showExternal, setShowExternal] = useState(false);
   const [studentExamResults, setStudentExamResults] = useState([]);
   const [studentData, setStudentData] = useState(null);
+  const [selectedSessional, setSelectedSessional] = useState(1);
+
   const role = localStorage.getItem("role");
 
   const renderValue = (value) => {
@@ -37,7 +40,7 @@ const SemResult = () => {
   }, []);
   const aliasMapping = {
     _id: "ID",
-    student_id: "Stu ID",
+    student_id: "Student ID",
     semester: "Sem",
     batch_year: "Batch Yr",
     subject_code: "Sub Code",
@@ -86,54 +89,99 @@ const SemResult = () => {
     // Add mappings for other fields as needed...
   };
 
-  const includeFieldsFirstTable = [
-    "subject_code",
-    "subject_name", // Add subject code and subject name here
-    "sessional1_marks",
-    "sessional2_marks",
-    "sessional3_marks",
-    "sessional1_present",
-    "sessional2_present",
-    "sessional3_present",
-    "sessional1_attendance",
-    "sessional2_attendance",
-    "sessional3_attendance",
-    "sessional1_total_attendance",
-    "sessional2_total_attendance",
-    "sessional3_total_attendance",
-    "sessional1_practical_attendance",
-    "sessional2_practical_attendance",
-    "sessional3_practical_attendance",
-    "sessional1_total_practical_attendance",
-    "sessional2_total_practical_attendance",
-    "sessional3_total_practical_attendance",
-    "block_marks",
-    "block_present",
-  ];
+  // const includeFieldsFirstTable = [
+  //   "subject_code",
+  //   "subject_name", // Add subject code and subject name here
+  //   "sessional3_marks",
+  //   "sessional3_present",
+  //   "sessional3_attendance",
+  //   "sessional3_total_attendance",
+  //   "sessional3_practical_attendance",
+  //   "sessional3_total_practical_attendance",
+  //   "sessional1_marks",
+  //   "sessional2_marks",
+  //   "sessional1_present",
+  //   "sessional2_present",
+  //   "sessional1_attendance",
+  //   "sessional2_attendance",
+  //   "sessional1_total_attendance",
+  //   "sessional2_total_attendance",
+  //   "sessional1_practical_attendance",
+  //   "sessional2_practical_attendance",
+  //   "sessional1_total_practical_attendance",
+  //   "sessional2_total_practical_attendance",
+  //   "block_marks",
+  //   "block_present",
+  // ];
 
-  const tableHeaderFirstTable = (
-    <thead>
-      <tr>
-        {includeFieldsFirstTable.map((fieldName) => (
-          <th key={`header-${fieldName}`}>
-            {aliasMapping[fieldName] || fieldName}
-          </th>
-        ))}
-      </tr>
-    </thead>
-  );
+  const sessionalFields = {
+    1: [
+      "subject_code",
+      "subject_name",
+      "sessional1_marks",
+      "sessional1_present",
+      "sessional1_attendance",
+      "sessional1_total_attendance",
+      "sessional1_practical_attendance",
+      "sessional1_total_practical_attendance",
+    ],
+    2: [
+      "subject_code",
+      "subject_name",
+      "sessional2_marks",
+      "sessional2_present",
+      "sessional2_attendance",
+      "sessional2_total_attendance",
+      "sessional2_practical_attendance",
+      "sessional2_total_practical_attendance",
+    ],
+    3: [
+      "subject_code",
+      "subject_name",
+      "sessional3_marks",
+      "sessional3_present",
+      "sessional3_attendance",
+      "sessional3_total_attendance",
+      "sessional3_practical_attendance",
+      "sessional3_total_practical_attendance",
+      // Add more fields for sessional 3 here if needed
+    ],
+    4: [
+      "subject_code",
+      "subject_name",
+      "block_marks",
+      "block_present",
+      // Add more fields for the "Block" section here if needed
+    ],
+  };
 
-  const tableRowsFirstTable = studentData?.subject_code.map(
-    (subjectCode, index) => (
-      <tr key={`data-${subjectCode}`}>
-        {includeFieldsFirstTable.map((fieldName) => (
-          <td key={`data-${fieldName}`}>
-            {renderValue(studentData[fieldName][index])}
-          </td>
-        ))}
-      </tr>
-    )
-  );
+  const handleSessionalClick = (sessionalNumber) => {
+    setSelectedSessional(sessionalNumber);
+  };
+
+  // const tableHeaderFirstTable = (
+  //   <thead>
+  //     <tr>
+  //       {includeFieldsFirstTable.map((fieldName) => (
+  //         <th key={`header-${fieldName}`}>
+  //           {aliasMapping[fieldName] || fieldName}
+  //         </th>
+  //       ))}
+  //     </tr>
+  //   </thead>
+  // );
+
+  // const tableRowsFirstTable = studentData?.subject_code.map(
+  //   (subjectCode, index) => (
+  //     <tr key={`data-${subjectCode}`}>
+  //       {includeFieldsFirstTable.map((fieldName) => (
+  //         <td key={`data-${fieldName}`}>
+  //           {renderValue(studentData[fieldName][index])}
+  //         </td>
+  //       ))}
+  //     </tr>
+  //   )
+  // );
 
   const includeFieldsSecondTable = [
     "subject_code",
@@ -267,37 +315,52 @@ const SemResult = () => {
 
       {showInternal && studentData && (
         <div>
-          <h2 className="text-xl font-bold">
-            Internal Table for Semester {selectedSemester}
-          </h2>
-          <div className="overflow-x-auto">
-            {" "}
-            {/* Add this container for horizontal scrolling */}
-            <table className="w-full table-auto border-collapse border mt-2">
-              {tableHeaderFirstTable}
+          <div className="button-container">
+            <button
+              onClick={() => handleSessionalClick(1)}
+              className={selectedSessional === 1 ? "active-button" : ""}
+            >
+              Sessional 1
+            </button>
+            <button
+              onClick={() => handleSessionalClick(2)}
+              className={selectedSessional === 2 ? "active-button" : ""}
+            >
+              Sessional 2
+            </button>
+            <button
+              onClick={() => handleSessionalClick(3)}
+              className={selectedSessional === 3 ? "active-button" : ""}
+            >
+              Sessional 3
+            </button>
+            <button
+              onClick={() => handleSessionalClick(4)}
+              className={selectedSessional === 4 ? "active-button" : ""}
+            >
+              Block
+            </button>
+          </div>
+
+          <div className="table-container">
+            <table className="your-table-class">
+              <thead>
+                <tr>
+                  {sessionalFields[selectedSessional].map((fieldName) => (
+                    <th key={`header-${fieldName}`}>
+                      {aliasMapping[fieldName] || fieldName}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
               <tbody>
-                {tableRowsFirstTable.map((row, rowIndex) => (
-                  <tr key={`data-${rowIndex}`}>
-                    {React.Children.map(
-                      row.props.children,
-                      (cell, cellIndex) => (
-                        <td
-                          key={`data-${rowIndex}-${cellIndex}`}
-                          className={`border p-2 ${
-                            includeFieldsFirstTable[cellIndex] ===
-                              "sessional1_marks" ||
-                            includeFieldsFirstTable[cellIndex] ===
-                              "sessional2_marks" ||
-                            includeFieldsFirstTable[cellIndex] ===
-                              "sessional3_marks"
-                              ? "w-16" // Adjust the width for marks cells
-                              : ""
-                          }`}
-                        >
-                          {cell.props.children}
-                        </td>
-                      )
-                    )}
+                {studentData?.subject_code.map((subjectCode, index) => (
+                  <tr key={`data-${subjectCode}`}>
+                    {sessionalFields[selectedSessional].map((fieldName) => (
+                      <td key={`data-${fieldName}`}>
+                        {renderValue(studentData[fieldName][index])}
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
@@ -309,37 +372,34 @@ const SemResult = () => {
       {showExternal && studentData && (
         <div>
           <div className="overflow-x-auto">
-  <div className="table-block">
-    <table className="w-full table-auto border-collapse border mt-2">
-      {tableHeaderSecondTable}
-      <tbody>
-        {tableRowsSecondTable.map((row, rowIndex) => (
-          <tr
-            key={`data-${rowIndex}`}
-            className={`border p-2`}
-          >
-            {React.Children.map(
-              row.props.children,
-              (cell, cellIndex) => (
-                <td
-                  key={`data-${rowIndex}-${cellIndex}`}
-                  className={`border p-2 ${
-                    includeFieldsSecondTable[cellIndex] === "external_marks"
-                      ? "w-16"
-                      : ""
-                  }`}
-                >
-                  {cell.props.children}
-                </td>
-              )
-            )}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-</div>
-
+            <div className="table-block">
+              <table className="w-full table-auto border-collapse border mt-2">
+                {tableHeaderSecondTable}
+                <tbody>
+                  {tableRowsSecondTable.map((row, rowIndex) => (
+                    <tr key={`data-${rowIndex}`} className={`border p-2`}>
+                      {React.Children.map(
+                        row.props.children,
+                        (cell, cellIndex) => (
+                          <td
+                            key={`data-${rowIndex}-${cellIndex}`}
+                            className={`border p-2 ${
+                              includeFieldsSecondTable[cellIndex] ===
+                              "external_marks"
+                                ? "w-16"
+                                : ""
+                            }`}
+                          >
+                            {cell.props.children}
+                          </td>
+                        )
+                      )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
 
           <div className="flex justify-center text-left p-4">
             <table className="border border-collapse max-w-xs">
