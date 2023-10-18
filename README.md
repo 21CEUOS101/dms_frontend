@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# University Management System (UMS)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+- [About](#about)
+- [Demo Credentials](#demo-credentials)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Available Scripts
+## About
+The University Management System (UMS) is a robust web-based platform designed to efficiently manage various aspects of university operations, serving the needs of administrators, faculty, and students. This repository hosts the codebase for the UMS.
 
-In the project directory, you can run:
+## Demo Credentials
+To explore the UMS, you can use the following demo login credentials:
 
-### `npm start`
+- **Admin**
+  - ID: ADM101
+  - Password: Jmm2RAn(7-
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **HOD (Head of Department)**
+  - ID: HOD101
+  - Password: n1AUpRo!w7
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Faculty**
+  - ID: FAC101
+  - Password: l*8a?u_8#M
 
-### `npm test`
+- **TPO (Training and Placement Officer)**
+  - ID: TPO101
+  - Password: hpPQmI*7fC
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **TTO (Time Table Operator)**
+  - ID: TTO101
+  - Password: YCJQvsqm-n
 
-### `npm run build`
+- **Student**
+  - ID: 21CEUON144
+  - Password: e8JIR#V$gW
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
+UMS offers a wide range of features to manage university operations, including but not limited to:
+- User Management
+- Faculty Management
+- Course Management
+- Student Management
+- Announcement Management
+- Profile Management (Admin, TPO, TTO, HOD)
+- User Panels tailored to specific user roles
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
+To set up UMS locally, follow these steps:
+1. Clone this repository to your local machine.
+2. Install the necessary dependencies using `npm install`.
+3. Set up your MongoDB database and configure the connection in the app.
+4. Run the application with `npm start`.
+5. Access UMS in your web browser at `http://localhost:YOUR_PORT`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
+- Once you've set up the system, log in with the provided demo credentials to explore the UMS.
+- Depending on your role, you'll have access to specific functionalities and features.
 
-### `npm run eject`
+## Contributing
+Contributions to UMS are welcome! If you'd like to contribute, please follow our [contributing guidelines](CONTRIBUTING.md).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the [MIT License](LICENSE).
