@@ -15,7 +15,7 @@ const UpdateOtherInfo = ({ id }) => {
 
   const preData = async () => {
     axios
-      .get(`http://localhost:3001/student/getStudentOtherDetails/${id}`)
+      .get(`https://dms2901.onrender.com/student/getStudentOtherDetails/${id}`)
       .then(
         (data) => {
           console.log(data?.data[0]);
@@ -30,7 +30,7 @@ const UpdateOtherInfo = ({ id }) => {
   const updateData = async () => {
     try {
       const response = await axios.patch(
-        "http://localhost:3001/admin/updateStudentOtherDetails",
+        "https://dms2901.onrender.com/admin/updateStudentOtherDetails",
         formData
       );
 

@@ -9,7 +9,7 @@ function Display_Faculty() {
   const [data, setData] = useState();
 
   const getData = () => {
-    axios.get(`http://localhost:3001/faculty/getSpecificFacultyDetails/${id}`).then((data) => {
+    axios.get(`https://dms2901.onrender.com/faculty/getSpecificFacultyDetails/${id}`).then((data) => {
       console.log(data?.data);
       setData(data?.data);
     })

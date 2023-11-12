@@ -40,7 +40,7 @@ function ViewAll(props) {
         // User confirmed, proceed with deletion
         try {
           await axios
-            .delete(`http://localhost:3001/${role}${delete_url}/${id}`)
+            .delete(`https://dms2901.onrender.com/${role}${delete_url}/${id}`)
             .then(
               () => {
                 props.setRefresh(!props.refresh); // Refresh the page

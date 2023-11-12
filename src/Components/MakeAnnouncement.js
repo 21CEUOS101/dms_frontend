@@ -351,7 +351,7 @@ function All_Students() {
   const getStudentEmailsBySemester = async (semester) => {
     await axios
       .get(
-        `http://localhost:3001/student/getAllStudentEmailsBySemester/${semester}`
+        `https://dms2901.onrender.com/student/getAllStudentEmailsBySemester/${semester}`
       )
       .then((response) => {
         setStudentEmails(response?.data);
@@ -360,7 +360,7 @@ function All_Students() {
 
   const getStudentEmails = async () => {
     await axios
-      .get("http://localhost:3001/student/getAllStudentEmails")
+      .get("https://dms2901.onrender.com/student/getAllStudentEmails")
       .then((response) => {
         setStudentEmails(response.data);
       });
@@ -368,7 +368,7 @@ function All_Students() {
 
   const getFacultyEmails = async () => {
     await axios
-      .get("http://localhost:3001/faculty/getAllFacultyEmails")
+      .get("https://dms2901.onrender.com/faculty/getAllFacultyEmails")
       .then((response) => {
         setFacultyEmails(response.data);
       });
@@ -376,7 +376,7 @@ function All_Students() {
 
   const getHodEmails = async () => {
     await axios
-      .get("http://localhost:3001/hod/getAllHODEmails")
+      .get("https://dms2901.onrender.com/hod/getAllHODEmails")
       .then((response) => {
         setHodEmails(response.data);
       });
@@ -384,7 +384,7 @@ function All_Students() {
 
   const getTpoEmails = async () => {
     await axios
-      .get("http://localhost:3001/tpo/getAllTPOEmails")
+      .get("https://dms2901.onrender.com/tpo/getAllTPOEmails")
       .then((response) => {
         setTpoEmails(response.data);
       });
@@ -392,7 +392,7 @@ function All_Students() {
 
   const getTtoEmails = async () => {
     await axios
-      .get("http://localhost:3001/tto/getAllTTOEmails")
+      .get("https://dms2901.onrender.com/tto/getAllTTOEmails")
       .then((response) => {
         setTtoEmails(response.data);
       });
@@ -400,7 +400,7 @@ function All_Students() {
 
   const getAdminEmails = async () => {
     await axios
-      .get("http://localhost:3001/admin/getAllAdminEmails")
+      .get("https://dms2901.onrender.com/admin/getAllAdminEmails")
       .then((response) => {
         setAdminEmails(response.data);
       });
@@ -439,7 +439,7 @@ function All_Students() {
       };
 
       axios
-        .post("http://localhost:3001/mail/make-announcement", emailData)
+        .post("https://dms2901.onrender.com/mail/make-announcement", emailData)
         .then((response) => {
           console.log("Email sent successfully:", response.data.message);
           Swal.fire({

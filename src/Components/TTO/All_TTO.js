@@ -7,7 +7,7 @@ function AllTTO() {
   const [refresh, setRefresh] = useState(false);
 
   const fetchData = () => {
-    axios.get('http://localhost:3001/tto/getAllTTODetails')
+    axios.get('https://dms2901.onrender.com/tto/getAllTTODetails')
       .then(response => {
         const simplifiedData = response.data.map(({ _id, tto_id, tto_name, tto_department, tto_designation }) => ({
           _id,

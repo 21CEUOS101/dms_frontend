@@ -78,7 +78,7 @@ function Marks_Entry_Form() {
 
   const createMarks = async () => {
     console.log(data);
-    await axios.patch(`http://localhost:3001/${role}/createStudentExamResult`, data).then((data) => {
+    await axios.patch(`https://dms2901.onrender.com/${role}/createStudentExamResult`, data).then((data) => {
       console.log(data?.data?.errors);
       console.log(data?.data?._message);
       console.log(data?.data.message);

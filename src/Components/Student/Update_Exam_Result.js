@@ -20,7 +20,7 @@ const Update_Exam_Result = () => {
 
   const preData = async () => {
     axios
-      .get(`http://localhost:3001/student/getStudentExamResultSem/${sem}/${sid}`)
+      .get(`https://dms2901.onrender.com/student/getStudentExamResultSem/${sem}/${sid}`)
       .then((data) => {
         console.log("Pre Data");
         console.log(data?.data);
@@ -33,7 +33,7 @@ const Update_Exam_Result = () => {
 
   const updateData = async () => {
     await axios
-      .patch(`http://localhost:3001/faculty/updateStudentExamResultSem/${sem}/${sid}`, formData)
+      .patch(`https://dms2901.onrender.com/faculty/updateStudentExamResultSem/${sem}/${sid}`, formData)
       .then((data) => {
         setStatus(
           data?.data?.acknowledged

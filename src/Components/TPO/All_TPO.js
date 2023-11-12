@@ -7,7 +7,7 @@ function AllTPO() {
   const [refresh, setRefresh] = useState(false);
 
   const fetchData = () => {
-    axios.get('http://localhost:3001/tpo/getAllTPODetails')
+    axios.get('https://dms2901.onrender.com/tpo/getAllTPODetails')
       .then((response) => {
         const simplifiedData = response.data.map(({ _id, tpo_id, tpo_name, tpo_department, tpo_designation }) => ({
           _id,

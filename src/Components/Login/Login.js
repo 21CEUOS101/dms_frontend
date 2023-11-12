@@ -46,7 +46,7 @@ function Login() {
       password: password,
     };
     console.log(check);
-    await axios.post("http://localhost:3001/login", check).then((data) => {
+    await axios.post("https://dms2901.onrender.com/login", check).then((data) => {
       console.log(data?.data);
       if (data.data.status === "success") {
         setIsLoggedIn(true);

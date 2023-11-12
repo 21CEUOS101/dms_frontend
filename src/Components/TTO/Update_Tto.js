@@ -18,7 +18,7 @@ const Update_Tto = () => {
     const [status, setStatus] = useState("");
     
     const preData = async () => {
-        axios.get(`http://localhost:3001/admin/getSpecificTTODetails/${id}`).then((data) => {
+        axios.get(`https://dms2901.onrender.com/admin/getSpecificTTODetails/${id}`).then((data) => {
             console.log(data?.data);
             setFormData(data?.data);
         },
@@ -29,7 +29,7 @@ const Update_Tto = () => {
     }
 
     const updateData = async () => {
-        await axios.patch(`http://localhost:3001/admin/updateTTO`, formData).then((data) => {
+        await axios.patch(`https://dms2901.onrender.com/admin/updateTTO`, formData).then((data) => {
             console.log(data?.data);
             setStatus(data?.data?.message);
             setTimeout(() => {

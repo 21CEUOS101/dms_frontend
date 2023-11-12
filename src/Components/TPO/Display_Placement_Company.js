@@ -8,7 +8,7 @@ function Display_Placement_Company() {
   const [data, setData] = useState();
 
   const getData = () => {
-    axios.get(`http://localhost:3001/tpo/getSpecificPlacementCompanyDetails/${id}`).then((data) => {
+    axios.get(`https://dms2901.onrender.com/tpo/getSpecificPlacementCompanyDetails/${id}`).then((data) => {
       console.log(data?.data);
       setData(data?.data);
     })

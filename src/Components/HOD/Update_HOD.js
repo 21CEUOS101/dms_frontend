@@ -18,7 +18,7 @@ const Update_HOD = () => {
     const [status, setStatus] = useState("");
     
     const preData = async () => {
-        axios.get(`http://localhost:3001/hod/getHODDetails/${id}`).then((data) => {
+        axios.get(`https://dms2901.onrender.com/hod/getHODDetails/${id}`).then((data) => {
             console.log(data?.data);
             setFormData(data?.data);
         },
@@ -29,7 +29,7 @@ const Update_HOD = () => {
     }
 
   const updateData = async () => {
-        await axios.patch(`http://localhost:3001/hod/updateHODDetails`, formData).then((data) => {
+        await axios.patch(`https://dms2901.onrender.com/hod/updateHODDetails`, formData).then((data) => {
             console.log(data?.data?.acknowledged);
             setStatus(data?.data?.acknowledged ? "Data Updated Successfully!" : "Data Updation Failed!");
             setTimeout(() => {

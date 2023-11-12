@@ -18,7 +18,7 @@ const Update_Faculty = () => {
     const [status, setStatus] = useState("");
     
     const preData = async () => {
-        axios.get(`http://localhost:3001/admin/getSpecificfacultyDetails/${id}`).then((data) => {
+        axios.get(`https://dms2901.onrender.com/admin/getSpecificfacultyDetails/${id}`).then((data) => {
             console.log(data?.data);
             setFormData(data?.data);
         },
@@ -29,7 +29,7 @@ const Update_Faculty = () => {
     }
 
     const updateData = async () => {
-        await axios.patch(`http://localhost:3001/admin/updateFacultyDetails`, formData).then((data) => {
+        await axios.patch(`https://dms2901.onrender.com/admin/updateFacultyDetails`, formData).then((data) => {
             console.log(data?.data?.acknowledged);
             setStatus(data?.data?.acknowledged ? "Data Updated Successfully!" : "Data Updation Failed!");
             setTimeout(() => {

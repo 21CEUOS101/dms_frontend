@@ -8,7 +8,7 @@ function ViewResult() {
     const [data, setData] = useState();
 
     const getData = () => {
-        axios.get(`http://localhost:3001/student/getStudentExamResult/${id}`).then((data) => {
+        axios.get(`https://dms2901.onrender.com/student/getStudentExamResult/${id}`).then((data) => {
             console.log(data?.data);
             setData(data?.data);
         });

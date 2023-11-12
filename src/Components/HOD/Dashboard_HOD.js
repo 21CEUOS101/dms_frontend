@@ -159,7 +159,7 @@ function Dashboard_HOD() {
   const role = localStorage.getItem("role");
 
   const getAllNumbers = async () => {
-    await axios.get(`http://localhost:3001/${role}/getAllNumbers`).then(
+    await axios.get(`https://dms2901.onrender.com/${role}/getAllNumbers`).then(
       (data) => {
         console.log(data?.data);
         setNo_of_students(data?.data?.no_of_students);
@@ -195,8 +195,8 @@ function Dashboard_HOD() {
       </div>
 
       <div className='flex flex-row space-x-10'>
-        <div className='w-3/6'><BarChart link={`http://localhost:3001/${role}/getStudentCountByDepartment/`} isYear={true}/></div>
-        <div className='w-3/6'><BarChart link={`http://localhost:3001/${role}/getStudentNumberD2D/`} isYear={true}/></div>
+        <div className='w-3/6'><BarChart link={`https://dms2901.onrender.com/${role}/getStudentCountByDepartment/`} isYear={true}/></div>
+        <div className='w-3/6'><BarChart link={`https://dms2901.onrender.com/${role}/getStudentNumberD2D/`} isYear={true}/></div>
       </div>
     </div>
   );

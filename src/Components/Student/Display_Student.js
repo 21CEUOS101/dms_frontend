@@ -9,7 +9,7 @@ function Display_Student() {
 
   const getData = () => {
     axios
-      .get(`http://localhost:3001/student/getStudentByRollNumber/${id}`)
+      .get(`https://dms2901.onrender.com/student/getStudentByRollNumber/${id}`)
       .then((response) => {
         console.log(response?.data);
         setData(response?.data);

@@ -18,7 +18,7 @@ const Update_TPO = () => {
     const [status, setStatus] = useState("");
     
     const preData = async () => {
-        axios.get(`http://localhost:3001/admin/getSpecificTPODetails/${id}`).then((data) => {
+        axios.get(`https://dms2901.onrender.com/admin/getSpecificTPODetails/${id}`).then((data) => {
             console.log(data?.data);
             setFormData(data?.data);
         },
@@ -29,7 +29,7 @@ const Update_TPO = () => {
     }
 
     const updateData = async () => {
-        await axios.patch(`http://localhost:3001/admin/updateTPO`, formData).then((data) => {
+        await axios.patch(`https://dms2901.onrender.com/admin/updateTPO`, formData).then((data) => {
             console.log(data?.data);
             setStatus(data?.data?.message);
             setTimeout(() => {

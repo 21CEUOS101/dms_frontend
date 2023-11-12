@@ -46,7 +46,7 @@ function Placement_Company_Form() {
   };
 
   const createPlacementCompanyDetails = async () => {
-    await axios.post(`http://localhost:3001/tpo/createNewPlacementCompanyDetails`, data).then(
+    await axios.post(`https://dms2901.onrender.com/tpo/createNewPlacementCompanyDetails`, data).then(
       (response) => {
         console.log(response);
         if (response?.data?.errors !== undefined) {

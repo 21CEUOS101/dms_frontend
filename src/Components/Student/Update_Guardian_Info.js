@@ -14,7 +14,7 @@ const UpdateGuardianInfo = ({ id }) => {
   const [status, setStatus] = useState("");
 
   const preData = async () => {
-    axios.get(`http://localhost:3001/student/getStudentGuardianInfo/${id}`).then(
+    axios.get(`https://dms2901.onrender.com/student/getStudentGuardianInfo/${id}`).then(
       (data) => {
         console.log(data?.data[0]);
         setFormData(data?.data[0]);
@@ -28,7 +28,7 @@ const UpdateGuardianInfo = ({ id }) => {
   const updateData = async () => {
     try {
       const response = await axios.patch(
-        "http://localhost:3001/admin/updateStudentGuardianInfo",
+        "https://dms2901.onrender.com/admin/updateStudentGuardianInfo",
         formData
       );
   

@@ -9,7 +9,7 @@ function Display_Tto() {
   const [data, setData] = useState();
 
   const getData = () => {
-    axios.get(`http://localhost:3001/tto/getSpecificTTODetails/${id}`).then((data) => {
+    axios.get(`https://dms2901.onrender.com/tto/getSpecificTTODetails/${id}`).then((data) => {
       console.log(data?.data);
       setData(data?.data);
     })

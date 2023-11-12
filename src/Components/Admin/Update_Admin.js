@@ -16,7 +16,7 @@ const Update_Admin = () => {
     const [status, setStatus] = useState("");
     
     const preData = async () => {
-        axios.get(`http://localhost:3001/admin/getAdminDetails/${id}`).then((data) => {
+        axios.get(`https://dms2901.onrender.com/admin/getAdminDetails/${id}`).then((data) => {
             console.log(data?.data);
             setFormData(data?.data);
         },
@@ -27,7 +27,7 @@ const Update_Admin = () => {
     }
 
     const updateData = async () => {
-        await axios.patch(`http://localhost:3001/hod/updateAdmin`, formData).then((data) => {
+        await axios.patch(`https://dms2901.onrender.com/hod/updateAdmin`, formData).then((data) => {
               console.log(data?.data?.acknowledged);
               setStatus(
                 data?.data?.acknowledged

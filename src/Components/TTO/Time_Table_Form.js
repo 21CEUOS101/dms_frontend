@@ -36,7 +36,7 @@ function TimeTableBlockForm() {
 
   const createTimeTableBlock = async () => {
     console.log('createTimeTableBlock');
-    await axios.post('http://localhost:3001/tto/addTimeTableBlockDetails', data).then(
+    await axios.post('https://dms2901.onrender.com/tto/addTimeTableBlockDetails', data).then(
       (data) => {
         console.log(data?.data);
         if (data?.data?.message?.errors !== undefined) {

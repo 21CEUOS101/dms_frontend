@@ -7,7 +7,7 @@ function AllAdmin() {
   const [refresh, setRefresh] = useState(false);
 
   const fetchData = () => {
-    axios.get('http://localhost:3001/admin/getAllAdminDetails')
+    axios.get('https://dms2901.onrender.com/admin/getAllAdminDetails')
       .then(response => {
         const simplifiedData = response.data.map(({_id, admin_id, admin_name, admin_department, admin_designation}) => ({
           _id,

@@ -25,7 +25,7 @@ const SemResult = () => {
   // Fetch student exam results from the server on component mount
   const preData = async () => {
     axios
-      .get(`http://localhost:3001/student/getStudentExamResult/${id}`)
+      .get(`https://dms2901.onrender.com/student/getStudentExamResult/${id}`)
       .then((response) => {
         console.log(response.data);
         setStudentExamResults(response.data);

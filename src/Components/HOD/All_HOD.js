@@ -7,7 +7,7 @@ function All_HOD() {
   const [refresh, setRefresh] = useState(false);
 
   const getData = () => {
-    axios.get('http://localhost:3001/hod/getAllHOD')
+    axios.get('https://dms2901.onrender.com/hod/getAllHOD')
       .then((response) => {
         const simplifiedData = response.data.map(({ _id, hod_id, hod_name, hod_department, hod_designation }) => ({
           _id,

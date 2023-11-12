@@ -39,7 +39,7 @@ function Admin_Form() {
   };
 
   const createAdmin = async () => {
-    await axios.post(`http://localhost:3001/${role}/addNewAdmin`, data).then((response) => {
+    await axios.post(`https://dms2901.onrender.com/${role}/addNewAdmin`, data).then((response) => {
       console.log('success');
       console.log(response?.data?.message?._message);
       console.log(response?.data);

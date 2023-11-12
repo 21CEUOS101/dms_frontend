@@ -11,7 +11,7 @@ function View_TimeTable() {
   // Function to fetch timetable data
   const getData = () => {
     axios
-      .get(`http://localhost:3001/tto/getAllTimeTableBlockDetails`)
+      .get(`https://dms2901.onrender.com/tto/getAllTimeTableBlockDetails`)
       .then((response) => {
         const fetchedData = response?.data || [];
         setData(fetchedData);

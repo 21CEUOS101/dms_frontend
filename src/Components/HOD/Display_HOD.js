@@ -8,7 +8,7 @@ function Display_HOD() {
   const [data, setData] = useState();
 
   const getData = () => {
-    axios.get(`http://localhost:3001/hod/getHODDetails/${id}`).then((response) => {
+    axios.get(`https://dms2901.onrender.com/hod/getHODDetails/${id}`).then((response) => {
       console.log(response?.data);
       setData(response?.data);
     });

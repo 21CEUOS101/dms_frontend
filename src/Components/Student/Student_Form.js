@@ -163,7 +163,7 @@ function Student_Form() {
   };
 
   const createStudent = async () => {
-    await axios.post(`http://localhost:3001/${role}/createStudent`, data).then(
+    await axios.post(`https://dms2901.onrender.com/${role}/createStudent`, data).then(
       (data) => {
         console.log(data?.data?.message?.errors);
         console.log(data?.data?.message?._message);

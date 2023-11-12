@@ -13,7 +13,7 @@ function AllStudents() {
   // Fetch session numbers
   const fetchSessionNumbers = () => {
     axios
-      .get(`http://localhost:3001/student/getUniqueSessionNumbers`)
+      .get(`https://dms2901.onrender.com/student/getUniqueSessionNumbers`)
       .then((response) => {
         console.log(response.data);
         setSessionNumbers(response.data);
@@ -43,7 +43,7 @@ function AllStudents() {
     if (selectedSession) {
       axios
         .get(
-          `http://localhost:3001/student/getStudentsBySession/${selectedSession}`
+          `https://dms2901.onrender.com/student/getStudentsBySession/${selectedSession}`
         )
         .then((response) => {
           console.log("Fetched student data:", response.data);

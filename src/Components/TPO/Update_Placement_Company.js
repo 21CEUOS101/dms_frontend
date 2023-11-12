@@ -26,7 +26,7 @@ const Update_Placement_Company = () => {
 
   const preData = async () => {
     axios
-      .get(`http://localhost:3001/tpo/getSpecificPlacementCompanyDetails/${id}`)
+      .get(`https://dms2901.onrender.com/tpo/getSpecificPlacementCompanyDetails/${id}`)
       .then(
         (data) => {
           console.log(data?.data);
@@ -41,7 +41,7 @@ const Update_Placement_Company = () => {
   const updateData = async () => {
     console.log(formData);
     await axios
-      .patch(`http://localhost:3001/tpo/update-placement-company`, formData)
+      .patch(`https://dms2901.onrender.com/tpo/update-placement-company`, formData)
       .then(
         (data) => {
           console.log(data?.data);

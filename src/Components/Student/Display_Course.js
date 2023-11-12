@@ -9,7 +9,7 @@ function Display_Course() {
   const [data, setData] = useState();
 
   const getData = () => {
-    axios.get(`http://localhost:3001/${role}/getCourseDetails/${id}`).then((data) => {
+    axios.get(`https://dms2901.onrender.com/${role}/getCourseDetails/${id}`).then((data) => {
       console.log(data?.data);
       setData(data?.data);
     }).catch((error) => {

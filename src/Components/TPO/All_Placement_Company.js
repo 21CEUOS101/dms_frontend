@@ -7,7 +7,7 @@ function All_Placement_Company() {
   const [refresh, setRefresh] = useState(false);
 
   const getData = () => {
-    axios.get('http://localhost:3001/tpo/getAllPlacementCompanyDetails')
+    axios.get('https://dms2901.onrender.com/tpo/getAllPlacementCompanyDetails')
       .then((response) => {
         const simplifiedData = response.data.map(({ _id, placement_company_id, placement_company_name, placement_company_country, placement_company_job_role }) => ({
           _id,

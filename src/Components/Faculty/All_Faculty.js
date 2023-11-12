@@ -7,7 +7,7 @@ function All_Faculty() {
   const [refresh, setRefresh] = useState(false);
 
   const fetchData = () => {
-    axios.get(`http://localhost:3001/faculty/getAllFacultyDetails`)
+    axios.get(`https://dms2901.onrender.com/faculty/getAllFacultyDetails`)
       .then((response) => {
         const simplifiedData = response.data?.map(({_id, faculty_id, faculty_name, faculty_department, faculty_designation,}) => ({
           _id,

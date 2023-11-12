@@ -23,7 +23,7 @@ const Update_Time_Table = () => {
   const preData = async () => {
     console.log("bid:", bid);
     console.log("ttid:", ttid);
-    axios.get(`http://localhost:3001/tto/getSpecificTimeTableSpecificBlockDetails/${bid}/${ttid}`).then((data) => {
+    axios.get(`https://dms2901.onrender.com/tto/getSpecificTimeTableSpecificBlockDetails/${bid}/${ttid}`).then((data) => {
         console.log(data?.data);
         setFormData(data?.data);
     },
@@ -34,7 +34,7 @@ const Update_Time_Table = () => {
     }
 
     const updateData = async () => {
-        await axios.patch(`http://localhost:3001/tto/updateTimeTableBlockDetails/${bid}/${ttid}`, formData).then((data) => {
+        await axios.patch(`https://dms2901.onrender.com/tto/updateTimeTableBlockDetails/${bid}/${ttid}`, formData).then((data) => {
             console.log(data?.data);
             setStatus(data?.data?.acknowledge);
             setTimeout(() => {

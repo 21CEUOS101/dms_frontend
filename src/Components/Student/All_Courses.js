@@ -7,7 +7,7 @@ function All_Courses() {
   const [refresh, setRefresh] = useState(false);
 
   const fetchData = () => {
-    axios.get(`http://localhost:3001/student/getAllCourseDetails`)
+    axios.get(`https://dms2901.onrender.com/student/getAllCourseDetails`)
       .then((response) => {
         const simplifiedData = response.data?.courseDetails?.map(({ _id, subject_code, subject_name, subject_credit, subject_alias, semester, }) => ({
           _id,

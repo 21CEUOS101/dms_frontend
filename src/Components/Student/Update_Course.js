@@ -26,7 +26,7 @@ const Update_Course = () => {
 
   const preData = async () => {
     console.log(id);
-    axios.get(`http://localhost:3001/admin/getCourseBySubjectCode/${id}`).then(
+    axios.get(`https://dms2901.onrender.com/admin/getCourseBySubjectCode/${id}`).then(
       (data) => {
         console.log(data?.data);
         setFormData(data?.data);
@@ -39,7 +39,7 @@ const Update_Course = () => {
 
   const updateData = async () => {
     await axios
-      .patch(`http://localhost:3001/admin/updateCourseDetails`, formData)
+      .patch(`https://dms2901.onrender.com/admin/updateCourseDetails`, formData)
       .then(
         (data) => {
           console.log(data?.data?.acknowledged);
